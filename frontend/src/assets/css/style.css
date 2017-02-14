@@ -1,0 +1,39 @@
+body {
+  margin-top: 40px;
+}
+.panel-default-light {
+  background: #F3F3F3 !important;
+}
+.logo {
+  padding: 30px !important;
+  margin-bottom: 30px;
+  background: #FEFEFE !important;
+}
+
+.btn-default-darker {
+  background: #405563 !important;
+}
+
+.btn-default-darker>a {
+  color: #FFF;
+}
+
+.btn-default-darker>a:hover {
+  text-decoration: none;
+}
+
+.btn-default-darker:hover {
+  background: #405060 !important;
+}
+
+.navbar-fixed-side .navbar-collapse {
+  border-top: 0 !important;
+}
+
+
+
+
+.text-right {
+  text-align: right;
+}
+
