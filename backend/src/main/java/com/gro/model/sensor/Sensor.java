@@ -20,49 +20,49 @@ import com.gro.model.sensor.SensorType;
 @Table(name = "sensor")
 public class Sensor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinColumn(name = "pin_id")
-	@NotNull
-	private Pin pin;
+  @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinColumn(name = "pin_id")
+  @NotNull
+  private Pin pin;
 
-	@Enumerated(EnumType.STRING)
-	@NotNull
-	private SensorType type;
+  @Enumerated(EnumType.STRING)
+  @NotNull
+  private SensorType type;
 
-	public Sensor() {}
+  public Sensor() {}
 
-	public Sensor(int id, Pin pin, SensorType type) {
-		this.id = id;
-		this.pin = pin;
-		this.type = type;
-	}
+  public Sensor(int id, Pin pin, SensorType type) {
+    this.id = id;
+    this.pin = pin;
+    this.type = type;
+  }
 
-	public int getId() {
-		return id;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public Pin getPin() {
-		return pin;
-	}
+  public Pin getPin() {
+    return pin;
+  }
 
-	public void setPin(Pin pin) {
-		this.pin = pin;
-	}
+  public void setPin(Pin pin) {
+    this.pin = pin;
+  }
 
-	public SensorType getType() {
-		return type;
-	}
+  public SensorType getType() {
+    return type;
+  }
 
-	public void setType(SensorType type) {
-		this.type = type;
-	}
+  public void setType(SensorType type) {
+    this.type = type;
+  }
 
 }
