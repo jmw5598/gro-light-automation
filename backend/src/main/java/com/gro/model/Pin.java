@@ -17,7 +17,7 @@ import com.gro.model.sensor.Sensor;
 public class Pin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull

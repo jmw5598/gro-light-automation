@@ -21,7 +21,7 @@ import com.gro.model.sensor.SensorType;
 public class Sensor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
