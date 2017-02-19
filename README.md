@@ -7,3 +7,5 @@ Technologies:
 * Spring Boot REST Api
 * MySQL to store sensor data.
 * MQTT on the raspberry pi.
+
+[Rough UI Ideas](https://goo.gl/photos/HAjHsHN71tgkS3ZT9)
