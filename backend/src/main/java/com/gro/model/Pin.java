@@ -14,44 +14,44 @@ import com.gro.model.sensor.Sensor;
 @Table(name = "pin")
 public class Pin {
 
-  @Id
-  private int id;
+    @Id
+    private int id;
 
-  @NotNull
-  private String alias;
+    @NotNull
+    private String alias;
 
-  @OneToOne(mappedBy = "pin", fetch = FetchType.EAGER)
-  private Sensor sensor;
+    @OneToOne(mappedBy = "pin", fetch = FetchType.EAGER)
+    private Sensor sensor;
 
-  public Pin() { }
+    public Pin() { }
 
-  public Pin(int id, String alias) {
-    this.id = id;
-    this.alias = alias;
-  }
+    public Pin(int id, String alias) {
+        this.id = id;
+        this.alias = alias;
+    }
 
-  public int getId() {
-    return id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public String getAlias() {
-    return alias;
-  }
+    public String getAlias() {
+        return alias;
+    }
 
-  public void setAlias(String alias) {
-    this.alias = alias;
-  }
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 
-  public Sensor getSensor() {
-    return sensor;
-  }
+    public Sensor getSensor() {
+        return sensor;
+    }
 
-  public void setSensor(Sensor sensor) {
-    this.sensor = sensor;
-  }
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
+    }
 
 }
