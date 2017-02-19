@@ -26,7 +26,7 @@ public class PinController {
     }
     
     @RequestMapping(method=RequestMethod.POST)
-    public void savePin(@RequestBody Pin pin) {
+    public void create(@RequestBody Pin pin) {
         System.out.println(pin.getAlias());
         pinRepository.save(pin);
     }
