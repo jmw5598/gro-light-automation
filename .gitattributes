@@ -1,0 +1,3 @@
+# Linguist
+frontend/node_modules/ linguist-vendored
+backend/target/ linguist-vendored
