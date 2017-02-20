@@ -25,7 +25,7 @@ import com.gro.model.sensor.SensorType;
 
 @Entity
 @Table(name = "sensor")
-@JsonIgnoreProperties("data")
+@JsonIgnoreProperties({"data"})
 public class Sensor {
 
     @Id

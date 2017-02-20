@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -18,6 +22,7 @@ import javax.persistence.UniqueConstraint;
        uniqueConstraints=
            @UniqueConstraint(columnNames={"timestamp","sensor_id"})
 )
+@JsonIgnoreProperties({"sensor"})
 public class SensorData {
     
     
@@ -25,7 +30,6 @@ public class SensorData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @NotNull
     @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
     
@@ -35,7 +39,6 @@ public class SensorData {
     @NotNull
     private double humidity;
     
-    @NotNull
     @ManyToOne
     @JoinColumn(name="sensor_id")
     private Sensor sensor;
