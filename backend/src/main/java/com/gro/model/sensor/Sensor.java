@@ -1,5 +1,7 @@
 package com.gro.model.sensor;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,16 +12,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gro.model.Pin;
 import com.gro.model.sensor.SensorType;
 
 
 @Entity
 @Table(name = "sensor")
+@JsonIgnoreProperties("data")
 public class Sensor {
 
     @Id
@@ -34,6 +40,9 @@ public class Sensor {
     @Enumerated(EnumType.STRING)
     @NotNull
     private SensorType type;
+    
+    @OneToMany(mappedBy="sensor")
+    private List<SensorData> data;
 
     public Sensor() {}
 
@@ -65,6 +74,14 @@ public class Sensor {
 
     public void setType(SensorType type) {
         this.type = type;
+    }
+    
+    public List<SensorData> getData() {
+        return data;
+    }
+    
+    public void setData(List<SensorData> data) {
+        this.data = data;
     }
 
 }
