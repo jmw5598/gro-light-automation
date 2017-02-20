@@ -2,6 +2,8 @@ package com.gro.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.gro.model.sensor.Sensor;
