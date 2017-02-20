@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.sensor.Sensor;
 import com.gro.model.sensor.SensorData;
+import com.gro.model.sensor.SensorNotFoundException;
 import com.gro.repository.SensorDataRepository;
 import com.gro.repository.SensorRepository;
 
@@ -39,18 +40,25 @@ public class SensorController {
     
     @RequestMapping(path="/{id}", method=RequestMethod.GET)
     public Sensor getSensor(@PathVariable("id") int id) {
+        Sensor sensor = sensorRepository.findOne(id);
+        if(sensor == null) 
+            throw new SensorNotFoundException("Sensor " + id + " was not found");
         return sensorRepository.findOne(id);
     }
     
     @RequestMapping(path="/{id}/data", method=RequestMethod.GET)
     public List<SensorData> getAllSensorData(@PathVariable("id") int id) {
         Sensor sensor = sensorRepository.findOne(id);
+        if(sensor == null) 
+            throw new SensorNotFoundException("Sensor " + id + " was not found");
         return sensorDataRepository.findAllBySensor(sensor);
     }
     
     @RequestMapping(path="/{id}/data", method=RequestMethod.POST)
     public void saveSensorData(@PathVariable("id") int id, @RequestBody SensorData data) {
         Sensor sensor = sensorRepository.findOne(id);
+        if(sensor == null) 
+            throw new SensorNotFoundException("Sensor " + id + " was not found");
         data.setSensor(sensor);
         sensorDataRepository.save(data);
     }
