@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.Pin;
+import com.gro.model.PinNotFoundException;
 import com.gro.repository.PinRepository;
 
 @RestController
@@ -27,12 +28,14 @@ public class PinController {
     
     @RequestMapping(method=RequestMethod.POST)
     public void create(@RequestBody Pin pin) {
-        System.out.println(pin.getAlias());
-        pinRepository.save(pin);
+        Pin result = pinRepository.save(pin);
     }
     
     @RequestMapping(path="/{id}", method=RequestMethod.GET)
     public Pin getPin(@PathVariable("id") int id) {
+        Pin pin = pinRepository.findOne(id);
+        if(pin == null) 
+            throw new PinNotFoundException("Pin " + id + " was not found");
         return pinRepository.findOne(id);
     }
     
