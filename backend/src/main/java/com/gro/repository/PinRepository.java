@@ -1,9 +1,13 @@
 package com.gro.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
 
 import com.gro.model.Pin;
 
-public interface PinRepository extends JpaRepository<Pin, Integer> {
+public interface PinRepository extends CrudRepository<Pin, Integer> {
+    @Override
+    public List<Pin> findAll();
     public Pin findByAlias(String alias);
 }
