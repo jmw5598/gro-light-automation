@@ -1,8 +1,11 @@
 package com.gro.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -17,7 +20,12 @@ import com.gro.model.sensor.Sensor;
 public class Pin {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @NotNull
+    @Column(unique = true)
+    private int pin;
 
     @NotNull
     private String alias;
@@ -43,6 +51,14 @@ public class Pin {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getPin() {
+        return pin;
+    }
+    
+    public void setPin(int pin) {
+        this.pin = pin;
     }
 
     public String getAlias() {

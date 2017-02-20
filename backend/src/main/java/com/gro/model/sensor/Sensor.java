@@ -1,6 +1,7 @@
 package com.gro.model.sensor;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,7 +27,7 @@ public class Sensor {
     private int id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "pin_id")
+    @JoinColumn(name = "pin_id", unique = true)
     @NotNull
     private Pin pin;
 
