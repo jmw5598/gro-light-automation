@@ -15,7 +15,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
-public class MQTTConfig {
+public class MqttConfig {
     
     @Bean
     public MessageChannel mqttRouterChannel() {
