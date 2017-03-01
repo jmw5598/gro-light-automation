@@ -1,6 +1,8 @@
 package com.gro.model.sensor;
 
-
 public enum SensorType {
-    DHT11, DHT22
+    TEMPERATURE, 
+    HUMIDITY, 
+    TEMPERATURE_HUMIDITY, 
+    PROXIMITY
 }

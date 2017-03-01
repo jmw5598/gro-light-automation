@@ -17,21 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "sensor_data",
+@Table(name = "temperature_humidity_data",
        uniqueConstraints=
            @UniqueConstraint(columnNames={"timestamp","sensor_id"})
 )
 @JsonIgnoreProperties({"sensor"})
-public class SensorData {
-    
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
-    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp timestamp;
-    
+public class TemperatureHumidityData extends AbstractSensorData{
+       
     @NotNull
     private double temperature;
     
@@ -42,29 +34,8 @@ public class SensorData {
     @JoinColumn(name="sensor_id")
     private Sensor sensor;
     
-    public SensorData() {}
+    public TemperatureHumidityData() {}
     
-    public SensorData(int id, double temperature, double humidity) {
-        this.id = id;
-        this.temperature = temperature;
-        this.humidity = humidity;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-    
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public double getTemperature() {
         return temperature;
