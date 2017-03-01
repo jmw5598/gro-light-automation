@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "proximity_data",
        uniqueConstraints=
-           @UniqueConstraint(columnNames={"timestamp"})
+           @UniqueConstraint(columnNames={"timestamp", "sensor_id"})
 )
 @JsonIgnoreProperties({"sensor"})
 public class ProximityData extends AbstractSensorData {
