@@ -22,17 +22,33 @@ public class MqttConfig {
         return new DirectChannel();
     }
     
-    /* CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    /* TEMP HUMIDITY : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
     @Bean
     public MessageChannel temperatureHumidityServiceChannel() {
         return new DirectChannel();
     }
     
-    /* CHANNEL BETWEEN ROUTER AND TRANSFORMER */
+    /* TEMP HUMIDITY : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
     @Bean
     public MessageChannel temperatureHumidityTransformerChannel() {
         return new DirectChannel();
     }
+    
+    /* PROXIMITY : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    @Bean
+    public MessageChannel proximityServiceChannel() {
+        return new DirectChannel();
+    }
+    
+    /* PROXIMITY : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
+    @Bean
+    public MessageChannel proximityTransformerChannel() {
+        return new DirectChannel();
+    }
+    
+    
+    
+    //WIRE UP PROXIMITY MESSAGING
     
     @Bean
     public Jackson2JsonObjectMapper jsonMapper() {
