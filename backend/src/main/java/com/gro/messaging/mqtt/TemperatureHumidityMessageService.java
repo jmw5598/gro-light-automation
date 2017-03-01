@@ -21,7 +21,7 @@ public class TemperatureHumidityMessageService {
     private TemperatureHumidityDataRepository sensorDataRepository;
     
     @ServiceActivator(inputChannel="temperatureHumidityServiceChannel")
-    public void temperatureHandler(Message<TemperatureHumidityDTO> message) {
+    public void process(Message<TemperatureHumidityDTO> message) {
         
         TemperatureHumidityDTO data = message.getPayload();
         Sensor sensor = sensorRepository.findOne(data.getSensorId());
