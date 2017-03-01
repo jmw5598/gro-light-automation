@@ -10,13 +10,13 @@ import org.springframework.messaging.support.MessageBuilder;
 import com.gro.model.sensor.TemperatureHumidityDTO;
 
 @MessageEndpoint
-public class Dht22MessageTransformer {
+public class TemperatureHumidityMessageTransformer {
     
     @Autowired
     private Jackson2JsonObjectMapper jsonMapper;
     
-    @Transformer(inputChannel="dht22MessageTransformerChannel", 
-                 outputChannel="dht22MessageServiceChannel")
+    @Transformer(inputChannel="temperatureHumidityTransformerChannel", 
+                 outputChannel="temperatureHumidityServiceChannel")
     public Message<TemperatureHumidityDTO> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
         TemperatureHumidityDTO data = jsonMapper.fromJson(payload, TemperatureHumidityDTO.class);

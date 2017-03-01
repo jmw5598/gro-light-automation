@@ -6,26 +6,26 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.sensor.Sensor;
-import com.gro.model.sensor.SensorData;
+import com.gro.model.sensor.TemperatureHumidityData;
 import com.gro.model.sensor.TemperatureHumidityDTO;
-import com.gro.repository.SensorDataRepository;
+import com.gro.repository.TemperatureHumidityDataRepository;
 import com.gro.repository.SensorRepository;
 
 @MessageEndpoint
-public class Dht22MessageService {
+public class TemperatureHumidityMessageService {
     
     @Autowired
     private SensorRepository sensorRepository;
     
     @Autowired
-    private SensorDataRepository sensorDataRepository;
+    private TemperatureHumidityDataRepository sensorDataRepository;
     
-    @ServiceActivator(inputChannel="dht22MessageServiceChannel")
+    @ServiceActivator(inputChannel="temperatureHumidityServiceChannel")
     public void temperatureHandler(Message<TemperatureHumidityDTO> message) {
         
         TemperatureHumidityDTO data = message.getPayload();
         Sensor sensor = sensorRepository.findOne(data.getSensorId());
-        SensorData sensorData = new SensorData();
+        TemperatureHumidityData sensorData = new TemperatureHumidityData();
         sensorData.setSensor(sensor);
         sensorData.setTemperature(data.getTemperature());
         sensorData.setHumidity(data.getHumidity());
