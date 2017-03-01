@@ -22,13 +22,15 @@ public class MqttConfig {
         return new DirectChannel();
     }
     
+    /* CHANNEL BETWEEN TRANSFORMER AND SERVICE */
     @Bean
-    public MessageChannel dht22MessageServiceChannel() {
+    public MessageChannel temperatureHumidityServiceChannel() {
         return new DirectChannel();
     }
     
+    /* CHANNEL BETWEEN ROUTER AND TRANSFORMER */
     @Bean
-    public MessageChannel dht22MessageTransformerChannel() {
+    public MessageChannel temperatureHumidityTransformerChannel() {
         return new DirectChannel();
     }
     
@@ -52,7 +54,7 @@ public class MqttConfig {
     @Bean
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
-                new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), "/temp", "/humidity");
+                new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), "TEMPERATURE_HUMIDITY", "PROXIMITY");
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
         adapter.setQos(1);
