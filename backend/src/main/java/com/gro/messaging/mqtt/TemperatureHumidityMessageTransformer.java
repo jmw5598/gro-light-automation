@@ -7,19 +7,19 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.sensor.TemperatureHumidityDTO;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityDTO;
 
 @MessageEndpoint
 public class TemperatureHumidityMessageTransformer {
     
     @Autowired
-    private Jackson2JsonObjectMapper jsonMapper;
+    private Jackson2JsonObjectMapper jackson2JsonObjectMapper;
     
     @Transformer(inputChannel="temperatureHumidityTransformerChannel", 
                  outputChannel="temperatureHumidityServiceChannel")
     public Message<TemperatureHumidityDTO> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
-        TemperatureHumidityDTO data = jsonMapper.fromJson(payload, TemperatureHumidityDTO.class);
+        TemperatureHumidityDTO data = jackson2JsonObjectMapper.fromJson(payload, TemperatureHumidityDTO.class);
         return MessageBuilder.createMessage(data, message.getHeaders());
     }
     

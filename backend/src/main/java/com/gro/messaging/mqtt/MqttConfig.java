@@ -46,18 +46,6 @@ public class MqttConfig {
         return new DirectChannel();
     }
     
-    
-    
-    //WIRE UP PROXIMITY MESSAGING
-    
-    @Bean
-    public Jackson2JsonObjectMapper jsonMapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
-        return new Jackson2JsonObjectMapper(mapper);
-    }
-    
-    
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();

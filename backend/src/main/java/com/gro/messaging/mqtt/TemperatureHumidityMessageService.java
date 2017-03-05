@@ -6,8 +6,8 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.sensor.Sensor;
-import com.gro.model.sensor.TemperatureHumidityData;
-import com.gro.model.sensor.TemperatureHumidityDTO;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityDTO;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityData;
 import com.gro.repository.TemperatureHumidityDataRepository;
 import com.gro.repository.SensorRepository;
 

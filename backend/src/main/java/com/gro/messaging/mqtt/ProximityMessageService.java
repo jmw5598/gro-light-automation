@@ -4,7 +4,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.sensor.ProximityDTO;
+import com.gro.model.sensor.proximity.ProximityDTO;
 
 @MessageEndpoint
 public class ProximityMessageService {
