@@ -1,0 +1,30 @@
+# SPRING PROPERTIES
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/gro
+    username: user
+    password: user
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+# JWT : JSON WEB TOKEN PROPERTIES
+jwt:
+  header: Authorization
+  secret: password
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+    
