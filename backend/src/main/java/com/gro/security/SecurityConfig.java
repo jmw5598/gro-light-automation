@@ -24,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint unauthorizedHandler;
     
     @Autowired
+    private JwtAccessDeniedHandler accessDeniedHandler;
+    
+    @Autowired
     private UserDetailsService userDetailsService;
     
     @Bean
@@ -51,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)
+                .accessDeniedHandler(accessDeniedHandler)
             .and()
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -75,7 +79,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .cacheControl();
       
     }
-    
-    
     
 }
