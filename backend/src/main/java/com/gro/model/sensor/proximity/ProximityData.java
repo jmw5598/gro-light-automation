@@ -1,4 +1,4 @@
-package com.gro.model.sensor;
+package com.gro.model.sensor.proximity;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -8,6 +8,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gro.model.sensor.AbstractSensorData;
+import com.gro.model.sensor.Sensor;
 
 @Entity
 @Table(name = "proximity_data",

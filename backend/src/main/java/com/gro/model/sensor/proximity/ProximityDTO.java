@@ -1,4 +1,4 @@
-package com.gro.model.sensor;
+package com.gro.model.sensor.proximity;
 
 public class ProximityDTO {
     

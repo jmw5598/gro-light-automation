@@ -14,11 +14,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gro.model.sensor.proximity.ProximityData;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityData;
 
 
 @Entity
 @Table(name = "sensor")
-@JsonIgnoreProperties({"temperatureHumidityData, proximityData"})
+@JsonIgnoreProperties({"temperatureHumidityData", "proximityData"})
 public class Sensor {
 
     @Id

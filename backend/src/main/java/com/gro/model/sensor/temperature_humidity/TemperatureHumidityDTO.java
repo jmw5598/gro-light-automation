@@ -1,4 +1,4 @@
-package com.gro.model.sensor;
+package com.gro.model.sensor.temperature_humidity;
 
 import java.sql.Timestamp;
 
