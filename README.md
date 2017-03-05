@@ -9,3 +9,7 @@ Technologies:
 * MQTT on the raspberry pi.
 
 [Rough UI Ideas](https://goo.gl/photos/HAjHsHN71tgkS3ZT9)
+
+---
+Spring Security implemented based on Stephan Zerhusen's demo
+[jwt-spring-security-demo](https://github.com/szerhusenBC/jwt-spring-security-demo)
