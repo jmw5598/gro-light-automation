@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.gro.model.sensor.Sensor;
-import com.gro.model.sensor.TemperatureHumidityData;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityData;
 
 @SuppressWarnings("unchecked")
 @Repository

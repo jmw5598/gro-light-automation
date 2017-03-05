@@ -3,7 +3,7 @@ package com.gro.repository;
 import java.util.List;
 
 import com.gro.model.sensor.Sensor;
-import com.gro.model.sensor.TemperatureHumidityData;
+import com.gro.model.sensor.temperature_humidity.TemperatureHumidityData;
 
 
 public interface TemperatureHumidityRepositoryCustom {
