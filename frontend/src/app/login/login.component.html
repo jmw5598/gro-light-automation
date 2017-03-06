@@ -1,82 +1,39 @@
 <!-- BEGIN : LOGIN TEMPLATE -->
 <div class="container-fluid">
   
-  <!-- BEGIN : HEADER-->
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 col-xl-2 col-sm-offset-2 col-md-offset-4 col-lg-offset-5 col-xl-offset-5">
-      <img class="img-circle img-responsive"
-          src="../assets/images/logo.png" />
-      <legend>
-        <h2>Login</h2>
-      </legend>
+    <!-- BEGIN : HEADER-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 col-xl-2 col-sm-offset-2 col-md-offset-4 col-lg-offset-5 col-xl-offset-5">
+            <img class="img-circle img-responsive"
+                 src="../assets/images/logo.png" />
+        <legend>
+            <h2>Login</h2>
+        </legend>
     </div>
-  </div>
-  <!-- END : HEADER -->
+    </div>
+    <!-- END : HEADER -->
   
-  <!-- BEGIN : LOGIN FORM -->
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 
-                col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
-      <form>
-        
-        <!-- FORM USERNAME -->
-        <div class="form-group">
-          <label class="sr-only" 
-                 for="username">Username</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon input-icon-color">
-              <i class="fa fa-user"></i>
-            </div>
-            <input class="form-control"
-                   type="text"
-                   id="username"
-                   name="username"
-                   placeholder="Username" />
-          </div>
+    <!-- BEGIN : LOGIN FORM CONTAINER-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 
+                    col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+      
+            <!-- LOGIN-FORM COMPONENT -->
+            <gro-login-form></gro-login-form>
+      
         </div>
-
-        <!-- FORM PASSWORD -->
-        <div class="form-group">
-          <label class="sr-only" 
-                 for="password">Password</label>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon input-icon-color">
-              <i class="fa fa-lock"></i>
-            </div>
-            <input class="form-control" 
-                   id="password" 
-                   name="password" 
-                   placeholder="Password" 
-                   type="password" />
-          </div>
-        </div>
-        
-        <!-- FORM BUTTONS -->
-        <div class="form-group">
-          <button type="submit" 
-                  class="col-xs-6 btn btn-default-darker"
-                  (click)="auth()">
-            Login
-          </button>
-          <button type="reset" 
-                  class="col-xs-6 btn btn-default">
-            Clear
-          </button>
-        </div>
-
-      </form>
     </div>
-  </div>
-
-  <!-- BEGIN : LOGIN FOOTER --> 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 
-                col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
-      <legend></legend>
-      <h6 class="text-center">©2017  Jason White</h6>
+    <!-- END : LOGIN FORM CONTAINER
+    
+    <!-- BEGIN : LOGIN FOOTER --> 
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-2 
+                    col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+            <legend></legend>
+            <h6 class="text-center">©2017  Jason White</h6>
+        </div>
     </div>
-  </div>
-  <!-- END : LOGIN FOOTER -->    
+    <!-- END : LOGIN FOOTER -->    
 
 </div>
 <!-- END : LOGIN -->
