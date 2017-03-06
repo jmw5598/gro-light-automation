@@ -1,56 +1,63 @@
 <!-- BEGIN : LOGIN-FORM COMPONENT -->
 <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
     
-    <!-- INPUT USERNAME -->
-    <div class="form-group"
-         [ngClass]="{'has-error':!form.controls['username'].valid && 
-                                  form.controls['username'].touched}">
-        <label class="sr-only" 
-               for="username">Username</label>
+  
+  <!-- INPUT USERNAME -->
+  <div class="form-group"
+       [ngClass]="{'has-error':!form.controls['username'].valid && 
+                                form.controls['username'].touched}">
+    <label class="sr-only" 
+           for="username">Username</label>
         
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon input-icon-color">
-                <i class="fa fa-user"></i>
-            </div>
-            <input class="form-control"
-                   type="text"
-                   id="username"
-                   placeholder="Username"
-                   formControlName="username"/>
-        </div>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <div class="input-group-addon input-icon-color">
+        <i class="fa fa-user"></i>
+      </div>
+      <input class="form-control"
+             type="text"
+             id="username"
+             placeholder="Username"
+             formControlName="username"/>
     </div>
-
-    <!-- INPUT PASSWORD -->
-    <div class="form-group"
-         [ngClass]="{'has-error':!form.controls['password'].valid && 
-                                  form.controls['password'].touched}" >
-        <label class="sr-only" 
-               for="password">Password</label>
-        
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon input-icon-color">
-                <i class="fa fa-lock"></i>
-            </div>
-            <input class="form-control" 
-                   id="password" 
-                   placeholder="Password" 
-                   type="password"
-                   formControlName="password" />
-        </div>
-    </div>
-        
-    <!-- FORM BUTTONS -->
-    <div class="form-group">
-        <button type="submit" 
-                class="col-xs-6 btn btn-default-darker"
-                [disabled]="!form.valid">
-            Login
-        </button>
-        <button type="reset" 
-                class="col-xs-6 btn btn-default">
-            Clear
-        </button>
-    </div>
+  </div>
+  <!-- END : INPUT USERNAME -->
     
+  
+  <!-- INPUT PASSWORD -->
+  <div class="form-group"
+       [ngClass]="{'has-error':!form.controls['password'].valid && 
+                                form.controls['password'].touched}" >
+    <label class="sr-only" 
+           for="password">Password</label>
+        
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <div class="input-group-addon input-icon-color">
+        <i class="fa fa-lock"></i>
+      </div>
+      <input class="form-control" 
+             id="password" 
+             placeholder="Password" 
+             type="password"
+             formControlName="password" />
+    </div>
+  </div>
+  <!-- END : INPUT PASSWORD -->
+        
+  
+  <!-- FORM BUTTONS -->
+  <div class="form-group">
+    <button type="submit" 
+            class="col-xs-6 btn btn-default-darker"
+            [disabled]="!form.valid">
+      Login
+    </button>
+    <button type="reset" 
+            class="col-xs-6 btn btn-default">
+      Clear
+    </button>
+  </div>
+  <!-- END : FORM BUTTONS -->
+  
+  
 </form>
 <!-- END : LOGIN-FORM COMPONENT -->
