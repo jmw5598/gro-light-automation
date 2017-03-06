@@ -28,6 +28,9 @@ const appRoutes: Routes = [
     component: SettingsComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ADMIN'] }
+  },
+  {
+    path: '**', redirectTo: ''
   }
 ];
 
