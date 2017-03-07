@@ -21,20 +21,20 @@
   
     <!-- LEFT NAVBAR BUTTONS -->
     <ul class="nav navbar-nav">
-      <li>
-        <a href="#">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/dashboard']">
           <i class="fa fa-tachometer nav-icon"></i>
           Dashboard
         </a>
       </li>
-      <li>
-        <a href="#">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['scheduling']">
           <i class="fa fa-file-text nav-icon"></i>
           Scheduling
         </a>
       </li>
-      <li>
-        <a href="#">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['settings']">
           <i class="fa fa-gears nav-icon"></i>
           Settings
         </a>

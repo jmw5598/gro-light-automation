@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { NavigationComponent} from './navigation/navigation.component';
 
 // PROVIDERS
 import { AuthenticationService } from './shared/service/authentication/authentication.service';
@@ -25,6 +26,7 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
     SettingsComponent,
     ScheduleComponent,
     LoginFormComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
