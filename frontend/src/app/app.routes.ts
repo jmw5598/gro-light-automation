@@ -7,7 +7,7 @@ import { AuthenticationGuard } from './shared/service/authentication/guard/authe
 import { RoleGuard } from './shared/service/authentication/guard/role.guard';
 
 const appRoutes: Routes = [
-  
+
   {
     path: 'login',
     component: LoginComponent
@@ -30,8 +30,14 @@ const appRoutes: Routes = [
     data: { roles : ['ADMIN'] }
   },
   {
-    path: '**', redirectTo: ''
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard'
   }
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, { useHash: true });
