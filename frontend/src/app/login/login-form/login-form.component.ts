@@ -28,8 +28,7 @@ export class LoginFormComponent {
       username : value.username,
       password : value.password
     };
-    console.log("LoginComponent: logging in..." + credentials.username);
+
     this.auth.doLogin(credentials);
   }
-
 }

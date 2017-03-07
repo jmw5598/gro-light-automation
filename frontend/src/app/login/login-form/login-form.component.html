@@ -4,7 +4,7 @@
   
   <!-- INPUT USERNAME -->
   <div class="form-group"
-       [ngClass]="{'has-error':!form.controls['username'].valid && 
+       [ngClass]="{'has-warning':!form.controls['username'].valid && 
                                 form.controls['username'].touched}">
     <label class="sr-only" 
            for="username">Username</label>
@@ -25,7 +25,7 @@
   
   <!-- INPUT PASSWORD -->
   <div class="form-group"
-       [ngClass]="{'has-error':!form.controls['password'].valid && 
+       [ngClass]="{'has-warning':!form.controls['password'].valid && 
                                 form.controls['password'].touched}" >
     <label class="sr-only" 
            for="password">Password</label>
@@ -56,7 +56,6 @@
       Clear
     </button>
   </div>
-  <!-- END : FORM BUTTONS -->
   
   
 </form>
