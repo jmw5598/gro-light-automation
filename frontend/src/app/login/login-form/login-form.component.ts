@@ -13,7 +13,8 @@ export class LoginFormComponent implements OnInit {
 
   redirect: string;
   form: FormGroup;
-  invalidCredentials;
+  errorShown: boolean;
+  errorMessage: string;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class LoginFormComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.errorShown = false;
   }
 
   ngOnInit() {
@@ -37,7 +39,10 @@ export class LoginFormComponent implements OnInit {
     this.auth.doLogin(value)
       .subscribe(
         data => this.router.navigate([this.redirect]),
-        error => console.log(error)
+        error => {
+          this.errorMessage = error.json().message;
+          this.errorShown = !this.errorShown;
+        }
       );
   }
 

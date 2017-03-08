@@ -1,6 +1,10 @@
 <!-- BEGIN : LOGIN-FORM COMPONENT -->
 <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
-    
+  
+  <!-- BEGIN : ERROR OUTPUT -->
+  <gro-alert *ngIf="errorShown"
+             [message]="errorMessage"></gro-alert>
+  <!-- END : ERROR OUTPUT -->
   
   <!-- INPUT USERNAME -->
   <div class="form-group"
