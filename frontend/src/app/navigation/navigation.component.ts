@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../shared/service/authentication/authentication.service';
+import { AuthenticationService } from '../_service/authentication/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'gro-navigation',
@@ -8,10 +9,14 @@ import { AuthenticationService } from '../shared/service/authentication/authenti
 })
 export class NavigationComponent {
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(
+    public auth: AuthenticationService,
+    public router: Router
+  ) {}
 
   logout() {
     this.auth.doLogout();
+    this.router.navigate(['login']);
   }
 
 }

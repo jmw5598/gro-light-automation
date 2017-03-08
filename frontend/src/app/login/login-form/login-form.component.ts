@@ -1,34 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../shared/service/authentication/authentication.service';
+import { AuthenticationService } from '../../_service/authentication/authentication.service';
 
-interface Credentials {
-  username: string;
-  password: string;
-}
 
 @Component({
   selector: 'gro-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
 
+  redirect: string;
   form: FormGroup;
+  invalidCredentials;
 
-  constructor(public formBuilder: FormBuilder, private auth: AuthenticationService) {
+  constructor(
+    public formBuilder: FormBuilder,
+    public auth: AuthenticationService,
+    public router: Router,
+    public route: ActivatedRoute
+
+  ) {
     this.form = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  submit(value: any) {
-    const credentials: Credentials = {
-      username : value.username,
-      password : value.password
-    };
-
-    this.auth.doLogin(credentials);
+  ngOnInit() {
+    this.auth.doLogout();
+    this.redirect = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
+
+  submit(value: any) {
+    this.auth.doLogin(value)
+      .subscribe(
+        data => this.router.navigate([this.redirect]),
+        error => console.log(error)
+      );
+  }
+
 }

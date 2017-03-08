@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AuthenticationModule } from './_service/authentication/authentication.module';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
@@ -11,12 +12,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { NavigationComponent} from './navigation/navigation.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
 // PROVIDERS
-import { AuthenticationService } from './shared/service/authentication/authentication.service';
-import { AuthenticationGuard } from './shared/service/authentication/guard/authentication.guard';
-import { RoleGuard } from './shared/service/authentication/guard/role.guard';
-import { LoginFormComponent } from './login/login-form/login-form.component';
+import { AuthenticationService } from './_service/authentication/authentication.service';
+import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
+import { RoleGuard } from './_service/authentication/guard/role.guard';
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AuthenticationModule,
     routing
   ],
   providers: [
     AuthenticationService,
     AuthenticationGuard,
-    RoleGuard
+    RoleGuard,
+    JwtHelper
   ],
   bootstrap: [AppComponent]
 })

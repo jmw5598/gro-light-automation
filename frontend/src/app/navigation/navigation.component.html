@@ -1,5 +1,5 @@
 <!-- TOP FIXED NAVBAR -->
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div *ngIf="auth.isLoggedIn()" class="navbar navbar-inverse navbar-fixed-top">
   
   <!-- BEGIN : NAVBAR-HEADER -->
   <div class="navbar-header">

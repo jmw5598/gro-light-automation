@@ -3,8 +3,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
-import { AuthenticationGuard } from './shared/service/authentication/guard/authentication.guard';
-import { RoleGuard } from './shared/service/authentication/guard/role.guard';
+import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
+import { RoleGuard } from './_service/authentication/guard/role.guard';
 
 const appRoutes: Routes = [
 
