@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard]
   },
   {
-    path: 'scheduling',
+    path: 'schedule',
     component: ScheduleComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ADMIN'] }
@@ -40,4 +41,21 @@ const appRoutes: Routes = [
   }
 ];
 
-export const routing = RouterModule.forRoot(appRoutes, { useHash: true });
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+
+export const routingComponents = [
+  LoginComponent,
+  DashboardComponent,
+  ScheduleComponent,
+  SettingsComponent
+];
+
+export const routingGuards = [
+  AuthenticationGuard,
+  RoleGuard
+];
+
