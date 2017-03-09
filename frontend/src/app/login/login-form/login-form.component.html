@@ -8,8 +8,8 @@
   
   <!-- INPUT USERNAME -->
   <div class="form-group"
-       [ngClass]="{'has-warning':!form.controls['username'].valid && 
-                                form.controls['username'].touched}">
+       [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
+                   'has-success': form.controls['username'].valid }">
     <label class="sr-only" 
            for="username">Username</label>
         
@@ -29,8 +29,8 @@
   
   <!-- INPUT PASSWORD -->
   <div class="form-group"
-       [ngClass]="{'has-warning':!form.controls['password'].valid && 
-                                form.controls['password'].touched}" >
+       [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
+                   'has-success': form.controls['password'].valid }" >
     <label class="sr-only" 
            for="password">Password</label>
         

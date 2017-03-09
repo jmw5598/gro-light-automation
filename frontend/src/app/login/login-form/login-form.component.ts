@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnInit {
         data => this.router.navigate([this.redirect]),
         error => {
           this.errorMessage = error.json().message;
-          this.errorShown = !this.errorShown;
+          this.errorShown = true;
         }
       );
   }
