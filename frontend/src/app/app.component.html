@@ -1,4 +1,6 @@
 <div>
     <gro-navigation></gro-navigation>
-    <router-outlet></router-outlet>
+    <ng2-page-transition [scrollTop]="fasle">
+      <router-outlet></router-outlet>
+    </ng2-page-transition>
 </div>

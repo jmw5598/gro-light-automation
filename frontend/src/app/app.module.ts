@@ -4,14 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AuthenticationModule } from './_service/authentication/authentication.module';
 import { AppRoutingModule, routingComponents, routingGuards } from './app.routing';
+import { Ng2PageTransitionModule } from 'ng2-page-transition';
 
-// COMPONENTS
 import { AppComponent } from './app.component';
 import { NavigationComponent} from './navigation/navigation.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { AlertComponent } from './alert/alert.component';
 
-// PROVIDERS
 import { AuthenticationService } from './_service/authentication/authentication.service';
 
 @NgModule({
@@ -28,7 +27,8 @@ import { AuthenticationService } from './_service/authentication/authentication.
     ReactiveFormsModule,
     HttpModule,
     AuthenticationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2PageTransitionModule
   ],
   providers: [
     AuthenticationService,
