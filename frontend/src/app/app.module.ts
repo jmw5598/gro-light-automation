@@ -12,6 +12,7 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import { AlertComponent } from './alert/alert.component';
 
 import { AuthenticationService } from './_service/authentication/authentication.service';
+import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthenticationService } from './_service/authentication/authentication.
     NavigationComponent,
     AlertComponent,
     routingComponents,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
