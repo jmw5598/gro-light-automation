@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
+import { User } from '../../_model/user.model';
 
 @Injectable()
 export class AuthenticationService {
@@ -13,12 +14,14 @@ export class AuthenticationService {
         const data = res.json();
         if (data) {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
         }
       });
   }
 
   doLogout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   isLoggedIn() {
@@ -26,7 +29,8 @@ export class AuthenticationService {
   }
 
   getRoles() {
-    // get roles from localStorage.getItem('user').roles
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    return user.authorities;
   }
 
 }
