@@ -1,3 +1,40 @@
-<p>
-  dashboard works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+  
+    <!-- BEGIN : LEFT SIDE COLUMN -->
+    <div class="col-sm-12 col-md-4 col-lg-2">
+      <nav class="navbar navbar-default navbar-fixed-side navbar-adjustment">
+        <div class="container">
+          <div class="navbar-collapse">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+                  <!-- PANEL LIST COMPONENT -->
+                   <gro-panel-list-group 
+                     [data]="readings"
+                     [heading]="readingsHeading"></gro-panel-list-group>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-xs-12">
+                   <gro-relays [relays]="relays"
+                               (onRelayToggle)="onRelayToggle($event)"></gro-relays>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- END : LEFT SIDE COLUMN -->
+    
+    <!-- BEGIN : RIGHT SIDE COLUMN -->
+    <div class="col-sm-12 col-md-8 col-lg-10">
+      <div id="content" class="navbar-adjustment">
+        <!-- CONTENT WILL GO HERE : GRAPHS, TABLES ETC -->
+      </div>
+    </div>
+    <!-- END : RIGHT SIDE COLUMN -->
+    
+  </div>
+</div>

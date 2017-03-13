@@ -9,7 +9,7 @@ import { Relay } from './relay.model';
 export class RelaysComponent implements OnInit {
 
   @Output()
-  onRelayToggle = new EventEmitter<Relay>();
+  onRelayToggle: EventEmitter<Relay> = new EventEmitter<Relay>();
 
   @Input()
   relays: Relay[];

@@ -2,9 +2,19 @@
   <div class="panel-body">
     <legend><h4>Relays</h4></legend>
     <ul class="list-group">
+      
       <li class="list-group-item"
           *ngFor="let relay of relays"
-          (click)="toggle(relay)">{{relay.alias}} <span class="pull-right">{{relay.enabled}}</span></li>
+          (click)="toggle(relay)">{{relay.alias}}
+          
+          <ui-switch class="pull-right" 
+                     size="small"
+                     color="#5cb85c"
+                     switchColor="#f3f3f3"
+                     [(ngModel)]="relay.enabled"
+                     (click)="toggle(relay)"></ui-switch>
+      </li>
+      
     </ul>
   </div>
 </div>
