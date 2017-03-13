@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <legend><h4>Relays</h4></legend>
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let relay of relays"
+          (click)="toggle(relay)">{{relay.alias}} <span class="pull-right">{{relay.enabled}}</span></li>
+    </ul>
+  </div>
+</div>
