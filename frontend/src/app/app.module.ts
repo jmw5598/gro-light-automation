@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AuthenticationModule } from './_service/authentication/authentication.module';
 import { AppRoutingModule, routingComponents, routingGuards } from './app.routing';
 import { Ng2PageTransitionModule } from 'ng2-page-transition';
+import { UiSwitchModule } from 'angular2-ui-switch';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent} from './navigation/navigation.component';
@@ -13,6 +14,12 @@ import { AlertComponent } from './alert/alert.component';
 
 import { AuthenticationService } from './_service/authentication/authentication.service';
 import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.component';
+import { SettingsNavigationComponent } from './settings/settings-navigation/settings-navigation.component';
+import { SettingsGeneralComponent } from './settings/settings-general/settings-general.component';
+import { SettingsSensorComponent } from './settings/settings-sensor/settings-sensor.component';
+import { SettingsRelayComponent } from './settings/settings-relay/settings-relay.component';
+import { PanelListGroupComponent } from './_component/panel-list-group/panel-list-group.component';
+import { RelaysComponent } from './dashboard/relays/relays.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,12 @@ import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.co
     AlertComponent,
     routingComponents,
     UnauthorizedComponent,
+    SettingsNavigationComponent,
+    SettingsGeneralComponent,
+    SettingsSensorComponent,
+    SettingsRelayComponent,
+    PanelListGroupComponent,
+    RelaysComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +43,8 @@ import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.co
     HttpModule,
     AuthenticationModule,
     AppRoutingModule,
-    Ng2PageTransitionModule
+    Ng2PageTransitionModule,
+    UiSwitchModule
   ],
   providers: [
     AuthenticationService,
