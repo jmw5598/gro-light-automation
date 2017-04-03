@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import com.gro.model.ApiError;
-import com.gro.model.sensor.SensorNotFoundException;
+import com.gro.model.RPiComponentNotFoundException;
 
 @ControllerAdvice
 @RestController
 public class GlobalControllerExceptionHandler {
     
-    @ExceptionHandler(SensorNotFoundException.class)
-    public ResponseEntity<Object> handleSensorNotFound(SensorNotFoundException e, WebRequest request) {
+    @ExceptionHandler(RPiComponentNotFoundException.class)
+    public ResponseEntity<Object> handleSensorNotFound(RPiComponentNotFoundException e, WebRequest request) {
         String error = e.getMessage();
         ApiError apiError = 
                 new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), error);
