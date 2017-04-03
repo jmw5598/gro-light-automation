@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gro.model.TemperatureData;
 
 @RestController
-public class TemperatureDataController extends RPiComponentController {
+@RequestMapping(value="/api/component")
+public class TemperatureDataController {
     
     /**
      * Need to figure out paging

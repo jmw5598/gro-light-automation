@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gro.model.HumidityData;
 import com.gro.model.TemperatureData;
 
+@RequestMapping(value="/api/component")
 @RestController
-public class HumidityDataController extends RPiComponentController {
+public class HumidityDataController {
     
     @RequestMapping(value="/{id}/humidity", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataPage() {
