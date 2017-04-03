@@ -22,15 +22,27 @@ public class MqttConfig {
         return new DirectChannel();
     }
     
-    /* TEMP HUMIDITY : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    /* TEMPERATURE : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
     @Bean
-    public MessageChannel temperatureHumidityServiceChannel() {
+    public MessageChannel temperatureServiceChannel() {
         return new DirectChannel();
     }
     
-    /* TEMP HUMIDITY : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
+    /* TEMPERATURE : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
     @Bean
-    public MessageChannel temperatureHumidityTransformerChannel() {
+    public MessageChannel temperatureTransformerChannel() {
+        return new DirectChannel();
+    }
+    
+    /* TEMPERATURE : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    @Bean
+    public MessageChannel humidityServiceChannel() {
+        return new DirectChannel();
+    }
+    
+    /* TEMPERATURE : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
+    @Bean
+    public MessageChannel humidityTransformerChannel() {
         return new DirectChannel();
     }
     
