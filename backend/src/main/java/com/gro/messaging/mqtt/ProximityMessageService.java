@@ -4,14 +4,14 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.sensor.proximity.ProximityDTO;
+import com.gro.model.ProximityData;
 
 @MessageEndpoint
 public class ProximityMessageService {
     
     @ServiceActivator(inputChannel="proximityServiceChannel")
-    public void process(Message<ProximityDTO> message) {
-        ProximityDTO data = message.getPayload();
+    public void process(Message<ProximityData> message) {
+        ProximityData data = message.getPayload();
         System.out.println("Proximity: " + data.getProximity());
     }
     

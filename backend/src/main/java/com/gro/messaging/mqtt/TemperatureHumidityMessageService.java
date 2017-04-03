@@ -5,27 +5,30 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
+import com.gro.model.RPiComponent;
+import com.gro.model.TemperatureData;
 import com.gro.model.sensor.Sensor;
 import com.gro.model.sensor.temperature_humidity.TemperatureHumidityDTO;
 import com.gro.model.sensor.temperature_humidity.TemperatureHumidityData;
 import com.gro.repository.TemperatureHumidityDataRepository;
+import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.SensorRepository;
 
 @MessageEndpoint
 public class TemperatureHumidityMessageService {
     
     @Autowired
-    private SensorRepository sensorRepository;
+    private RPiComponentRepository rPiComponentRepository;
     
     @Autowired
     private TemperatureHumidityDataRepository sensorDataRepository;
     
     @ServiceActivator(inputChannel="temperatureHumidityServiceChannel")
-    public void process(Message<TemperatureHumidityDTO> message) {
+    public void process(Message<TemperatureData> message) {
         
-        TemperatureHumidityDTO data = message.getPayload();
-        Sensor sensor = sensorRepository.findOne(data.getSensorId());
-        TemperatureHumidityData sensorData = new TemperatureHumidityData();
+        TemperatureData data = message.getPayload();
+        RPiComponent sensor = rPiComponentRepository.findOne(data.getSensorId());
+        TemperatureData sensorData = new TemperatureData();
         sensorData.setSensor(sensor);
         sensorData.setTemperature(data.getTemperature());
         sensorData.setHumidity(data.getHumidity());

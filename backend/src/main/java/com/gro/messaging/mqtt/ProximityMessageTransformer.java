@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.sensor.proximity.ProximityDTO;
+import com.gro.model.ProximityData;
 
 @MessageEndpoint
 public class ProximityMessageTransformer {
@@ -17,9 +17,9 @@ public class ProximityMessageTransformer {
     
     @Transformer(inputChannel="proximityTransformerChannel",
                  outputChannel="proximityServiceChannel")
-    public Message<ProximityDTO> transform(Message<String> message) throws Exception {
+    public Message<ProximityData> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
-        ProximityDTO data = jackson2JsonObjectMapper.fromJson(payload, ProximityDTO.class);
+        ProximityData data = jackson2JsonObjectMapper.fromJson(payload, ProximityData.class);
         return MessageBuilder.createMessage(data, message.getHeaders());
     }
     
