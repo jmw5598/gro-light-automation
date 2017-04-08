@@ -14,11 +14,11 @@ public class TemperatureDTO {
         this.temperature = temperature;
     }
     
-    public Date getDate() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setDate(Date timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
