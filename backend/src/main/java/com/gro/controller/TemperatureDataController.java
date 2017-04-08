@@ -27,7 +27,7 @@ public class TemperatureDataController {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataPage(
@@ -40,7 +40,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findAllByComponent(component, pageable);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature", method=RequestMethod.POST)
     public void postTemperatureData(@PathVariable("id") Integer id,
@@ -52,7 +52,7 @@ public class TemperatureDataController {
         temperatureDataRepository.save(data);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/monthlyAverage", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataMonthlyAverage(
@@ -65,7 +65,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findMonthlyAverageByComponent(component, pageable);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/dailyAverage", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataDailyAverage(
@@ -78,7 +78,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findDailyAverageByComponent(component, pageable);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/dailyHigh", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataDailyHigh(
@@ -91,7 +91,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findDailyHighByComponent(component, pageable);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/dailyLow", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataDailyLow(
@@ -105,7 +105,7 @@ public class TemperatureDataController {
         
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/hourlyAverage", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataHourlyAverage(
@@ -118,7 +118,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findHourlyAverageByComponent(component, pageable);
     }
     
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/hourlyHigh", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataHourlyHigh (
@@ -131,7 +131,7 @@ public class TemperatureDataController {
         return temperatureDataRepository.findHourlyHighByComponent(component, pageable);
     }
 
-    /* --------------------------------------------------------------------- */
+    
     
     @RequestMapping(value="/{id}/temperature/hourlyLow", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataHourlyLow(
