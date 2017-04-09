@@ -1,6 +1,7 @@
 package com.gro.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -27,6 +28,8 @@ public class TemperatureDataController {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
+    @Value("${exception.rpi-component-not-found}")
+    private String componentNotFoundException;
     
     
     @RequestMapping(value="/{id}/temperature", method=RequestMethod.GET)
@@ -36,7 +39,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("No component found with that id");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findAllByComponent(component, pageable);
     }
     
@@ -47,7 +50,7 @@ public class TemperatureDataController {
                                     @RequestBody TemperatureData data) {
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("Component not found");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         data.setComponent(component);
         temperatureDataRepository.save(data);
     }
@@ -61,7 +64,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("Component not found");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findMonthlyAverageByComponent(component, pageable);
     }
     
@@ -74,7 +77,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findDailyAverageByComponent(component, pageable);
     }
     
@@ -87,7 +90,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findDailyHighByComponent(component, pageable);
     }
     
@@ -100,7 +103,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findDailyLowByComponent(component, pageable);
         
     }
@@ -114,7 +117,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findHourlyAverageByComponent(component, pageable);
     }
     
@@ -127,7 +130,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findHourlyHighByComponent(component, pageable);
     }
 
@@ -140,7 +143,7 @@ public class TemperatureDataController {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
-            throw new RPiComponentNotFoundException("${exception.rpi-component-not-found}");
+            throw new RPiComponentNotFoundException(componentNotFoundException);
         return temperatureDataRepository.findHourlyLowByComponent(component, pageable);
         
     }

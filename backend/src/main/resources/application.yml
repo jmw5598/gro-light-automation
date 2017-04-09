@@ -17,6 +17,9 @@ spring:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+  profiles:
+    include:
+      'query'
 
 # JWT : JSON WEB TOKEN PROPERTIES
 jwt:
@@ -27,4 +30,6 @@ jwt:
     authentication:
       path: auth
       refresh: refresh
-    
+      
+exception:
+  rpi-component-not-found: Component with supplied id was not found
