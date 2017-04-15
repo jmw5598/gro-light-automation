@@ -15,51 +15,51 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
 
     Page<TemperatureData> findAllByComponent(RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY MONTH(timestamp)")
+           "GROUP BY MONTH(td.timestamp)")
     Page<TemperatureDTO> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(timestamp)")
+           "GROUP BY DAY(td.timestamp)")
     Page<TemperatureDTO> findDailyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MAX(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MAX(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(timestamp)")
+           "GROUP BY DAY(td.timestamp)")
     Page<TemperatureDTO> findDailyHighByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MIN(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MIN(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(timestamp)")
+           "GROUP BY DAY(td.timestamp)")
     Page<TemperatureDTO> findDailyLowByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, AVG(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, AVG(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(timestamp), DAY(timestamp)")
+           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
     Page<TemperatureDTO> findHourlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MAX(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MAX(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(timestamp), DAY(timestamp)")
+           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
     Page<TemperatureDTO> findHourlyHighByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MIN(td.temperature)) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MIN(td.temperature), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(timestamp), DAY(timestamp)")
+           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
     Page<TemperatureDTO> findHourlyLowByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
