@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +21,10 @@ public abstract class AbstractRPiComponentData {
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date timestamp;
+    
+    @ManyToOne
+    @NotNull
+    private RPiComponent component;
 
     public Integer getId() {
         return id;
@@ -35,6 +40,14 @@ public abstract class AbstractRPiComponentData {
     
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+    
+    public RPiComponent getComponent() {
+        return component;
+    }
+    
+    public void setComponent(RPiComponent component) {
+        this.component = component;
     }
     
 }

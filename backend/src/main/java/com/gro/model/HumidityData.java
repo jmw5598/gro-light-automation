@@ -10,10 +10,6 @@ public class HumidityData extends AbstractRPiComponentData {
     @NotNull
     public Double humidity;
     
-    @ManyToOne
-    @NotNull
-    private RPiComponent component;
-    
     public HumidityData() {}
 
     public Double getHumidity() {
@@ -22,14 +18,6 @@ public class HumidityData extends AbstractRPiComponentData {
 
     public void setHumidity(Double humidity) {
         this.humidity = humidity;
-    }
-    
-    public RPiComponent getComponent() {
-        return component;
-    }
-    
-    public void setComponent(RPiComponent component) {
-        this.component = component;
     }
     
 }
