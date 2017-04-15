@@ -5,6 +5,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
+import com.gro.model.HumidityDTO;
 import com.gro.model.HumidityData;
 import com.gro.model.RPiComponent;
 import com.gro.repository.HumidityDataRepository;
@@ -19,12 +20,18 @@ public class HumidityMessageService {
     @Autowired
     private HumidityDataRepository humidityDataRepository;
     
-    @ServiceActivator(inputChannel="temperatureHumidityServiceChannel")
-    public void process(Message<HumidityData> message) {
-        HumidityData data = message.getPayload();
-        RPiComponent component = rPiComponentRepository.findOne(data.getComponent().getId());
-        data.setComponent(component);
-        humidityDataRepository.save(data);
+    @ServiceActivator(inputChannel="humidityServiceChannel")
+    public void process(Message<HumidityDTO> message) {
+        
+        HumidityDTO payload = message.getPayload();
+        RPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
+        if(component != null) {
+            HumidityData data = new HumidityData();
+            data.setHumidity(payload.getHumidity());
+            data.setTimestamp(payload.getTimestamp());
+            data.setComponent(component);
+            humidityDataRepository.save(data);
+        }
     }
     
 }

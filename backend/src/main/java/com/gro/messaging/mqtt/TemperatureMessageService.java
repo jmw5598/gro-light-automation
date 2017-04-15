@@ -6,6 +6,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.RPiComponent;
+import com.gro.model.TemperatureDTO;
 import com.gro.model.TemperatureData;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;
@@ -19,14 +20,18 @@ public class TemperatureMessageService {
     @Autowired
     private TemperatureDataRepository temperatureDataRepository;
     
-    @ServiceActivator(inputChannel="temperatureHumidityServiceChannel")
-    public void process(Message<TemperatureData> message) {
+    @ServiceActivator(inputChannel="temperatureServiceChannel")
+    public void process(Message<TemperatureDTO> message) {
         
-        // THIS NEED FIXING
-        TemperatureData data = message.getPayload();
-        RPiComponent component = rPiComponentRepository.findOne(data.getComponent().getId());
-        data.setComponent(component);
-        temperatureDataRepository.save(data);
+        TemperatureDTO payload = message.getPayload();
+        RPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
+        if(component != null) {
+            TemperatureData data = new TemperatureData();
+            data.setTemperature(payload.getTemperature());
+            data.setTimestamp(payload.getTimestamp());
+            data.setComponent(component);
+            temperatureDataRepository.save(data);
+        }
     }
     
 }

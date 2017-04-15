@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.TemperatureData;
+import com.gro.model.TemperatureDTO;
 
 @MessageEndpoint
 public class TemperatureMessageTransformer {
@@ -17,9 +17,9 @@ public class TemperatureMessageTransformer {
     
     @Transformer(inputChannel="temperatureTransformerChannel", 
                  outputChannel="temperatureServiceChannel")
-    public Message<TemperatureData> transform(Message<String> message) throws Exception {
+    public Message<TemperatureDTO> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
-        TemperatureData data = jackson2JsonObjectMapper.fromJson(payload, TemperatureData.class);
+        TemperatureDTO data = jackson2JsonObjectMapper.fromJson(payload, TemperatureDTO.class);
         return MessageBuilder.createMessage(data, message.getHeaders());
     }
     

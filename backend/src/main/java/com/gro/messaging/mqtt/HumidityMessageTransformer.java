@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.HumidityData;
+import com.gro.model.HumidityDTO;
 
 @MessageEndpoint
 public class HumidityMessageTransformer {
@@ -17,9 +17,9 @@ public class HumidityMessageTransformer {
     
     @Transformer(inputChannel="humidityTransformerChannel", 
                  outputChannel="humidityServiceChannel")
-    public Message<HumidityData> transform(Message<String> message) throws Exception {
+    public Message<HumidityDTO> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
-        HumidityData data = jackson2JsonObjectMapper.fromJson(payload, HumidityData.class);
+        HumidityDTO data = jackson2JsonObjectMapper.fromJson(payload, HumidityDTO.class);
         return MessageBuilder.createMessage(data, message.getHeaders());
     }
     
