@@ -73,7 +73,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/dailyAverage", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataDailyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
