@@ -1,5 +1,8 @@
 package com.gro.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,8 +13,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class RPiComponent {
+public class RPiComponent implements Serializable {
     
+    private static final long serialVersionUID = -9072676419360409759L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
@@ -59,6 +64,28 @@ public class RPiComponent {
 
     public void setPin(Integer pin) {
         this.pin = pin;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, alias, type, pin);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj)
+            return true;
+        if (!(obj instanceof RPiComponent))
+            return false;
+        
+        RPiComponent comp = (RPiComponent) obj;
+        
+        return Objects.equals(this.id, comp.id) &&
+               Objects.equals(this.alias, comp.alias) &&
+               Objects.equals(this.type, comp.type) &&
+               Objects.equals(this.pin, comp.pin);
+        
     }
     
     
