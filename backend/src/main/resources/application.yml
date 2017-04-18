@@ -34,4 +34,14 @@ jwt:
 exception:
   rpi-component-not-found: Component with supplied id was not found
   
-  
+
+twilio:
+  account:
+    sid: TWILIO SID
+    auth_token: TWILIO AUTH TOKEN
+  phone:
+    inbound: TWILIO INBOUND PHONE NUMBER
+    outbound: TWILIO OUTBOUND PHONE NUMBER
+
+    
+     
