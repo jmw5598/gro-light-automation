@@ -6,7 +6,7 @@ import { User } from '../../_model/user.model';
 @Injectable()
 export class AuthenticationService {
 
-  constructor(public http: AuthHttp) { }
+  constructor(private http: AuthHttp) { }
 
   doLogin(credentials) {
     return this.http.post('http://localhost:8080/auth', credentials)

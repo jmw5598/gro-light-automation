@@ -1,6 +1,3 @@
-body {
-  margin-top: 40px;
-}
 .panel-default-light {
   background: #F3F3F3 !important;
 }
@@ -36,4 +33,3 @@ body {
 .text-right {
   text-align: right;
 }
-

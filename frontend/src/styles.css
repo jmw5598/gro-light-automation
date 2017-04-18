@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+.fa-icon-margin {
+  margin-right: 6px !important;
+}
+
+.unauthorized {
+  margin-top: 60px !important;
+}
+
+.unauthorized .fa {
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+}
+
+.navbar-adjustment {
+	padding-top: 56px !important;
+}

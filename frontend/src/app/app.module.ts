@@ -6,6 +6,7 @@ import { AuthenticationModule } from './_service/authentication/authentication.m
 import { AppRoutingModule, routingComponents, routingGuards } from './app.routing';
 import { Ng2PageTransitionModule } from 'ng2-page-transition';
 import { UiSwitchModule } from 'angular2-ui-switch';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent} from './navigation/navigation.component';
@@ -34,7 +35,7 @@ import { RelaysComponent } from './dashboard/relays/relays.component';
     SettingsSensorComponent,
     SettingsRelayComponent,
     PanelListGroupComponent,
-    RelaysComponent,
+    RelaysComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,8 @@ import { RelaysComponent } from './dashboard/relays/relays.component';
     AuthenticationModule,
     AppRoutingModule,
     Ng2PageTransitionModule,
-    UiSwitchModule
+    UiSwitchModule,
+    ChartsModule
   ],
   providers: [
     AuthenticationService,

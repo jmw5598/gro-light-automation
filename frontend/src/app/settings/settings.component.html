@@ -1,3 +1,34 @@
-<p>
-  settings works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+  
+    <!-- BEGIN : LEFT SIDE COLUMN -->
+    <div class="col-sm-12 col-md-4 col-lg-2">
+      <nav class="navbar navbar-default navbar-fixed-side navbar-adjustment">
+        <div class="container">
+          <div class="navbar-collapse">
+            
+            <!-- BEGIN : SETTINGS SIDE NAVIGATION -->
+            <gro-settings-navigation (onViewChange)="onViewChange($event)"
+                                     [view]="view">
+            </gro-settings-navigation>
+            <!-- END : SETTINGS SIDE NAVIGATION -->
+
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- END : LEFT SIDE COLUMN -->
+    
+    <!-- BEGIN : RIGHT SIDE COLUMN -->
+    <div class="col-sm-12 col-md-8 col-lg-10">
+      <div id="content" class="navbar-adjustment" [ngSwitch]="view">
+        <!-- CONTENT WILL GO HERE : GRAPHS, TABLES ETC -->
+        <gro-settings-general *ngSwitchCase="'general'"></gro-settings-general>
+        <gro-settings-relay *ngSwitchCase="'relay'"></gro-settings-relay>
+        <gro-settings-sensor *ngSwitchCase="'sensor'"></gro-settings-sensor>
+      </div>
+    </div>
+    <!-- END : RIGHT SIDE COLUMN -->
+    
+  </div>
+</div>

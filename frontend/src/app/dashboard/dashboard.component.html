@@ -39,6 +39,146 @@
     <div class="col-sm-12 col-md-8 col-lg-10">
       <div id="content" class="navbar-adjustment">
         <!-- CONTENT WILL GO HERE : GRAPHS, TABLES ETC -->
+        
+        <!-- TABLE -->
+        <div class="row">
+
+        </div>
+
+        <!-- CHART -->
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-7">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Daily Temperature & Humidity Averages
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Temperature (*F)</th>
+                      <th>Humidity (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                    <tr>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                      <td>sdf</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-5">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    Daily High & Low Temps
+                  </div>
+                  <div class="panel-body">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"
+                            [colors]="barChartColors"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    Daily High & Low Humidity
+                  </div>
+                  <div class="panel-body">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"
+                            [colors]="barChartColors"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- END : RIGHT SIDE COLUMN -->
