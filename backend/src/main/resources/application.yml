@@ -35,10 +35,3 @@ exception:
   rpi-component-not-found: Component with supplied id was not found
   
   
-twilio:
-  account:
-    sid: AC43c54b1d3ecf7b22f1e10abb5d517c73
-    auth_token: 0b08922d64697cf6dd7a0b500f58e937
-  phone:
-    inbound: +12482434260
-    outbound: +12483219021 
