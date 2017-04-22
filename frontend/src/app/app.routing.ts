@@ -7,6 +7,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.component';
 import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
 import { RoleGuard } from './_service/authentication/guard/role.guard';
+import { SettingsRPiComponentComponent } from './settings/settings-rpicomponent/settings-rpicomponent.component';
+import { SettingsScheduleComponent } from './settings/settings-schedule/settings-schedule.component';
+import { SettingsUserComponent } from './settings/settings-user/settings-user.component';
 
 const appRoutes: Routes = [
 
@@ -29,7 +32,24 @@ const appRoutes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_ADMIN'] }
+    data: { roles : ['ROLE_ADMIN'] },
+    children: [
+      {
+        path: 'component',
+        component: SettingsRPiComponentComponent,
+        outlet: 'settings'
+      },
+      {
+        path: 'schedule',
+        component: SettingsScheduleComponent,
+        outlet: 'settings'
+      },
+      {
+        path: 'user',
+        component: SettingsUserComponent,
+        outlet: 'settings'
+      }
+    ]
   },
   {
     path: 'unauthorized',
@@ -57,7 +77,10 @@ export const routingComponents = [
   DashboardComponent,
   ScheduleComponent,
   SettingsComponent,
-  UnauthorizedComponent
+  UnauthorizedComponent,
+  SettingsRPiComponentComponent,
+  SettingsScheduleComponent,
+  SettingsUserComponent
 ];
 
 export const routingGuards = [
