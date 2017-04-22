@@ -23,9 +23,11 @@
     <div class="col-sm-12 col-md-8 col-lg-10">
       <div id="content" class="navbar-adjustment" [ngSwitch]="view">
         <!-- CONTENT WILL GO HERE : GRAPHS, TABLES ETC -->
-        <gro-settings-general *ngSwitchCase="'general'"></gro-settings-general>
-        <gro-settings-relay *ngSwitchCase="'relay'"></gro-settings-relay>
-        <gro-settings-sensor *ngSwitchCase="'sensor'"></gro-settings-sensor>
+        <!--<gro-settings-rpicomponent *ngSwitchCase="'rpicomponent'"></gro-settings-rpicomponent>
+        <gro-settings-schedule *ngSwitchCase="'schedule'"></gro-settings-schedule>
+        <gro-settings-user *ngSwitchCase="'user'"></gro-settings-user>
+      -->
+      <router-outlet name="settings"></router-outlet>
       </div>
     </div>
     <!-- END : RIGHT SIDE COLUMN -->

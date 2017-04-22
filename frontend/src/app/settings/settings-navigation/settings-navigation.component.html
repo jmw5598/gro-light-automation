@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <legend><h4>Settings</h4></legend>
+  <ul class="panel-nav-list">
+    <li class="panel-nav-list-item" [ngClass]="{'list-item-active': view === 'rpicomponent'}">
+      <a [routerLink]="['/settings', { outlets: {'settings':['component']} }]">RPi Components</a>
+    </li>
+    <li class="panel-nav-list-item" [ngClass]="{'list-item-active': view === 'schedule'}">
+      <a [routerLink]="['/settings', { outlets: {'settings':['schedule']} }]">Scheduling</a>
+    </li>
+    <li class="panel-nav-list-item" [ngClass]="{'list-item-active': view === 'user'}">
+      <a [routerLink]="['/settings', { outlets: {'settings':['user']} }]">User Accounts</a>
+    </li>
+  </ul>
+  </div>
+</div>

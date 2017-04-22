@@ -1,0 +1,20 @@
+ul.panel-nav-list {
+  list-style: none;
+  background: #546575;
+  margin: 0;
+  padding: 4px 0px;
+}
+
+ul.panel-nav-list > li.panel-nav-list-item > a {
+	
+	
+	color: #ebebeb;
+}
+
+ul.panel-nav-list > li.panel-nav-list-item{
+  padding: 4px 16px !important;
+}
+
+li.list-item-active {
+	background: #2b3e50;
+}
