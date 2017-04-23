@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RPiComponent } from '../../_model/rpicomponent';
 
 @Component({
   selector: 'gro-rpicomponent-edit',
@@ -23,6 +24,11 @@ export class RPiComponentEditComponent implements OnInit {
   		// call service to get component with id and assign it to component
   		this.componentId = +params['id'];
   	});
+  }
+
+  onFormSubmit(component: RPiComponent) {
+    console.log("Saving: ");
+    console.log(component);
   }
 
 }
