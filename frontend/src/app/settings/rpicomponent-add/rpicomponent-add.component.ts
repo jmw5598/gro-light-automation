@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RPiComponent } from '../../_model/rpicomponent';
 
 
 @Component({
@@ -16,6 +17,11 @@ export class RPiComponentAddComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onFormSubmit(component: RPiComponent) {
+  	console.log("Creating: " + component);
+  	console.log(component);
   }
 
 }
