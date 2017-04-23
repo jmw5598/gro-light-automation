@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsNavigationComponent } from './settings-navigation/settings-navigation.component';
+
 
 @Component({
   selector: 'gro-settings',
@@ -8,17 +8,9 @@ import { SettingsNavigationComponent } from './settings-navigation/settings-navi
 })
 export class SettingsComponent implements OnInit {
 
-  view: string;
-
-  constructor() {
-    this.view = 'general';
-  }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  onViewChange(view: string): void {
-    this.view = view;
   }
 
 }
