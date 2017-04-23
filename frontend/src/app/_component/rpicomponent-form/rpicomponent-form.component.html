@@ -19,7 +19,7 @@
       <input class="form-control"
              type="text"
              id="alias"
-             placeholder="Alias"
+             placeholder="Component Alias"
              formControlName="alias"/>
     </div>
   </div>
@@ -39,13 +39,42 @@
       </div>
       <input class="form-control" 
              id="pin" 
-             placeholder="Pin" 
+             placeholder="Pin Number" 
              type="number"
              formControlName="pin" />
     </div>
   </div>
   <!-- END : INPUT PIN -->
+  
+
+  <!-- INPUT COMPONENT TYPE -->
+  <div class="form-group"
+       [ngClass]="{'has-warning':!form.controls['type'].valid && form.controls['type'].touched ,
+                   'has-success': form.controls['type'].valid }" >
+    <label class="sr-only" 
+           for="type">Type</label>
         
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <div class="input-group-addon input-icon-color">
+        <i class="fa fa-lock"></i>
+      </div>
+      <select class="form-control" 
+             id="type" 
+             placeholder="Component Type" 
+             type="text"
+             formControlName="type">
+        <option value="" disabled selected>Component Type</option>
+        <!-- SEE IF YOU CAN DO THIS WITH *ngFor (with enum) -->
+        <option value="{{ RPiComponentType[ RPiComponentType.TEMPERATURE ] }}" default>{{ RPiComponentType[RPiComponentType.TEMPERATURE] }}</option>
+        <option value="{{ RPiComponentType[ RPiComponentType.HUMIDITY ] }}">{{ RPiComponentType[RPiComponentType.HUMIDITY] }}</option>
+        <option value="{{ RPiComponentType[ RPiComponentType.TEMPERATURE_HUMIDITY ] }}">{{ RPiComponentType[RPiComponentType.TEMPERATURE_HUMIDITY] }}</option>
+        <option value="{{ RPiComponentType[ RPiComponentType.PROXIMITY ] }}">{{ RPiComponentType[RPiComponentType.PROXIMITY] }}</option>
+        <option value="{{ RPiComponentType[ RPiComponentType.RELAY ] }}">{{ RPiComponentType[RPiComponentType.RELAY] }}</option>
+      </select>
+    </div>
+  </div>
+  <!-- END : INPUT COMPONENT TYPE -->
+
   
   <!-- FORM BUTTONS -->
   <div class="form-group">
