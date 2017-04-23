@@ -1,10 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>
-      <h2><i class="fa fa-gears"></i>Settings : RPi Component</h2>
-    </legend>
-    <div class="well">
-      <p>This is the RPiComponent settings page.</p>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      	Components 
+    	 <button role="button" 
+                class="btn btn-xs btn-success pull-right"
+                [routerLink]="['/settings', { outlets: { settings: 'component.add'} }]">
+          Add
+        </button>
+      </div>
+      <div class="panel-body">
+        <gro-rpicomponents [components]="components"></gro-rpicomponents>
+      </div>
     </div>
   </div>
 </div>
