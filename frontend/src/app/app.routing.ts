@@ -10,6 +10,8 @@ import { RoleGuard } from './_service/authentication/guard/role.guard';
 import { SettingsRPiComponentComponent } from './settings/settings-rpicomponent/settings-rpicomponent.component';
 import { SettingsScheduleComponent } from './settings/settings-schedule/settings-schedule.component';
 import { SettingsUserComponent } from './settings/settings-user/settings-user.component';
+import { RPiComponentAddComponent } from './settings/rpicomponent-add/rpicomponent-add.component';
+import { RPiComponentEditComponent } from './settings/rpicomponent-edit/rpicomponent-edit.component';
 
 const appRoutes: Routes = [
 
@@ -35,8 +37,23 @@ const appRoutes: Routes = [
     data: { roles : ['ROLE_ADMIN'] },
     children: [
       {
+        path: '',
+        redirectTo: '/settings/(settings:component)',
+        pathMatch: 'full'
+      },
+      {
         path: 'component',
         component: SettingsRPiComponentComponent,
+        outlet: 'settings'
+      },
+      {
+        path: 'component.add',
+        component: RPiComponentAddComponent,
+        outlet: 'settings'
+      },
+      {
+        path: 'component.edit/:id',
+        component: RPiComponentEditComponent,
         outlet: 'settings'
       },
       {
@@ -51,6 +68,7 @@ const appRoutes: Routes = [
       }
     ]
   },
+  
   {
     path: 'unauthorized',
     component: UnauthorizedComponent
@@ -80,7 +98,9 @@ export const routingComponents = [
   UnauthorizedComponent,
   SettingsRPiComponentComponent,
   SettingsScheduleComponent,
-  SettingsUserComponent
+  SettingsUserComponent,
+  RPiComponentAddComponent,
+  RPiComponentEditComponent
 ];
 
 export const routingGuards = [
