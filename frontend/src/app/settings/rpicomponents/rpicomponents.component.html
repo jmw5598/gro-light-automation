@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Alias</th>
+      <th>Pin</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let component of components">
+     	<td>{{ component.id }}</td>
+     	<td>{{ component.alias }}</td>
+     	<td>{{ component.pin }}</td>
+     	<td>{{ RPiComponentType[component.type] }}</td>
+      <td>
+        <span>
+          <i class="fa fa-edit"></i>
+          <i class="fa fa-trash"></i>
+          <i class="fa fa-toggle-on"></i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
