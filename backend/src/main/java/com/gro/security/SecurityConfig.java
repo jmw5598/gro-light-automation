@@ -39,6 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new JwtAuthenticationTokenFilter();
     }
     
+    @Bean
+    public CorsFilter corsFilter() throws Exception {
+        return new CorsFilter();
+    }
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -70,10 +75,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js"
                 ).permitAll()
                 .antMatchers("/auth/**").permitAll()
+                .antMatchers("/api/**").authenticated()
                 .anyRequest()
                 .authenticated();
         
         http
+            .addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
             .headers()
             .cacheControl();
