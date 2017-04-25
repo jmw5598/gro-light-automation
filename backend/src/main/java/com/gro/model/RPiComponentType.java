@@ -4,5 +4,6 @@ public enum RPiComponentType {
     TEMPERATURE_HUMIDITY,
     TEMPERATURE,
     HUMIDITY,
-    PROXIMITY
+    PROXIMITY,
+    RELAY
 }
