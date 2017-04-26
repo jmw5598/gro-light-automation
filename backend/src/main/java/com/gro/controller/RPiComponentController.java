@@ -34,17 +34,14 @@ public class RPiComponentController {
     
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(method=RequestMethod.POST)
-    public void postOneComponent(@RequestBody RPiComponent component) {
-        rPiComponentRepository.save(component);
+    public RPiComponent postOneComponent(@RequestBody RPiComponent component) {
+        return rPiComponentRepository.save(component);
     }
     
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public RPiComponent getOneComponent(@PathVariable("id") Integer id) {
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
-        return component;
+        return validateComponent(id);
     }
     
     
@@ -57,8 +54,19 @@ public class RPiComponentController {
     
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    public void deleteOneComponent(@RequestBody RPiComponent component) {
-        rPiComponentRepository.delete(component);
+    public RPiComponent deleteOneComponent(@PathVariable Integer id) {
+        RPiComponent component = validateComponent(id);
+        rPiComponentRepository.delete(id);
+        return component; //returns deleted component
     }
+    
+    private RPiComponent validateComponent(Integer id) {
+        RPiComponent component = rPiComponentRepository.findOne(id);
+        if(component == null)
+            throw new RPiComponentNotFoundException(componentNotFoundException);
+        else
+            return component;
+    }
+   
     
 }
