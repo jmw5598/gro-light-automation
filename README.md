@@ -22,5 +22,6 @@ Technologies:
 - altered returning of token to return user details along with token.
 - altered exception handling to handle method level autorization exceptions.
 - altered autentication/authorization exceptions to return json data using ApiError model class.
+- added CorsFilter to allow prefilght OPTIONS request for angular 2 cors requests
 
 [jwt-spring-security-demo](https://github.com/szerhusenBC/jwt-spring-security-demo)
