@@ -37,24 +37,19 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=20) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findAllByComponent(component, pageable);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature", method=RequestMethod.POST)
     public void postTemperatureData(@PathVariable("id") Integer id,
                                     @RequestBody TemperatureData data) {
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        
+        RPiComponent component = validateComponent(id);
         data.setComponent(component);
         temperatureDataRepository.save(data);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/monthlyAverage", method=RequestMethod.GET)
@@ -62,12 +57,9 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findMonthlyAverageByComponent(component, pageable);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/dailyAverage", method=RequestMethod.GET)
@@ -75,12 +67,9 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyAverageByComponent(component, pageable);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/dailyHigh", method=RequestMethod.GET)
@@ -88,12 +77,9 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyHighByComponent(component, pageable);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/dailyLow", method=RequestMethod.GET)
@@ -101,13 +87,9 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyLowByComponent(component, pageable);
-        
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/hourlyAverage", method=RequestMethod.GET)
@@ -115,12 +97,9 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyAverageByComponent(component, pageable);
     }
-    
     
     
     @RequestMapping(value="/{id}/temperature/hourlyHigh", method=RequestMethod.GET)
@@ -128,24 +107,27 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
-        if(component == null)
-            throw new RPiComponentNotFoundException(componentNotFoundException);
+        RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyHighByComponent(component, pageable);
     }
 
-    
     
     @RequestMapping(value="/{id}/temperature/hourlyLow", method=RequestMethod.GET)
     public Page<TemperatureDTO> getTemperatureDataHourlyLow(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
+        RPiComponent component = validateComponent(id);
+        return temperatureDataRepository.findHourlyLowByComponent(component, pageable);
+        
+    }
+    
+    private RPiComponent validateComponent(Integer id) {
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
-        return temperatureDataRepository.findHourlyLowByComponent(component, pageable);
-        
+        else
+            return component;
     }
     
 }
