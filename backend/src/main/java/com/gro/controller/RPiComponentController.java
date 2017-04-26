@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.RPiComponent;
 import com.gro.model.RPiComponentNotFoundException;
+import com.gro.model.RPiComponentType;
 import com.gro.repository.RPiComponentRepository;
 
 @RestController
@@ -59,6 +60,13 @@ public class RPiComponentController {
         rPiComponentRepository.delete(id);
         return component; //returns deleted component
     }
+    
+    
+    @RequestMapping(value="/relays", method=RequestMethod.GET)
+    public List<RPiComponent> getRelayComponents() {
+        return rPiComponentRepository.findAllByType(RPiComponentType.RELAY);
+    }
+    
     
     private RPiComponent validateComponent(Integer id) {
         RPiComponent component = rPiComponentRepository.findOne(id);
