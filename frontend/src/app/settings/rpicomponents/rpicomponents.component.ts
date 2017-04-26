@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RPiComponent } from '../../_model/rpicomponent';
 import { RPiComponentType } from '../../_model/rpicomponent-type.enum';
 
@@ -8,15 +8,21 @@ import { RPiComponentType } from '../../_model/rpicomponent-type.enum';
   styleUrls: ['./rpicomponents.component.css']
 })
 export class RPiComponentsComponent implements OnInit {
-	
+  
   @Input()
   components: RPiComponent[];
 
-  RPiComponentType = RPiComponentType  //need to use enum in template
+  @Output()
+  onComponentDelete: EventEmitter<number> = new EventEmitter<number>();
+
+  RPiComponentType = RPiComponentType  //needed to use enum in template
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  delete(id: number) {
+    this.onComponentDelete.emit(id);
   }
 
 }
