@@ -9,11 +9,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.gro.model.RPiComponent;
+import com.gro.model.RPiComponentType;
 
 public interface RPiComponentRepository extends CrudRepository<RPiComponent, Integer> {
     
+    List<RPiComponent> findAllByType(RPiComponentType type);
+    
     @Override
-    @Cacheable(value="componentCache")
+    //@Cacheable(value="componentCache")
     List<RPiComponent> findAll();
     
     @Override
