@@ -10,7 +10,9 @@
         </button>
       </div>
       <div class="panel-body">
-        <gro-rpicomponents [components]="components"></gro-rpicomponents>
+        <gro-rpicomponents [components]="components"
+                           (onComponentDelete)="onComponentDelete($event)">
+        </gro-rpicomponents>
       </div>
     </div>
   </div>
