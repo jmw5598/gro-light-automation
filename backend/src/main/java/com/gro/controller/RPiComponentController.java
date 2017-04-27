@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gro.model.InvalidRPiComponentTypeException;
 import com.gro.model.RPiComponent;
 import com.gro.model.RPiComponentNotFoundException;
 import com.gro.model.RPiComponentType;
@@ -25,6 +27,9 @@ public class RPiComponentController {
     
     @Value("${exception.rpi-component-not-found}")
     private String componentNotFoundException;
+   
+    @Value("${exception.invalid-rpi-component-type}")
+    private String invalidComponentType;
     
     
     @RequestMapping(method=RequestMethod.GET)
@@ -62,9 +67,15 @@ public class RPiComponentController {
     }
     
     
-    @RequestMapping(value="/relays", method=RequestMethod.GET)
-    public List<RPiComponent> getRelayComponents() {
-        return rPiComponentRepository.findAllByType(RPiComponentType.RELAY);
+    // this needs fixing to get by type 
+    // (path /type?type=TEMPERATURE_HUMIDITY) 
+    // bind to requestparam of type RPiComponentType
+    @RequestMapping(value="/byType", method=RequestMethod.GET)
+    public List<RPiComponent> getComponentsByType(@RequestParam(value="type", required=true) String type) {
+        RPiComponentType temp = RPiComponentType.from(type);
+        if(temp == null)
+            throw new InvalidRPiComponentTypeException(invalidComponentType);
+        return rPiComponentRepository.findAllByType(temp);
     }
     
     
