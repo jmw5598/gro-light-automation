@@ -67,15 +67,10 @@ public class RPiComponentController {
     }
     
     
-    // this needs fixing to get by type 
-    // (path /type?type=TEMPERATURE_HUMIDITY) 
-    // bind to requestparam of type RPiComponentType
     @RequestMapping(value="/byType", method=RequestMethod.GET)
     public List<RPiComponent> getComponentsByType(@RequestParam(value="type", required=true) String type) {
-        RPiComponentType temp = RPiComponentType.from(type);
-        if(temp == null)
-            throw new InvalidRPiComponentTypeException(invalidComponentType);
-        return rPiComponentRepository.findAllByType(temp);
+        RPiComponentType componentType = validateComponentType(type);
+        return rPiComponentRepository.findAllByType(componentType);
     }
     
     
@@ -85,6 +80,13 @@ public class RPiComponentController {
             throw new RPiComponentNotFoundException(componentNotFoundException);
         else
             return component;
+    }
+    
+    private RPiComponentType validateComponentType(String type) {
+        RPiComponentType temp = RPiComponentType.from(type);
+        if(temp == null)
+            throw new InvalidRPiComponentTypeException(invalidComponentType);
+        return temp;
     }
    
     
