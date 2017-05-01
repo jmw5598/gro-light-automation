@@ -18,6 +18,9 @@ export class PageableTableComponent implements OnInit {
   @Input()
   headings: string[];
 
+  @Input()
+  title: string;
+
   constructor() { }
 
   ngOnInit() {
