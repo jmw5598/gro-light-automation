@@ -1,0 +1,7 @@
+export enum RPiComponentType {
+	TEMPERATURE,
+	HUMIDITY,
+	TEMPERATURE_HUMIDITY,
+	PROXIMITY,
+	RELAY
+}
