@@ -16,13 +16,13 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
 
     Page<HumidityData> findAllByComponent(RPiComponent component, Pageable pageable);
 
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), AVG(hd.humidity), hd.component.id) " +
+    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), ROUND(AVG(hd.humidity), 2), hd.component.id) " +
            "FROM HumidityData hd WHERE hd.component = :component " +
            "GROUP BY MONTH(hd.timestamp)")
     Page<HumidityDTO> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), AVG(hd.humidity), hd.component.id) " +
+    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), ROUND(AVG(hd.humidity), 2), hd.component.id) " +
             "FROM HumidityData hd WHERE hd.component = :component " +
             "GROUP BY DAY(hd.timestamp)")
     Page<HumidityDTO> findDailyAverageByComponent(
@@ -42,7 +42,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
            @Param("component") RPiComponent component, Pageable pageable);
      
      
-    @Query("SELECT new com.gro.model.HumidityDTO(hd.timestamp, AVG(hd.humidity), hd.component.id) " +
+    @Query("SELECT new com.gro.model.HumidityDTO(hd.timestamp, ROUND(AVG(hd.humidity), 2), hd.component.id) " +
            "FROM HumidityData hd WHERE hd.component = :component " +
            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)")
     Page<HumidityDTO> findHourlyAverageByComponent(

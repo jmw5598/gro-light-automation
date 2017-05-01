@@ -15,14 +15,14 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
 
     Page<TemperatureData> findAllByComponent(RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature), td.component.id) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), ROUND(AVG(td.temperature), 2), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
            "GROUP BY MONTH(td.timestamp)")
     Page<TemperatureDTO> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), AVG(td.temperature), td.component.id) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), ROUND(AVG(td.temperature), 2), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
            "GROUP BY DAY(td.timestamp)")
     Page<TemperatureDTO> findDailyAverageByComponent(
@@ -43,7 +43,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, AVG(td.temperature), td.component.id) " +
+    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, ROUND(AVG(td.temperature), 2), td.component.id) " +
            "FROM TemperatureData td WHERE td.component = :component " +
            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
     Page<TemperatureDTO> findHourlyAverageByComponent(
