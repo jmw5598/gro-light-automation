@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Daily Temperature Averages
+  </div>
+  <div class="panel-body">
+    <gro-table [data]="page?.content"
+               [headings]="headings">
+    </gro-table>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-sm-4">
+        <button role="button" 
+                class="btn btn-default pull-left"
+                (click)="pageChange(page?.number - 1)"
+                [disabled]="page?.first">
+          Prev
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="text-center">{{ page?.number + 1 }} of {{ page?.totalPages }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button role="button" 
+              class="btn btn-default pull-right"
+              (click)="pageChange(page?.number + 1)"
+              [disabled]="page?.last">
+          Next
+        </button>
+      </div>
+  </div>
+  </div>
+</div>
