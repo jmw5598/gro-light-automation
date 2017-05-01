@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RPiComponent } from '../../_model/rpicomponent';
-import { RPiComponentService } from '../../_service/rpicomponent/rpicomponent.service';
+
+import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
 @Component({
   selector: 'gro-settings-rpicomponent',

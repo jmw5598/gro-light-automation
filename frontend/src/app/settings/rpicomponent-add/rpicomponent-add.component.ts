@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { RPiComponent } from '../../_model/rpicomponent';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+
+import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
 
 @Component({
@@ -8,20 +10,24 @@ import { RPiComponent } from '../../_model/rpicomponent';
   styleUrls: ['./rpicomponent-add.component.css']
 })
 export class RPiComponentAddComponent implements OnInit {
-  
+
   formSettings : Object = {
   	submitLabel : 'Create',
   	isClearable : true
   };
 
-  constructor() { }
+  constructor(private rPiComponentService: RPiComponentService) { }
 
   ngOnInit() {
   }
 
   onFormSubmit(component: RPiComponent) {
-  	console.log("Creating: " + component);
-  	console.log(component);
+    console.log(component);
+  	this.rPiComponentService.save(component)
+      .subscribe(
+        data => { console.log(data); },
+        error => console.log("error saving component")
+      );
   }
 
 }
