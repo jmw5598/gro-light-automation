@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let heading of headings">{{ heading }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data">
+      <td>{{ d.date }}</td>
+      <td>{{ d.componentId }}</td>
+      <td>{{ d.temperature }}</td>
+    </tr>
+  </tbody>
+</table>
