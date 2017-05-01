@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 
+import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
+
 import { RPiComponentAddComponent } from './rpicomponent-add/rpicomponent-add.component';
 import { RPiComponentEditComponent } from './rpicomponent-edit/rpicomponent-edit.component';
 import { RPiComponentsComponent } from './rpicomponents/rpicomponents.component';
@@ -11,6 +14,11 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
 
 
 @NgModule({
+  imports: [
+    CoreModule,
+    SharedModule
+  ],
+  exports: [SettingsComponent],
   declarations: [
     RPiComponentAddComponent,
     RPiComponentEditComponent,
@@ -20,7 +28,6 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
     SettingsRPiComponentComponent,
     SettingsScheduleComponent,
     SettingsUserComponent
-  ],
-  exports: [SettingsComponent]
+  ]
 })
 export class SettingsModule {}

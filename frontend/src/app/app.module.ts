@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { UiSwitchModule } from 'angular2-ui-switch';
-import { ChartsModule } from 'ng2-charts';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule, routingComponents, routingGuards } from './app.routing';
 
@@ -12,31 +10,27 @@ import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
 import { NavigationModule } from './navigation/navigation.module';
+import { ScheduleModule } from './schedule/schedule.module';
 import { SettingsModule } from './settings/settings.module';
-
 
 import { AppComponent } from './app.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    routingComponents,
+    AppComponent
   ],
   imports: [
     AppRoutingModule,
     AuthenticationModule,
     BrowserModule,
-    ChartsModule,
-    CoreModule,
     DashboardModule,
-    FormsModule,
     HttpModule,
     LoginModule,
     NavigationModule,
-    ReactiveFormsModule,
-    SettingsModule,
-    UiSwitchModule
+    RouterModule,
+    ScheduleModule,
+    SettingsModule
   ],
   providers: [
     routingGuards

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '../shared/shared.module';
 
 import { RPiComponentService } from './service/rpicomponent/rpicomponent.service';
 
@@ -10,7 +11,7 @@ import { UnauthorizedComponent } from './component/unauthorized/unauthorized.com
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule
   ],
   exports: [
     AlertComponent,
