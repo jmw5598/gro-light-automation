@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+
+import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationGuard } from './authentication/guard/authentication.guard';
+import { RoleGuard } from './authentication/guard/role.guard';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
-import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.component';
-import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
-import { RoleGuard } from './_service/authentication/guard/role.guard';
 import { SettingsRPiComponentComponent } from './settings/settings-rpicomponent/settings-rpicomponent.component';
 import { SettingsScheduleComponent } from './settings/settings-schedule/settings-schedule.component';
 import { SettingsUserComponent } from './settings/settings-user/settings-user.component';
 import { RPiComponentAddComponent } from './settings/rpicomponent-add/rpicomponent-add.component';
 import { RPiComponentEditComponent } from './settings/rpicomponent-edit/rpicomponent-edit.component';
+import { UnauthorizedComponent } from './core/component/unauthorized/unauthorized.component';
 
 const appRoutes: Routes = [
 
@@ -85,26 +88,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+  imports: [
+    RouterModule.forRoot(appRoutes, { useHash: true })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
-export const routingComponents = [
-  LoginComponent,
-  DashboardComponent,
-  ScheduleComponent,
-  SettingsComponent,
-  UnauthorizedComponent,
-  SettingsRPiComponentComponent,
-  SettingsScheduleComponent,
-  SettingsUserComponent,
-  RPiComponentAddComponent,
-  RPiComponentEditComponent
-];
-
-export const routingGuards = [
-  AuthenticationGuard,
-  RoleGuard
-];
 
