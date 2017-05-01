@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule, routingComponents, routingGuards } from './app.routing';
+import { AppRoutingModule } from './app.routing';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { CoreModule } from './core/core.module';
@@ -31,9 +31,6 @@ import { AppComponent } from './app.component';
     RouterModule,
     ScheduleModule,
     SettingsModule
-  ],
-  providers: [
-    routingGuards
   ],
   bootstrap: [AppComponent]
 })
