@@ -1,11 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { Relay } from './relays/relay.model';
+
+import { RPiComponent } from '../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../core/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponentService } from '../core/service/rpicomponent/rpicomponent.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  readingsHeading: string = 'Current Readings';
+
+  relays: RPiComponent[];
+
+  constructor(private rPiComponentService: RPiComponentService) { }
+
+  ngOnInit() {
+    this.rPiComponentService
+      .findAllByType(RPiComponentType.RELAY)
+        .subscribe(
+          data => this.relays = data,
+          error => console.log("error getting relays")
+        );
+  }
+
+  onRelayToggle(relay: RPiComponent) {
+    console.log('toggling relay: ' + relay.alias + ' ');
+  }
+
+  //******TEMP MOCK DATA**********
 
   // MOCK READING DATA
   readings: Object[] = [
@@ -22,39 +47,6 @@ export class DashboardComponent implements OnInit {
       'value' : '4cm'
     }
   ];
-  // MOCK HEADING DATA
-  readingsHeading: string = 'Current Readings';
-
-  // MOCK RELAY DATA
-  relays: Relay[] = [
-    {
-      id: 1,
-      pinNum: 1,
-      alias: 'Light 1',
-      enabled: false
-    },
-    {
-      id: 2,
-      pinNum: 17,
-      alias: 'Light 2',
-      enabled: true
-    },
-    {
-      id: 1,
-      pinNum: 10,
-      alias: 'Fan 1',
-      enabled: true
-    }
-  ];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  onRelayToggle(relay: Relay) {
-    console.log('toggling relay: ' + relay.alias + ' ' + relay.enabled);
-  }
 
   //mock chart data
   public barChartOptions:any = {
