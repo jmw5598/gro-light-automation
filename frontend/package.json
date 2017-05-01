@@ -25,11 +25,11 @@
     "core-js": "^2.4.1",
     "mqtt": "^2.3.1",
     "ng2-charts": "^1.5.0",
-    "ng2-page-transition": "^1.0.4",
+    "ng2-page-transition": "^1.1.0",
     "rpi-gpio": "^0.7.0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "web-animations-js": "^2.2.2",
+    "web-animations-js": "^2.2.5",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
