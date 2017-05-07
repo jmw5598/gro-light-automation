@@ -2,6 +2,8 @@
 
 Current raspberry pi project to control/automate an indoor grow light and fan for hydroponics/indoor plant growing.
 
+This is not a complete project.  I continually update as I'm working on it.
+
 Technologies:
 * Angular 2 frontend
 * Spring Boot REST Api
@@ -14,7 +16,7 @@ Technologies:
 
 ---
 # Video
-[Demoing login with JWT authentication](https://www.youtube.com/watch?v=7Wa6Hrx7cm0)
+[Some video demos](https://www.youtube.com/channel/UC1BSal1gf-syAfSE5unBN1g)
 
 ---
 *Spring Security implemented based on Stephan Zerhusen's demo
