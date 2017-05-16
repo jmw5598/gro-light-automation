@@ -12,7 +12,7 @@ import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;
 
 @MessageEndpoint
-public class TemperatureMessageService {
+public class TemperaturePersistenceService {
     
     @Autowired
     private RPiComponentRepository rPiComponentRepository;

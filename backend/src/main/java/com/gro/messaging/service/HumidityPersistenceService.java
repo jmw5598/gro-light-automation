@@ -12,7 +12,7 @@ import com.gro.repository.HumidityDataRepository;
 import com.gro.repository.RPiComponentRepository;
 
 @MessageEndpoint
-public class HumidityMessageService {
+public class HumidityPersistenceService {
     
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
