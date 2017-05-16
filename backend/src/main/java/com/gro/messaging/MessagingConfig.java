@@ -3,16 +3,14 @@ package com.gro.messaging;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
 import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
-import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.MessageChannel;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 public class MessagingConfig {
@@ -22,10 +20,10 @@ public class MessagingConfig {
         return new DirectChannel();
     }
     
-    /* TEMPERATURE : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    /* TEMPERATURE : CHANNEL BETWEEN TRANSFORMER AND SERVICES */
     @Bean
     public MessageChannel temperatureServiceChannel() {
-        return new DirectChannel();
+        return new PublishSubscribeChannel();
     }
     
     /* TEMPERATURE : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
@@ -34,13 +32,13 @@ public class MessagingConfig {
         return new DirectChannel();
     }
     
-    /* TEMPERATURE : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
+    /* HUMIDITY : CHANNEL BETWEEN TRANSFORMER AND SERVICES */
     @Bean
     public MessageChannel humidityServiceChannel() {
-        return new DirectChannel();
+        return new PublishSubscribeChannel();
     }
     
-    /* TEMPERATURE : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
+    /* HUMIDITY : CHANNEL BETWEEN ROUTER AND TRANSFORMER */
     @Bean
     public MessageChannel humidityTransformerChannel() {
         return new DirectChannel();
@@ -61,7 +59,7 @@ public class MessagingConfig {
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
-        factory.setServerURIs("tcp://192.168.1.7:1883");
+        factory.setServerURIs("tcp://192.168.1.8:1883");
         factory.setUserName("username");
         factory.setPassword("password");
         return factory;
