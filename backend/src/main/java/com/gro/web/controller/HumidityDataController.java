@@ -1,4 +1,4 @@
-package com.gro.controller;
+package com.gro.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package com.gro.controller;
+package com.gro.web.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
