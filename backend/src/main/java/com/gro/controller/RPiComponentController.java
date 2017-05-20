@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.InvalidRPiComponentTypeException;
+import com.gro.model.InvalidRelayStateException;
 import com.gro.model.RPiComponent;
 import com.gro.model.RPiComponentNotFoundException;
 import com.gro.model.RPiComponentType;
+import com.gro.model.RelayState;
 import com.gro.repository.RPiComponentRepository;
 
 @RestController
@@ -30,6 +32,9 @@ public class RPiComponentController {
    
     @Value("${exception.invalid-rpi-component-type}")
     private String invalidComponentType;
+    
+    @Value("${exception.invalid-relay-state}")
+    private String invalidRelayState;
     
     
     @RequestMapping(method=RequestMethod.GET)
@@ -88,6 +93,5 @@ public class RPiComponentController {
             throw new InvalidRPiComponentTypeException(invalidComponentType);
         return temp;
     }
-   
-    
+
 }

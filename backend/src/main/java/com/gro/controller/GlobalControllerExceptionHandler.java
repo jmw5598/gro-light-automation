@@ -10,6 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.gro.model.ApiError;
 import com.gro.model.InvalidRPiComponentTypeException;
+import com.gro.model.InvalidRelayStateException;
 import com.gro.model.RPiComponentNotFoundException;
 
 @ControllerAdvice
@@ -31,7 +32,15 @@ public class GlobalControllerExceptionHandler {
         ApiError apiError = 
                 new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage(), error);
         
-        return  new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+    }
+    
+    @ExceptionHandler(InvalidRelayStateException.class)
+    public ResponseEntity<Object> handleInvalidRelayState(InvalidRelayStateException e, WebRequest request) {
+        String error = e.getMessage();
+        ApiError apiError = 
+                new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
     
 }
