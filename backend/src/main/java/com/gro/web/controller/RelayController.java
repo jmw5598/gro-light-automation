@@ -46,16 +46,12 @@ public class RelayController {
         
         RPiComponent component = this.validateRPiComponent(id);
         RelayState relayState = this.validateRelayState(state);
-        
-        if(component.getType() == RPiComponentType.RELAY) {
-            gateway.send(
-                MessageBuilder
-                    .withPayload(component.getPin() + "," + relayState.toString())
-                    .setHeader(MqttHeaders.TOPIC, "RELAYS.StatusChange")
-                    .build());
-        } else {
-            throw new InvalidRPiComponentTypeException(invalidComponentType);
-        }
+        gateway.send(
+            MessageBuilder
+                .withPayload(component.getPin() + "," + relayState.toString())
+                .setHeader(MqttHeaders.TOPIC, "RELAYS.StatusChange")
+                .build()
+        );
     }
     
     
@@ -63,6 +59,8 @@ public class RelayController {
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFound);
+        if(component.getType() != RPiComponentType.RELAY)
+            throw new InvalidRPiComponentTypeException(invalidComponentType);
         return component;
     }
     
