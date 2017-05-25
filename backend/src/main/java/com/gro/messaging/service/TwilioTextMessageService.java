@@ -24,14 +24,12 @@ public class TwilioTextMessageService implements TextMessageService {
     
     @Override
     public void sendSms(String message) {
-        
         Twilio.init(sid, authToken);
         Message sms = Message.creator(
                 new PhoneNumber(outbound),
                 new PhoneNumber(inbound),
                 message
                 ).create();
-        
     }
 
     @Override
