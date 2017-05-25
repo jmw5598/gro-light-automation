@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.gro.web.service.HumidityDataService;
+import com.gro.web.service.RelayService;
 import com.gro.web.service.TemperatureDataService;
 
 @RestController
@@ -17,6 +18,9 @@ public class EventEmitterController {
     
     @Autowired
     private HumidityDataService humidityDataService;
+    
+    @Autowired
+    private RelayService relayService;
     
     @RequestMapping("/temperature")
     public SseEmitter streamTemperature() {
@@ -32,7 +36,16 @@ public class EventEmitterController {
         emitter.onCompletion(() -> this.humidityDataService.removeEmitter(emitter));
         this.humidityDataService.addEmitter(emitter);
         return emitter;
-        
     }
+    
+    @RequestMapping("/relay")
+    public SseEmitter streamRelay() {
+        SseEmitter emitter = new SseEmitter();
+        emitter.onCompletion(() -> this.relayService.removeEmitter(emitter));
+        this.relayService.addEmitter(emitter);
+        return emitter;
+    }
+    
+    
     
 }

@@ -33,9 +33,6 @@ public class RPiComponentController {
     @Value("${exception.invalid-rpi-component-type}")
     private String invalidComponentType;
     
-    @Value("${exception.invalid-relay-state}")
-    private String invalidRelayState;
-    
     
     @RequestMapping(method=RequestMethod.GET)
     public List<RPiComponent> getAllComponents() {
