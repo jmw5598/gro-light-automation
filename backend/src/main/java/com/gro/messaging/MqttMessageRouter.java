@@ -27,6 +27,9 @@ public class MqttMessageRouter {
             case PROXIMITY:
                 route = "proximityTransformerChannel";
                 break;
+            case RELAY:
+                route = "relayTransformerChannel";
+                break;
         }
         return route;
     }
