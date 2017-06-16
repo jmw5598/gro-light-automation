@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.RPiComponent;
 import com.gro.model.RPiComponentNotFoundException;
-import com.gro.model.TemperatureDTO;
 import com.gro.model.TemperatureData;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;
@@ -53,7 +52,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/monthlyAverage", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataMonthlyAverage(
+    public Page<TemperatureData> getTemperatureDataMonthlyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
         
@@ -63,7 +62,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/dailyAverage", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataDailyAverage(
+    public Page<TemperatureData> getTemperatureDataDailyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
@@ -73,7 +72,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/dailyHigh", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataDailyHigh(
+    public Page<TemperatureData> getTemperatureDataDailyHigh(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
@@ -83,7 +82,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/dailyLow", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataDailyLow(
+    public Page<TemperatureData> getTemperatureDataDailyLow(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
         
@@ -93,7 +92,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/hourlyAverage", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataHourlyAverage(
+    public Page<TemperatureData> getTemperatureDataHourlyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
@@ -103,7 +102,7 @@ public class TemperatureDataController {
     
     
     @RequestMapping(value="/{id}/temperature/hourlyHigh", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataHourlyHigh (
+    public Page<TemperatureData> getTemperatureDataHourlyHigh (
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
@@ -113,7 +112,7 @@ public class TemperatureDataController {
 
     
     @RequestMapping(value="/{id}/temperature/hourlyLow", method=RequestMethod.GET)
-    public Page<TemperatureDTO> getTemperatureDataHourlyLow(
+    public Page<TemperatureData> getTemperatureDataHourlyLow(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
         
