@@ -1,5 +1,7 @@
 package com.gro.repository;
 
+import javax.persistence.NamedNativeQuery;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,52 +17,129 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
 
     Page<TemperatureData> findAllByComponent(RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), ROUND(AVG(td.temperature), 2), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY MONTH(td.timestamp)")
+    @Query(
+            value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
+                "FROM temperature_data td " +
+                "WHERE td.component_id = ?#{#component.id} " +
+                "GROUP BY MONTH(td.timestamp) " +
+                "\n#pageable\n",
+                
+            countQuery = "SELECT COUNT(*) " +
+                "FROM temperature_data td " +
+                "WHERE td.component_id = ?#{#component.id} " +
+                "GROUP BY MONTH(td.timestamp)",
+             
+            nativeQuery = true
+        )
     Page<TemperatureDTO> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), ROUND(AVG(td.temperature), 2), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(td.timestamp)")
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp) " +
+            "\n#pageable\n",
+                
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp)",
+             
+        nativeQuery = true
+    )
     Page<TemperatureDTO> findDailyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MAX(td.temperature), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(td.timestamp)")
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(MAX(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp) " +
+            "\n#pageable\n",
+                
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp)",
+             
+        nativeQuery = true
+    )
     Page<TemperatureDTO> findDailyHighByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(DATE(td.timestamp), MIN(td.temperature), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY DAY(td.timestamp)")
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(MIN(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp) " +
+            "\n#pageable\n",
+            
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(td.timestamp)",
+         
+        nativeQuery = true
+    )
     Page<TemperatureDTO> findDailyLowByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, ROUND(AVG(td.temperature), 2), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
-    Page<TemperatureDTO> findHourlyAverageByComponent(
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp) " +
+            "\n#pageable\n",
+        
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)",
+        
+       nativeQuery = true
+    )
+    Page<TemperatureData> findHourlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MAX(td.temperature), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
-    Page<TemperatureDTO> findHourlyHighByComponent(
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(MAX(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp) " +
+            "\n#pageable\n",
+                
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)",
+                
+        nativeQuery = true
+    )
+    Page<TemperatureData> findHourlyHighByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
-    @Query("SELECT new com.gro.model.TemperatureDTO(td.timestamp, MIN(td.temperature), td.component.id) " +
-           "FROM TemperatureData td WHERE td.component = :component " +
-           "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)")
-    Page<TemperatureDTO> findHourlyLowByComponent(
+    @Query(
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(MIN(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp) " +
+            "\n#pageable\n",
+                
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(td.timestamp), DAY(td.timestamp)",
+                    
+        nativeQuery = true
+    )
+    Page<TemperatureData> findHourlyLowByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
