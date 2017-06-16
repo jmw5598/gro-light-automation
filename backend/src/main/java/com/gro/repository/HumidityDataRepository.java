@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.gro.model.HumidityDTO;
 import com.gro.model.HumidityData;
 import com.gro.model.RPiComponent;
 
@@ -16,51 +15,131 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
 
     Page<HumidityData> findAllByComponent(RPiComponent component, Pageable pageable);
 
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), ROUND(AVG(hd.humidity), 2), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY MONTH(hd.timestamp)")
-    Page<HumidityDTO> findMonthlyAverageByComponent(
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(AVG(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY MONTH(hd.timestamp) " +
+            "\n#pageable\n",
+                   
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY MONTH(hd.timestamp)",
+                 
+        nativeQuery = true
+    )
+    Page<HumidityData> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), ROUND(AVG(hd.humidity), 2), hd.component.id) " +
-            "FROM HumidityData hd WHERE hd.component = :component " +
-            "GROUP BY DAY(hd.timestamp)")
-    Page<HumidityDTO> findDailyAverageByComponent(
+    
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(AVG(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp) " +
+            "\n#pageable\n",
+                    
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp)",
+                 
+        nativeQuery = true
+    )
+    Page<HumidityData> findDailyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), MAX(hd.humidity), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY DAY(hd.timestamp)")
-    Page<HumidityDTO> findDailyHighByComponent(
+    
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(MAX(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp) " +
+            "\n#pageable\n",
+                    
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp)",
+                 
+        nativeQuery = true
+    )
+    Page<HumidityData> findDailyHighByComponent(
+           @Param("component") RPiComponent component, Pageable pageable);
+     
+    
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-00:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(MIN(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp) " +
+            "\n#pageable\n",
+                
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY DAY(hd.timestamp)",
+             
+        nativeQuery = true
+    )
+    Page<HumidityData> findDailyLowByComponent(
            @Param("component") RPiComponent component, Pageable pageable);
      
      
-    @Query("SELECT new com.gro.model.HumidityDTO(DATE(hd.timestamp), MIN(hd.humidity), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY DAY(hd.timestamp)")
-    Page<HumidityDTO> findDailyLowByComponent(
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(AVG(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp) " +
+            "\n#pageable\n",
+            
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)",
+            
+        nativeQuery = true
+    )
+    Page<HumidityData> findHourlyAverageByComponent(
            @Param("component") RPiComponent component, Pageable pageable);
      
-     
-    @Query("SELECT new com.gro.model.HumidityDTO(hd.timestamp, ROUND(AVG(hd.humidity), 2), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)")
-    Page<HumidityDTO> findHourlyAverageByComponent(
+    
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(MAX(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp) " +
+            "\n#pageable\n",
+                    
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)",
+                    
+        nativeQuery = true
+    )
+    Page<HumidityData> findHourlyHighByComponent(
            @Param("component") RPiComponent component, Pageable pageable);
      
-     
-    @Query("SELECT new com.gro.model.HumidityDTO(hd.timestamp, MAX(hd.humidity), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)")
-    Page<HumidityDTO> findHourlyHighByComponent(
+    
+    @Query(
+        value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-%d-%H:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(MIN(hd.humidity), 2) as `humidity` " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp) " +
+            "\n#pageable\n",
+                    
+        countQuery = "SELECT COUNT(*) " +
+            "FROM humidity_data hd " +
+            "WHERE hd.component_id = ?#{#component.id} " +
+            "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)",
+                       
+        nativeQuery = true
+    )
+    Page<HumidityData> findHourlyLowByComponent(
            @Param("component") RPiComponent component, Pageable pageable);
-     
-     
-    @Query("SELECT new com.gro.model.HumidityDTO(hd.timestamp, MIN(hd.humidity), hd.component.id) " +
-           "FROM HumidityData hd WHERE hd.component = :component " +
-           "GROUP BY HOUR(hd.timestamp), DAY(hd.timestamp)")
-    Page<HumidityDTO> findHourlyLowByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+    
     
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override

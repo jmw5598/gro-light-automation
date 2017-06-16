@@ -1,7 +1,5 @@
 package com.gro.repository;
 
-import javax.persistence.NamedNativeQuery;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.gro.model.RPiComponent;
-import com.gro.model.TemperatureDTO;
 import com.gro.model.TemperatureData;
 
 public interface TemperatureDataRepository extends JpaRepository<TemperatureData, Integer> {
@@ -31,7 +28,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
              
         nativeQuery = true
     )
-    Page<TemperatureDTO> findMonthlyAverageByComponent(
+    Page<TemperatureData> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
@@ -49,7 +46,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
              
         nativeQuery = true
     )
-    Page<TemperatureDTO> findDailyAverageByComponent(
+    Page<TemperatureData> findDailyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
@@ -67,7 +64,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
              
         nativeQuery = true
     )
-    Page<TemperatureDTO> findDailyHighByComponent(
+    Page<TemperatureData> findDailyHighByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
@@ -85,7 +82,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
          
         nativeQuery = true
     )
-    Page<TemperatureDTO> findDailyLowByComponent(
+    Page<TemperatureData> findDailyLowByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
     
