@@ -18,19 +18,19 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
     Page<TemperatureData> findAllByComponent(RPiComponent component, Pageable pageable);
     
     @Query(
-            value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
-                "FROM temperature_data td " +
-                "WHERE td.component_id = ?#{#component.id} " +
-                "GROUP BY MONTH(td.timestamp) " +
-                "\n#pageable\n",
-                
-            countQuery = "SELECT COUNT(*) " +
-                "FROM temperature_data td " +
-                "WHERE td.component_id = ?#{#component.id} " +
-                "GROUP BY MONTH(td.timestamp)",
+        value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY MONTH(td.timestamp) " +
+            "\n#pageable\n",
+               
+        countQuery = "SELECT COUNT(*) " +
+            "FROM temperature_data td " +
+            "WHERE td.component_id = ?#{#component.id} " +
+            "GROUP BY MONTH(td.timestamp)",
              
-            nativeQuery = true
-        )
+        nativeQuery = true
+    )
     Page<TemperatureDTO> findMonthlyAverageByComponent(
             @Param("component") RPiComponent component, Pageable pageable);
     
