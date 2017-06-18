@@ -8,11 +8,7 @@ export class KeyToTitlePipe implements PipeTransform {
   transform(key: string, caseType?: string): string {
     let result: string = key;
     if(caseType === undefined) {
-        if(key.search('_') !== -1) {
-            result = this.fromSnake(key);
-        } else {
-            result = this.fromCamel(key);
-        }
+        result = this.determineCase(key);
     } else if(caseType.toLowerCase() === 'camel') {
         result = this.fromCamel(key);
     } else if(caseType.toLowerCase() === 'snake') {
@@ -31,6 +27,14 @@ export class KeyToTitlePipe implements PipeTransform {
       return str.split(/(?=[A-Z])/)
         .map(e => e.charAt(0).toUpperCase() + e.substring(1, e.length).toLowerCase())
         .join(" ");
+  }
+
+  private determineCase(key: string): string {
+      if(key.search('_') !== -1) {
+          return this.fromSnake(key);
+      } else {
+          return this.fromCamel(key);
+      }
   }
 
 }
