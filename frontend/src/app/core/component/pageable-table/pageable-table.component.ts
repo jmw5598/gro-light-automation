@@ -8,7 +8,7 @@ import { Page } from '../../model/paging/page.model';
   styleUrls: ['./pageable-table.component.css']
 })
 export class PageableTableComponent implements OnInit {
-  
+
   @Output()
   onPageChange = new EventEmitter<any>();
 

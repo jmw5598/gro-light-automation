@@ -1,33 +1,30 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    {{ title }}
-  </div>
-  <div class="panel-body">
+<!-- TABLE CONTENT -->
+<div class="row">
+  <div class="col-xs-12">
     <gro-table [data]="page?.content"
                [headings]="headings">
     </gro-table>
   </div>
-  <div class="panel-footer">
-    <div class="row">
-      <div class="col-sm-4">
-        <button role="button" 
-                class="btn btn-default pull-left"
-                (click)="pageChange(page?.number - 1)"
-                [disabled]="page?.first">
-          Prev
-        </button>
-      </div>
-      <div class="col-sm-4">
-        <div class="text-center">{{ page?.number + 1 }} of {{ page?.totalPages }}</div>
-      </div>
-      <div class="col-sm-4">
-        <button role="button" 
-              class="btn btn-default pull-right"
+</div>
+
+<!-- PAGEABLE BUTTONS -->
+<div class="row">
+  <div class="col-xs-12">
+    <span class="pull-right">
+      <button role="button"
+              class="btn btn-sm btn-default"
+              (click)="pageChange(page?.number - 1)"
+              [disabled]="page?.first">
+        <i class="fa fa-step-backward"></i>
+      </button>
+
+      <span class="text-center">{{ page?.number + 1 }} of {{ page?.totalPages }}</span>
+      <button role="button"
+              class="btn btn-sm btn-default"
               (click)="pageChange(page?.number + 1)"
               [disabled]="page?.last">
-          Next
-        </button>
-      </div>
-  </div>
+        <i class="fa fa-step-forward"></i>
+      </button>
+    </span>
   </div>
 </div>
