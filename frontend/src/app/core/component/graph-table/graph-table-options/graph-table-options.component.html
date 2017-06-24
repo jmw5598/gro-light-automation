@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+
+        <!-- BEGIN : Orientation Section -->
+        <legend class="options-dropdown-legend">
+          <h6>Orientation</h6>
+        </legend>
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- BUTTON : Inline -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeOrientation('inline')">
+              <i class="fa fa-arrows-h"></i>
+            </button>
+
+            <!-- BUTTON : Stacked -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeOrientation('stacked')">
+              <i class="fa fa-arrows-v"></i>
+            </button>
+
+          </div>
+        </div>
+        <!-- END : Orientation Section -->
+
+        <!-- BEGIN : Graph Type Section -->
+        <legend class="options-dropdown-legend">
+          <h6>Graph Type</h6>
+        </legend>
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- BUTTON : Line Chart -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeGraphType('line')">
+              <i class="fa fa-line-chart"></i>
+            </button>
+
+            <!-- BUTTON : Bar Chart -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeGraphType('bar')">
+              <i class="fa fa-bar-chart"></i>
+            </button>
+
+            <!-- BUTTON : Pie Chart -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeGraphType('pie')">
+              <i class="fa fa-pie-chart"></i>
+            </button>
+
+            <!-- BUTTON : Radar Chart -->
+            <button role="button"
+                    class="btn btn-sm btn-default"
+                    (click)="changeGraphType('radar')">
+              <i class="fa fa-crosshairs"></i>
+            </button>
+
+          </div>
+        </div>
+        <!-- END : Graph Type Section -->
+
+        <!-- BEGIN : Displayed Items Section -->
+        <legend class="options-dropdown-legend">
+          <h6>Display</h6>
+        </legend>
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- BEGIN : Graph Visibility Checkbox -->
+            <div class="form-group">
+
+              <!-- CHECKBOX : Graph Visibility -->
+              <input id="graph-visibility"
+                     type="checkbox"
+                     name="graph-visibility"
+                     autocomplete="off"
+                     (change)="changeGraphVisibility($event)"
+                     checked  />
+
+              <div class="btn-group">
+                <label for="graph-visibility" class="btn btn-default btn-sm">
+                  <span class="fa fa-check"></span>
+                  <span> </span>
+                </label>
+                <label for="graph-visibility" class="btn btn-default btn-sm active">
+                  Graph
+                </label>
+              </div>
+
+            </div>
+            <!-- END : Graph Visibility Checkbox -->
+
+            <!-- BEGIN : Table Visibility Checkbox -->
+            <div class="form-group">
+
+              <!-- CHECKBOX : Table Visibility -->
+              <input id="table-visibility"
+                     type="checkbox"
+                     name="table-visibility"
+                     autocomplete="off"
+                     (change)="changeTableVisibility($event)"
+                     checked  />
+
+              <div class="btn-group">
+                <label for="table-visibility" class="btn btn-default btn-sm">
+                  <span class="fa fa-check"></span>
+                  <span> </span>
+                </label>
+                <label for="table-visibility" class="btn btn-default btn-sm active">
+                  Table
+                </label>
+              </div>
+
+            </div>
+            <!-- END : Table Visibility Checkbox -->
+          </div>
+        </div>
+        <!-- END : Displayed Items Section -->
+      </div> <!-- END : Panel Body -->
+    </div> <!-- END : Panel -->
+  </div> <!-- END : Column -->
+</div> <!-- END : Row -->
