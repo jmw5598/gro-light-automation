@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Relay } from './relay.model';
+import { RelayDTO } from '../../core/model/rpicomponent/relaydto.model';
 
 @Component({
   selector: 'gro-relays',
@@ -9,17 +9,20 @@ import { Relay } from './relay.model';
 export class RelaysComponent implements OnInit {
 
   @Output()
-  onRelayToggle: EventEmitter<Relay> = new EventEmitter<Relay>();
+  onRelayToggle: EventEmitter<RelayDTO> = new EventEmitter<RelayDTO>();
 
   @Input()
-  relays: Relay[];
+  relays: RelayDTO[];
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  toggle(relay: Relay) {
+  toggle(relay: RelayDTO) {
+    if(relay.state === 'ON')
+      relay.state = 'OFF'
+    else if(relay.state === 'OFF')
+      relay.state = 'ON';
     this.onRelayToggle.emit(relay);
   }
 

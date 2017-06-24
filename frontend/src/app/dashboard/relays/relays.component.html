@@ -4,14 +4,16 @@
     <ul class="list-group">
       
       <li class="list-group-item"
-          *ngFor="let relay of relays"
-          (click)="toggle(relay)">{{relay.alias}}
+          *ngFor="let relay of relays">{{relay.component.alias}} {{relay.state}}
           
           <ui-switch class="pull-right" 
                      size="small"
                      color="#5cb85c"
                      switchColor="#f3f3f3"
-                     (click)="toggle(relay)"></ui-switch>
+                     [checked]="relay.state !== null && relay.state == 'ON'"
+                     [disabled]="relay.state === null"
+                     (click)="toggle(relay)">
+          </ui-switch>
       </li>
       
     </ul>
