@@ -1,3 +1,78 @@
-<p>
-  graph-table works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+    <!-- BEGIN HEADING DROPDOWN : Graph Table Options -->
+    <div class="btn-group pull-right">
+
+      <!-- BUTTON : Options Button -->
+      <button class="btn btn-default toggle-dropdown"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              aria-haspopup="true">
+        <i class="fa fa-cog"></i>
+      </button>
+
+      <!-- DROPDOWN : Options Dropdown -->
+      <div class="dropdown-menu dropdown-menu-right dropshadow">
+        <gro-graph-table-options (onChangeOrientation)="onChangeOrientation($event)"
+                                 (onChangeGraphType)="onChangeGraphType($event)"
+                                 (onChangeGraphVisibility)="onChangeGraphVisibility($event)"
+                                 (onChangeTableVisibility)="onChangeTableVisibility($event)">
+        </gro-graph-table-options>
+      </div>
+    </div>
+    <!-- END HEADING DROPDOWN : Graph Table Options -->
+
+    <!-- BEGIN HEADING DROPDOWN : Graph Table Datasource -->
+    <div class="btn-group pull-right">
+
+      <!-- BUTTON : Datasource Button -->
+      <button class="btn btn-default toggle-dropdown"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              aria-haspopup="true">
+        <i class="fa fa-database"></i>
+      </button>
+
+      <!-- DROPDOWN : Datasource Dropdown -->
+      <div class="dropdown-menu dropdown-menu-right dropshadow">
+        <gro-graph-table-data></gro-graph-table-data>
+      </div>
+    </div>
+    <!-- BEGIN HEADING DROPDOWN : Graph Table Datasource -->
+
+    <!-- HEADING TITLE -->
+    <h5 data-toggle="collapse"
+        data-target="#sg1"
+        aria-expanded="true">
+        {{title}}
+        <span class="label label-success">Inside DHT22</span>
+    </h5>
+  </div>
+  <!-- END : Panel Heading -->
+
+
+  <div class="panel-body">
+    <div class="row">
+
+      <!-- GRAPH COMPONENT -->
+      <div class="col-sm-12"
+           [ngClass]="{'col-md-6' : orientation === 'inline', 'col-md-12' : orientation === 'stacked' }">
+          <gro-graph *ngIf="graphVisible"
+                     [data]="graphData"
+                     [labels]="graphLabels"
+                     [graphType]="graphType"></gro-graph>
+      </div>
+
+      <!-- PAGEABLE TABLE COMPONENT -->
+      <div class="col-xs-12"
+           class="col-sm-12" [ngClass]="{'col-md-6' : orientation === 'inline', 'col-md-12' : orientation === 'stacked' }">
+        <gro-pageable-table *ngIf="tableVisible"
+                            [page]="page"
+                            [headings]="headings"
+                            (onPageChange)="pageChange($event)">
+        </gro-pageable-table>
+      </div>
+    </div>
+  </div> <!-- END : Panel Body -->
+</div> <!-- END : Panel -->
