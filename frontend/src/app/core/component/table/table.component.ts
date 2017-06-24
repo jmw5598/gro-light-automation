@@ -12,9 +12,6 @@ export class TableComponent implements OnInit {
   @Input()
   headings: string[];
 
-  testingSnake = "testing_pipe_for_SnAkE_Case";
-  testingCamel = "testingPipeForCamelCase";
-
   @Input()
   data: Object[];
 
@@ -25,9 +22,6 @@ export class TableComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    //this.keys = Object.keys(this.data);
-    //console.log(this.keys);
-  }
+  ngOnInit() { }
 
 }
