@@ -1,4 +1,4 @@
-<table *ngIf="data" class="table table-striped">
+<table id="gro-graph-table" *ngIf="data" class="table table-striped scrollable-table">
   <thead>
     <tr *ngIf="!headings">
       <th *ngFor="let heading of data[0] | keyExtract">{{ heading | keyToTitle:"camel" }}</th>
@@ -8,6 +8,7 @@
     </tr>
   </thead>
   <tbody>
+    <!-- need to fix this to pull object keys and use to create table rows -->
     <tr *ngFor="let d of data">
       <td>{{ d.date | date:'short' }}</td>
       <td>{{ d.component.alias }}</td>
