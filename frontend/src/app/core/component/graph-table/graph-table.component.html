@@ -5,22 +5,24 @@
     <div *ngIf="editable" class="btn-group pull-right">
 
       <!-- BUTTON : Options Button -->
-      <button class="btn btn-default toggle-dropdown"
-              data-toggle="dropdown"
-              aria-expanded="false"
-              aria-haspopup="true">
+      <button
+          class="btn btn-default toggle-dropdown"
+          data-toggle="dropdown"
+          aria-expanded="false"
+          aria-haspopup="true">
         <i class="fa fa-cog"></i>
       </button>
 
       <!-- DROPDOWN : Options Dropdown -->
       <div class="dropdown-menu dropdown-menu-right dropshadow dropdown-menu-options"
-           (click)="$event.stopPropagation()">
-        <gro-graph-table-options [graphType]="graphType"
-                                 [orientation]="orientation"
-                                 (onChangeOrientation)="onChangeOrientation($event)"
-                                 (onChangeGraphType)="onChangeGraphType($event)"
-                                 (onChangeGraphVisibility)="onChangeGraphVisibility($event)"
-                                 (onChangeTableVisibility)="onChangeTableVisibility($event)">
+          (click)="$event.stopPropagation()">
+        <gro-graph-table-options
+            [graphType]="graphType"
+            [orientation]="orientation"
+            (onChangeOrientation)="onChangeOrientation($event)"
+            (onChangeGraphType)="onChangeGraphType($event)"
+            (onChangeGraphVisibility)="onChangeGraphVisibility($event)"
+            (onChangeTableVisibility)="onChangeTableVisibility($event)">
         </gro-graph-table-options>
       </div>
     </div>
@@ -30,10 +32,11 @@
     <div *ngIf="editable" class="btn-group pull-right">
 
       <!-- BUTTON : Datasource Button -->
-      <button class="btn btn-default toggle-dropdown"
-              data-toggle="dropdown"
-              aria-expanded="false"
-              aria-haspopup="true">
+      <button
+          class="btn btn-default toggle-dropdown"
+          data-toggle="dropdown"
+          aria-expanded="false"
+          aria-haspopup="true">
         <i class="fa fa-database"></i>
       </button>
 
@@ -61,22 +64,26 @@
 
       <!-- GRAPH COMPONENT -->
       <div class="col-sm-12"
-           [ngClass]="{'col-md-6' : (orientation === 'inline') && (graphVisible && tableVisible) }">
-          <gro-graph *ngIf="graphVisible"
-                     [data]="graphData"
-                     [labels]="graphLabels"
-                     [graphType]="graphType"></gro-graph>
+          [ngClass]="{'col-md-6' : (orientation === 'inline') && (graphVisible && tableVisible) }">
+        <gro-graph
+            *ngIf="graphVisible"
+            [data]="graphData"
+            [labels]="graphLabels"
+            [graphType]="graphType">
+        </gro-graph>
       </div>
 
       <!-- PAGEABLE TABLE COMPONENT -->
       <div class="col-xs-12"
            [ngClass]="{'col-md-6' : (orientation === 'inline') && (graphVisible && tableVisible) }">
-        <gro-pageable-table *ngIf="tableVisible"
-                            [page]="page"
-                            [headings]="headings"
-                            (onPageChange)="pageChange($event)">
+        <gro-pageable-table
+            *ngIf="tableVisible"
+            [page]="page"
+            [headings]="headings"
+            (onPageChange)="pageChange($event)">
         </gro-pageable-table>
       </div>
+
     </div>
   </div> <!-- END : Panel Body -->
 </div> <!-- END : Panel -->
