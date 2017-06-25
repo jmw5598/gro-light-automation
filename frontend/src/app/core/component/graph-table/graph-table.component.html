@@ -2,7 +2,7 @@
   <div class="panel-heading">
 
     <!-- BEGIN HEADING DROPDOWN : Graph Table Options -->
-    <div class="btn-group pull-right">
+    <div *ngIf="editable" class="btn-group pull-right">
 
       <!-- BUTTON : Options Button -->
       <button class="btn btn-default toggle-dropdown"
@@ -13,8 +13,11 @@
       </button>
 
       <!-- DROPDOWN : Options Dropdown -->
-      <div class="dropdown-menu dropdown-menu-right dropshadow">
-        <gro-graph-table-options (onChangeOrientation)="onChangeOrientation($event)"
+      <div class="dropdown-menu dropdown-menu-right dropshadow dropdown-menu-options"
+           (click)="$event.stopPropagation()">
+        <gro-graph-table-options [graphType]="graphType"
+                                 [orientation]="orientation"
+                                 (onChangeOrientation)="onChangeOrientation($event)"
                                  (onChangeGraphType)="onChangeGraphType($event)"
                                  (onChangeGraphVisibility)="onChangeGraphVisibility($event)"
                                  (onChangeTableVisibility)="onChangeTableVisibility($event)">
@@ -24,7 +27,7 @@
     <!-- END HEADING DROPDOWN : Graph Table Options -->
 
     <!-- BEGIN HEADING DROPDOWN : Graph Table Datasource -->
-    <div class="btn-group pull-right">
+    <div *ngIf="editable" class="btn-group pull-right">
 
       <!-- BUTTON : Datasource Button -->
       <button class="btn btn-default toggle-dropdown"
@@ -35,7 +38,8 @@
       </button>
 
       <!-- DROPDOWN : Datasource Dropdown -->
-      <div class="dropdown-menu dropdown-menu-right dropshadow">
+      <div class="dropdown-menu dropdown-menu-right dropshadow dropdown-menu-datasource"
+           (click)="$event.stopPropagation()">
         <gro-graph-table-data></gro-graph-table-data>
       </div>
     </div>
@@ -57,7 +61,7 @@
 
       <!-- GRAPH COMPONENT -->
       <div class="col-sm-12"
-           [ngClass]="{'col-md-6' : orientation === 'inline', 'col-md-12' : orientation === 'stacked' }">
+           [ngClass]="{'col-md-6' : (orientation === 'inline') && (graphVisible && tableVisible) }">
           <gro-graph *ngIf="graphVisible"
                      [data]="graphData"
                      [labels]="graphLabels"
@@ -66,7 +70,7 @@
 
       <!-- PAGEABLE TABLE COMPONENT -->
       <div class="col-xs-12"
-           class="col-sm-12" [ngClass]="{'col-md-6' : orientation === 'inline', 'col-md-12' : orientation === 'stacked' }">
+           [ngClass]="{'col-md-6' : (orientation === 'inline') && (graphVisible && tableVisible) }">
         <gro-pageable-table *ngIf="tableVisible"
                             [page]="page"
                             [headings]="headings"

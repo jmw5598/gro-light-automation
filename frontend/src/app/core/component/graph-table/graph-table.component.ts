@@ -27,6 +27,9 @@ export class GraphTableComponent implements OnInit {
   @Input()
   tableVisible: boolean = true;
 
+  @Input()
+  editable: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -59,16 +62,10 @@ export class GraphTableComponent implements OnInit {
   }
 
   onChangeGraphVisibility(state: boolean) {
-    if(this.tableVisible && this.graphVisible) {
-      this.onChangeOrientation("stacked");
-    }
     this.graphVisible = state;
   }
 
   onChangeTableVisibility(state: boolean) {
-    if(this.tableVisible && this.graphVisible) {
-      this.onChangeOrientation("stacked");
-    }
     this.tableVisible = state;
   }
 
