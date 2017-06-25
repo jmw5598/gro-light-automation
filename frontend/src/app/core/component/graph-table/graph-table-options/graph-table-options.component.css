@@ -1,30 +1,24 @@
-.options-dropdown-legend {
+.dropdown-legend {
   margin-bottom: 4px !important;
   margin-top: 4px !important;
 }
 
-/*
-  Bootstrap Checkboxes from
-  https://bootsnipp.com/snippets/featured/fancy-bootstrap-checkboxes
-*/
-.form-group input[type="checkbox"] {
-    display: none;
+.btn-checkbox {
+  text-align: left;
+  margin-bottom: 4px;
 }
 
-.form-group input[type="checkbox"] + .btn-group > label span {
-    width: 20px !important;
+.btn-checkbox:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
-.form-group input[type="checkbox"] + .btn-group > label span:first-child {
-    display: none;
-}
-.form-group input[type="checkbox"] + .btn-group > label span:last-child {
-    display: inline-block;
+.btn-checkbox > span {
+  float: left;
 }
 
-.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
-    display: inline-block;
-}
-.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
-    display: none;
+.btn-checkbox > i {
+  margin-top: 4px;
+  float: right;
 }

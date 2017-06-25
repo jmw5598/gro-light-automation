@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'gro-graph-table-options',
@@ -19,6 +19,18 @@ export class GraphTableOptionsComponent implements OnInit {
   @Output()
   onChangeTableVisibility: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Input()
+  orientation: string = 'inline';
+
+  @Input()
+  graphType: string = 'line';
+
+  @Input()
+  graphVisible: boolean = true;
+
+  @Input()
+  tableVisible: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -31,15 +43,16 @@ export class GraphTableOptionsComponent implements OnInit {
   }
 
   changeGraphType(graphType: string) {
+    this.graphType = graphType;
     this.onChangeGraphType.emit(graphType);
   }
 
-  changeGraphVisibility(event: any) {
-    this.onChangeGraphVisibility.emit(event.target.checked);
+  changeGraphVisibility() {
+    this.onChangeGraphVisibility.emit(!this.graphVisible);
   }
 
   changeTableVisibility(event: any) {
-    this.onChangeTableVisibility.emit(event.target.checked);
+    this.onChangeTableVisibility.emit(!this.tableVisible);
   }
 
 }

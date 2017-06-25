@@ -80,7 +80,7 @@
         <!-- END : Graph Type Section -->
 
         <!-- BEGIN : Displayed Items Section -->
-        <legend class="options-dropdown-legend">
+        <legend class="dropdown-legend">
           <h6>Display</h6>
         </legend>
         <div class="row">
@@ -88,53 +88,32 @@
 
             <!-- BEGIN : Graph Visibility Checkbox -->
             <div class="form-group">
-
-              <!-- CHECKBOX : Graph Visibility -->
-              <input
-                  id="graph-visibility"
-                  type="checkbox"
-                  name="graph-visibility"
-                  autocomplete="off"
-                  (change)="changeGraphVisibility($event)"
-                  checked />
-
-              <div class="btn-group">
-                <label for="graph-visibility" class="btn btn-default btn-sm">
-                  <span class="fa fa-check"></span>
-                  <span> </span>
-                </label>
-                <label for="graph-visibility" class="btn btn-default btn-sm active">
-                  Graph
-                </label>
-              </div>
-
+              <button
+                  role="button"
+                  class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                  (click)="changeGraphVisibility()"
+                  [ngClass]="{ 'active' : graphVisible }">
+                <span>Graph</span>
+                <i *ngIf="graphVisible" class="fa fa-check-square-o"></i>
+                <i *ngIf="!graphVisible" class="fa fa-square-o"></i>
+              </button>
             </div>
             <!-- END : Graph Visibility Checkbox -->
 
             <!-- BEGIN : Table Visibility Checkbox -->
             <div class="form-group">
-
-              <!-- CHECKBOX : Table Visibility -->
-              <input
-                  id="table-visibility"
-                  type="checkbox"
-                  name="table-visibility"
-                  autocomplete="off"
-                  (change)="changeTableVisibility($event)"
-                  checked  />
-
-              <div class="btn-group">
-                <label for="table-visibility" class="btn btn-default btn-sm">
-                  <span class="fa fa-check"></span>
-                  <span> </span>
-                </label>
-                <label for="table-visibility" class="btn btn-default btn-sm active">
-                  Table
-                </label>
-              </div>
-
+              <button
+                  role="button"
+                  class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                  (click)="changeTableVisibility()"
+                  [ngClass]="{ 'active' : tableVisible }">
+                <span>Graph</span>
+                <i *ngIf="tableVisible" class="fa fa-check-square-o"></i>
+                <i *ngIf="!tableVisible" class="fa fa-square-o"></i>
+              </button>
             </div>
             <!-- END : Table Visibility Checkbox -->
+            
           </div>
         </div>
         <!-- END : Displayed Items Section -->
