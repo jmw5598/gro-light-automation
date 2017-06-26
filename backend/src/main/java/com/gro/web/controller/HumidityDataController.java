@@ -52,7 +52,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/monthlyAverage", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/monthly/average", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataMonthlyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
@@ -65,7 +65,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/dailyAverage", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/daily/average", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataDailyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
@@ -78,7 +78,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/dailyHigh", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/daily/high", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataDailyHigh(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
@@ -91,7 +91,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/dailyLow", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/daily/low", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataDailyLow(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
@@ -104,7 +104,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/hourlyAverage", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/hourly/average", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataHourlyAverage(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
@@ -117,7 +117,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/hourlyHigh", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/hourly/high", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataHourlyHigh(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
@@ -130,7 +130,7 @@ public class HumidityDataController {
     
     
     
-    @RequestMapping(value="/{id}/humidity/hourlyLow", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/humidity/hourly/low", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataHourlyLow(
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
