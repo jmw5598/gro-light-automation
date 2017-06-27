@@ -2,7 +2,7 @@
   <div class="panel-heading">
 
     <!-- BEGIN HEADING DROPDOWN : Graph Table Options -->
-    <div *ngIf="editable" class="btn-group pull-right">
+    <div [ngClass]="{ 'hide' : !editable }" class="btn-group pull-right">
 
       <!-- BUTTON : Options Button -->
       <button
@@ -19,6 +19,8 @@
         <gro-graph-table-options
             [graphType]="graphType"
             [orientation]="orientation"
+            [graphVisible]="graphVisible"
+            [tableVisible]="tableVisible"
             (onChangeOrientation)="onChangeOrientation($event)"
             (onChangeGraphType)="onChangeGraphType($event)"
             (onChangeGraphVisibility)="onChangeGraphVisibility($event)"
@@ -29,7 +31,7 @@
     <!-- END HEADING DROPDOWN : Graph Table Options -->
 
     <!-- BEGIN HEADING DROPDOWN : Graph Table Datasource -->
-    <div *ngIf="editable" class="btn-group pull-right">
+    <div [ngClass]="{ 'hide' : !editable }" class="btn-group pull-right">
 
       <!-- BUTTON : Datasource Button -->
       <button
@@ -43,7 +45,12 @@
       <!-- DROPDOWN : Datasource Dropdown -->
       <div class="dropdown-menu dropdown-menu-right dropshadow dropdown-menu-datasource"
            (click)="$event.stopPropagation()">
-        <gro-graph-table-data></gro-graph-table-data>
+        <gro-graph-table-data
+            [metricDataType]="metricDataType"
+            [metricTime]="metricTime"
+            [metricCalc]="metricCalc"
+            (onUpdateData)="onUpdateData($event)">
+        </gro-graph-table-data>
       </div>
     </div>
     <!-- BEGIN HEADING DROPDOWN : Graph Table Datasource -->
@@ -52,7 +59,7 @@
     <h5 data-toggle="collapse"
         data-target="#sg1"
         aria-expanded="true">
-        {{title}}
+        {{ title | keyToTitle }}
         <span class="label label-success">Inside DHT22</span>
     </h5>
   </div>
