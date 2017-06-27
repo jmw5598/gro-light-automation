@@ -14,3 +14,10 @@
 .navbar-adjustment {
 	padding-top: 56px !important;
 }
+
+/*
+  Prevents layout from shifting when scroll bar appears
+*/
+html {
+    overflow-y: scroll;
+}
