@@ -10,9 +10,11 @@
   <tbody>
     <!-- need to fix this to pull object keys and use to create table rows -->
     <tr *ngFor="let d of data">
-      <td>{{ d.date | date:'short' }}</td>
+      <td>{{ d.timestamp | date:'short' }}</td>
       <td>{{ d.component.alias }}</td>
-      <td>{{ d.temperature }}</td>
+      <!-- HACK: NEED TO FIX -->
+      <td *ngIf="d.temperature">{{ d.temperature }}</td>
+      <td *ngIf="d.humidity">{{ d.humidity }}</td>
     </tr>
   </tbody>
 </table>
