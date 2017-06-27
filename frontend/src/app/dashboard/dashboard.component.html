@@ -1,187 +1,116 @@
 <div class="container-fluid">
   <div class="row">
-  
+
     <!-- BEGIN : LEFT SIDE COLUMN -->
     <div class="col-sm-12 col-md-4 col-lg-2">
       <nav class="navbar navbar-default navbar-fixed-side navbar-adjustment">
         <div class="container">
           <div class="navbar-collapse">
             <div class="container-fluid">
-            
+
               <!-- BEGIN : SENSOR READINGS -->
               <div class="row">
                 <div class="col-xs-12">
-                   <gro-panel-list-group 
+                   <gro-panel-list-group
                      [data]="readings"
                      [heading]="readingsHeading">
                    </gro-panel-list-group>
                  </div>
                </div>
                <!-- END : SENSOR READINGS -->
-               
+
                <!-- BEGIN : RELAY PANEL -->
                <div class="row">
                  <div class="col-xs-12">
-                   <gro-relays [relays]="relays"
-                               (onRelayToggle)="onRelayToggle($event)"></gro-relays>
+                   <gro-relays
+                      [relays]="relays"
+                      (onRelayToggle)="onRelayToggle($event)">
+                   </gro-relays>
                  </div>
                </div>
                <!-- END: RELAY PANEL -->
-               
+
             </div>
           </div>
         </div>
       </nav>
     </div>
     <!-- END : LEFT SIDE COLUMN -->
-    
+
     <!-- BEGIN : RIGHT SIDE COLUMN -->
     <div class="col-sm-12 col-md-8 col-lg-10">
       <div id="content" class="navbar-adjustment">
         <!-- CONTENT WILL GO HERE : GRAPHS, TABLES ETC -->
-        
-        <!-- TABLE -->
-        <div class="row">
 
+        <!-- BEGIN: Main Graph-Table Component -->
+        <div class="row">
+          <div class="col-sm-12">
+            <gro-graph-table>
+            </gro-graph-table>
+          </div>
         </div>
 
-        <!-- CHART -->
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-7">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Daily Temperature & Humidity Averages
-              </div>
-              <div class="panel-body">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Temperature (*F)</th>
-                      <th>Humidity (%)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                    <tr>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                      <td>sdf</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-5">
+          <div class="col-sm-12">
             <div class="row">
-              <div class="col-xs-12">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    Daily High & Low Temps
-                  </div>
-                  <div class="panel-body">
-                    <canvas baseChart
-                            [datasets]="barChartData"
-                            [labels]="barChartLabels"
-                            [options]="barChartOptions"
-                            [legend]="barChartLegend"
-                            [chartType]="barChartType"
-                            [colors]="barChartColors"></canvas>
-                  </div>
-                </div>
+              <div class="col-sm-12 col-md-6">
+                <gro-graph-table
+                    [metricDataType]="'humidity'"
+                    [metricTime]="'hourly'"
+                    [metricCalc]="'high'"
+                    [graphType]="'bar'"
+                    [orientation]="'stacked'">
+                </gro-graph-table>
               </div>
-              <div class="col-xs-12">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    Daily High & Low Humidity
+              <div class="col-sm-12 col-md-6">
+                <gro-graph-table
+                    [metricTime]="'monthly'"
+                    [graphVisible]="false"
+                    [editable]="false">
+                </gro-graph-table>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <gro-graph-table
+                        [metricTime]="'hourly'"
+                        [metricCalc]="'average'"
+                        [tableVisible]="false"
+                        [graphType]="'radar'"
+                        [editable]="false">
+                    </gro-graph-table>
                   </div>
-                  <div class="panel-body">
-                    <canvas baseChart
-                            [datasets]="barChartData"
-                            [labels]="barChartLabels"
-                            [options]="barChartOptions"
-                            [legend]="barChartLegend"
-                            [chartType]="barChartType"
-                            [colors]="barChartColors"></canvas>
+                  <div class="col-sm-12 col-md-6">
+                    <gro-graph-table
+                        [metricTime]="'monthly'"
+                        [tableVisible]="false"
+                        [metricCalc]="'average'"
+                        [graphType]="'line'"
+                        [editable]="false">
+                    </gro-graph-table>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <gro-graph-table
+                        [metricTime]="'daily'"
+                        [metricCalc]="'high'"
+                        [tableVisible]="false"
+                        [graphType]="'bar'"
+                        [editable]="false">
+                    </gro-graph-table>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <gro-graph-table
+                        [metricTime]="'monthly'"
+                        [tableVisible]="false"
+                        [graphType]="'radar'"
+                        [editable]="false">
+                    </gro-graph-table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
     <!-- END : RIGHT SIDE COLUMN -->
-    
+
   </div>
 </div>
