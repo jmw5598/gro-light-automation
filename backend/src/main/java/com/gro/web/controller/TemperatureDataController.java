@@ -35,7 +35,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataPage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=20) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findAllByComponent(component, pageable);
@@ -56,7 +56,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/monthly/average", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataMonthlyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findMonthlyAverageByComponent(component, pageable);
@@ -66,7 +66,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/daily/average", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataDailyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyAverageByComponent(component, pageable);
@@ -76,7 +76,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/daily/high", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataDailyHigh(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyHighByComponent(component, pageable);
@@ -86,7 +86,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/daily/low", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataDailyLow(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyLowByComponent(component, pageable);
@@ -96,7 +96,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/hourly/average", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataHourlyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyAverageByComponent(component, pageable);
@@ -106,7 +106,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/hourly/high", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataHourlyHigh (
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyHighByComponent(component, pageable);
@@ -116,7 +116,7 @@ public class TemperatureDataController {
     @RequestMapping(value="/{id}/temperature/hourly/low", method=RequestMethod.GET)
     public Page<TemperatureData> getTemperatureDataHourlyLow(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=24) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyLowByComponent(component, pageable);
