@@ -2,7 +2,139 @@
   <div class="col-xs-12">
     <div class="panel panel-primary">
       <div class="panel-body">
-        <legend>Data form.</legend>
+        <form>
+
+          <!-- BEGIN : Component Select Box -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend">
+                <h6>Component</h6>
+              </legend>
+              <div class="form-group">
+                <!-- replace with components from database -->
+                <select class="form-control input-sm">
+                  <option>Inside DHT22</option>
+                  <option>Outside DHT22</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- END : Component Select Box -->
+
+          <!-- BEGIN : Data Type Radio Buttons -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend">
+                <h6>Data Type</h6>
+              </legend>
+
+              <!-- RADIO BUTTON : Temperature -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                    (click)="changeMetricDataType('temperature')"
+                    [ngClass]="{ 'active' : metricDataType === 'temperature'}">
+                  <span>Temperature</span>
+                  <i *ngIf="metricDataType === 'temperature'" class="fa fa-check-square-o"></i>
+                  <i *ngIf="metricDataType !== 'temperature'" class="fa fa-square-o"></i>
+                </button>
+              </div>
+
+              <!-- RADIO BUTTON : Humidity -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                    (click)="changeMetricDataType('humidity')"
+                    [ngClass]="{ 'active' : metricDataType === 'humidity' }">
+                  <span>Humidity</span>
+                  <i *ngIf="metricDataType === 'humidity'" class="fa fa-check-square-o"></i>
+                  <i *ngIf="metricDataType !== 'humidity'" class="fa fa-square-o"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <!-- END : Data Type Radio Buttons -->
+
+          <!-- BEGIN : Data Metric Radio Buttons -->
+          <div class="row">
+            <div class="col-xs-12">
+
+              <legend class="dropdown-legend">
+                <h6>Metric</h6>
+              </legend>
+
+              <!-- DROPDOWN : Metric Time -->
+              <div class="form-group">
+                <!-- replace with components from database -->
+                <select [(ngModel)]="metricTime" class="form-control input-sm" name="metricTime">
+                  <option value="hourly">Hourly</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+
+              <!-- RADIO BUTTON : Average  -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc('average')"
+                    [ngClass]="{ 'active' : metricCalc === 'average' }">
+                  <i *ngIf="metricCalc === 'average'" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="metricCalc !== 'average'" class="fa fa-circle-o"></i>
+                  <span>Average</span>
+                </button>
+
+              <!-- RADIO BUTTON : High  -->
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc('high')"
+                    [ngClass]="{ 'active' : metricCalc === 'high' }">
+                  <i *ngIf="metricCalc === 'high'" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="metricCalc !== 'high'" class="fa fa-circle-o"></i>
+                  <span>High</span>
+                </button>
+
+
+              <!-- RADIO BUTTON : Low  -->
+
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc('low')"
+                    [ngClass]="{ 'active' : metricCalc === 'low' }">
+                  <i *ngIf="metricCalc === 'low'" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="metricCalc !== 'low'" class="fa fa-circle-o"></i>
+                  <span>Low</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <!-- END : Data Metric Radio Buttons -->
+
+          <!-- BEGIN : Retrieve Data Button -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend"></legend>
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-success col-xs-12"
+                    (click)="updateData()">
+                  Get Data
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- END : Retrieve Data Button -->
+
+        </form>
       </div> <!-- END : Panel Body -->
     </div> <!-- END : Panel -->
   </div> <!-- END : Column -->
