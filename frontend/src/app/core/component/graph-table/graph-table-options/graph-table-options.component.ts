@@ -33,10 +33,7 @@ export class GraphTableOptionsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.onChangeOrientation.emit("inline");
-    this.onChangeGraphType.emit('line');
-  }
+  ngOnInit() { }
 
   changeOrientation(orientation: string) {
     this.onChangeOrientation.emit(orientation);

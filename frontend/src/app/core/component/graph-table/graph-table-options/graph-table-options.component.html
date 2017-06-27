@@ -75,6 +75,24 @@
               <i class="fa fa-crosshairs"></i>
             </button>
 
+            <!-- BUTTON : Doughnut Chart -->
+            <button
+                role="button"
+                class="btn btn-sm btn-default"
+                (click)="changeGraphType('doughnut')"
+                [ngClass]="{ 'active' : graphType === 'doughnut'}">
+              <i class="fa fa-circle-o"></i>
+            </button>
+
+            <!-- BUTTON : Polar Area Chart -->
+            <button
+                role="button"
+                class="btn btn-sm btn-default"
+                (click)="changeGraphType('polarArea')"
+                [ngClass]="{ 'active' : graphType === 'polarArea'}">
+              <i class="fa fa-area-chart"></i>
+            </button>
+
           </div>
         </div>
         <!-- END : Graph Type Section -->
