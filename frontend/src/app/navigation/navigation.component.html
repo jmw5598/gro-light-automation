@@ -1,12 +1,12 @@
 <!-- TOP FIXED NAVBAR -->
 <div *ngIf="isShown()" [@signal]='signal' class="navbar navbar-inverse navbar-fixed-top">
-  
+
   <!-- BEGIN : NAVBAR-HEADER -->
   <div class="navbar-header">
     <a href="#" class="navbar-brand">Gro</a>
-    <button class="navbar-toggle" 
-            type="button" 
-            data-toggle="collapse" 
+    <button class="navbar-toggle"
+            type="button"
+            data-toggle="collapse"
             data-target="#navbar-main">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -14,11 +14,11 @@
     </button>
   </div>
   <!-- END : NAVBAR-HEADER -->
-  
-  
+
+
   <!-- BEGIN : NAVBAR-MENU -->
   <div class="navbar-collapse collapse" id="navbar-main">
-  
+
     <!-- LEFT NAVBAR BUTTONS -->
     <ul class="nav navbar-nav">
       <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
@@ -41,7 +41,7 @@
       </li>
     </ul>
     <!-- END : LEFT NAVBAR BUTTONS -->
-    
+
     <!-- RIGHT NAVBAR BUTTONS -->
     <ul class="nav navbar-nav pull-right">
       <li>
@@ -52,7 +52,7 @@
       </li>
     </ul>
     <!-- END : RIGHT NAVBAR BUTTONS -->
-    
+
   </div>
   <!-- END : NAVBAR-MENU -->
 
