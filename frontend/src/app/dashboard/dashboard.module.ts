@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { RelaysComponent } from './relays/relays.component';
+import { ReadingsListComponent } from './readings-list/readings-list.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { RelaysComponent } from './relays/relays.component';
   exports: [DashboardComponent],
   declarations: [
     DashboardComponent,
-    RelaysComponent
+    RelaysComponent,
+    ReadingsListComponent
   ]
 })
 export class DashboardModule {}

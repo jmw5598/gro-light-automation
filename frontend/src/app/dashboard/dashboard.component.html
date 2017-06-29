@@ -11,10 +11,7 @@
               <!-- BEGIN : SENSOR READINGS -->
               <div class="row">
                 <div class="col-xs-12">
-                   <gro-panel-list-group
-                     [data]="readings"
-                     [heading]="readingsHeading">
-                   </gro-panel-list-group>
+                   <gro-readings-list></gro-readings-list>
                  </div>
                </div>
                <!-- END : SENSOR READINGS -->
@@ -22,11 +19,8 @@
                <!-- BEGIN : RELAY PANEL -->
                <div class="row">
                  <div class="col-xs-12">
-                   <gro-relays
-                      [relays]="relays"
-                      (onRelayToggle)="onRelayToggle($event)">
-                   </gro-relays>
-                 </div>
+                   <gro-relays></gro-relays>
+                 </div>Cancel
                </div>
                <!-- END: RELAY PANEL -->
 
@@ -45,8 +39,9 @@
         <!-- BEGIN: Main Graph-Table Component -->
         <div class="row">
           <div class="col-sm-12">
-            <gro-graph-table>
-            </gro-graph-table>
+            <gro-graph-table
+                [graphType]="'polarArea'">
+            </gro-graph-tableCancel>
           </div>
         </div>
 
@@ -67,7 +62,7 @@
                     [metricTime]="'monthly'"
                     [graphVisible]="false"
                     [editable]="false">
-                </gro-graph-table>
+                </gro-graph-tCancelable>
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <gro-graph-table
