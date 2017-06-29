@@ -1,0 +1,29 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    {{heading}}
+  </div>
+  <ul class="panel-body-list">
+    <li class="panel-body-list-title">
+        <span>Temperature</span>
+        <ul>
+          <li *ngFor="let t of temperature">
+            {{t.alias}}
+            <span class="label label-default pull-right">{{t.current}}</span>
+          </li>
+        </ul>
+    </li>
+    <li class="panel-body-list-title">
+        <span>Humidity</span>
+        <ul>
+          <li *ngFor="let h of humidity">
+            {{h.alias}}
+            <span class="label label-default pull-right">{{h.current}}</span>
+          </li>
+        </ul>
+    </li>
+
+  </ul>
+</div>
+
+<!-- have first li heading (temperature, humidity, proximity).
+     have inner ul with each li the component with a reading -->
