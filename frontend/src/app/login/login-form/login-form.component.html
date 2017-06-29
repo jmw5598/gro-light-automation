@@ -1,18 +1,17 @@
 <!-- BEGIN : LOGIN-FORM COMPONENT -->
 <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
-  
+
   <!-- BEGIN : ERROR OUTPUT -->
   <gro-alert *ngIf="errorShown"
              [message]="errorMessage"></gro-alert>
   <!-- END : ERROR OUTPUT -->
-  
+
   <!-- INPUT USERNAME -->
   <div class="form-group"
-       [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
-                   'has-success': form.controls['username'].valid }">
-    <label class="sr-only" 
+       [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched}">
+    <label class="sr-only"
            for="username">Username</label>
-        
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
       <div class="input-group-addon input-icon-color">
         <i class="fa fa-user"></i>
@@ -25,32 +24,31 @@
     </div>
   </div>
   <!-- END : INPUT USERNAME -->
-    
-  
+
+
   <!-- INPUT PASSWORD -->
   <div class="form-group"
-       [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
-                   'has-success': form.controls['password'].valid }" >
-    <label class="sr-only" 
+       [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched}" >
+    <label class="sr-only"
            for="password">Password</label>
-        
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
       <div class="input-group-addon input-icon-color">
         <i class="fa fa-lock"></i>
       </div>
-      <input class="form-control" 
-             id="password" 
-             placeholder="Password" 
+      <input class="form-control"
+             id="password"
+             placeholder="Password"
              type="password"
              formControlName="password" />
     </div>
   </div>
   <!-- END : INPUT PASSWORD -->
-        
-  
+
+
   <!-- FORM BUTTONS -->
   <div class="form-group">
-    <button type="submit" 
+    <button type="submit"
             class="col-xs-6 btn btn-default-darker"
             [disabled]="!form.valid">
       Login
@@ -61,6 +59,6 @@
     </button>
   </div>
   <!--  END : FORM BUTTONS -->
-  
+
 </form>
 <!-- END : LOGIN-FORM COMPONENT -->
