@@ -1,8 +1,0 @@
-.scrollable-table>tbody {
-  height: 200px !important;
-  overflow-y: auto;
-}
-
-.scrollable-table>tbody>tr {
-  width: 100%;
-}

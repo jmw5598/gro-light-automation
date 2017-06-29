@@ -1,4 +1,4 @@
-<table id="gro-graph-table" *ngIf="data" class="table table-striped scrollable-table">
+<table id="gro-graph-table" *ngIf="data" class="table table-striped">
   <thead>
     <tr *ngIf="!headings">
       <th *ngFor="let heading of data[0] | keyExtract">{{ heading | keyToTitle:"camel" }}</th>
