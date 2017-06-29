@@ -55,7 +55,7 @@ const appRoutes: Routes = [
         outlet: 'settings'
       },
       {
-        path: 'component.edit/:id',
+        path: 'component/:id/edit',
         component: RPiComponentEditComponent,
         outlet: 'settings'
       },
