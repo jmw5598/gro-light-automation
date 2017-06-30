@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CelsiusToFahrenheitPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(value: number): any {
+    return (value * 1.8 + 32).toFixed(2);
   }
 
 }
