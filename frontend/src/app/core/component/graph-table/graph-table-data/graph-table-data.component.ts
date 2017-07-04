@@ -19,6 +19,9 @@ export class GraphTableDataComponent implements OnInit {
   @Input()
   metricTime: string = 'daily';
 
+  @Input()
+  isLoading: boolean = true;
+
   constructor() { }
 
   ngOnInit() {

@@ -126,8 +126,13 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-success col-xs-12"
+                    [disabled]="isLoading"
                     (click)="updateData()">
-                  Get Data
+                  <span *ngIf="!isLoading">Get Data</span>
+                  <gro-simple-loader
+                      [isLoading]="isLoading"
+                      [size]="'xsmall'">
+                  </gro-simple-loader>
                 </button>
               </div>
             </div>
