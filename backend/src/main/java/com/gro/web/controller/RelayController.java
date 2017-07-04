@@ -42,12 +42,20 @@ public class RelayController {
     public void toggleRelay(
             @PathVariable Integer id,
             @RequestParam(name="state", required=true) String state) throws Exception {
-        System.out.println("inside relay toggle endpoint");
+        
         RPiComponent component = this.validateRPiComponent(id);
         RelayState relayState = this.validateRelayState(state);
         RelayDTO relay = new RelayDTO(component, relayState);
         relayService.toggle(relay);
         
+    }
+    
+    @RequestMapping(value="/{id}/relay/poll", method=RequestMethod.GET)
+    public void pollRelay(@PathVariable("id") Integer id) throws Exception {
+        RPiComponent component = this.validateRPiComponent(id);
+        RelayState relayState = null;
+        RelayDTO relay = new RelayDTO(component, relayState);
+        relayService.poll(relay);
     }
     
     private RPiComponent validateRPiComponent(Integer id) {
