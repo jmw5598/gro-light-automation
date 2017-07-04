@@ -1,3 +1,7 @@
-<p>
-  simple-loader works!
-</p>
+<div *ngIf="isLoading"
+     class="simple-loader"
+     [ngClass]="{'simple-loader-xs' : size === 'xsmall',
+                 'simple-loader-sm' : size === 'small',
+                 'simple-loader-md' : size === 'medium',
+                 'simple-loader-lg' : size === 'large'}">
+</div>
