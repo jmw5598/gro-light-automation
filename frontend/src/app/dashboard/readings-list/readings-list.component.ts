@@ -21,6 +21,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
 
   private temperatureEvents;
   private humidityEvents;
+  private temperatureUnit: string = "celsius";
 
   constructor(
     private rPiComponentService: RPiComponentService
@@ -53,6 +54,13 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.humidityEvents.close();
     this.temperatureEvents.close();
+  }
+
+  toggleTemperatureUnit() {
+    if(this.temperatureUnit === 'celsius')
+      this.temperatureUnit = 'fahrenheit';
+    else
+      this.temperatureUnit = 'celsius';
   }
 
   private handleTemperatureEvent(message: any) {
