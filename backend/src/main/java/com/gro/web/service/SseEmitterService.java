@@ -1,9 +1,5 @@
 package com.gro.web.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 public interface SseEmitterService<T> {
