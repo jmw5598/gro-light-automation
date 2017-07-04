@@ -1,5 +1,6 @@
 package com.gro.messaging;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -17,6 +18,44 @@ import org.springframework.messaging.MessageHandler;
 
 @Configuration
 public class MessagingConfig {
+    
+    @Value("${mqtt.url}")
+    private String mqttUrl;
+    
+    @Value("${mqtt.username}")
+    private String mqttUsername;
+    
+    @Value("${mqtt.password}")
+    private String mqttPassword;
+    
+    @Bean
+    public MqttPahoClientFactory mqttClientFactory() {    
+        DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
+        factory.setServerURIs(mqttUrl);
+        factory.setUserName(mqttUsername);
+        factory.setPassword(mqttPassword);
+        return factory;
+    }
+    
+    @Bean
+    public MessageProducer inbound() {
+        MqttPahoMessageDrivenChannelAdapter adapter =
+                new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), "TEMPERATURE", "HUMIDITY", "PROXIMITY", "RELAY.State");
+        adapter.setCompletionTimeout(5000);
+        adapter.setConverter(new DefaultPahoMessageConverter());
+        adapter.setQos(1);
+        adapter.setOutputChannel(mqttRouterChannel());
+        return adapter;
+    }
+    
+    @Bean
+    @ServiceActivator(inputChannel="mqttOutboundChannel")
+    public MessageHandler outbound() {
+        MqttPahoMessageHandler handler = new MqttPahoMessageHandler("mqttPublisher", mqttClientFactory());
+        handler.setAsync(true);
+        handler.setDefaultTopic("TEST");
+        return handler;
+    }
     
     @Bean
     public MessageChannel mqttRouterChannel() {
@@ -69,36 +108,6 @@ public class MessagingConfig {
     @Bean
     public MessageChannel relayTransformerChannel() {
         return new DirectChannel();
-    }
-    
-    
-    @Bean
-    public MqttPahoClientFactory mqttClientFactory() {
-        DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
-        factory.setServerURIs("tcp://192.168.1.8:1883");
-        factory.setUserName("username");
-        factory.setPassword("password");
-        return factory;
-    }
-    
-    @Bean
-    public MessageProducer inbound() {
-        MqttPahoMessageDrivenChannelAdapter adapter =
-                new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), "TEMPERATURE", "HUMIDITY", "PROXIMITY", "RELAY");
-        adapter.setCompletionTimeout(5000);
-        adapter.setConverter(new DefaultPahoMessageConverter());
-        adapter.setQos(1);
-        adapter.setOutputChannel(mqttRouterChannel());
-        return adapter;
-    }
-    
-    @Bean
-    @ServiceActivator(inputChannel="mqttOutboundChannel")
-    public MessageHandler outbound() {
-        MqttPahoMessageHandler handler = new MqttPahoMessageHandler("mqttPublisher", mqttClientFactory());
-        handler.setAsync(true);
-        handler.setDefaultTopic("TEST");
-        return handler;
     }
     
 }
