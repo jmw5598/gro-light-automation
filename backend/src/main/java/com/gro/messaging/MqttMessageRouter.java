@@ -12,22 +12,20 @@ public class MqttMessageRouter {
     @Router(inputChannel="mqttRouterChannel")
     public String route(@Header("mqtt_topic") String topic) {
         String route = null;
-        RPiComponentType type = RPiComponentType.valueOf(topic);
-        
-        switch(type) {
-            case TEMPERATURE:
+        switch(topic) {
+            case "TEMPERATURE":
                 route = "temperatureTransformerChannel";
                 break;
-            case HUMIDITY:
+            case "HUMIDITY":
                 route = "humidityTransformerChannel";
                 break;
-            case TEMPERATURE_HUMIDITY:
+            case "TEMPERATURE_HUMIDITY":
                 route = "temperatureHumidityTransformerChannel";
                 break;
-            case PROXIMITY:
+            case "PROXIMITY":
                 route = "proximityTransformerChannel";
                 break;
-            case RELAY:
+            case "RELAY.State":
                 route = "relayTransformerChannel";
                 break;
         }
