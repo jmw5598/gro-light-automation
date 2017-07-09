@@ -1,5 +1,8 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" *ngIf="isLoading">
+    <gro-page-loader></gro-page-loader>
+  </div>
+  <div class="row" *ngIf="!isLoading">
 
     <!-- BEGIN : LEFT SIDE COLUMN -->
     <div class="col-sm-12 col-md-4 col-lg-2">
@@ -20,7 +23,7 @@
                <div class="row">
                  <div class="col-xs-12">
                    <gro-relays></gro-relays>
-                 </div>Cancel
+                 </div>
                </div>
                <!-- END: RELAY PANEL -->
 
@@ -41,7 +44,7 @@
           <div class="col-sm-12">
             <gro-graph-table
                 [graphType]="'polarArea'">
-            </gro-graph-tableCancel>
+            </gro-graph-table>
           </div>
         </div>
 
@@ -62,7 +65,7 @@
                     [metricTime]="'monthly'"
                     [graphVisible]="false"
                     [editable]="false">
-                </gro-graph-tCancelable>
+                </gro-graph-table>
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <gro-graph-table
