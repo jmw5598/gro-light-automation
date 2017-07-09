@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-page-loader',
+  selector: 'gro-page-loader',
   templateUrl: './page-loader.component.html',
   styleUrls: ['./page-loader.component.css']
 })
