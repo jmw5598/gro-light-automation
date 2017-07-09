@@ -21,6 +21,7 @@ import { GraphTableOptionsComponent } from './component/graph-table/graph-table-
 import { GraphTableDataComponent } from './component/graph-table/graph-table-data/graph-table-data.component';
 import { CelsiusToFahrenheitPipe } from './pipe/celsius-to-fahrenheit/celsius-to-fahrenheit.pipe';
 import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.component';
+import { PageLoaderComponent } from './component/page-loader/page-loader.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.c
     GraphComponent,
     GraphTableComponent,
     CelsiusToFahrenheitPipe,
-    SimpleLoaderComponent
+    SimpleLoaderComponent,
+    PageLoaderComponent
   ],
   declarations: [
     AlertComponent,
@@ -53,7 +55,8 @@ import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.c
     GraphTableOptionsComponent,
     GraphTableDataComponent,
     CelsiusToFahrenheitPipe,
-    SimpleLoaderComponent
+    SimpleLoaderComponent,
+    PageLoaderComponent
   ],
   providers: [
     HumidityDataService,
