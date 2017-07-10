@@ -21,3 +21,54 @@
 html {
     overflow-y: scroll;
 }
+
+/*
+  Pre-boostrap Spinner classes
+*/
+
+.pre-bootstrap-loader-outter {
+  transition: opacity .2s ease-in-out;
+  opacity: 0;
+  width: 128px;
+  height: 128px;
+  background: #2b3e50;
+  background: url('./assets/images/spinnerbggood.png') center center no-repeat;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -1;
+
+  /*this to solve "the content will not be cut when the window is smaller than the content": */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+app-root:empty + .pre-bootstrap-loader-outter {
+  opacity: 1;
+  z-index: 100;
+}
+
+.pre-bootstrap-loader-spinner {
+  width: 128px;
+  height: 128px;
+}
+
+.pre-bootstrap-loader-outter, .pre-bootstrap-loader-spinner {
+  border-radius: 50%;
+}
+
+.pre-bootstrap-loader-outter > .pre-bootstrap-loader-spinner {
+  border: 8px solid #4e5d6c; /* Light grey */
+  border-top: 8px solid #5cb85c; /* green */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
