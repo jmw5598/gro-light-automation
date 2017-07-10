@@ -13,6 +13,12 @@ export class SimpleLoaderComponent implements OnInit {
   @Input()
   size: string = 'medium';
 
+  @Input()
+  trackColor: string;
+
+  @Input()
+  spinnerColor: string;
+
   constructor() { }
 
   ngOnInit() {

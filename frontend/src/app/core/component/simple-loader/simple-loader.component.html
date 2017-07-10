@@ -3,5 +3,7 @@
      [ngClass]="{'simple-loader-xs' : size === 'xsmall',
                  'simple-loader-sm' : size === 'small',
                  'simple-loader-md' : size === 'medium',
-                 'simple-loader-lg' : size === 'large'}">
+                 'simple-loader-lg' : size === 'large'}"
+     [ngStyle]="{'border-color' : trackColor ,
+                 'border-top-color' : spinnerColor }">
 </div>
