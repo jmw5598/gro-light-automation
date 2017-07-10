@@ -1,6 +1,6 @@
 .loader-outter {
-  width: 152px;
-  height: 152px;
+  width: 128px;
+  height: 128px;
   background: #2b3e50;
   background: url('./spinnerbggood.png') center center no-repeat;
 
@@ -18,8 +18,8 @@
 }
 
 .loader-spinner {
-  width: 152px;
-  height: 152px;
+  width: 128px;
+  height: 128px;
 }
 
 .loader-outter, .loader-spinner {
@@ -27,9 +27,9 @@
 }
 
 .loader-outter > .loader-spinner {
-  border: 16px solid #4e5d6c; /* Light grey */
-  border-top: 16px solid #5cb85c; /* green */
-  animation: spin 1s linear infinite;
+  border: 8px solid #4e5d6c; /* Light grey */
+  border-top: 8px solid #5cb85c; /* green */
+  animation: spin .8s linear infinite;
 }
 
 @keyframes spin {
