@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard-builder-toolbar',
+  selector: 'gro-dashboard-builder-toolbar',
   templateUrl: './dashboard-builder-toolbar.component.html',
   styleUrls: ['./dashboard-builder-toolbar.component.css']
 })
