@@ -50,7 +50,7 @@ export const LayoutPresets = {
   */
   fixedLeftRightPanelLayout: [
     new Panel(
-      PanelType.FIXED_SIDE_RIGHT,
+      PanelType.FIXED_SIDE_LEFT,
       new PanelConfiguration(
         PanelLocation.RIGHT,
         ''
