@@ -6,6 +6,7 @@ import { AuthenticationGuard } from './authentication/guard/authentication.guard
 import { RoleGuard } from './authentication/guard/role.guard';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardBuilderComponent } from './dashboard/dashboard-builder/dashboard-builder.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -24,8 +25,18 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard],
+    children: [
+      {
+        path: '',
+        component: DashboardComponent
+      },
+      {
+        path: 'builder',
+        component: DashboardBuilderComponent,
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: 'schedule',
@@ -71,7 +82,7 @@ const appRoutes: Routes = [
       }
     ]
   },
-  
+
   {
     path: 'unauthorized',
     component: UnauthorizedComponent
@@ -94,4 +105,3 @@ const appRoutes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
