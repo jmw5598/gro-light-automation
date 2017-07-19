@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-panel',
+  selector: 'gro-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.css']
 })
 export class PanelComponent implements OnInit {
+
+  @Input()
+  configuration: Object;
 
   constructor() { }
 
