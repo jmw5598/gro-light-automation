@@ -13,14 +13,14 @@ export const LayoutPresets = {
       PanelType.FIXED_SIDE_LEFT,
       new PanelConfiguration(
         PanelLocation.LEFT,
-        ''
+        ['']
       )
     ),
     new Panel(
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ''
+        ['']
       )
     )
   ],
@@ -33,14 +33,14 @@ export const LayoutPresets = {
       PanelType.FIXED_SIDE_RIGHT,
       new PanelConfiguration(
         PanelLocation.RIGHT,
-        ''
+        ['col-md-push-8', 'col-lg-push-10']
       )
     ),
     new Panel(
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ''
+        ['']
       )
     )
   ],
@@ -52,22 +52,22 @@ export const LayoutPresets = {
     new Panel(
       PanelType.FIXED_SIDE_LEFT,
       new PanelConfiguration(
-        PanelLocation.RIGHT,
-        ''
+        PanelLocation.LEFT,
+        ['']
       )
     ),
     new Panel(
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ''
+        ['']
       )
     ),
     new Panel(
       PanelType.FIXED_SIDE_RIGHT,
       new PanelConfiguration(
-        PanelLocation.LEFT,
-        ''
+        PanelLocation.RIGHT,
+        ['col-md-push-6', 'col-lg-push-8']
       )
     )
   ],
@@ -80,7 +80,7 @@ export const LayoutPresets = {
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ''
+        ['']
       )
     )
   ]
