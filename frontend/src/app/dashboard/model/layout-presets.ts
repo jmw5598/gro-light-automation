@@ -20,7 +20,7 @@ export const LayoutPresets = {
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ['']
+        ['col-md-8', 'col-lg-10']
       )
     )
   ],
@@ -40,7 +40,7 @@ export const LayoutPresets = {
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ['']
+        ['col-md-8', 'col-lg-10', 'col-md-pull-4', 'col-lg-pull-2']
       )
     )
   ],
@@ -60,14 +60,14 @@ export const LayoutPresets = {
       PanelType.CENTER,
       new PanelConfiguration(
         PanelLocation.CENTER,
-        ['']
+        ['col-md-4', 'col-lg-8']
       )
     ),
     new Panel(
       PanelType.FIXED_SIDE_RIGHT,
       new PanelConfiguration(
         PanelLocation.RIGHT,
-        ['col-md-push-6', 'col-lg-push-8']
+        ['']
       )
     )
   ],
