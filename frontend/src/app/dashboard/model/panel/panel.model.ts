@@ -1,18 +1,19 @@
+import { ComponentItem } from '../component-item/component-item.model';
 import { PanelType } from './panel-type.enum';
 import { PanelConfiguration } from './panel-configuration.model';
 
 export class Panel {
 
-  public components: Array<any>
+  public components: Array<ComponentItem>
 
   constructor(
     public type: PanelType,
     public configuration: PanelConfiguration
   ) {
-    this.components = new Array<any>();
+    this.components = new Array<ComponentItem>();
   }
 
-  addComponent(component: any) {
+  addComponent(component: ComponentItem) {
     if(component !== null)
       this.components.push(component);
   }
