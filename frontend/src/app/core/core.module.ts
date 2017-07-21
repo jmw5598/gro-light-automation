@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { ChartsModule } from 'ng2-charts';
 
 import { HumidityDataService } from './service/humidity-data/humidity-data.service';
 import { RelayService } from './service/relay/relay.service';
@@ -19,7 +18,6 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
 
 @NgModule({
   imports: [
-    ChartsModule,
     SharedModule
   ],
   exports: [
