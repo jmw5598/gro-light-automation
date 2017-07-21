@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { RelayDTO } from '../../core/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '../../../core/model/rpicomponent/relaydto.model';
 
-import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
-import { RelayService } from '../../core/service/relay/relay.service';
+import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
+import { RelayService } from '../../../core/service/relay/relay.service';
 
 declare let EventSource:any;
 
