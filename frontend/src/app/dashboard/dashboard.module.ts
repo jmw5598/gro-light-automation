@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { DashboardComponent } from './dashboard.component';
-import { RelaysComponent } from './relays/relays.component';
-import { ReadingsListComponent } from './readings-list/readings-list.component';
 import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
 import { DashboardBuilderToolbarComponent } from './dashboard-builder/dashboard-builder-toolbar/dashboard-builder-toolbar.component';
+import { DashboardComponent } from './dashboard.component';
+import { FixedSidePanelComponent } from './component/panel/fixed-side-panel/fixed-side-panel.component';
+import { GraphComponent } from './component/graph/graph.component';
+import { GraphTableComponent } from './component/graph-table/graph-table.component';
+import { PageableTableComponent } from './component/pageable-table/pageable-table.component';
+import { PanelComponent } from './component/panel/panel.component';
+import { ReadingsListComponent } from './component/readings-list/readings-list.component';
+import { RelaysComponent } from './component/relays/relays.component';
+import { TableComponent } from './component/table/table.component';
 
 @NgModule({
   imports: [
@@ -16,11 +22,17 @@ import { DashboardBuilderToolbarComponent } from './dashboard-builder/dashboard-
   ],
   exports: [DashboardComponent],
   declarations: [
-    DashboardComponent,
-    RelaysComponent,
-    ReadingsListComponent,
     DashboardBuilderComponent,
-    DashboardBuilderToolbarComponent
+    DashboardBuilderToolbarComponent,
+    DashboardComponent,
+    FixedSidePanelComponent,
+    GraphComponent,
+    GraphTableComponent,
+    PageableTableComponent,
+    PanelComponent,
+    ReadingsListComponent,
+    RelaysComponent,
+    TableComponent
   ]
 })
 export class DashboardModule {}
