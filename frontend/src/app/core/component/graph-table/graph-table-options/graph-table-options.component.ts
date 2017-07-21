@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { GraphType } from '../../../../dashboard/model/configuration/graph/graph-type.enum';
+import { OrientationType } from '../../../../dashboard/model/configuration/graph-table/orientation-type.enum';
+
 @Component({
   selector: 'gro-graph-table-options',
   templateUrl: './graph-table-options.component.html',
@@ -7,11 +10,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GraphTableOptionsComponent implements OnInit {
 
-  @Output()
-  onChangeOrientation: EventEmitter<string> = new EventEmitter<string>();
+  private orientationTypeEnum = OrientationType;
+  private graphTypeEnum = GraphType;
 
   @Output()
-  onChangeGraphType: EventEmitter<string> = new EventEmitter<string>();
+  onChangeOrientation: EventEmitter<OrientationType> = new EventEmitter<OrientationType>();
+
+  @Output()
+  onChangeGraphType: EventEmitter<GraphType> = new EventEmitter<GraphType>();
 
   @Output()
   onChangeGraphVisibility: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -20,10 +26,10 @@ export class GraphTableOptionsComponent implements OnInit {
   onChangeTableVisibility: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input()
-  orientation: string = 'inline';
+  orientation: OrientationType = OrientationType.INLINE;
 
   @Input()
-  graphType: string = 'line';
+  graphType: GraphType = GraphType.LINE;
 
   @Input()
   graphVisible: boolean = true;
@@ -35,11 +41,11 @@ export class GraphTableOptionsComponent implements OnInit {
 
   ngOnInit() { }
 
-  changeOrientation(orientation: string) {
+  changeOrientation(orientation: OrientationType) {
     this.onChangeOrientation.emit(orientation);
   }
 
-  changeGraphType(graphType: string) {
+  changeGraphType(graphType: GraphType) {
     this.graphType = graphType;
     this.onChangeGraphType.emit(graphType);
   }

@@ -1,5 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { RPiComponentService } from '../../../service/rpicomponent/rpicomponent.service';
+import { RPiComponent } from '../../../model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../../../model/rpicomponent/rpicomponent-type.enum';
+
+import { DataSourceConfiguration } from '../../../../dashboard/model/configuration/data-source/data-source.configuration';
+import { MetricTimeSpan } from '../../../../dashboard/model/configuration/data-source/metric-time-span.enum';
+import { MetricCalculation } from '../../../../dashboard/model/configuration/data-source/metric-calculation.enum';
+import { MetricDataType } from '../../../../dashboard/model/configuration/data-source/metric-data-type.enum';
+
 @Component({
   selector: 'gro-graph-table-data',
   templateUrl: './graph-table-data.component.html',
@@ -7,41 +16,60 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GraphTableDataComponent implements OnInit {
 
+  private metricDataTypeEnum = MetricDataType;
+  private metricCalculationEnum = MetricCalculation;
+  private metricTimeSpanEnum = MetricTimeSpan;
+
   @Output()
   onUpdateData: EventEmitter<Object> = new EventEmitter<Object>();
 
   @Input()
-  metricDataType: string = 'temperature';
-
-  @Input()
-  metricCalc: string = 'average';
-
-  @Input()
-  metricTime: string = 'daily';
+  configuration: DataSourceConfiguration;
 
   @Input()
   isLoading: boolean = true;
 
-  constructor() { }
+  private components: RPiComponent[];
+
+  selectedComponent: RPiComponent;
+
+  constructor(
+    private rPiComponentService: RPiComponentService
+  ) {
+    this.configuration = new DataSourceConfiguration();
+  }
 
   ngOnInit() {
-    this.updateData();
+    this.rPiComponentService
+      .findAllByType(RPiComponentType.TEMPERATURE_HUMIDITY)
+        .subscribe(
+          data => {
+            this.components = data;
+            this.selectedComponent = this.components[1];
+            this.updateData()
+          },
+          error => console.log("error getting graph-table-data components")
+        );
   }
 
-  changeMetricDataType(metricDataType: string) {
-    this.metricDataType = metricDataType;
+  changeMetricDataType(dataType: MetricDataType) {
+    this.configuration.dataType = dataType;
   }
 
-  changeMetricCalc(metricCalc: string) {
-    this.metricCalc = metricCalc;
+  changeMetricCalc(calculation: MetricCalculation) {
+    this.configuration.calculation = calculation;
+  }
+
+  changeSelectedComponent(component: RPiComponent) {
+    this.selectedComponent = component;
   }
 
   updateData() {
     let details = {
-      componentId: 1,
-      metricDataType: this.metricDataType,
-      metricTime: this.metricTime,
-      metricCalc: this.metricCalc
+      component: this.selectedComponent,
+      metricDataType: this.configuration.dataType,
+      metricTime: this.configuration.timeSpan,
+      metricCalc: this.configuration.calculation
     };
     this.onUpdateData.emit(details);
   }

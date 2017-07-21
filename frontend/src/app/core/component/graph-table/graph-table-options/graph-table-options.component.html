@@ -14,8 +14,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeOrientation('inline')"
-                [ngClass]="{ 'active' : orientation === 'inline'}">
+                (click)="changeOrientation(orientationTypeEnum.INLINE)"
+                [ngClass]="{ 'active' : orientation === orientationTypeEnum.INLINE }">
               <i class="fa fa-arrows-h"></i>
             </button>
 
@@ -23,8 +23,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeOrientation('stacked')"
-                [ngClass]="{ 'active' : orientation === 'stacked'}">
+                (click)="changeOrientation(orientationTypeEnum.STACKED)"
+                [ngClass]="{ 'active' : orientation === orientationTypeEnum.STACKED}">
               <i class="fa fa-arrows-v"></i>
             </button>
 
@@ -44,7 +44,7 @@
                 role="button"
                 class="btn btn-sm btn-default"
                 (click)="changeGraphType('line')"
-                [ngClass]="{ 'active' : graphType === 'line'}">
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.LINE }">
               <i class="fa fa-line-chart"></i>
             </button>
 
@@ -52,8 +52,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeGraphType('bar')"
-                [ngClass]="{ 'active' : graphType === 'bar'}">
+                (click)="changeGraphType(graphTypeEnum.BAR)"
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.BAR }">
               <i class="fa fa-bar-chart"></i>
             </button>
 
@@ -61,8 +61,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeGraphType('pie')"
-                [ngClass]="{ 'active' : graphType === 'pie'}">
+                (click)="changeGraphType(graphTypeEnum.PIE)"
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.PIE }">
               <i class="fa fa-pie-chart"></i>
             </button>
 
@@ -70,8 +70,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeGraphType('radar')"
-                [ngClass]="{ 'active' : graphType === 'radar'}">
+                (click)="changeGraphType(graphTypeEnum.RADAR)"
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.RADAR }">
               <i class="fa fa-crosshairs"></i>
             </button>
 
@@ -79,8 +79,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeGraphType('doughnut')"
-                [ngClass]="{ 'active' : graphType === 'doughnut'}">
+                (click)="changeGraphType(graphTypeEnum.DOUGHNUT)"
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.DOUGHNUT }">
               <i class="fa fa-circle-o"></i>
             </button>
 
@@ -88,8 +88,8 @@
             <button
                 role="button"
                 class="btn btn-sm btn-default"
-                (click)="changeGraphType('polarArea')"
-                [ngClass]="{ 'active' : graphType === 'polarArea'}">
+                (click)="changeGraphType(graphTypeEnum.POLAR_AREA)"
+                [ngClass]="{ 'active' : graphType === graphTypeEnum.POLAR_AREA }">
               <i class="fa fa-area-chart"></i>
             </button>
 

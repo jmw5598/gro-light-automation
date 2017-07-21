@@ -12,9 +12,14 @@
               </legend>
               <div class="form-group">
                 <!-- replace with components from database -->
-                <select class="form-control input-sm">
-                  <option>Inside DHT22</option>
-                  <option>Outside DHT22</option>
+                <select
+                    class="form-control input-sm"
+                    [ngModel]="selectedComponent"
+                    [ngModelOptions]="{standalone: true}" name="component"
+                    (ngModelChange)="changeSelectedComponent($event)">
+                  <option *ngFor="let component of components" [ngValue]="component">
+                    {{ component.alias }}
+                  </option>
                 </select>
               </div>
             </div>
@@ -33,11 +38,11 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-default col-xs-12 btn-checkbox"
-                    (click)="changeMetricDataType('temperature')"
-                    [ngClass]="{ 'active' : metricDataType === 'temperature'}">
+                    (click)="changeMetricDataType(metricDataTypeEnum.TEMPERATURE)"
+                    [ngClass]="{ 'active' : configuration.dataType === metricDataTypeEnum.TEMPERATURE }">
                   <span>Temperature</span>
-                  <i *ngIf="metricDataType === 'temperature'" class="fa fa-check-square-o"></i>
-                  <i *ngIf="metricDataType !== 'temperature'" class="fa fa-square-o"></i>
+                  <i *ngIf="configuration.dataType === metricDataTypeEnum.TEMPERATURE" class="fa fa-check-square-o"></i>
+                  <i *ngIf="configuration.dataType !== metricDataTypeEnum.TEMPERATURE" class="fa fa-square-o"></i>
                 </button>
               </div>
 
@@ -46,11 +51,11 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-default col-xs-12 btn-checkbox"
-                    (click)="changeMetricDataType('humidity')"
-                    [ngClass]="{ 'active' : metricDataType === 'humidity' }">
+                    (click)="changeMetricDataType(metricDataTypeEnum.HUMIDITY)"
+                    [ngClass]="{ 'active' : configuration.dataType === metricDataTypeEnum.HUMIDITY }">
                   <span>Humidity</span>
-                  <i *ngIf="metricDataType === 'humidity'" class="fa fa-check-square-o"></i>
-                  <i *ngIf="metricDataType !== 'humidity'" class="fa fa-square-o"></i>
+                  <i *ngIf="configuration.dataType === metricDataTypeEnum.HUMIDITY" class="fa fa-check-square-o"></i>
+                  <i *ngIf="configuration.dataType !== metricDataTypeEnum.HUMIDITY" class="fa fa-square-o"></i>
                 </button>
               </div>
 
@@ -69,11 +74,11 @@
               <!-- DROPDOWN : Metric Time -->
               <div class="form-group">
                 <!-- replace with components from database -->
-                <select [(ngModel)]="metricTime" class="form-control input-sm" name="metricTime">
-                  <option value="hourly">Hourly</option>
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
+                <select [(ngModel)]="configuration.timeSpan" class="form-control input-sm" name="metricTime">
+                  <option [ngValue]="metricTimeSpanEnum.HOURLY">Hourly</option>
+                  <option [ngValue]="metricTimeSpanEnum.DAILY">Daily</option>
+                  <option [ngValue]="metricTimeSpanEnum.WEEKLY">Weekly</option>
+                  <option [ngValue]="metricTimeSpanEnum.MONTHLY">Monthly</option>
                 </select>
               </div>
 
@@ -82,10 +87,10 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-default btn-radio"
-                    (click)="changeMetricCalc('average')"
-                    [ngClass]="{ 'active' : metricCalc === 'average' }">
-                  <i *ngIf="metricCalc === 'average'" class="fa fa-dot-circle-o"></i>
-                  <i *ngIf="metricCalc !== 'average'" class="fa fa-circle-o"></i>
+                    (click)="changeMetricCalc(metricCalculationEnum.AVERAGE)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.AVERAGE }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.AVERAGE" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.AVERAGE" class="fa fa-circle-o"></i>
                   <span>Average</span>
                 </button>
 
@@ -93,10 +98,10 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-default btn-radio"
-                    (click)="changeMetricCalc('high')"
-                    [ngClass]="{ 'active' : metricCalc === 'high' }">
-                  <i *ngIf="metricCalc === 'high'" class="fa fa-dot-circle-o"></i>
-                  <i *ngIf="metricCalc !== 'high'" class="fa fa-circle-o"></i>
+                    (click)="changeMetricCalc(metricCalculationEnum.HIGH)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.HIGH }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.HIGH" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.HIGH" class="fa fa-circle-o"></i>
                   <span>High</span>
                 </button>
 
@@ -106,10 +111,10 @@
                 <button
                     role="button"
                     class="btn btn-sm btn-default btn-radio"
-                    (click)="changeMetricCalc('low')"
-                    [ngClass]="{ 'active' : metricCalc === 'low' }">
-                  <i *ngIf="metricCalc === 'low'" class="fa fa-dot-circle-o"></i>
-                  <i *ngIf="metricCalc !== 'low'" class="fa fa-circle-o"></i>
+                    (click)="changeMetricCalc(metricCalculationEnum.LOW)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.LOW }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.LOW" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.LOW" class="fa fa-circle-o"></i>
                   <span>Low</span>
                 </button>
               </div>

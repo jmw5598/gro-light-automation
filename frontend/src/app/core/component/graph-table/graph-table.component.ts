@@ -4,6 +4,10 @@ import { TemperatureDataService } from '../../service/temperature-data/temperatu
 import { HumidityDataService } from '../../service/humidity-data/humidity-data.service';
 import { Page } from '../../model/paging/page.model';
 
+import { GraphTableConfiguration } from '../../../dashboard/model/configuration/graph-table/graph-table.configuration';
+import { GraphType } from '../../../dashboard/model/configuration/graph/graph-type.enum';
+import { OrientationType } from '../../../dashboard/model/configuration/graph-table/orientation-type.enum';
+
 @Component({
   selector: 'gro-graph-table',
   templateUrl: './graph-table.component.html',
@@ -11,35 +15,21 @@ import { Page } from '../../model/paging/page.model';
 })
 export class GraphTableComponent implements OnInit {
 
+  private orientationTypeEnum = OrientationType;
+  private graphTypeEnum = GraphType;
+
   @Output()
   onPageChange = new EventEmitter<any>();
 
+  //new single input with GraphTableConfiguration
   @Input()
-  orientation: string = "inline";
+  configuration: GraphTableConfiguration;
 
-  @Input()
-  graphType: string = "line";
-
-  @Input()
   graphData: Array<any>;
-
-  @Input()
   graphLabels: Array<any>;
-
-  @Input()
-  graphVisible: boolean = true;
-
-  @Input()
-  tableVisible: boolean = true;
-
-  @Input()
-  editable: boolean = true;
-
-  @Input()
   headings: string[];
-
-  @Input()
   title: string = '';
+  titleLabel: string;
 
   // INPUTS FOR DATA
   @Input()
@@ -52,12 +42,14 @@ export class GraphTableComponent implements OnInit {
   metricCalc: string = 'average';
 
   page: Page<any>;
+  isLoading: boolean = true;
 
   constructor(
     private temperatureDataService: TemperatureDataService,
     private humidityDataService: HumidityDataService
-
-  ) { }
+  ) {
+    this.configuration = new GraphTableConfiguration();
+  }
 
   ngOnInit() { }
 
@@ -67,38 +59,56 @@ export class GraphTableComponent implements OnInit {
   }
 
   onUpdateData(event:any) {
+    console.log("updating data...");
+    console.log(event);
+    this.isLoading = true;
     let url: string = event.metricTime + '/' + event.metricCalc;
-    if(event.metricDataType === 'temperature') {
+    if(event.metricDataType.toLowerCase() === 'temperature') {
       this.temperatureDataService
-        .findCustomByComponent(event.componentId, url, 0)
+        .findCustomByComponent(event.component.id, url, 0)
           .subscribe(
-            data => this.handleTemperatureDataUpdate(event, data),
-            error => console.log('error getting temp data') //replace with toast message?
+            data => {
+              console.log("success update data temperature");
+              this.handleTemperatureDataUpdate(event, data);
+              this.isLoading = false;
+            },
+            error => {
+              console.log('error getting temp data'); //replace with toast message?
+              this.isLoading = false;
+            }
           );
-      } else if(event.metricDataType === 'humidity') {
+      } else if(event.metricDataType.toLowerCase() === 'humidity') {
+        console.log("event change ");
+        console.log(event);
         this.humidityDataService
-          .findCustomByComponent(event.componentId, url, 0)
+          .findCustomByComponent(event.component.id, url, 0)
             .subscribe(
-              data => this.handleHumidityDataUpdate(event, data),
-              error => console.log('error getting temp data') //replace with toast message?
+              data => {
+                this.handleHumidityDataUpdate(event, data);
+                this.isLoading = false;
+              },
+              error => {
+                console.log('error getting temp data'); //replace with toast message?
+                this.isLoading = false;
+              }
             );
       }
   }
 
-  onChangeOrientation(orientation: string) {
-    this.orientation = orientation;
+  onChangeOrientation(orientation: OrientationType) {
+    this.configuration.orientation = orientation;
   }
 
-  onChangeGraphType(graphType: string) {
-    this.graphType = graphType;
+  onChangeGraphType(graphType: GraphType) {
+    this.configuration.graph.type = graphType;
   }
 
-  onChangeGraphVisibility(state: boolean) {
-    this.graphVisible = state;
+  onChangeGraphVisibility(visible: boolean) {
+    this.configuration.graph.visible = visible;
   }
 
-  onChangeTableVisibility(state: boolean) {
-    this.tableVisible = state;
+  onChangeTableVisibility(visible: boolean) {
+    this.configuration.table.visible = visible;
   }
 
   private handleTemperatureDataUpdate(event: any, data:any) {
@@ -106,10 +116,11 @@ export class GraphTableComponent implements OnInit {
     this.graphData = [];
     this.graphLabels = [];
     this.page.content.forEach(e => {
-      this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc
       this.graphData.push(e.temperature); // built data for graph
       this.graphLabels.push(e.timestamp.getDate().toString());      // built labels for graph
     });
+    this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc;
+    this.titleLabel = event.component.alias;
   }
 
   private handleHumidityDataUpdate(event: any, data:any) {
@@ -117,10 +128,11 @@ export class GraphTableComponent implements OnInit {
     this.graphData = [];
     this.graphLabels = [];
     this.page.content.forEach(e => {
-      this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc
       this.graphData.push(e.humidity); // built data for graph
       this.graphLabels.push(e.timestamp.getDate().toString());      // built labels for graph
     });
+    this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc;
+    this.titleLabel = event.component.alias;
   }
 
 }
