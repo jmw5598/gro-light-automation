@@ -1,4 +1,4 @@
 export enum SensorComponentItem {
-  SIMPLE_SENSOR = <any>"Simple Sensor",
-  SENSOR_LIST = <any>"Sensor List"
+  SIMPLE_READING = <any>"Simple Sensor",
+  READING_LIST = <any>"Reading List"
 }
