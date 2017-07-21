@@ -4,7 +4,7 @@ import { RPiComponentService } from '../../../core/service/rpicomponent/rpicompo
 import { RPiComponent } from '../../../core/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '../../../core/model/rpicomponent/rpicomponent-type.enum';
 
-declare let EventSource:any;
+import { SseService } from '../../../core/service/sse/sse.service';
 
 @Component({
   selector: 'gro-readings-list',
@@ -19,12 +19,13 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
   @Input()
   heading: string = 'Current Readings';
 
-  private temperatureEvents;
-  private humidityEvents;
+  private temperatureSubscription;
+  private humiditySubscription;
   private temperatureUnit: string = "celsius";
 
   constructor(
-    private rPiComponentService: RPiComponentService
+    private rPiComponentService: RPiComponentService,
+    private sseService : SseService
   ) { }
 
   ngOnInit() {
@@ -41,19 +42,15 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
         error => console.log("error getting components") //replace with tost message?
       );
 
-    this.temperatureEvents = new EventSource('http://192.168.1.7:8080/api/event/temperature');
-    this.temperatureEvents
-      .addEventListener('message', message => this.handleTemperatureEvent(message));
+      this.temperatureSubscription = this.sseService.temperatureState
+        .subscribe(
+          temperature => this.handleTemperatureEvent(temperature)
+        );
 
-    this.humidityEvents = new EventSource('http://192.168.1.7:8080/api/event/humidity');
-    this.humidityEvents
-      .addEventListener('message', message => this.handleHumidityEvent(message));
-
-  }
-
-  ngOnDestroy() {
-    this.humidityEvents.close();
-    this.temperatureEvents.close();
+      this.humiditySubscription = this.sseService.humidityState
+        .subscribe(
+          humidity => this.handleHumidityEvent(humidity)
+        );
   }
 
   toggleTemperatureUnit() {
@@ -63,16 +60,19 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
       this.temperatureUnit = 'celsius';
   }
 
-  private handleTemperatureEvent(message: any) {
-    let json = JSON.parse(message.data);
-    let obj:any = this.temperature.find(e => e.id === json.componentId);
-    obj.current = json.temperature;
+  private handleTemperatureEvent(data: any) {
+    let obj:any = this.temperature.find(e => e.id === data.componentId);
+    obj.current = data.temperature;
   }
 
-  private handleHumidityEvent(message: any) {
-    let json = JSON.parse(message.data);
-    let obj: any = this.humidity.find(e => e.id === json.componentId);
-    obj.current = json.humidity;
+  private handleHumidityEvent(data: any) {
+    let obj: any = this.humidity.find(e => e.id === data.componentId);
+    obj.current = data.humidity;
+  }
+
+  ngOnDestroy() {
+    this.temperatureSubscription.unsubscribe();
+    this.humiditySubscription.unsubscribe();
   }
 
 }

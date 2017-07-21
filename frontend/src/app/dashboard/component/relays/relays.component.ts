@@ -4,7 +4,7 @@ import { RelayDTO } from '../../../core/model/rpicomponent/relaydto.model';
 import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
 import { RelayService } from '../../../core/service/relay/relay.service';
 
-declare let EventSource:any;
+import { SseService } from '../../../core/service/sse/sse.service';
 
 @Component({
   selector: 'gro-relays',
@@ -14,11 +14,12 @@ declare let EventSource:any;
 export class RelaysComponent implements OnInit, OnDestroy {
 
   relays: RelayDTO[];
-  private relayEvents;
+  private relaySubscription;
 
   constructor(
     private rPiComponentService: RPiComponentService,
-    private relayService: RelayService
+    private relayService: RelayService,
+    private sseService: SseService
   ) { }
 
   ngOnInit() {
@@ -32,16 +33,14 @@ export class RelaysComponent implements OnInit, OnDestroy {
           error => console.log("error getting relays") // replace with toast message
         );
 
-    this.relayEvents = new EventSource('http://192.168.1.7:8080/api/event/relay');
-    this.relayEvents.addEventListener('message', message => {
-      let relay = JSON.parse(message.data);
-      let obj = this.relays.find(e => e.component.id === relay.component.id);
-      obj.state =relay.state;
-    });
+    this.relaySubscription = this.sseService.relayState
+      .subscribe(
+        relay => this.handleRelayEvent(relay)
+      );
   }
 
   ngOnDestroy() {
-    this.relayEvents.close();
+    this.relaySubscription.unsubscribe();
   }
 
   toggle(relay: RelayDTO) {
@@ -50,6 +49,11 @@ export class RelaysComponent implements OnInit, OnDestroy {
     else if(relay.state === 'OFF')
       relay.state = 'ON';
     this.relayService.toggle(relay);
+  }
+
+  private handleRelayEvent(relay: any) {
+    let obj = this.relays.find(e => e.component.id === relay.component.id);
+    obj.state = relay.state;
   }
 
 }
