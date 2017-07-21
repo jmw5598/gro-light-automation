@@ -10,6 +10,7 @@ export class GraphTableConfiguration {
   public datasource: DataSourceConfiguration;
   public orientation: OrientationType;
   public editable: boolean;
+  public classes: string[];
 
   constructor() {
     this.graph = new GraphConfiguration();
@@ -17,6 +18,7 @@ export class GraphTableConfiguration {
     this.datasource = new DataSourceConfiguration();
     this.orientation = OrientationType.INLINE;
     this.editable = true;
+    this.classes = ['col-lg-6'];
   }
 
 }
