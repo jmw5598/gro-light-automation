@@ -27,7 +27,9 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
     UnauthorizedComponent,
     CelsiusToFahrenheitPipe,
     SimpleLoaderComponent,
-    PageLoaderComponent
+    PageLoaderComponent,
+    KeyToTitlePipe,
+    KeyExtractPipe
   ],
   declarations: [
     AlertComponent,
