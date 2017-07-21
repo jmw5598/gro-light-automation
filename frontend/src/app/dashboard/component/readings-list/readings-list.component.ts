@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
-import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../core/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
+import { RPiComponent } from '../../../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../../../core/model/rpicomponent/rpicomponent-type.enum';
 
 declare let EventSource:any;
 

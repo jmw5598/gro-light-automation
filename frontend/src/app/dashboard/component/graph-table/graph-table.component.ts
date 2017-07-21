@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { TemperatureDataService } from '../../service/temperature-data/temperature-data.service';
-import { HumidityDataService } from '../../service/humidity-data/humidity-data.service';
-import { Page } from '../../model/paging/page.model';
+import { TemperatureDataService } from '../../../core/service/temperature-data/temperature-data.service';
+import { HumidityDataService } from '../../../core/service/humidity-data/humidity-data.service';
+import { Page } from '../../../core/model/paging/page.model';
 
 import { GraphTableConfiguration } from '../../../dashboard/model/configuration/graph-table/graph-table.configuration';
 import { GraphType } from '../../../dashboard/model/configuration/graph/graph-type.enum';

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { KeyToTitlePipe } from '../../pipe/key-to-title/key-to-title.pipe';
-import { KeyExtractPipe } from '../../pipe/key-extract/key-extract.pipe';
+import { KeyToTitlePipe } from '../../../core/pipe/key-to-title/key-to-title.pipe';
+import { KeyExtractPipe } from '../../../core/pipe/key-extract/key-extract.pipe';
 
 @Component({
   selector: 'gro-table',
