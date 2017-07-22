@@ -14,39 +14,35 @@ export class SseService implements OnDestroy {
   public humidityState = this.humidity.asObservable();
   public temperatureState = this.temperature.asObservable();
 
-  private relayEvents;
-  private humidityEvents;
-  private temperatureEvents;
+  private events;
 
   constructor() {
 
-    // create single eventsource to /event
-    // add listeners for 'temperature', 'humidity', 'relay' events.
+    this.events = new EventSource('http://192.168.1.7:8080/api/event')
 
-    this.relayEvents = new EventSource('http://192.168.1.7:8080/api/event/relay');
-    this.relayEvents.addEventListener('message', message => {
-      let relay = JSON.parse(message.data);
-      this.relay.next(relay);
-    });
+    this.events.addEventListener('message', message => {
+      let json = JSON.parse(message.data);
 
-    this.temperatureEvents = new EventSource('http://192.168.1.7:8080/api/event/temperature');
-    this.temperatureEvents.addEventListener('message', message => {
-      let temperature = JSON.parse(message.data);
-      this.temperature.next(temperature);
-    });
+      switch(json.event) {
+        case 'temperature':
+          this.temperature.next(json.payload);
+          break;
+        case 'humidity':
+          this.humidity.next(json.payload)
+          break;
+        case 'relay':
+          this.relay.next(json.payload)
+          break;
+        default:
+          break;
+      }
 
-    this.humidityEvents = new EventSource('http://192.168.1.7:8080/api/event/humidity');
-    this.humidityEvents.addEventListener('message', message => {
-      let humidity = JSON.parse(message.data);
-      this.humidity.next(humidity);
     });
 
   }
 
   ngOnDestroy() {
-      this.relayEvents.close();
-      this.humidityEvents.close();
-      this.temperatureEvents.close();
+      this.events.close();
   }
 
 }
