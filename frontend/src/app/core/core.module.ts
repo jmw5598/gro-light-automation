@@ -15,6 +15,7 @@ import { KeyExtractPipe } from './pipe/key-extract/key-extract.pipe';
 import { CelsiusToFahrenheitPipe } from './pipe/celsius-to-fahrenheit/celsius-to-fahrenheit.pipe';
 import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.component';
 import { PageLoaderComponent } from './component/page-loader/page-loader.component';
+import { SseService } from './service/sse/sse.service';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
     HumidityDataService,
     RelayService,
     RPiComponentService,
-    TemperatureDataService
+    TemperatureDataService,
+    SseService
   ]
 })
 export class CoreModule { }
