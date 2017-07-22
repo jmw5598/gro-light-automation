@@ -1,22 +1,32 @@
 package com.gro.messaging.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.RelayDTO;
-import com.gro.web.service.RelayService;
+import com.gro.web.service.ObjectSseEmitterService;
 
 @MessageEndpoint
 public class RelayEmitterService {
     
+    @Value("${sse.event.relay}")
+    private String eventName;
+    
     @Autowired
-    private RelayService relayService;
+    private ObjectSseEmitterService objectSseEmitterService;
     
     @ServiceActivator(inputChannel="relayEmitterChannel")
     public void process(Message<RelayDTO> message) {
-        relayService.emit(message.getPayload());
+        Map<String, Object> obj = new HashMap<>();
+        obj.put("event", eventName);
+        obj.put("payload", message.getPayload());
+        objectSseEmitterService.emit(obj);
     }
     
 }
