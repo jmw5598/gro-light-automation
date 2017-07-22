@@ -35,7 +35,7 @@ public class HumidityDataController {
     @RequestMapping(value="/{id}/humidity", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataPage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=20) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
@@ -55,7 +55,7 @@ public class HumidityDataController {
     @RequestMapping(value="/{id}/humidity/monthly/average", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataMonthlyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=12) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
@@ -68,7 +68,7 @@ public class HumidityDataController {
     @RequestMapping(value="/{id}/humidity/daily/average", method=RequestMethod.GET)
     public Page<HumidityData> getHumidityDataDailyAverage(
             @PathVariable("id") Integer id,
-            @PageableDefault(sort={"timestamp"}, page=0, size=30) Pageable pageable) {
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
         
         RPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
