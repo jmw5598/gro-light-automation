@@ -2,10 +2,12 @@ package com.gro.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.gro.web.service.HumidityDataService;
+import com.gro.web.service.ObjectSseEmitterService;
 import com.gro.web.service.RelayService;
 import com.gro.web.service.TemperatureDataService;
 
@@ -14,38 +16,14 @@ import com.gro.web.service.TemperatureDataService;
 public class EventEmitterController {
     
     @Autowired
-    private TemperatureDataService temperatureDataService;
+    private ObjectSseEmitterService objectSseEmitterService;
     
-    @Autowired
-    private HumidityDataService humidityDataService;
-    
-    @Autowired
-    private RelayService relayService;
-    
-    @RequestMapping("/temperature")
-    public SseEmitter streamTemperature() {
+    @RequestMapping(method=RequestMethod.GET)
+    public SseEmitter streamEvents() {
         SseEmitter emitter = new SseEmitter();
-        emitter.onCompletion(() -> this.temperatureDataService.removeEmitter(emitter));
-        this.temperatureDataService.addEmitter(emitter);
+        emitter.onCompletion(() -> this.objectSseEmitterService.removeEmitter(emitter));
+        this.objectSseEmitterService.addEmitter(emitter);
         return emitter;
-    }
-    
-    @RequestMapping("/humidity")
-    public SseEmitter streamHumidity() {
-        SseEmitter emitter = new SseEmitter();
-        emitter.onCompletion(() -> this.humidityDataService.removeEmitter(emitter));
-        this.humidityDataService.addEmitter(emitter);
-        return emitter;
-    }
-    
-    @RequestMapping("/relay")
-    public SseEmitter streamRelay() {
-        SseEmitter emitter = new SseEmitter();
-        emitter.onCompletion(() -> this.relayService.removeEmitter(emitter));
-        this.relayService.addEmitter(emitter);
-        return emitter;
-    }
-    
-    
+    }  
     
 }
