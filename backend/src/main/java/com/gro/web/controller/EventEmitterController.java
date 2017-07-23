@@ -21,7 +21,6 @@ public class EventEmitterController {
     @RequestMapping(method=RequestMethod.GET)
     public SseEmitter streamEvents() {
         SseEmitter emitter = new SseEmitter();
-        emitter.onCompletion(() -> this.objectSseEmitterService.removeEmitter(emitter));
         this.objectSseEmitterService.addEmitter(emitter);
         return emitter;
     }  
