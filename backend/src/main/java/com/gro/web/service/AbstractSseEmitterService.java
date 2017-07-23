@@ -1,6 +1,5 @@
 package com.gro.web.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +12,8 @@ public abstract class AbstractSseEmitterService<T> implements SseEmitterService 
     private final List<SseEmitter> emitters = Collections.synchronizedList(new ArrayList<>());
     
     public final void addEmitter(SseEmitter emitter) {
-        emitter.onCompletion(() -> emitters.remove(emitter));
+        emitter.onCompletion(() -> removeEmitter(emitter));
+        emitter.onTimeout(() -> removeEmitter(emitter));
         this.emitters.add(emitter);
     }
     
@@ -22,14 +22,15 @@ public abstract class AbstractSseEmitterService<T> implements SseEmitterService 
     }
     
     public final void emit(T t) {
-        for(SseEmitter e : emitters) {
+        List<SseEmitter> deadEmitters = new ArrayList<>();
+        this.emitters.forEach(emitter -> {
             try {
-                e.send(t, MediaType.APPLICATION_JSON);
-            } catch (IOException e1) {
-                e.complete();
-                emitters.remove(e);
-                e1.printStackTrace();
+                emitter.send(t, MediaType.APPLICATION_JSON);
+            } catch(Exception e) {
+                deadEmitters.add(emitter);
             }
-        }
+        });
+        
+        this.emitters.remove(deadEmitters);
     }
 }

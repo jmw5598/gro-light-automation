@@ -11,7 +11,7 @@ import com.gro.messaging.gateway.MqttOutboundGateway;
 import com.gro.model.RelayDTO;
 
 @Service
-public class RelayService extends AbstractSseEmitterService<RelayDTO> {
+public class RelayService {
     
     @Autowired
     private Jackson2JsonObjectMapper jackson2JsonObjectMapper;

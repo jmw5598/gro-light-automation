@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.gro.model.TemperatureDTO;
 
 @Service
-public class TemperatureDataService extends AbstractSseEmitterService<TemperatureDTO> {
+public class TemperatureDataService {
     
     //add more service methods here
     
