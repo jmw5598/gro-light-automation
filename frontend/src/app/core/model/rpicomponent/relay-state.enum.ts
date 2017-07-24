@@ -1,4 +1,5 @@
 export enum RelayState {
   ON = <any>"on",
-  OFF = <any>"off"
+  OFF = <any>"off",
+  DISABLED = <any>"disabled"
 }
