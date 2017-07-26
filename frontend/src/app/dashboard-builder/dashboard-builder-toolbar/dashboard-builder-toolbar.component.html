@@ -1,0 +1,141 @@
+<!-- BOTTOM FIXED NAVBAR : Dashboard Builder Toolbar -->
+<div class="navbar navbar-default navbar-fixed-bottom">
+
+  <!-- BEGIN : NAVBAR-HEADER -->
+  <div class="navbar-header">
+    <!--<a href="#" class="navbar-brand">Gro</a> -->
+    <button class="navbar-toggle"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-main">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <!-- END : NAVBAR-HEADER -->
+
+
+  <!-- BEGIN : NAVBAR-MENU -->
+  <div class="navbar-collapse collapse" id="navbar-main">
+
+    <!-- LEFT NAVBAR BUTTONS -->
+    <ul class="nav navbar-nav">
+
+      <!-- MENU ITEM : Dashboard Panels  -->
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-panels">
+          <i class="fa fa-columns fa-icon-margin"></i>
+          Layouts <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropshadow" aria-labelledby="menu-item-layouts">
+          <li (click)="changeLayoutPreset(layouts.fixedLeftPanelLayout)">
+            <a>Fixed Left Side Panel</a>
+          </li>
+          <li (click)="changeLayoutPreset(layouts.fixedRightPanelLayout)">
+            <a>Fixed Right Side Panel</a>
+          </li>
+          <li (click)="changeLayoutPreset(layouts.fixedLeftRightPanelLayout)">
+            <a>Fixed Left & Right Side Panels</a>
+          </li>
+          <li (click)="changeLayoutPreset(layouts.fullCenterPanelLayout)">
+            <a>Center Full</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- MENU ITEM : Dashboard Graphs -->
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-graphs">
+          <i class="fa fa-bar-chart fa-icon-margin"></i>
+          Graphs <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropshadow" aria-labelledby="menu-item-graphs">
+          <li (click)="addComponent('graph')">
+            <a>Graph</a>
+          </li>
+          <li (click)="addComponent('graph-table')">
+            <a>Graph Table</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- MENU ITEM : Dashboard Tables -->
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-tables">
+          <i class="fa fa-table fa-icon-margin"></i>
+          Tables <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropshadow" aria-labelledby="menu-item-tables">
+          <li><a>Table</a></li>
+          <li><a>Pageable Table</a></li>
+        </ul>
+      </li>
+
+      <!-- MENU ITEM : Dashboard Sensor Readings -->
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-components">
+          <i class="fa fa-rss fa-icon-margin"></i>
+          Sensors <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu  dropshadow" aria-labelledby="menu-item-components">
+          <li (click)="addComponent('sensor-readings')">
+            <a>Sensor Readings List</a>
+          </li>
+          <li (click)="addComponent('relay-toggles')">
+            <a>Simple Sensor Reading</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- MENU ITEM : Dashboard Control Components -->
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-components">
+          <i class="fa fa-toggle-on fa-icon-margin"></i>
+          Controls <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu  dropshadow" aria-labelledby="menu-item-components">
+          <li (click)="addComponent('relay-toggles')">
+            <a>Relay Toggles</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <!-- END : LEFT NAVBAR BUTTONS -->
+
+    <!-- RIGHT NAVBAR BUTTONS -->
+    <ul class="nav navbar-nav pull-right">
+      <li class="dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu-item-load">
+          <i class="fa fa-spinner fa-icon-margin"></i>
+          Load <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropshadow" aria-labelledby="menu-item-load">
+          <li><a>Simple Dashboard</a></li>
+          <li><a>Second Dashboard</a></li>
+          <li><a>Combo Dash</a></li>
+          <li><a>Humidity Dash</a></li>
+          <li><a>Temperature Dash</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-floppy-o fa-icon-margin"></i>
+          Save
+       </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-refresh fa-icon-margin"></i>
+          Reset
+       </a>
+      </li>
+    </ul>
+    <!-- END : RIGHT NAVBAR BUTTONS -->
+
+  </div>
+  <!-- END : NAVBAR-MENU -->
+
+</div>
+<!-- END BOTTOM FIXED NAVBAR : Dashboard Builder Toolbar -->
