@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LayoutPresets } from '../dashboard/model/layout-presets';
-import { PanelType } from '../dashboard/model/configuration/panel/panel-type.enum';
+import { LayoutPresets } from '../model/layout-presets';
+import { PanelType } from '../model/configuration/panel/panel-type.enum';
 
 @Component({
   selector: 'gro-dashboard-builder',

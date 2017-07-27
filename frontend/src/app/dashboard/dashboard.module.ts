@@ -6,6 +6,7 @@ import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent } from './dashboard.component';
+import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
 import { FixedSidePanelComponent } from './component/panel/fixed-side-panel/fixed-side-panel.component';
 import { GraphComponent } from './component/graph/graph.component';
 import { GraphTableComponent } from './component/graph-table/graph-table.component';
@@ -30,6 +31,7 @@ import { ColumnComponent } from './component/column/column.component';
   exports: [DashboardComponent],
   declarations: [
     DashboardComponent,
+    DashboardBuilderComponent,
     FixedSidePanelComponent,
     GraphComponent,
     GraphTableComponent,

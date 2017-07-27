@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { LayoutPresets } from '../../dashboard/model/layout-presets';
+import { LayoutPresets } from '../../model/layout-presets';
 
 @Component({
   selector: 'gro-dashboard-builder-toolbar',
