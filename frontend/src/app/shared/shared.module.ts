@@ -15,13 +15,15 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     AlertComponent,
     CelsiusToFahrenheitPipe,
     CommonModule,
+    FormsModule,
     KeyToTitlePipe,
     KeyExtractPipe,
     PageLoaderComponent,

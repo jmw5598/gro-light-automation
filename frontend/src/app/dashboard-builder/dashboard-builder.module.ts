@@ -11,6 +11,7 @@ import { DashboardBuilderToolbarComponent } from './dashboard-builder-toolbar/da
   ],
   exports: [DashboardBuilderComponent],
   declarations: [
+    DashboardBuilderComponent,
     DashboardBuilderToolbarComponent
   ]
 })
