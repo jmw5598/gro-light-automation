@@ -1,0 +1,38 @@
+.loader-outter {
+  width: 128px;
+  height: 128px;
+  background: #2b3e50;
+  background: url('./spinnerbggood.png') center center no-repeat;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  /*this to solve "the content will not be cut when the window is smaller than the content": */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.loader-spinner {
+  width: 128px;
+  height: 128px;
+}
+
+.loader-outter, .loader-spinner {
+  border-radius: 50%;
+}
+
+.loader-outter > .loader-spinner {
+  border: 8px solid #4e5d6c; /* Light grey */
+  border-top: 8px solid #5cb85c; /* green */
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
