@@ -31,7 +31,6 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
     RPiComponentFormComponent,
   	RouterModule,
     SimpleLoaderComponent,
-  	UiSwitchModule,
     UnauthorizedComponent
   ],
   declarations: [
