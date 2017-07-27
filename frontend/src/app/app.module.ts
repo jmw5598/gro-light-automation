@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
 import { AuthenticationModule } from './authentication/authentication.module';
+import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardBuilderModule } from './dashboard-builder/dashboard-builder.module';
 import { LoginModule } from './login/login.module';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AuthenticationModule,
     BrowserModule,
+    CoreModule,
     DashboardModule,
     DashboardBuilderModule,
     HttpModule,
