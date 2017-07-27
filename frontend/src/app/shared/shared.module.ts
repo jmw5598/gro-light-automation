@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 import { AlertComponent } from './component/alert/alert.component';
 import { PanelListGroupComponent } from './component/panel-list-group/panel-list-group.component';

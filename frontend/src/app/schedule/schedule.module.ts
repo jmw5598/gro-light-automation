@@ -7,7 +7,6 @@ import { ScheduleComponent } from './schedule.component';
 
 @NgModule({
   imports: [
-    CoreModule,
     SharedModule
   ],
   exports: [ScheduleComponent],

@@ -7,7 +7,6 @@ import { NavigationComponent } from './navigation.component';
 
 @NgModule({
   imports: [
-    CoreModule,
     SharedModule
   ],
   exports: [NavigationComponent],

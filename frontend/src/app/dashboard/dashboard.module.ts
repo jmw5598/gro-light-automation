@@ -23,7 +23,6 @@ import { ColumnComponent } from './component/column/column.component';
 @NgModule({
   imports: [
     ChartsModule,
-    CoreModule,
     SharedModule
   ],
   exports: [DashboardComponent],

@@ -15,7 +15,6 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
 
 @NgModule({
   imports: [
-    CoreModule,
     SharedModule
   ],
   exports: [SettingsComponent],

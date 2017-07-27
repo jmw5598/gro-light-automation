@@ -8,7 +8,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   imports: [
-  	CoreModule,
   	SharedModule
   ],
   exports: [LoginComponent],
