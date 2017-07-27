@@ -6,7 +6,7 @@ import { AuthenticationGuard } from './authentication/guard/authentication.guard
 import { RoleGuard } from './authentication/guard/role.guard';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardBuilderComponent } from './dashboard/dashboard-builder/dashboard-builder.component';
+import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -15,7 +15,7 @@ import { SettingsScheduleComponent } from './settings/settings-schedule/settings
 import { SettingsUserComponent } from './settings/settings-user/settings-user.component';
 import { RPiComponentAddComponent } from './settings/rpicomponent-add/rpicomponent-add.component';
 import { RPiComponentEditComponent } from './settings/rpicomponent-edit/rpicomponent-edit.component';
-import { UnauthorizedComponent } from './core/component/unauthorized/unauthorized.component';
+import { UnauthorizedComponent } from './shared/component/unauthorized/unauthorized.component';
 
 const appRoutes: Routes = [
 

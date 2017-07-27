@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Page } from '../../../core/model/paging/page.model';
+import { Page } from '../../../shared/model/paging/page.model';
 
 @Component({
   selector: 'gro-pageable-table',

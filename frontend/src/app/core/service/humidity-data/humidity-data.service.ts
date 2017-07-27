@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { HumidityData } from '../../model/humidity-data/humidity-data.model';
-import { Page } from '../../model/paging/page.model';
+import { HumidityData } from '../../../shared/model/humidity-data/humidity-data.model';
+import { Page } from '../../../shared/model/paging/page.model';
 
 @Injectable()
 export class HumidityDataService {

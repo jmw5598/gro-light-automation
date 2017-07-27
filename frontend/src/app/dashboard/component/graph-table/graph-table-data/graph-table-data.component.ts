@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { RPiComponentService } from '../../../../core/service/rpicomponent/rpicomponent.service';
-import { RPiComponent } from '../../../../core/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../../../core/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponent } from '../../../../shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../../../../shared/model/rpicomponent/rpicomponent-type.enum';
 
 import { DataSourceConfiguration } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/data-source.configuration';
 import { MetricTimeSpan } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/metric-time-span.enum';

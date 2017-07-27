@@ -2,13 +2,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { TemperatureDataService } from '../../../core/service/temperature-data/temperature-data.service';
 import { HumidityDataService } from '../../../core/service/humidity-data/humidity-data.service';
-import { Page } from '../../../core/model/paging/page.model';
+import { Page } from '../../../shared/model/paging/page.model';
 
 import { GraphTableConfiguration } from '../../model/configuration/widget/graph/graph-table/graph-table.configuration';
 import { GraphType } from '../../model/configuration/widget/graph/graph/graph-type.enum';
 import { OrientationType } from '../../model/configuration/widget/graph/graph-table/orientation-type.enum';
 
-import { KeyToTitlePipe } from '../../../core/pipe/key-to-title/key-to-title.pipe';
+import { KeyToTitlePipe } from '../../../shared/pipe/key-to-title/key-to-title.pipe';
 
 @Component({
   selector: 'gro-graph-table',

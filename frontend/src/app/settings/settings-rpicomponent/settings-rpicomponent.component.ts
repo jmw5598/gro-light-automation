@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PageLoading } from '../../core/component/page-loader/page-loading';
-import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
+import { PageLoading } from '../../shared/component/page-loader/page-loading';
+import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
 @Component({

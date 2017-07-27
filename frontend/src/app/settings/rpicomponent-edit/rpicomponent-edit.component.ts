@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponen
   styleUrls: ['./rpicomponent-edit.component.css']
 })
 export class RPiComponentEditComponent implements OnInit {
-  
+
   private id: number;
 
   formSettings : Object = {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { RelayDTO } from '../../model/rpicomponent/relaydto.model';
+import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
 
 @Injectable()
 export class RelayService {
@@ -18,7 +18,7 @@ export class RelayService {
     console.log("inside toggle relay : url -> " + url);
     this.http.put(url, '', this.optionstemp())
       .subscribe(response => console.log("success"), error => console.log("error"));
-      
+
   }
 
   public poll(relay: RelayDTO): void {

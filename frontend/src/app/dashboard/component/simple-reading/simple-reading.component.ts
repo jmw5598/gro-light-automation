@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { RPiComponent } from '../../../core/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../../core/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
 import { SimpleReadingConfiguration } from '../../model/configuration/widget/sensor/simple-reading/simple-reading.configuration';
 import { SensorReadingType } from '../../model/configuration/shared/sensor-reading-type.enum';
 import { SseService } from '../../../core/service/sse/sse.service';

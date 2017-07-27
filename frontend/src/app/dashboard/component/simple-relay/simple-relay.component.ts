@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
-import { RelayDTO } from '../../../core/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
 import { RelayService } from '../../../core/service/relay/relay.service';
-import { RelayState } from '../../../core/model/rpicomponent/relay-state.enum';
+import { RelayState } from '../../../shared/model/rpicomponent/relay-state.enum';
 import { SimpleRelayConfiguration } from '../../model/configuration/widget/control/simple-relay/simple-relay.configuration';
 import { SseService } from '../../../core/service/sse/sse.service';
 
-import { KeyToTitlePipe } from '../../../core/pipe/key-to-title/key-to-title.pipe';
+import { KeyToTitlePipe } from '../../../shared/pipe/key-to-title/key-to-title.pipe';
 
 @Component({
   selector: 'gro-simple-relay',

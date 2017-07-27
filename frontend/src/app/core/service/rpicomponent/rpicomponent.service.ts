@@ -5,9 +5,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { CrudService } from '../crud.service';
-import { RPiComponent } from '../../model/rpicomponent/rpicomponent.model';
-import { RelayDTO } from '../../model/rpicomponent/relaydto.model';
-import { RPiComponentType } from '../../model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
+import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
+import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
 
 @Injectable()
 export class RPiComponentService extends CrudService<RPiComponent, number> {

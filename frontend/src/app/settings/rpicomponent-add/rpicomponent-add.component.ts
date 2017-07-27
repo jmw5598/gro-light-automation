@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
-import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
+import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
 

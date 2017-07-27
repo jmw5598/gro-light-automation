@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { TemperatureData } from '../../model/temperature-data/temperature-data.model';
-import { Page } from '../../model/paging/page.model';
+import { TemperatureData } from '../../../shared/model/temperature-data/temperature-data.model';
+import { Page } from '../../../shared/model/paging/page.model';
 
 @Injectable()
 export class TemperatureDataService {

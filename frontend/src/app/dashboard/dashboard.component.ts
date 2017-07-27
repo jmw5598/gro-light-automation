@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PageLoading } from '../core/component/page-loader/page-loading';
-import { RPiComponent } from '../core/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../core/model/rpicomponent/rpicomponent-type.enum';
+import { PageLoading } from '../shared/component/page-loader/page-loading';
+import { RPiComponent } from '../shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../shared/model/rpicomponent/rpicomponent-type.enum';
 import { SimpleReadingConfiguration } from './model/configuration/widget/sensor/simple-reading/simple-reading.configuration';
 import { SensorReadingType } from './model/configuration/shared/sensor-reading-type.enum';
 import { SimpleReadingColor } from './model/configuration/widget/sensor/simple-reading/simple-reading-color.enum';
 
 import { SimpleRelayConfiguration } from './model/configuration/widget/control/simple-relay/simple-relay.configuration';
 import { SimpleRelayColor } from './model/configuration/widget/control/simple-relay/simple-relay-color.enum';
-import { RelayDTO } from '../core/model/rpicomponent/relaydto.model';
-import { RelayState } from '../core/model/rpicomponent/relay-state.enum';
+import { RelayDTO } from '../shared/model/rpicomponent/relaydto.model';
+import { RelayState } from '../shared/model/rpicomponent/relay-state.enum';
 
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
-import { RPiComponent } from '../../../core/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../../core/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
 
 import { SseService } from '../../../core/service/sse/sse.service';
 
