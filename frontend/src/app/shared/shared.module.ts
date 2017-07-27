@@ -22,6 +22,7 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
   exports: [
     AlertComponent,
     CelsiusToFahrenheitPipe,
+    CommonModule,
     KeyToTitlePipe,
     KeyExtractPipe,
     PageLoaderComponent,
