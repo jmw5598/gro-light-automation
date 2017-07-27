@@ -1,7 +1,7 @@
-import { DataSourceConfiguration } from '../data-source/data-source.configuration';
+import { DataSourceConfiguration } from './data-source/data-source.configuration';
 import { GraphConfiguration } from '../graph/graph.configuration';
 import { OrientationType } from './orientation-type.enum';
-import { TableConfiguration } from '../table/table.configuration';
+import { TableConfiguration } from '../../table/table/table.configuration';
 
 export class GraphTableConfiguration {
 
@@ -18,7 +18,7 @@ export class GraphTableConfiguration {
     this.datasource = new DataSourceConfiguration();
     this.orientation = OrientationType.INLINE;
     this.editable = true;
-    this.classes = ['col-lg-6'];
+    this.classes = [];
   }
 
 }

@@ -2,20 +2,20 @@
   <div class="panel-body">
     <legend><h4>Relays</h4></legend>
     <ul class="list-group">
-      
+
       <li class="list-group-item"
           *ngFor="let relay of relays">{{relay.component.alias}} {{relay.state}}
-          
-          <ui-switch class="pull-right" 
+
+          <ui-switch class="pull-right"
                      size="small"
                      color="#5cb85c"
                      switchColor="#f3f3f3"
-                     [checked]="relay.state !== null && relay.state == 'ON'"
-                     [disabled]="relay.state === null"
+                     [checked]="relay.state == relayState.ON"
+                     [disabled]="relay.state === relayState.DISABLED"
                      (click)="toggle(relay)">
           </ui-switch>
       </li>
-      
+
     </ul>
   </div>
 </div>

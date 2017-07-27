@@ -1,9 +1,12 @@
-<div class="row">
+<div class="row" *ngIf="isLoading">
+  <gro-page-loader></gro-page-loader>
+</div>
+<div class="row" *ngIf="!isLoading">
   <div class="col-sm-12 col-md-12 col-lg-7">
     <div class="panel panel-default">
       <div class="panel-heading">
-      	Components 
-    	 <button role="button" 
+      	Components
+    	 <button role="button"
                 class="btn btn-xs btn-success pull-right"
                 [routerLink]="['/settings', { outlets: { settings: 'component.add'} }]">
           Add

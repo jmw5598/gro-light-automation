@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '../../core/model/rpicomponent/rpicomponent-type.enum';
 
@@ -8,7 +10,7 @@ import { RPiComponentType } from '../../core/model/rpicomponent/rpicomponent-typ
   styleUrls: ['./rpicomponents.component.css']
 })
 export class RPiComponentsComponent implements OnInit {
-  
+
   @Input()
   components: RPiComponent[];
 
@@ -17,12 +19,17 @@ export class RPiComponentsComponent implements OnInit {
 
   RPiComponentType = RPiComponentType  //needed to use enum in template
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
 
   delete(id: number) {
     this.onComponentDelete.emit(id);
   }
+
+  edit(id: number) {
+    this.router.navigateByUrl('/settings/(settings:component/' + id + '/edit)');
+  }
+
 
 }

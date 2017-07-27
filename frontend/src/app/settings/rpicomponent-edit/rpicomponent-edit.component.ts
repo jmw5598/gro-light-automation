@@ -11,6 +11,8 @@ import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponen
 })
 export class RPiComponentEditComponent implements OnInit {
   
+  private id: number;
+
   formSettings : Object = {
   	submitLabel : 'Save',
   	isClearable : false
@@ -19,12 +21,14 @@ export class RPiComponentEditComponent implements OnInit {
   private component: any;
   componentId: number;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   	this.component = this.route.params.subscribe(params => {
-  		// call service to get component with id and assign it to component
-  		this.componentId = +params['id'];
+  		this.id = +params['id'];
+      console.log("Id to edit: " + this.id);
   	});
   }
 

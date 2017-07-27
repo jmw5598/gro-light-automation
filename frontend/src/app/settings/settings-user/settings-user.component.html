@@ -1,4 +1,7 @@
-<div class="panel panel-default">
+<div class="row" *ngIf="isLoading">
+  <gro-page-loader></gro-page-loader>
+</div>
+<div class="panel panel-default" *ngIf="!isLoading">
   <div class="panel-body">
     <legend>
       <h2><i class="fa fa-gears"></i>Settings : User</h2>

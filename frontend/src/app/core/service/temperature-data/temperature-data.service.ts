@@ -16,50 +16,57 @@ export class TemperatureDataService {
     this.base = 'http://192.168.1.7:8080/api/component';
   }
 
+  findCustomByComponent(id: number, path: string, page: number): Observable<Page<TemperatureData>> {
+    let url = this.base + '/' + id + "/temperature/" + path;
+    return this.http.get(url, this.options())
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   findAllMonthlyAverageByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/monthlyAverage?page=' + page;
+    let url = this.base + '/' + id + '/temperature/monthly/average?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllDailyAverageByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/dailyAverage?page=' + page;
+    let url = this.base + '/' + id + '/temperature/daily/average?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllDailyHighByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/dailyHigh?page=' + page;
+    let url = this.base + '/' + id + '/temperature/daily/high?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllDailyLowByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/dailyLow?page=' + page;
+    let url = this.base + '/' + id + '/temperature/daily/low?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllHourlyAverageByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/hourlyAverage?page=' + page;
+    let url = this.base + '/' + id + '/temperature/hourly/average?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllHourlyHighByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/hourlyHigh?page=' + page;
+    let url = this.base + '/' + id + '/temperature/hourly/high?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   findAllHourlyLowByComponent(id: number, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + '/temperature/hourlyLow?page=' + page;
+    let url = this.base + '/' + id + '/temperature/hourly/low?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);

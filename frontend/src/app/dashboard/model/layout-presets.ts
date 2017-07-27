@@ -1,7 +1,7 @@
-import { Panel } from './panel/panel.model';
-import { PanelType } from './panel/panel-type.enum';
-import { PanelConfiguration } from './panel/panel-configuration.model';
-import { PanelLocation } from './panel/panel-location.enum';
+import { Panel } from './configuration/panel/panel.model';
+import { PanelType } from './configuration/panel/panel-type.enum';
+import { PanelConfiguration } from './configuration/panel/panel-configuration.model';
+import { PanelLocation } from './configuration/panel/panel-location.enum';
 
 export const LayoutPresets = {
 

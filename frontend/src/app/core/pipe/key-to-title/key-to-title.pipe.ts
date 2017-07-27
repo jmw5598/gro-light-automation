@@ -7,6 +7,7 @@ export class KeyToTitlePipe implements PipeTransform {
 
   transform(key: string, caseType?: string): string {
     let result: string = key;
+    if(key === undefined) return;
     if(caseType === undefined) {
         result = this.determineCase(key);
     } else if(caseType.toLowerCase() === 'camel') {

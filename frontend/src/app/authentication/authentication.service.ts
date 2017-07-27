@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(private http: AuthHttp) { }
 
   doLogin(credentials) {
-    return this.http.post('http://localhost:8080/auth', credentials)
+    return this.http.post('http://192.168.1.7:8080/auth', credentials)
       .map(res => {
         const data = res.json();
         if (data) {

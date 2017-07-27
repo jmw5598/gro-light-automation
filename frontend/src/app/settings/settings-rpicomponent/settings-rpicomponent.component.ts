@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PageLoading } from '../../core/component/page-loader/page-loading';
 import { RPiComponent } from '../../core/model/rpicomponent/rpicomponent.model';
 import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
 
@@ -8,11 +9,13 @@ import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponen
   templateUrl: './settings-rpicomponent.component.html',
   styleUrls: ['./settings-rpicomponent.component.css']
 })
-export class SettingsRPiComponentComponent implements OnInit {
+export class SettingsRPiComponentComponent extends PageLoading implements OnInit {
 
   components: RPiComponent[];
 
-  constructor(private rPiComponentService: RPiComponentService) { }
+  constructor(private rPiComponentService: RPiComponentService) {
+    super(true);
+  }
 
   ngOnInit() {
     this.loadComponents();
@@ -32,7 +35,7 @@ export class SettingsRPiComponentComponent implements OnInit {
     this.rPiComponentService
       .findAll()
         .subscribe(
-          data => this.components = data,
+          data => { this.components = data; setTimeout(() => this.ready(), 1000); },
           error => console.log('Error: ' + error)  // DISPLAY ERROR IN TABLE BODY
         );
   }

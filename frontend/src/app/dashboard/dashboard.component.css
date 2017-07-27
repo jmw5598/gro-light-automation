@@ -1,0 +1,12 @@
+#dashboard-builder-button {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10000;
+}
+
+.dropshadow {
+  -webkit-box-shadow: -5px 4px 12px 0px rgba(0,0,0,0.46);
+  -moz-box-shadow: -5px 4px 12px 0px rgba(0,0,0,0.46);
+  box-shadow: -5px 4px 12px 0px rgba(0,0,0,0.46);
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { RelayDTO } from '../../../core/model/rpicomponent/relaydto.model';
+import { RelayState } from '../../../core/model/rpicomponent/relay-state.enum';
 
 import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
 import { RelayService } from '../../../core/service/relay/relay.service';
@@ -13,21 +14,24 @@ import { SseService } from '../../../core/service/sse/sse.service';
 })
 export class RelaysComponent implements OnInit, OnDestroy {
 
-  relays: RelayDTO[];
+  relays: Array<RelayDTO>;
   private relaySubscription;
+  private relayState = RelayState;
 
   constructor(
     private rPiComponentService: RPiComponentService,
     private relayService: RelayService,
     private sseService: SseService
-  ) { }
+  ) {
+    this.relays = new Array<RelayDTO>();
+  }
 
   ngOnInit() {
     this.rPiComponentService
       .findAllRelays()
         .subscribe(
           data => {
-            this.relays = data
+            data.forEach((e) => this.relays.push(new RelayDTO(e.component, RelayState.DISABLED)));
             this.relays.forEach(e => this.relayService.poll(e));
           },
           error => console.log("error getting relays") // replace with toast message
@@ -44,14 +48,16 @@ export class RelaysComponent implements OnInit, OnDestroy {
   }
 
   toggle(relay: RelayDTO) {
-    if(relay.state === 'ON')
-      relay.state = 'OFF'
-    else if(relay.state === 'OFF')
-      relay.state = 'ON';
+    if(relay.state === RelayState.ON)
+      relay.state = RelayState.OFF;
+    else if(relay.state === RelayState.OFF)
+      relay.state = RelayState.ON;
     this.relayService.toggle(relay);
   }
 
   private handleRelayEvent(relay: any) {
+    console.log('new relay state');
+    console.log(relay);
     let obj = this.relays.find(e => e.component.id === relay.component.id);
     obj.state = relay.state;
   }

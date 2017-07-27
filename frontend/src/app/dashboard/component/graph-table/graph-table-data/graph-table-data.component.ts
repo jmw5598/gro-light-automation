@@ -4,10 +4,10 @@ import { RPiComponentService } from '../../../../core/service/rpicomponent/rpico
 import { RPiComponent } from '../../../../core/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '../../../../core/model/rpicomponent/rpicomponent-type.enum';
 
-import { DataSourceConfiguration } from '../../../../dashboard/model/configuration/data-source/data-source.configuration';
-import { MetricTimeSpan } from '../../../../dashboard/model/configuration/data-source/metric-time-span.enum';
-import { MetricCalculation } from '../../../../dashboard/model/configuration/data-source/metric-calculation.enum';
-import { MetricDataType } from '../../../../dashboard/model/configuration/data-source/metric-data-type.enum';
+import { DataSourceConfiguration } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/data-source.configuration';
+import { MetricTimeSpan } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/metric-time-span.enum';
+import { MetricCalculation } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/metric-calculation.enum';
+import { MetricDataType } from '../../../../dashboard/model/configuration/widget/graph/graph-table/data-source/metric-data-type.enum';
 
 @Component({
   selector: 'gro-graph-table-data',

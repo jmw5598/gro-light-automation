@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardBuilderModule } from './dashboard-builder/dashboard-builder.module';
 import { LoginModule } from './login/login.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { ScheduleModule } from './schedule/schedule.module';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
     AuthenticationModule,
     BrowserModule,
     DashboardModule,
+    DashboardBuilderModule,
     HttpModule,
     LoginModule,
     NavigationModule,

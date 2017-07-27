@@ -7,14 +7,22 @@
         <div class="container-fluid">
 
           <!-- BEGIN : Fixed Side Panel Components -->
-          <div class="row">
+          <div *ngIf="configuration.rows.length === 0" class="row">
             <div class="col-xs-12">
               <div class="alert alert-info">
-                <span class="strong">Info: </span>There are no components added to this panel.
+                <span class="strong">Info: </span>There are no rows added to this panel.
               </div>
              </div>
            </div>
            <!-- END : Fixed Side Panel Components -->
+
+           <!-- ADD ROWS FROM CONFIGURATION -->
+           <div *ngIf="configuration.rows.length > 0">
+             <gro-row
+                 *ngFor="let row of configuration.rows"
+                 [configuration]="row.configuration">
+             </gro-row>
+           </div>
 
         </div>
       </div>
