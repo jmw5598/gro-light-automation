@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Column } from '../../model/configuration/column/column.model';
-import { RowConfiguration } from '../../model/configuration/row/row.configuration';
+import { Column } from '@app/dashboard/model/configuration/column/column.model';
+import { RowConfiguration } from '@app/dashboard/model/configuration/row/row.configuration';
 
 @Component({
   selector: 'gro-row',

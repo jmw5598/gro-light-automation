@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
-import { SimpleReadingConfiguration } from '../../model/configuration/widget/sensor/simple-reading/simple-reading.configuration';
-import { SensorReadingType } from '../../model/configuration/shared/sensor-reading-type.enum';
-import { SseService } from '../../../core/service/sse/sse.service';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
+import { SimpleReadingConfiguration } from '@app/dashboard/model/configuration/widget/sensor/simple-reading/simple-reading.configuration';
+import { SensorReadingType } from '@app/dashboard/model/configuration/shared/sensor-reading-type.enum';
+import { SseService } from '@app/core/service/sse/sse.service';
 
 @Component({
   selector: 'gro-simple-reading',

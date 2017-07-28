@@ -1,4 +1,4 @@
-import { RPiComponent } from '../../../../../../shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { SensorReadingType } from '../../../shared/sensor-reading-type.enum';
 import { SimpleReadingColor } from './simple-reading-color.enum';
 

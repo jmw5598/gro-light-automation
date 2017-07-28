@@ -1,5 +1,5 @@
 import { Component, trigger, state, transition, style, animate } from '@angular/core';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '@app/authentication/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({

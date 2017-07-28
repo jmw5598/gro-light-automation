@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
 
 @Component({
   selector: 'gro-rpicomponent-edit',

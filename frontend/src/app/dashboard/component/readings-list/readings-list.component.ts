@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
-import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
-import { SseService } from '../../../core/service/sse/sse.service';
+import { SseService } from '@app/core/service/sse/sse.service';
 
 @Component({
   selector: 'gro-readings-list',

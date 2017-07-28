@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PageLoading } from '../../shared/component/page-loader/page-loading';
-import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentService } from '../../core/service/rpicomponent/rpicomponent.service';
+import { PageLoading } from '@app/shared/component/page-loader/page-loading';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
 
 @Component({
   selector: 'gro-settings-rpicomponent',

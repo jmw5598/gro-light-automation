@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PageLoading } from '../../shared/component/page-loader/page-loading';
+import { PageLoading } from '@app/shared/component/page-loader/page-loading';
 
 @Component({
   selector: 'gro-settings-user',

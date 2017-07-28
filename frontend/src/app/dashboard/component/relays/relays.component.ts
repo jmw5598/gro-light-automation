@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
-import { RelayState } from '../../../shared/model/rpicomponent/relay-state.enum';
+import { RelayDTO } from '@app/shared/model/rpicomponent/relaydto.model';
+import { RelayState } from '@app/shared/model/rpicomponent/relay-state.enum';
 
-import { RPiComponentService } from '../../../core/service/rpicomponent/rpicomponent.service';
-import { RelayService } from '../../../core/service/relay/relay.service';
+import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
+import { RelayService } from '@app/core/service/relay/relay.service';
 
-import { SseService } from '../../../core/service/sse/sse.service';
+import { SseService } from '@app/core/service/sse/sse.service';
 
 @Component({
   selector: 'gro-relays',

@@ -1,4 +1,4 @@
-import { RelayDTO } from '../../../../../../shared/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '@app/shared/model/rpicomponent/relaydto.model';
 import { SimpleRelayColor } from './simple-relay-color.enum';
 
 export class SimpleRelayConfiguration {

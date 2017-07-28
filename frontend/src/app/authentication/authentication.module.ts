@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
-import { AuthenticationService } from './authentication.service';
-import { AuthenticationGuard } from './guard/authentication.guard';
-import { RoleGuard } from './guard/role.guard';
+import { AuthenticationService } from '@app/authentication/authentication.service';
+import { AuthenticationGuard } from '@app/authentication/guard/authentication.guard';
+import { RoleGuard } from '@app/authentication/guard/role.guard';
 
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -19,8 +19,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 @NgModule({
   providers: [
-    AuthenticationService, 
-    AuthenticationGuard, 
+    AuthenticationService,
+    AuthenticationGuard,
     RoleGuard,
     {
       provide: AuthHttp,

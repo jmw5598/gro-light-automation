@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { GraphType } from '../../../model/configuration/widget/graph/graph/graph-type.enum';
-import { OrientationType } from '../../../model/configuration/widget/graph/graph-table/orientation-type.enum';
+import { GraphType } from '@app/dashboard/model/configuration/widget/graph/graph/graph-type.enum';
+import { OrientationType } from '@app/dashboard/model/configuration/widget/graph/graph-table/orientation-type.enum';
 
 @Component({
   selector: 'gro-graph-table-options',

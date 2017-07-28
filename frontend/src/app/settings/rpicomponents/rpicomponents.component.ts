@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { RPiComponent } from '../../shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '../../shared/model/rpicomponent/rpicomponent-type.enum';
+import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
 @Component({
   selector: 'gro-rpicomponents',

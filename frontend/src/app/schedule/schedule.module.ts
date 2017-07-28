@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { CoreModule } from '../core/core.module';
-import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '@app/core/core.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { ScheduleComponent } from './schedule.component';
 
