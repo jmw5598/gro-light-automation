@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { SETTINGS_ROUTES } from '@app/settings/settings.routing';
 
 import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
@@ -15,7 +18,8 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    RouterModule.forChild(SETTINGS_ROUTES)
   ],
   exports: [SettingsComponent],
   declarations: [

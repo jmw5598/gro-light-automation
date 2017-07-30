@@ -3,13 +3,13 @@
     <legend><h4>Settings</h4></legend>
   <ul class="panel-nav-list">
     <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings', { outlets: { settings: 'component'} }]">RPi Components</a>
+      <a [routerLink]="['/settings/component']">RPi Components</a>
     </li>
     <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings', { outlets: {'settings':['schedule']} }]">Scheduling</a>
+      <a [routerLink]="['/settings/schedule']">Scheduling</a>
     </li>
     <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings', { outlets: {'settings':['user']} }]">User Accounts</a>
+      <a [routerLink]="['/settings/user']">User Accounts</a>
     </li>
   </ul>
   </div>

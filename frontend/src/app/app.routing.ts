@@ -21,66 +21,25 @@ const appRoutes: Routes = [
 
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: '@app/login/login.module#LoginModule'
   },
   {
     path: 'dashboard',
     canActivate: [AuthenticationGuard],
-    children: [
-      {
-        path: '',
-        component: DashboardComponent
-      },
-      {
-        path: 'builder',
-        component: DashboardBuilderComponent,
-        pathMatch: 'full'
-      }
-    ]
+    loadChildren: '@app/dashboard/dashboard.module#DashboardModule'
+
   },
   {
     path: 'schedule',
-    component: ScheduleComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_ADMIN'] }
+    data: { roles : ['ROLE_ADMIN'] },
+    loadChildren: '@app/schedule/schedule.module#ScheduleModule'
   },
   {
     path: 'settings',
-    component: SettingsComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_ADMIN'] },
-    children: [
-      {
-        path: '',
-        redirectTo: '/settings/(settings:component)',
-        pathMatch: 'full'
-      },
-      {
-        path: 'component',
-        component: SettingsRPiComponentComponent,
-        outlet: 'settings'
-      },
-      {
-        path: 'component.add',
-        component: RPiComponentAddComponent,
-        outlet: 'settings'
-      },
-      {
-        path: 'component/:id/edit',
-        component: RPiComponentEditComponent,
-        outlet: 'settings'
-      },
-      {
-        path: 'schedule',
-        component: SettingsScheduleComponent,
-        outlet: 'settings'
-      },
-      {
-        path: 'user',
-        component: SettingsUserComponent,
-        outlet: 'settings'
-      }
-    ]
+    loadChildren: '@app/settings/settings.module#SettingsModule'
   },
 
   {

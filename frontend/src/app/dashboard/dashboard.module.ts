@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 import { ChartsModule } from 'ng2-charts';
 import { UiSwitchModule } from 'angular2-ui-switch';
 
 import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
+
+import { DASHBOARD_ROUTES } from './dashboard.routing';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
@@ -27,7 +31,8 @@ import { ColumnComponent } from './component/column/column.component';
   imports: [
     ChartsModule,
     SharedModule,
-    UiSwitchModule
+    UiSwitchModule,
+    RouterModule.forChild(DASHBOARD_ROUTES)
   ],
   exports: [DashboardComponent],
   declarations: [
