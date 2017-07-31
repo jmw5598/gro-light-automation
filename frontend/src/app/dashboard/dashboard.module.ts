@@ -6,12 +6,10 @@ import { UiSwitchModule } from 'angular2-ui-switch';
 
 import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
-
+import { DashboardBuilderModule } from '@app/dashboard/dashboard-builder/dashboard-builder.module';
 import { DASHBOARD_ROUTES } from './dashboard.routing';
 
 import { DashboardComponent } from './dashboard.component';
-import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
-import { DashboardBuilderToolbarComponent } from './dashboard-builder/dashboard-builder-toolbar/dashboard-builder-toolbar.component';
 import { FixedSidePanelComponent } from './component/panel/fixed-side-panel/fixed-side-panel.component';
 import { GraphComponent } from './component/graph/graph.component';
 import { GraphTableComponent } from './component/graph-table/graph-table.component';
@@ -37,8 +35,6 @@ import { ColumnComponent } from './component/column/column.component';
   exports: [DashboardComponent],
   declarations: [
     DashboardComponent,
-    DashboardBuilderComponent,
-    DashboardBuilderToolbarComponent,
     FixedSidePanelComponent,
     GraphComponent,
     GraphTableComponent,

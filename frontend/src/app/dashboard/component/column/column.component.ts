@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ColumnConfiguration } from '@app/dashboard/model/configuration/column/column.configuration';
-import { Row } from '@app/dashboard/model/configuration/row/row.model';
-import { Widget } from '@app/dashboard/model/configuration/widget/widget.model';
+import { ColumnConfiguration } from '@app/shared/model/dashboard/configuration/column/column.configuration';
+import { Row } from '@app/shared/model/dashboard/configuration/row/row.model';
+import { Widget } from '@app/shared/model/dashboard/configuration/widget/widget.model';
 
 @Component({
   selector: 'gro-column',

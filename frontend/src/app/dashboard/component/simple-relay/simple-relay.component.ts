@@ -3,7 +3,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { RelayDTO } from '@app/shared/model/rpicomponent/relaydto.model';
 import { RelayService } from '@app/core/service/relay/relay.service';
 import { RelayState } from '@app/shared/model/rpicomponent/relay-state.enum';
-import { SimpleRelayConfiguration } from '@app/dashboard/model/configuration/widget/control/simple-relay/simple-relay.configuration';
+import { SimpleRelayConfiguration } from '@app/shared/model/dashboard/configuration/widget/control/simple-relay/simple-relay.configuration';
 import { SseService } from '@app/core/service/sse/sse.service';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';

@@ -4,10 +4,10 @@ import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
-import { DataSourceConfiguration } from '@app/dashboard/model/configuration/widget/graph/graph-table/data-source/data-source.configuration';
-import { MetricTimeSpan } from '@app/dashboard/model/configuration/widget/graph/graph-table/data-source/metric-time-span.enum';
-import { MetricCalculation } from '@app/dashboard/model/configuration/widget/graph/graph-table/data-source/metric-calculation.enum';
-import { MetricDataType } from '@app/dashboard/model/configuration/widget/graph/graph-table/data-source/metric-data-type.enum';
+import { DataSourceConfiguration } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/data-source.configuration';
+import { MetricTimeSpan } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/metric-time-span.enum';
+import { MetricCalculation } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/metric-calculation.enum';
+import { MetricDataType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/metric-data-type.enum';
 
 @Component({
   selector: 'gro-graph-table-data',

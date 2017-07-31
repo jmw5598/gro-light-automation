@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { PanelConfiguration } from '@app/dashboard/model/configuration/panel/panel-configuration.model';
-import { Row } from '@app/dashboard/model/configuration/row/row.model';
-import { RowConfiguration } from '@app/dashboard/model/configuration/row/row.configuration';
+import { PanelConfiguration } from '@app/shared/model/dashboard/configuration/panel/panel-configuration.model';
+import { Row } from '@app/shared/model/dashboard/configuration/row/row.model';
+import { RowConfiguration } from '@app/shared/model/dashboard/configuration/row/row.configuration';
 
 @Component({
   selector: 'gro-panel',

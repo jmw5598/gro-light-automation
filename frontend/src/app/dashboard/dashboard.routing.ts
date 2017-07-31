@@ -10,7 +10,6 @@ export const DASHBOARD_ROUTES: Routes = [
   },
   {
     path: 'builder',
-    component: DashboardBuilderComponent,
-    pathMatch: 'full'
+    loadChildren: '@app/dashboard/dashboard-builder/dashboard-builder.module#DashboardBuilderModule'
   }
 ];

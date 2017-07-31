@@ -9,7 +9,10 @@
       </div>
     </div>
   </div>-->
-  <div *ngIf="layout" class="row">
+  <div class="row" *ngIf="isLoading">
+    <gro-page-loader></gro-page-loader>
+  </div>
+  <div *ngIf="layout && !isLoading" class="row">
     <span *ngFor="let panel of layout">
       <!--<gro-fixed-side-panel
           [configuration]="panel.configuration">
@@ -34,7 +37,7 @@
 </div>
 
 <!-- TODO: Make resuable alert message that is centered in page -->
-<div id="alert-blank-dashboard" *ngIf="!layout" class="row navbar-adjustment">
+<div id="alert-blank-dashboard" *ngIf="!layout && !isLoading" class="row navbar-adjustment">
   <div class="col-sm-12 col-md-6 col-lg-4 col-md-push-3 col-lg-push-4">
     <div class="alert alert-info">
       <i class="fa fa-info"></i> <strong>Info: </strong>
@@ -44,6 +47,7 @@
 </div>
 
 <gro-dashboard-builder-toolbar
+    *ngIf="!isLoading"
     (onAddComponent)="onAddComponent($event)"
     (onChangeLayoutPreset)="onChangeLayoutPreset($event)">
 </gro-dashboard-builder-toolbar>

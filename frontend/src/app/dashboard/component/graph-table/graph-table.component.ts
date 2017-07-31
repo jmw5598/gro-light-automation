@@ -4,9 +4,9 @@ import { TemperatureDataService } from '@app/core/service/temperature-data/tempe
 import { HumidityDataService } from '@app/core/service/humidity-data/humidity-data.service';
 import { Page } from '@app/shared/model/paging/page.model';
 
-import { GraphTableConfiguration } from '@app/dashboard/model/configuration/widget/graph/graph-table/graph-table.configuration';
-import { GraphType } from '@app/dashboard/model/configuration/widget/graph/graph/graph-type.enum';
-import { OrientationType } from '@app/dashboard/model/configuration/widget/graph/graph-table/orientation-type.enum';
+import { GraphTableConfiguration } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/graph-table.configuration';
+import { GraphType } from '@app/shared/model/dashboard/configuration/widget/graph/graph/graph-type.enum';
+import { OrientationType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/orientation-type.enum';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 
