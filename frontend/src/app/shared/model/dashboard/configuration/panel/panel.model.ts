@@ -1,4 +1,3 @@
-import { ComponentItem } from '../../component-item/component-item.model';
 import { PanelType } from './panel-type.enum';
 import { PanelConfiguration } from './panel-configuration.model';
 
