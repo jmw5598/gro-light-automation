@@ -21,13 +21,13 @@
         <gro-fixed-side-panel
             [configuration]="panel.configuration">
         </gro-fixed-side-panel>
-      </span>
-      <span *ngIf="panel.type === panelType.CENTER">
-        <gro-panel
+      </span> -->
+      <span *ngIf="panel.type === panelType.CENTER" groPanelMenu>
+        <!--<gro-panel
             [configuration]="panel.configuration">
-        </gro-panel>
+        </gro-panel>-->
       </span>
-      <span *ngIf="panel.type === panelType.FIXED_SIDE_RIGHT">
+      <!--<span *ngIf="panel.type === panelType.FIXED_SIDE_RIGHT">
         <gro-fixed-side-panel
             [configuration]="panel.configuration">
         </gro-fixed-side-panel>
