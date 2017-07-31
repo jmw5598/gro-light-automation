@@ -1,0 +1,28 @@
+.dropdown-legend {
+  margin-bottom: 4px !important;
+  margin-top: 4px !important;
+}
+
+.btn-checkbox {
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn-checkbox:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.btn-checkbox > span {
+  float: left;
+}
+
+.btn-checkbox > i {
+  margin-top: 4px;
+  float: right;
+}

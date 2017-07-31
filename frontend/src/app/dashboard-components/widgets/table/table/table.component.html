@@ -1,0 +1,20 @@
+<table id="gro-graph-table" *ngIf="data" class="table table-striped">
+  <thead>
+    <tr *ngIf="!headings">
+      <th *ngFor="let heading of data[0] | keyExtract">{{ heading | keyToTitle:"camel" }}</th>
+    </tr>
+    <tr *ngIf="headings">
+      <th *ngFor="let heading of headings">{{ heading }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- need to fix this to pull object keys and use to create table rows -->
+    <tr *ngFor="let d of data">
+      <td>{{ d.timestamp | date:'short' }}</td>
+      <td>{{ d.component.alias }}</td>
+      <!-- HACK: NEED TO FIX -->
+      <td *ngIf="d.temperature">{{ d.temperature }}</td>
+      <td *ngIf="d.humidity">{{ d.humidity }}</td>
+    </tr>
+  </tbody>
+</table>

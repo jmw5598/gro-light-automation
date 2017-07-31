@@ -1,0 +1,151 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <form>
+
+          <!-- BEGIN : Component Select Box -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend">
+                <h6>Component</h6>
+              </legend>
+              <div class="form-group">
+                <!-- replace with components from database -->
+                <select
+                    class="form-control input-sm"
+                    [ngModel]="selectedComponent"
+                    [ngModelOptions]="{standalone: true}" name="component"
+                    (ngModelChange)="changeSelectedComponent($event)">
+                  <option *ngFor="let component of components" [ngValue]="component">
+                    {{ component.alias }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- END : Component Select Box -->
+
+          <!-- BEGIN : Data Type Radio Buttons -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend">
+                <h6>Data Type</h6>
+              </legend>
+
+              <!-- RADIO BUTTON : Temperature -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                    (click)="changeMetricDataType(metricDataTypeEnum.TEMPERATURE)"
+                    [ngClass]="{ 'active' : configuration.dataType === metricDataTypeEnum.TEMPERATURE }">
+                  <span>Temperature</span>
+                  <i *ngIf="configuration.dataType === metricDataTypeEnum.TEMPERATURE" class="fa fa-check-square-o"></i>
+                  <i *ngIf="configuration.dataType !== metricDataTypeEnum.TEMPERATURE" class="fa fa-square-o"></i>
+                </button>
+              </div>
+
+              <!-- RADIO BUTTON : Humidity -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default col-xs-12 btn-checkbox"
+                    (click)="changeMetricDataType(metricDataTypeEnum.HUMIDITY)"
+                    [ngClass]="{ 'active' : configuration.dataType === metricDataTypeEnum.HUMIDITY }">
+                  <span>Humidity</span>
+                  <i *ngIf="configuration.dataType === metricDataTypeEnum.HUMIDITY" class="fa fa-check-square-o"></i>
+                  <i *ngIf="configuration.dataType !== metricDataTypeEnum.HUMIDITY" class="fa fa-square-o"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <!-- END : Data Type Radio Buttons -->
+
+          <!-- BEGIN : Data Metric Radio Buttons -->
+          <div class="row">
+            <div class="col-xs-12">
+
+              <legend class="dropdown-legend">
+                <h6>Metric</h6>
+              </legend>
+
+              <!-- DROPDOWN : Metric Time -->
+              <div class="form-group">
+                <!-- replace with components from database -->
+                <select [(ngModel)]="configuration.timeSpan" class="form-control input-sm" name="metricTime">
+                  <option [ngValue]="metricTimeSpanEnum.HOURLY">Hourly</option>
+                  <option [ngValue]="metricTimeSpanEnum.DAILY">Daily</option>
+                  <option [ngValue]="metricTimeSpanEnum.WEEKLY">Weekly</option>
+                  <option [ngValue]="metricTimeSpanEnum.MONTHLY">Monthly</option>
+                </select>
+              </div>
+
+              <!-- RADIO BUTTON : Average  -->
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc(metricCalculationEnum.AVERAGE)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.AVERAGE }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.AVERAGE" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.AVERAGE" class="fa fa-circle-o"></i>
+                  <span>Average</span>
+                </button>
+
+              <!-- RADIO BUTTON : High  -->
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc(metricCalculationEnum.HIGH)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.HIGH }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.HIGH" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.HIGH" class="fa fa-circle-o"></i>
+                  <span>High</span>
+                </button>
+
+
+              <!-- RADIO BUTTON : Low  -->
+
+                <button
+                    role="button"
+                    class="btn btn-sm btn-default btn-radio"
+                    (click)="changeMetricCalc(metricCalculationEnum.LOW)"
+                    [ngClass]="{ 'active' : configuration.calculation === metricCalculationEnum.LOW }">
+                  <i *ngIf="configuration.calculation === metricCalculationEnum.LOW" class="fa fa-dot-circle-o"></i>
+                  <i *ngIf="configuration.calculation !== metricCalculationEnum.LOW" class="fa fa-circle-o"></i>
+                  <span>Low</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <!-- END : Data Metric Radio Buttons -->
+
+          <!-- BEGIN : Retrieve Data Button -->
+          <div class="row">
+            <div class="col-xs-12">
+              <legend class="dropdown-legend"></legend>
+              <div class="form-group">
+                <button
+                    role="button"
+                    class="btn btn-sm btn-success col-xs-12"
+                    [disabled]="isLoading"
+                    (click)="updateData()">
+                  <span *ngIf="!isLoading">Get Data</span>
+                  <gro-simple-loader
+                      [isLoading]="isLoading"
+                      [size]="'xsmall'">
+                  </gro-simple-loader>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- END : Retrieve Data Button -->
+
+        </form>
+      </div> <!-- END : Panel Body -->
+    </div> <!-- END : Panel -->
+  </div> <!-- END : Column -->
+</div> <!-- END : Row -->

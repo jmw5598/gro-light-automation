@@ -1,0 +1,22 @@
+<!-- START : PANEL -->
+<div class="col-sm-12"
+    [ngClass]="configuration.classes">
+  <div id="content" class="navbar-adjustment">
+
+    <!-- NO ROWS TO ADD -->
+    <div *ngIf="configuration.rows.length === 0" class="alert alert-info">
+      <i class="fa fa-info"></i>
+      There are currently no rows added to this panel.
+    </div>
+
+    <!-- ADD ROWS FROM CONFIGURATION -->
+    <div *ngIf="configuration.rows.length > 0">
+      <gro-row
+          *ngFor="let row of configuration.rows"
+          [configuration]="row.configuration">
+      </gro-row>
+    </div>
+
+  </div>
+</div>
+<!-- END : PANEL -->

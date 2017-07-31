@@ -1,0 +1,30 @@
+<!-- TABLE CONTENT -->
+<div class="row">
+  <div class="col-xs-12">
+    <gro-table [data]="page?.content"
+               [headings]="headings">
+    </gro-table>
+  </div>
+</div>
+
+<!-- PAGEABLE BUTTONS -->
+<div class="row">
+  <div class="col-xs-12">
+    <span class="pull-right">
+      <button role="button"
+              class="btn btn-sm btn-default"
+              (click)="pageChange(page?.number - 1)"
+              [disabled]="page?.first">
+        <i class="fa fa-step-backward"></i>
+      </button>
+
+      <span class="text-center">{{ page?.number + 1 }} of {{ page?.totalPages }}</span>
+      <button role="button"
+              class="btn btn-sm btn-default"
+              (click)="pageChange(page?.number + 1)"
+              [disabled]="page?.last">
+        <i class="fa fa-step-forward"></i>
+      </button>
+    </span>
+  </div>
+</div>

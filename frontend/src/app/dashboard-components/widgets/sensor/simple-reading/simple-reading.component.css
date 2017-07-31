@@ -1,0 +1,46 @@
+.sensor-alert::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.sensor-badge > span > h2 {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.sensor-badge > span {
+  background: #4e5d6c;
+  color: #FEFEFE;
+}
+
+.sensor-alert > .sensor-info > h4 {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.sensor-alert > .sensor-info > p {
+  font-style: italic;
+}
+
+.sensor-alert-gray-light {
+  background-color: #546575;
+}
+
+.sensor-alert-gray {
+  background-color: #4e5d6c;
+}
+
+.sensor-alert-gray > .sensor-badge > span {
+  background: #546575 !important;
+}
+
+.sensor-alert-gray-dark {
+  background-color: #3f4b58;
+}
+
+.sensor-alert-gray-darker {
+  background-color: #2b3e50;
+}

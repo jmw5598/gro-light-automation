@@ -1,0 +1,36 @@
+.dropdown-legend {
+  margin-bottom: 4px !important;
+  margin-top: 4px !important;
+}
+
+.btn-checkbox, .btn-radio {
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn-checkbox:after, .btn-radio:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.btn-checkbox > span, .btn-radio > span {
+  float: left;
+}
+
+.btn-checkbox > i, .btn-radio > i {
+  margin-top: 4px;
+}
+
+.btn-checkbox > i {
+  float: right;
+}
+
+.btn-radio > i {
+  width: 20px;
+  float: left;
+}
