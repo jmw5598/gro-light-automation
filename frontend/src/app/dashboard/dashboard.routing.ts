@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '@app/dashboard/dashboard.component';
-import { DashboardBuilderComponent } from '@app/dashboard/dashboard-builder/dashboard-builder.component';
+import { DashboardBuilderComponent } from '@app/dashboard-builder/dashboard-builder.component';
 
 export const DASHBOARD_ROUTES: Routes = [
   {
@@ -10,6 +10,6 @@ export const DASHBOARD_ROUTES: Routes = [
   },
   {
     path: 'builder',
-    loadChildren: '@app/dashboard/dashboard-builder/dashboard-builder.module#DashboardBuilderModule'
+    loadChildren: '@app/dashboard-builder/dashboard-builder.module#DashboardBuilderModule'
   }
 ];
