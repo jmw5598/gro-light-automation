@@ -8,6 +8,9 @@ export class ColumnConfiguration {
 
   constructor(
     public classes: Array<any>
-  ) {}
+  ) {
+    this.rows = new Array<Row>();
+    this.widgets = Array<Widget>();
+  }
 
 }

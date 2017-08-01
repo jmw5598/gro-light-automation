@@ -1,5 +1,5 @@
 import { PanelType } from './panel-type.enum';
-import { PanelConfiguration } from './panel-configuration.model';
+import { PanelConfiguration } from './panel.configuration';
 
 export class Panel {
 
