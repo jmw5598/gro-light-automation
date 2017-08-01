@@ -1,9 +1,3 @@
-import { WidgetType } from './widget-type.enum';
-
-export class WidgetConfiguration {
-
-  type: WidgetType;
-
+export abstract class WidgetConfiguration {
   constructor() {}
-
 }

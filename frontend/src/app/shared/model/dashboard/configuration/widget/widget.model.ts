@@ -1,11 +1,8 @@
 import { WidgetConfiguration } from './widget.configuration';
+import { WidgetType } from './widget-type.enum';
 
-export class Widget {
+export abstract class Widget {
 
-  configuration: WidgetConfiguration;
-
-  constructor(configuration: WidgetConfiguration) {
-    this.configuration = configuration;
-  }
+  constructor(widgetType: WidgetType) {}
 
 }
