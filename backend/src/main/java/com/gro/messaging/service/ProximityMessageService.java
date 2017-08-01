@@ -16,7 +16,7 @@ public class ProximityMessageService {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
-    @ServiceActivator(inputChannel="proximityServiceChannel")
+    @ServiceActivator(inputChannel="proximityNotificationChannel")
     public void process(Message<String> message) {
         
         textMessageService.sendSms(message.getPayload());
