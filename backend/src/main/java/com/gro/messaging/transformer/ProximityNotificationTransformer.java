@@ -10,13 +10,13 @@ import org.springframework.messaging.support.MessageBuilder;
 import com.gro.model.ProximityData;
 
 @MessageEndpoint
-public class ProximityMessageTransformer {
+public class ProximityNotificationTransformer {
     
     @Autowired
     private Jackson2JsonObjectMapper jackson2JsonObjectMapper;
     
-    @Transformer(inputChannel="proximityTransformerChannel",
-                 outputChannel="proximityServiceChannel")
+    @Transformer(inputChannel="proximityNotificationTransformerChannel",
+                 outputChannel="proximityNotificationChannel")
     public Message<String> transform(Message<String> message) throws Exception {
         // TEMP : just send string message
         return MessageBuilder.createMessage(message.getPayload(), message.getHeaders());
