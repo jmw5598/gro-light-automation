@@ -3,12 +3,11 @@ import { Widget } from '../widget/widget.model';
 
 export class ColumnConfiguration {
 
-  classes: Array<string>;
   rows: Array<Row>;
   widgets: Array<Widget>;
 
-  constructor() {
-    this.classes = new Array<string>();
-  }
+  constructor(
+    public classes: Array<any>
+  ) {}
 
 }
