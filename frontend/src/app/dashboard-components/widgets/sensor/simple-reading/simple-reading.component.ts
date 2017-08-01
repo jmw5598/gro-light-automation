@@ -90,7 +90,7 @@ export class SimpleReadingComponent implements OnInit, OnDestroy {
 
   private handleProximityEvents(object) {
     if(this.configuration.component.id === object.componentId)
-      this.configuration.component.current = object.proximity;
+      this.configuration.component.current = object.distance;
   }
 
   private handleMoistureEvents(object) {

@@ -22,17 +22,6 @@ export class RowComponent implements OnInit {
 
   ngOnInit() {}
 
-  // have separate widgets for dashboard builder possibly
-  // build wrappers around widgets, wrappers contain menu and pass the configuration/rows/columns through
-
-  showMenu() {
-    console.log("showing menu");
-  };
-
-  hideMenu() {
-    console.log("hiding menu");
-  }
-
 }
 
 /*

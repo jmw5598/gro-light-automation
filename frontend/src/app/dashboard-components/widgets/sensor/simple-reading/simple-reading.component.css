@@ -11,6 +11,11 @@
   margin-bottom: 8px;
 }
 
+.sensor-badge > span > h2 > span {
+  font-size: 12px;
+  vertical-align: top;
+}
+
 .sensor-badge > span {
   background: #4e5d6c;
   color: #FEFEFE;

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { PanelConfiguration } from '@app/shared/model/dashboard/configuration/panel/panel-configuration.model';
+import { PanelConfiguration } from '@app/shared/model/dashboard/configuration/panel/panel.configuration';
 import { PanelLocation } from '@app/shared/model/dashboard/configuration/panel/panel-location.enum';
 
 import { Row } from '@app/shared/model/dashboard/configuration/row/row.model';
