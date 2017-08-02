@@ -18,7 +18,7 @@ export class SseService implements OnDestroy {
   public temperatureState = this.temperature.asObservable();
   public proximityState = this.proximity.asObservable();
   public moistureState = this.moisture.asObservable();
-  public notificationReceived = this.notification.asObservable();
+  public notificationAlert = this.notification.asObservable();
 
   private events;
 
