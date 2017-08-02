@@ -11,12 +11,14 @@ export class SseService implements OnDestroy {
   private temperature = new Subject<Object>();
   private proximity = new Subject<Object>();
   private moisture = new Subject<Object>();
+  private notification = new Subject<Object>();
 
   public relayState = this.relay.asObservable();
   public humidityState = this.humidity.asObservable();
   public temperatureState = this.temperature.asObservable();
   public proximityState = this.proximity.asObservable();
   public moistureState = this.moisture.asObservable();
+  public notificationReceived = this.notification.asObservable();
 
   private events;
 
@@ -43,6 +45,9 @@ export class SseService implements OnDestroy {
           break;
         case 'moisture':
           this.moisture.next(json.payload);
+          break;
+        case 'notification':
+          this.notification.next(json.payload);
           break;
         default:
           break;
