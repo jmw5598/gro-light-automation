@@ -39,6 +39,7 @@ export class SseService implements OnDestroy {
           break;
         case 'proximity':
           this.proximity.next(json.payload);
+          console.log(json.payload);
           break;
         case 'moisture':
           this.moisture.next(json.payload);
