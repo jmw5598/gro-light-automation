@@ -6,7 +6,7 @@ import { AuthenticationGuard } from './authentication/guard/authentication.guard
 import { RoleGuard } from './authentication/guard/role.guard';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardBuilderComponent } from './dashboard/dashboard-builder/dashboard-builder.component';
+import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
