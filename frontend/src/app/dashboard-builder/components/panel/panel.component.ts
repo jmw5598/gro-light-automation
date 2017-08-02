@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PanelConfiguration } from '@app/shared/model/dashboard/configuration/panel/panel-configuration.model';
+import { PanelConfiguration } from '@app/shared/model/dashboard/configuration/panel/panel.configuration';
 import { Row } from '@app/shared/model/dashboard/configuration/row/row.model';
 import { RowConfiguration } from '@app/shared/model/dashboard/configuration/row/row.configuration';
 
