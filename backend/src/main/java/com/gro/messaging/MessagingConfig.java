@@ -41,7 +41,7 @@ public class MessagingConfig {
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
                 new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), 
-                        "TEMPERATURE", "HUMIDITY", "PROXIMITY.Notification", "PROXIMITY.State", "RELAY.State");
+                        "TEMPERATURE", "HUMIDITY", "NOTIFICATION.Alert", "PROXIMITY.State", "RELAY.State");
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
         adapter.setQos(1);
@@ -87,15 +87,15 @@ public class MessagingConfig {
         return new DirectChannel();
     }
     
-    /* PROXIMITY : CHANNEL BETWEEN TRANSFORMER AND SMS SERVICE */
+    /* NOTIFICATION : CHANNEL BETWEEN TRANSFORMER AND SMS SERVICE */
     @Bean
-    public MessageChannel proximityNotificationChannel() {
-        return new DirectChannel();
+    public MessageChannel notificationChannel() {
+        return new PublishSubscribeChannel();
     }
     
-    /* PROXIMITY : CHANNEL BETWEEN ROUTER AND SMS TRANSFORMER */
+    /* NOTIFICATION : CHANNEL BETWEEN ROUTER AND SMS TRANSFORMER */
     @Bean
-    public MessageChannel proximityNotificationTransformerChannel() {
+    public MessageChannel notificationTransformerChannel() {
         return new DirectChannel();
     }
     

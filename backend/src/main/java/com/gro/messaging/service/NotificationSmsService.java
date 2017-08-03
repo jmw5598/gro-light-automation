@@ -5,10 +5,11 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
+import com.gro.model.Notification;
 import com.gro.repository.RPiComponentRepository;
 
 @MessageEndpoint
-public class ProximityMessageService {
+public class NotificationSmsService {
     
     @Autowired
     private TextMessageService textMessageService;
@@ -16,10 +17,10 @@ public class ProximityMessageService {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
-    @ServiceActivator(inputChannel="proximityNotificationChannel")
-    public void process(Message<String> message) {
-        
-        textMessageService.sendSms(message.getPayload());
+    @ServiceActivator(inputChannel="notificationChannel")
+    public void process(Message<Notification> message) {
+        // construct more meaningful message with Notification class is complete
+        //textMessageService.sendSms(message.getPayload().getMessage());
         
     }
     

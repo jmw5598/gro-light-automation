@@ -7,19 +7,21 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
+import com.gro.model.Notification;
 import com.gro.model.ProximityData;
 
 @MessageEndpoint
-public class ProximityNotificationTransformer {
+public class NotificationTransformer {
     
     @Autowired
     private Jackson2JsonObjectMapper jackson2JsonObjectMapper;
     
-    @Transformer(inputChannel="proximityNotificationTransformerChannel",
-                 outputChannel="proximityNotificationChannel")
-    public Message<String> transform(Message<String> message) throws Exception {
-        // TEMP : just send string message
-        return MessageBuilder.createMessage(message.getPayload(), message.getHeaders());
+    @Transformer(inputChannel="notificationTransformerChannel",
+                 outputChannel="notificationChannel")
+    public Message<Notification> transform(Message<String> message) throws Exception {
+        String payload = message.getPayload();
+        Notification data = jackson2JsonObjectMapper.fromJson(payload, Notification.class);
+        return MessageBuilder.createMessage(data, message.getHeaders());
     }
     
 }

@@ -22,8 +22,8 @@ public class MqttMessageRouter {
             case "TEMPERATURE_HUMIDITY":
                 route = "temperatureHumidityTransformerChannel";
                 break;
-            case "PROXIMITY.Notification":
-                route = "proximityNotificationTransformerChannel";
+            case "NOTIFICATION.Alert":
+                route = "notificationTransformerChannel";
                 break;
             case "PROXIMITY.State":
                 route = "proximityTransformerChannel";
