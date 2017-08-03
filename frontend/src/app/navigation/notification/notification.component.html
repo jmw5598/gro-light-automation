@@ -1,3 +1,44 @@
-<p>
-  notification works!
-</p>
+<!-- BEGIN : Notification Panel -->
+<div *ngIf="notification" class="panel panel-default">
+
+  <!-- BEGIN : Notification Body -->
+  <div class="panel-body">
+
+    <!-- NOTIFICATION : Date & Time Details -->
+    <h6>
+      <i class="fa fa-calendar fa-icon-margin"></i>
+      {{notification.timestamp | date:'fullDate'}}
+      <span class="pull-right">
+        {{notification.timestamp | date:'shortTime'}}
+      </span>
+    </h6>
+
+    <!-- NOTIFICATION : Message -->
+    <p>{{notification.message}}</p>
+
+    <!-- NOTIFICATION : Buttons -->
+    <div class="pull-right">
+      <button
+          role="button"
+          class="btn btn-xs btn-default"
+          (click)="toggleDetails()">
+        <i class="fa fa-info-circle"></i>
+      </button>
+      <button
+          role="button"
+          class="btn btn-xs btn-default"
+          (click)="delete(notification)">
+        <i class="fa fa-check-circle"></i>
+      </button>
+    </div>
+  </div>
+  <!-- END : Notification Body -->
+
+  <!-- BEGIN : Notication Footer : Sensor Details -->
+  <div *ngIf="detailsShown" class="panel-footer">
+    <p>More details about the notification, sensor details</p>
+  </div>
+  <!-- END : Notication Footer : Sensor Details -->
+
+</div>
+<!-- END : Notification Panel -->
