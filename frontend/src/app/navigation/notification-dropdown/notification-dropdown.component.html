@@ -15,20 +15,21 @@
     <!-- END : Notifications Navbar Dropdown -->
 
     <!-- BEGIN : Notification Dropdown Submenu -->
-    <ul *ngIf="notifications.length > 0"
-        class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
+    <ul class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
         (click)="$event.stopPropagation()">
-      <li *ngFor="let notification of notifications">
-        <gro-notification
-            [notification]="notification"
-            (onDeleteNotification)="onDeleteNotification($event)">
-        </gro-notification>
-      </li>
-    </ul>
-    <ul *ngIf="notifications.length === 0"
-        class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
-        (click)="$event.stopPropagation()">
-      <li>
+
+      <!-- NOTIFICATIONS LOOP -->
+      <span *ngIf="notifications.length > 0">
+        <li  *ngFor="let notification of notifications">
+          <gro-notification
+              [notification]="notification"
+              (onDeleteNotification)="onDeleteNotification($event)">
+          </gro-notification>
+        </li>
+      </span>
+
+      <!-- NO NOTIFICATIONS -->
+      <li *ngIf="notifications.length === 0">
         <div class="panel panel-default">
           <div class="panel-body">
             <i class="fa fa-info-circle"></i>
