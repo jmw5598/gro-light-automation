@@ -4,9 +4,9 @@
 
     <!-- BEGIN : Notifications Navbar Dropdown -->
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i *ngIf="notifications.length === 0" class="fa fa-envelope-o fa-icon-margin"></i>
+      <i *ngIf="notifications.length === 0" class="fa fa-envelope fa-icon-margin"></i>
       <span
-          class="label label-warning notification-badge fa-icon-margin"
+          class="label label-primary notification-badge fa-icon-margin"
           *ngIf="notifications.length > 0">
         {{notifications.length + ' '}}
       </span>
