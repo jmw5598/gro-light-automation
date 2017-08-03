@@ -1,0 +1,11 @@
+blockquote.notification-details {
+  font-size: 14px;
+  font-style: italic;
+  margin: 8px;
+  padding: 8px;
+}
+
+h6.notification-date-time {
+  font-size: 11px;
+  font-style: italic;
+}

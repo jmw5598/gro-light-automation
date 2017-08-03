@@ -5,7 +5,7 @@
   <div class="panel-body">
 
     <!-- NOTIFICATION : Date & Time Details -->
-    <h6>
+    <h6 class="notification-date-time">
       <i class="fa fa-calendar fa-icon-margin"></i>
       {{notification.timestamp | date:'fullDate'}}
       <span class="pull-right">
@@ -14,7 +14,7 @@
     </h6>
 
     <!-- NOTIFICATION : Message -->
-    <p>{{notification.message}}</p>
+    <p>Nutriends Level 1</p><!-- TODO: replace with component that triggered event -->
 
     <!-- NOTIFICATION : Buttons -->
     <div class="pull-right">
@@ -36,7 +36,7 @@
 
   <!-- BEGIN : Notication Footer : Sensor Details -->
   <div *ngIf="detailsShown" class="panel-footer">
-    <p>More details about the notification, sensor details</p>
+    <blockquote class="notification-details">{{notification.message}}</blockquote>
   </div>
   <!-- END : Notication Footer : Sensor Details -->
 
