@@ -1,3 +1,44 @@
-<p>
-  notification-dropdown works!
-</p>
+<!-- BEGIN : Notifications Navbar Dropdown -->
+<ul id="navigation-dropdown" class="nav navbar-nav pull-right">
+  <li class="dropdown">
+
+    <!-- BEGIN : Notifications Navbar Dropdown -->
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <i *ngIf="notifications.length === 0" class="fa fa-envelope-o fa-icon-margin"></i>
+      <span
+          class="label label-warning notification-badge fa-icon-margin"
+          *ngIf="notifications.length > 0">
+        {{notifications.length + ' '}}
+      </span>
+      Notifications <span class="caret"></span>
+    </a>
+    <!-- END : Notifications Navbar Dropdown -->
+
+    <!-- BEGIN : Notification Dropdown Submenu -->
+    <ul *ngIf="notifications.length > 0"
+        class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
+        (click)="$event.stopPropagation()">
+      <li *ngFor="let notification of notifications">
+        <gro-notification
+            [notification]="notification"
+            (onDeleteNotification)="onDeleteNotification($event)">
+        </gro-notification>
+      </li>
+    </ul>
+    <ul *ngIf="notifications.length === 0"
+        class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
+        (click)="$event.stopPropagation()">
+      <li>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <i class="fa fa-info-circle"></i>
+            There are no notifications.
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!-- END : Notification Dropdown Submenu -->
+
+  </li>
+</ul>
+<!-- END : Notifications Navbar Dropdown -->
