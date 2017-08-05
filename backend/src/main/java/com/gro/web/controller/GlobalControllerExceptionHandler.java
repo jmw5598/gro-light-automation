@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import com.gro.model.ApiError;
 import com.gro.model.InvalidRPiComponentTypeException;
 import com.gro.model.InvalidRelayStateException;
+import com.gro.model.NotificationNotFoundException;
 import com.gro.model.RPiComponentNotFoundException;
 
 @ControllerAdvice
@@ -40,6 +41,14 @@ public class GlobalControllerExceptionHandler {
         String error = e.getMessage();
         ApiError apiError = 
                 new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+    }
+    
+    @ExceptionHandler(NotificationNotFoundException.class)
+    public ResponseEntity<Object> handleNotificationNotFoundException(NotificationNotFoundException e, WebRequest request) {
+        String error = e.getMessage();
+        ApiError apiError =
+                new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), error);
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
     
