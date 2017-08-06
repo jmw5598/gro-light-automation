@@ -31,9 +31,10 @@ public class Notification {
     @NotNull
     private RPiComponent component;
     
-    private Boolean hasRead;
+    @NotNull
+    private Boolean isRead = false;
     
-    
+
     public Notification() {}
 
     public Integer getId() {
@@ -68,14 +69,12 @@ public class Notification {
         this.component = component;
     }
 
-    public Boolean getHasRead() {
-        return hasRead;
+    public Boolean isRead() {
+        return isRead;
     }
 
-    public void setHasRead(Boolean hasRead) {
-        this.hasRead = hasRead;
+    public void setRead(Boolean isRead) {
+        this.isRead = isRead;
     }
-    
-    
     
 }
