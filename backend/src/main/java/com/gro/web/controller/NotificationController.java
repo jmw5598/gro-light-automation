@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.repository.NotificationRepository;
@@ -43,6 +44,13 @@ public class NotificationController {
         if(notification == null)
             throw new NotificationNotFoundException(notificationNotFound);
         return notification;
+    }
+    
+    @RequestMapping(value="/state", method=RequestMethod.GET)
+    public Page<Notification> getNotificationsByState(
+            @RequestParam(name="read", required=true) Boolean read,
+            @PageableDefault(sort={"timestamp"}, page=0, size=10) Pageable pageable) {
+        return this.notificationRepository.findAllByHasRead(read, pageable);
     }
 
 }
