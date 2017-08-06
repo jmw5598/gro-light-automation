@@ -1,9 +1,9 @@
-import { Directive, Input, ElementRef, HostListener } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener, DoCheck } from '@angular/core';
 
 @Directive({
   selector: '[groScrollable]'
 })
-export class ScrollableDirective {
+export class ScrollableDirective implements DoCheck {
 
   @Input()
   triggerHeight: number;
@@ -23,4 +23,10 @@ export class ScrollableDirective {
   removeScrollbar() {
     this.el.nativeElement.style.overflowY = 'hidden';
   }
+
+  ngDoCheck() {
+    if(this.el.nativeElement.offsetHeight < this.triggerHeight)
+      this.el.nativeElement.style.overflowY = 'hidden';
+  }
+
 }
