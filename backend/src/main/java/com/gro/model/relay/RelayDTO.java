@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.relay;
 
 import com.gro.model.rpicomponent.RPiComponent;
 

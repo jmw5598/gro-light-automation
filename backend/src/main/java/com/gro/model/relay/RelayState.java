@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.relay;
 
 public enum RelayState {
     ON,

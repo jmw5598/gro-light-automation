@@ -8,7 +8,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.stereotype.Service;
 
 import com.gro.messaging.gateway.MqttOutboundGateway;
-import com.gro.model.RelayDTO;
+import com.gro.model.relay.RelayDTO;
 
 @Service
 public class RelayService {
