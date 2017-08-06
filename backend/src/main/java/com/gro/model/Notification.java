@@ -29,6 +29,8 @@ public class Notification {
     @NotNull
     private RPiComponent component;
     
+    private Boolean hasRead;
+    
     
     public Notification() {}
 
@@ -62,6 +64,16 @@ public class Notification {
 
     public void setComponent(RPiComponent component) {
         this.component = component;
-    }    
+    }
+
+    public Boolean getHasRead() {
+        return hasRead;
+    }
+
+    public void setHasRead(Boolean hasRead) {
+        this.hasRead = hasRead;
+    }
+    
+    
     
 }
