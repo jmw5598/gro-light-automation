@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.InvalidRPiComponentTypeException;
 import com.gro.model.relay.InvalidRelayStateException;
 import com.gro.model.relay.RelayDTO;
 import com.gro.model.relay.RelayState;
+import com.gro.model.rpicomponent.InvalidRPiComponentTypeException;
 import com.gro.model.rpicomponent.RPiComponent;
 import com.gro.model.rpicomponent.RPiComponentNotFoundException;
 import com.gro.model.rpicomponent.RPiComponentType;
