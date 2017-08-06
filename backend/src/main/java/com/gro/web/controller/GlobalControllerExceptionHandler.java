@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import com.gro.model.ApiError;
-import com.gro.model.NotificationNotFoundException;
+import com.gro.model.notification.NotificationNotFoundException;
 import com.gro.model.relay.InvalidRelayStateException;
 import com.gro.model.rpicomponent.InvalidRPiComponentTypeException;
 import com.gro.model.rpicomponent.RPiComponentNotFoundException;

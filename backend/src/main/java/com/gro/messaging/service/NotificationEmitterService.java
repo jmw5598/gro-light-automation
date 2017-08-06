@@ -9,7 +9,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.Notification;
+import com.gro.model.notification.Notification;
 import com.gro.web.service.ObjectSseEmitterService;
 
 @MessageEndpoint

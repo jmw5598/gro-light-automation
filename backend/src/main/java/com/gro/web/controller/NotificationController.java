@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gro.model.notification.Notification;
+import com.gro.model.notification.NotificationNotFoundException;
 import com.gro.repository.NotificationRepository;
-import com.gro.model.Notification;
-import com.gro.model.NotificationNotFoundException;
 
 @RestController("/api/notification")
 public class NotificationController {

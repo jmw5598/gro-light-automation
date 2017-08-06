@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.notification;
 
 public class NotificationNotFoundException extends RuntimeException {
     
