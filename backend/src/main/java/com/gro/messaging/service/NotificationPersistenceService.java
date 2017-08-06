@@ -6,7 +6,9 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.notification.Notification;
+import com.gro.model.rpicomponent.RPiComponent;
 import com.gro.repository.NotificationRepository;
+import com.gro.repository.RPiComponentRepository;
 
 @MessageEndpoint
 public class NotificationPersistenceService {
@@ -14,9 +16,15 @@ public class NotificationPersistenceService {
     @Autowired
     private NotificationRepository notificationRepository;
     
-    @ServiceActivator(inputChannel="notificationServiceChannel")
+    @Autowired
+    private RPiComponentRepository rPiComponentRepository;
+    
+    @ServiceActivator(inputChannel="notificationChannel")
     public void process(Message<Notification> message) {
-        this.notificationRepository.save(message.getPayload());
+        Notification notification = message.getPayload();
+        RPiComponent component = rPiComponentRepository.findOne(notification.getComponent().getId());
+        notification.setComponent(component);
+        this.notificationRepository.save(notification);
     }
 
 }
