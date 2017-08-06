@@ -22,7 +22,7 @@ public abstract class AbstractDataDTO {
         return timestamp;
     }
     
-    public void setTimestampe(Date timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
     
