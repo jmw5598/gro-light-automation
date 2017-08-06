@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.rpicomponent;
 
 public class RPiComponentNotFoundException extends RuntimeException {
 

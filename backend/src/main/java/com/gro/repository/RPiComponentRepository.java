@@ -8,8 +8,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.gro.model.RPiComponent;
-import com.gro.model.RPiComponentType;
+import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 
 public interface RPiComponentRepository extends CrudRepository<RPiComponent, Integer> {
     

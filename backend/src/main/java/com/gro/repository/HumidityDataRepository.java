@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.gro.model.HumidityData;
-import com.gro.model.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponent;
 
 
 public interface HumidityDataRepository extends JpaRepository<HumidityData, Integer> {

@@ -4,7 +4,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.Router;
 import org.springframework.messaging.handler.annotation.Header;
 
-import com.gro.model.RPiComponentType;
+import com.gro.model.rpicomponent.RPiComponentType;
 
 @MessageEndpoint
 public class MqttMessageRouter {

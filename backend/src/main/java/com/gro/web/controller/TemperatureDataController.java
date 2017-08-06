@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.RPiComponent;
-import com.gro.model.RPiComponentNotFoundException;
 import com.gro.model.TemperatureData;
+import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponentNotFoundException;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;
 

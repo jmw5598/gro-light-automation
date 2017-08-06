@@ -1,5 +1,7 @@
 package com.gro.model;
 
+import com.gro.model.rpicomponent.RPiComponent;
+
 public class RelayDTO {
 
     private RPiComponent component;

@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.rpicomponent;
 
 public enum RPiComponentType {
     TEMPERATURE_HUMIDITY,

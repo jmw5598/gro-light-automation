@@ -7,7 +7,7 @@ import org.springframework.messaging.Message;
 
 import com.gro.model.HumidityDTO;
 import com.gro.model.HumidityData;
-import com.gro.model.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponent;
 import com.gro.repository.HumidityDataRepository;
 import com.gro.repository.RPiComponentRepository;
 

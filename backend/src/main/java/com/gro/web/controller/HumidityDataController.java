@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.HumidityData;
-import com.gro.model.RPiComponent;
-import com.gro.model.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponentNotFoundException;
 import com.gro.repository.HumidityDataRepository;
 import com.gro.repository.RPiComponentRepository;
 

@@ -11,6 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.gro.model.rpicomponent.RPiComponent;
+
 @Entity
 public class Notification {
     

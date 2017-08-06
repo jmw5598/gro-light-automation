@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.InvalidRPiComponentTypeException;
 import com.gro.model.InvalidRelayStateException;
-import com.gro.model.RPiComponent;
-import com.gro.model.RPiComponentNotFoundException;
-import com.gro.model.RPiComponentType;
 import com.gro.model.RelayDTO;
 import com.gro.model.RelayState;
+import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.web.service.RelayService;
 
