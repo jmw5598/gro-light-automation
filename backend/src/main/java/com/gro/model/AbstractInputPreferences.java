@@ -5,6 +5,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
+import com.gro.model.data.TimeUnit;
+
 @MappedSuperclass
 public abstract class AbstractInputPreferences extends AbstractPreferences {
     

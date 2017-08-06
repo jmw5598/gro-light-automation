@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.data.temperature;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.data;
 
 import java.util.Date;
 

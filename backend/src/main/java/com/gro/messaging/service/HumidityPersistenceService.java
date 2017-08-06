@@ -5,8 +5,8 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.HumidityDTO;
-import com.gro.model.HumidityData;
+import com.gro.model.data.humidity.HumidityDTO;
+import com.gro.model.data.humidity.HumidityData;
 import com.gro.model.rpicomponent.RPiComponent;
 import com.gro.repository.HumidityDataRepository;
 import com.gro.repository.RPiComponentRepository;

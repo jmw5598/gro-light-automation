@@ -1,6 +1,8 @@
-package com.gro.model;
+package com.gro.model.data.humidity;
 
 import java.util.Date;
+
+import com.gro.model.data.AbstractDataDTO;
 
 public class HumidityDTO extends AbstractDataDTO {
 

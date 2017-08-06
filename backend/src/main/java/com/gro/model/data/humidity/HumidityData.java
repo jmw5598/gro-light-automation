@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.data.humidity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

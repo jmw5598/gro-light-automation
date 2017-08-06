@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.gro.model.TemperatureData;
+import com.gro.model.data.temperature.TemperatureData;
 import com.gro.model.rpicomponent.RPiComponent;
 
 public interface TemperatureDataRepository extends JpaRepository<TemperatureData, Integer> {

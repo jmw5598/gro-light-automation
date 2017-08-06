@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.model.data.proximity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;

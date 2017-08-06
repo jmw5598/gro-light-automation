@@ -8,7 +8,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import com.gro.model.Notification;
-import com.gro.model.ProximityData;
+import com.gro.model.data.proximity.ProximityData;
 
 @MessageEndpoint
 public class NotificationTransformer {

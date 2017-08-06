@@ -5,8 +5,8 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.TemperatureDTO;
-import com.gro.model.TemperatureData;
+import com.gro.model.data.temperature.TemperatureDTO;
+import com.gro.model.data.temperature.TemperatureData;
 import com.gro.model.rpicomponent.RPiComponent;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;

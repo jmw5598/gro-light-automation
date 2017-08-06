@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.HumidityDTO;
+import com.gro.model.data.humidity.HumidityDTO;
 
 @MessageEndpoint
 public class HumidityMessageTransformer {

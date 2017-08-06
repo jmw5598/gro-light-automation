@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.TemperatureDTO;
+import com.gro.model.data.temperature.TemperatureDTO;
 
 @MessageEndpoint
 public class TemperatureMessageTransformer {
