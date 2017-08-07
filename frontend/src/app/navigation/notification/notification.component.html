@@ -7,36 +7,49 @@
     <!-- NOTIFICATION : Date & Time Details -->
     <h6 class="notification-date-time">
       <i class="fa fa-calendar fa-icon-margin"></i>
-      {{notification.timestamp | date:'fullDate'}}
+      {{ notification.timestamp | date:'fullDate' }}
       <span class="pull-right">
-        {{notification.timestamp | date:'shortTime'}}
+        {{ notification.timestamp | date:'shortTime' }}
       </span>
     </h6>
 
     <!-- NOTIFICATION : Message -->
-    <p>Nutriends Level 1</p><!-- TODO: replace with component that triggered event -->
+    <p>{{ notification.component.alias }}</p>
 
     <!-- NOTIFICATION : Buttons -->
     <div class="pull-right">
+
+      <!-- Details Button -->
       <button
           role="button"
           class="btn btn-xs btn-default"
           (click)="toggleDetails()">
         <i class="fa fa-info-circle"></i>
       </button>
+
+      <!-- Read/Unread Button -->
+      <button
+          role="button"
+          class="btn btn-xs btn-default"
+          (click)="updateState(notification)">
+        <i class="fa fa-check-circle"></i>
+      </button>
+
+      <!-- Delete Button -->
       <button
           role="button"
           class="btn btn-xs btn-default"
           (click)="delete(notification)">
-        <i class="fa fa-check-circle"></i>
+        <i class="fa fa-trash-o"></i>
       </button>
+
     </div>
   </div>
   <!-- END : Notification Body -->
 
   <!-- BEGIN : Notication Footer : Sensor Details -->
   <div *ngIf="detailsShown" class="panel-footer">
-    <blockquote class="notification-details">{{notification.message}}</blockquote>
+    <blockquote class="notification-details">{{ notification.message }}</blockquote>
   </div>
   <!-- END : Notication Footer : Sensor Details -->
 

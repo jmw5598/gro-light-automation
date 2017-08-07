@@ -13,6 +13,9 @@ export class NotificationComponent implements OnInit {
   notification: Notification;
 
   @Output()
+  onUpdateState: EventEmitter<Notification> = new EventEmitter<Notification>();
+
+  @Output()
   onDeleteNotification: EventEmitter<Notification> = new EventEmitter<Notification>();
 
   private detailsShown: boolean;
@@ -26,6 +29,11 @@ export class NotificationComponent implements OnInit {
 
   toggleDetails() {
     this.detailsShown = !this.detailsShown;
+  }
+
+  updateState(notification: Notification) {
+    notification.isRead = !notification.isRead;
+    this.onUpdateState.emit(notification);
   }
 
   delete(notification: Notification) {
