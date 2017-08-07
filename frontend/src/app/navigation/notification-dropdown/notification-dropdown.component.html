@@ -4,7 +4,7 @@
 
     <!-- BEGIN : Notifications Navbar Dropdown Item -->
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i *ngIf="unread && unread.content.length === 0" class="fa fa-envelope fa-icon-margin"></i>
+      <i *ngIf="unread && unread.totalElements === 0" class="fa fa-envelope fa-icon-margin"></i>
       <span
           class="label label-info notification-badge fa-icon-margin"
           *ngIf="unread && unread.totalElements > 0">
