@@ -43,8 +43,15 @@ public class NotificationController {
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public Notification getNotificationById(@PathVariable("id") Integer id) {
         Notification notification = this.notificationRepository.findOne(id);
-        if(notification == null)
-            throw new NotificationNotFoundException(notificationNotFound);
+        validateNotification(notification);
+        return notification;
+    }
+    
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    public Notification deleteNotificationById(@PathVariable("id") Integer id) {
+        Notification notification = this.notificationRepository.findOne(id);
+        validateNotification(notification);
+        this.notificationRepository.delete(notification);
         return notification;
     }
     
@@ -52,8 +59,24 @@ public class NotificationController {
     public Page<Notification> getNotificationsByState(
             @RequestParam(name="read", required=true) Boolean read,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
-        System.out.println("inside state endpoint, getting notifications by state");
         return this.notificationRepository.findAllByIsRead(read, pageable);
+    }
+    
+    @RequestMapping(value="/{id}/state", method=RequestMethod.PATCH)
+    public Notification updateNotificationState(
+            @PathVariable("id") Integer id, @RequestParam(value="read", required=true) Boolean read) {
+        
+        Notification notification = notificationRepository.findOne(id);
+        validateNotification(notification);
+        notification.setRead(read);
+        return this.notificationRepository.save(notification);
+        
+    }
+    
+    
+    private void validateNotification(Notification notification) {
+        if(notification == null)
+            throw new NotificationNotFoundException(notificationNotFound);
     }
 
 }
