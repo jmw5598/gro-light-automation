@@ -25,7 +25,7 @@ export class NotificationService extends CrudService<Notification, number> {
 
   updateNotificationState(id: number, read: boolean): Observable<Notification> {
     const url: string = this.base + '/' + id + '/state?read=' + read;
-    return this.http.patch(url, this.options())
+    return this.http.patch(url, null, this.options())
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -34,7 +34,7 @@ export class NotificationService extends CrudService<Notification, number> {
     let body = res.json() || '';
     let result = Array<Notification>();
     body.content.forEach(e => {
-        result.push(new Notification(e.id, new Date(e.timestamp), e.message, e.component, e.isRead));
+        result.push(new Notification(e.id, new Date(e.timestamp), e.message, e.component, e.read));
     })
     body.content = result;
     console.log("body: ");
