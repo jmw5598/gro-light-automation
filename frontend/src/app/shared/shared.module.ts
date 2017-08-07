@@ -12,6 +12,7 @@ import { KeyExtractPipe } from './pipe/key-extract/key-extract.pipe';
 import { CelsiusToFahrenheitPipe } from './pipe/celsius-to-fahrenheit/celsius-to-fahrenheit.pipe';
 import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.component';
 import { PageLoaderComponent } from './component/page-loader/page-loader.component';
+import { ScrollableDirective } from './directive/scrollable/scrollable.directive';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
     RPiComponentFormComponent,
   	RouterModule,
     SimpleLoaderComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ScrollableDirective
   ],
   declarations: [
     AlertComponent,
@@ -43,7 +45,8 @@ import { PageLoaderComponent } from './component/page-loader/page-loader.compone
     PanelListGroupComponent,
     RPiComponentFormComponent,
     SimpleLoaderComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ScrollableDirective
   ]
 })
 export class SharedModule { }
