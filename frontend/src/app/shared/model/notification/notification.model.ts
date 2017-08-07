@@ -6,7 +6,8 @@ export class Notification {
     public id: number,
     public timestamp: Date,
     public message: string,
-    public component: RPiComponent
+    public component: RPiComponent,
+    public isRead: boolean
   ) {}
 
 }
