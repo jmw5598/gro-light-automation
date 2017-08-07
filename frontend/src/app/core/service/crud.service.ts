@@ -9,7 +9,7 @@ export class CrudService<T, ID> implements CrudOperations<T, ID> {
 
   protected base: string;
   protected http: Http;
-	
+
   constructor(base: string, http: Http) {
     this.base = base;
     this.http = http;
@@ -57,12 +57,12 @@ export class CrudService<T, ID> implements CrudOperations<T, ID> {
     } else {
       msg = error.message ? error.message : error.toString();
     }
-    
+
     return Observable.throw(msg);
   }
 
   // need to decouple this.
-  private options() {
+  protected options() {
     let headers = new Headers({ 'Authorization': '' + localStorage.getItem('token') });
     let options = new RequestOptions({ headers: headers });
     return options;
