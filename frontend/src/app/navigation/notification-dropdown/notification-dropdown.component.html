@@ -7,7 +7,7 @@
       <i *ngIf="unread && unread.content.length === 0" class="fa fa-envelope fa-icon-margin"></i>
       <span
           class="label label-info notification-badge fa-icon-margin"
-          *ngIf="unread && unread.content.length > 0">
+          *ngIf="unread && unread.totalElements > 0">
         {{unread.totalElements + ' '}}
       </span>
       Notifications <span class="caret"></span>
