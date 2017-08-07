@@ -1,3 +1,26 @@
-<p>
-  notification-list works!
-</p>
+<div id="notifications-list" groScrollable triggerHeight="450">
+  <span *ngIf="notifications">
+
+    <!-- BEGIN : Notifications Loop -->
+    <div  *ngFor="let notification of notifications">
+      <gro-notification
+          [notification]="notification"
+          (onUpdateState)="updateState($event)"
+          (onDeleteNotification)="delete($event)">
+      </gro-notification>
+    </div>
+    <!-- END : Notifications Loop -->
+
+    <!-- BEGIN : Empty Notifications -->
+    <div *ngIf="notifications.length <= 0">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-info-circle fa-icon-margin"></i>
+          There are no notifications.
+        </div>
+      </div>
+    </div>
+    <!-- END : Empty Notifications -->
+
+  </span>
+<div>
