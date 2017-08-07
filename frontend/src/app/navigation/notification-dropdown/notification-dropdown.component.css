@@ -6,3 +6,11 @@
 .dropdown-notifications {
   width: 350px;
 }
+
+hr {
+  margin-top: 8px;
+}
+
+.notifications-button-container {
+  margin-top: 8px;
+}

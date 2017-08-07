@@ -2,44 +2,87 @@
 <ul id="navigation-dropdown" class="nav navbar-nav pull-right">
   <li class="dropdown">
 
-    <!-- BEGIN : Notifications Navbar Dropdown -->
+    <!-- BEGIN : Notifications Navbar Dropdown Item -->
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i *ngIf="notifications.length === 0" class="fa fa-envelope fa-icon-margin"></i>
+      <i *ngIf="unread && unread.content.length === 0" class="fa fa-envelope fa-icon-margin"></i>
       <span
-          class="label label-primary notification-badge fa-icon-margin"
-          *ngIf="notifications.length > 0">
-        {{notifications.length + ' '}}
+          class="label label-info notification-badge fa-icon-margin"
+          *ngIf="unread && unread.content.length > 0">
+        {{unread.totalElements + ' '}}
       </span>
       Notifications <span class="caret"></span>
     </a>
-    <!-- END : Notifications Navbar Dropdown -->
+    <!-- END : Notifications Navbar Dropdown Item -->
 
     <!-- BEGIN : Notification Dropdown Submenu -->
-    <ul class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
+    <ul *ngIf="unread && read"
+        class="dropdown-menu dropdown-menu-right dropdown-notifications dropshadow"
         (click)="$event.stopPropagation()">
 
-      <!-- NOTIFICATIONS LOOP -->
-      <span *ngIf="notifications.length > 0">
-        <li  *ngFor="let notification of notifications">
-          <gro-notification
-              [notification]="notification"
-              (onDeleteNotification)="onDeleteNotification($event)">
-          </gro-notification>
-        </li>
-      </span>
+      <!-- BEGIN : Submenu Content -->
+      <li>
 
-      <!-- NO NOTIFICATIONS -->
-      <li *ngIf="notifications.length === 0">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <i class="fa fa-info-circle"></i>
-            There are no notifications.
+        <!-- BEGIN : Nav Buttons for NgSwitch (read, unread) -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12">
+
+              <!-- Buttons Container -->
+              <div class="notifications-button-container">
+
+                <!-- Unread Button -->
+                <button
+                    role="button"
+                    class="btn btn-default btn-sm active"
+                    [ngClass]="{ 'active' : notificationViewSelected === notificationView.UNREAD}"
+                    (click)="changeView(notificationView.UNREAD)">
+                  <i class="fa fa-envelope fa-icon-margin"></i>
+                    Unread
+                  <span class="label label-info">{{ unread.totalElements }}</span>
+                </button>
+
+                <!-- Read Button -->
+                <button
+                    role="button"
+                    class="btn btn-default btn-sm"
+                    [ngClass]="{ 'active' : notificationViewSelected === notificationView.READ}"
+                    (click)="changeView(notificationView.READ)">
+                  <i class="fa fa-envelope fa-icon-margin"></i>
+                  Read
+                  <span class="label label-info">{{ read.totalElements }}</span>
+                </button>
+
+              </div>
+
+              <!-- Horizontal Rule under nav buttons -->
+              <hr />
+            </div>
           </div>
+          <!-- END : Nav Buttons for NgSwitch (read, unread) -->
+
+          <!-- BEGIN : Content Div's for NgSwith -->
+          <div class="row" [ngSwitch]="notificationViewSelected">
+            <div class="col-xs-12" *ngSwitchCase="notificationView.UNREAD">
+              <gro-notification-list
+                  [notifications]="unread.content"
+                  (onUpdateState)="onUpdateState($event)"
+                  (onDeleteNotification)="onDeleteNotification($event)">
+              </gro-notification-list>
+            </div>
+            <div class="col-xs-12" *ngSwitchCase="notificationView.READ">
+              <gro-notification-list
+                  [notifications]="read.content"
+                  (onUpdateState)="onUpdateState($event)"
+                  (onDeleteNotification)="onDeleteNotification($event)">
+              </gro-notification-list>
+            </div>
+          </div>
+          <!-- End : Content Div's for NgSwith -->
         </div>
       </li>
+      <!-- END : Submenu Content -->
     </ul>
     <!-- END : Notification Dropdown Submenu -->
-
   </li>
 </ul>
 <!-- END : Notifications Navbar Dropdown -->
