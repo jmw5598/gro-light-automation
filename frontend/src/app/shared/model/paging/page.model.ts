@@ -4,13 +4,14 @@ export class Page<T> {
 
   constructor(
     public content: Array<T>,
-    public totalPages: number,
-    public last: boolean,
-    public numberOfElements: number,
-    public sort: Sort,
     public first: boolean,
+    public last: boolean,
+    public number: number,
+    public numberOfElements: number,
     public size: number,
-    public number: number
+    public sort: Sort,
+    public totalPages: number,
+    public totalElements: number
   ) {}
 
 }
