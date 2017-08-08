@@ -19,7 +19,7 @@ export class NotificationService extends CrudService<Notification, number> {
   findAllByState(read: boolean): Observable<Page<Notification>> {
     const url: string = this.base + '/state?read=' + read;
     return this.http.get(url, this.options())
-      .map(this.extractData)
+      .map(this.extractPageData)
       .catch(this.handleError);
   }
 
@@ -30,15 +30,13 @@ export class NotificationService extends CrudService<Notification, number> {
       .catch(this.handleError);
   }
 
-  protected extractData(res: Response) {
+  protected extractPageData(res: Response) {
     let body = res.json() || '';
     let result = Array<Notification>();
     body.content.forEach(e => {
         result.push(new Notification(e.id, new Date(e.timestamp), e.message, e.component, e.read));
     })
     body.content = result;
-    console.log("body: ");
-    console.log(body);
     return body;
   }
 

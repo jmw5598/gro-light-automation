@@ -74,7 +74,6 @@ export class TemperatureDataService {
 
   protected extractData(res: Response) {
     let body = res.json() || '';
-    console.log(body.content[0]);
     let result = Array<TemperatureData>();
     body.content.forEach(e => {
         result.push(new TemperatureData(new Date(e.timestamp), e.component, e.temperature));
