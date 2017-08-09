@@ -1,13 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { ToastMessage } from '../toast-message.model';
+import { ToastType } from '../toast-type.enum';
 
 @Component({
-  selector: 'app-toast-message',
+  selector: 'gro-toast-message',
   templateUrl: './toast-message.component.html',
   styleUrls: ['./toast-message.component.css']
 })
 export class ToastMessageComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  message: ToastMessage;
+
+  constructor() {
+    this.message = new ToastMessage(ToastType.DANGER, "A blank toast message was created");
+  }
 
   ngOnInit() {
   }
