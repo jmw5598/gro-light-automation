@@ -4,8 +4,7 @@ export class ToastMessage {
 
   constructor(
     type: ToastType,
-    message: string,
-    time?: number
+    message: string
   ) {}
 
 }
