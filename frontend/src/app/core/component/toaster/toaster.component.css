@@ -1,0 +1,106 @@
+.toaster {
+  position: fixed;
+  margin: 16px;
+  padding: 16px;
+  z-index: 100000;
+}
+
+.toaster div {
+  margin: 0;
+  padding: 0;
+}
+
+.toaster-location-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.toaster-location-top-right, .toaster-location-top-left {
+  top: 0;
+}
+
+.toaster-location-bottom-right, .toaster-location-bottom-left {
+  bottom: 0;
+}
+
+.toaster-location-bottom-right, .toaster-location-top-right {
+  right: 0;
+}
+
+.toaster-location-top-left, .toaster-location-bottom-left {
+  left: 0;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  .toaster {
+    width: 100%;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  .toaster {
+    width: 66%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .toaster {
+    width: 33%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .toaster {
+    width: 25%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .toaster {
+    width: 15%;
+  }
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+  .toaster {
+    width: 25%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .toaster {
+    width: 33%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .toaster {
+    width: 66%;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .toaster {
+    width: 100%;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+  .toaster {
+    width: 100%;
+  }
+}

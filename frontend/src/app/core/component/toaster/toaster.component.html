@@ -1,3 +1,7 @@
-<p>
-  toaster works!
-</p>
+<div class="toaster" [ngClass]="location">
+      <div class="col-xs-12" *ngFor="let message of messages">
+        <gro-toast-message
+            [message]="message">
+        </gro-toast-message>
+      </div>
+</div>

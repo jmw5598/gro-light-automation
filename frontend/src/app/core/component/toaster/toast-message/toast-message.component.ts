@@ -12,12 +12,19 @@ export class ToastMessageComponent implements OnInit {
 
   @Input()
   message: ToastMessage;
+  dismissed: boolean = false;
+
+  private toastType = ToastType;
 
   constructor() {
     this.message = new ToastMessage(ToastType.DANGER, "A blank toast message was created");
   }
 
   ngOnInit() {
+  }
+
+  dismiss() {
+    this.dismissed = true;
   }
 
 }
