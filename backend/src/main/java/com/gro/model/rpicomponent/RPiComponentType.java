@@ -4,6 +4,7 @@ public enum RPiComponentType {
     TEMPERATURE_HUMIDITY,
     TEMPERATURE,
     HUMIDITY,
+    MOISTURE,
     PROXIMITY,
     RELAY;
     
@@ -25,6 +26,9 @@ public enum RPiComponentType {
                 break;
             case "relay":
                 result = RELAY;
+                break;
+            case "moisture":
+                result = MOISTURE;
                 break;
             default:
                 result = null;
