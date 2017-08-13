@@ -31,6 +31,9 @@ public class MqttMessageRouter {
             case "RELAY.State":
                 route = "relayTransformerChannel";
                 break;
+            case "MOISTURE.State":
+                route = "moistureTransformerChannel";
+                break;
         }
         return route;
     }

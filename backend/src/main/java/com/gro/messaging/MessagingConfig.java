@@ -111,6 +111,17 @@ public class MessagingConfig {
         return new DirectChannel();
     }
     
+    /* MOISTURE : CHANNEL BETWEEN TRANSFORMER AND STATE EMIITER SERVICE */
+    @Bean
+    public MessageChannel moistureServiceChannel() {
+        return new DirectChannel();
+    }
+    
+    /* MOISTURE : CHANNEL BETWEEN ROUTER AND STATE TRANSFORMER */
+    @Bean
+    public MessageChannel moistureTransformerChannel() {
+        return new DirectChannel();
+    }
     
     /* RELAY : CHANNEL BETWEEN TRANSFORMER AND SERVICE */
     @Bean
