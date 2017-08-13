@@ -64,7 +64,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
               new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.TEMPERATURE_HUMIDITY));
             this.subscribeToTemperatureEvents();
             this.subscribeToHumidityEvents();
-          })
+          });
         },
         error => this.toasterService.toast('Unable to retrieve temperature & humidity components', ToastType.DANGER)
       );
@@ -76,7 +76,8 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
         data => {
           data.forEach(e => this.proximity.push(
             new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.PROXIMITY)
-          ))
+          ));
+          this.subscribeToProximityEvents();
         },
         error => this.toasterService.toast('Unable to retreive proximity components', ToastType.DANGER)
       );
@@ -88,7 +89,8 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
         data => {
           data.forEach(e => this.moisture.push(
             new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.MOISTURE)
-          ))
+          ));
+          this.subscribeToMoistureEvents();
         },
         error => this.toasterService.toast('Unable to retrieve moisture components', ToastType.DANGER)
       );
@@ -138,15 +140,21 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
   }
 
   private handleMoistureEvent(data: any) {
-    let obj: any = this.proximity.find(e => e.id === data.component.id);
+    console.log("new moisture data");
+    console.log(data);
+    let obj: any = this.moisture.find(e => e.id === data.component.id);
     obj.current = data.moisture;
   }
 
   ngOnDestroy() {
-    this.temperatureSubscription.unsubscribe();
-    this.humiditySubscription.unsubscribe();
-    this.proximitySubscription.unsubscribe();
-    this.moistureSubscription.unsubscribe();
+    if(this.temperatureSubscription)
+      this.temperatureSubscription.unsubscribe();
+    if(this.humiditySubscription)
+      this.humiditySubscription.unsubscribe();
+    if(this.proximitySubscription)
+      this.proximitySubscription.unsubscribe();
+    if(this.moistureSubscription)
+      this.moistureSubscription.unsubscribe();
   }
 
 }
