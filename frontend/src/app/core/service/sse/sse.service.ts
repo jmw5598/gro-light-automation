@@ -1,17 +1,17 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 declare let EventSource:any;
 
 @Injectable()
 export class SseService implements OnDestroy {
 
-  private relay = new Subject<Object>();
-  private humidity = new Subject<Object>();
-  private temperature = new Subject<Object>();
-  private proximity = new Subject<Object>();
-  private moisture = new Subject<Object>();
-  private notification = new Subject<Object>();
+  private relay = new BehaviorSubject<Object>(null);
+  private humidity = new BehaviorSubject<Object>(null);
+  private temperature = new BehaviorSubject<Object>(null);
+  private proximity = new BehaviorSubject<Object>(null);
+  private moisture = new BehaviorSubject<Object>(null);
+  private notification = new BehaviorSubject<Object>(null);
 
   public relayState = this.relay.asObservable();
   public humidityState = this.humidity.asObservable();
