@@ -5,6 +5,8 @@ import { NotificationView } from '@app/shared/model/notification/notification-vi
 import { NotificationService } from '@app/core/service/notification/notification.service';
 import { Page } from '@app/shared/model/paging/page.model';
 import { SseService } from '@app/core/service/sse/sse.service';
+import { ToasterService } from '@app/core/component/toaster/toaster.service';
+import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 
 @Component({
   selector: 'gro-notification-dropdown',
@@ -22,7 +24,8 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
 
   constructor(
     private sseService: SseService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
@@ -70,10 +73,12 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
   }
 
   private handleNotificationEvent(object) {
+    console.log("inside handle notification" + object);
     let notification: Notification =
         new Notification(object.id, new Date(object.timestamp), object.message, object.component, object.isRead);
     this.unread.content.unshift(notification);
     this.unread.totalElements++;
+    this.toasterService.toast("New notification", ToastType.INFO);
   }
 
   ngOnDestroy() {
