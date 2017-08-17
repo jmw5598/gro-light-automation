@@ -42,7 +42,7 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
     this.notificationService.findAllByState(state)
       .subscribe(
         data => state ? this.read = data : this.unread = data,
-        error => console.log("error getting notifications" + error)
+        error => this.toasterService.toast('Error loading ' + state ? 'read' : 'unread' + ' notification.', ToastType.DANGER)
       )
   }
 
@@ -57,7 +57,7 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
           this.loadNotificationsByState(true);
           this.loadNotificationsByState(false);
         },
-        error => console.log("error updating notification")
+        error => this.toasterService.toast('Error updating notification.', ToastType.WARNING)
       )
   }
 
@@ -68,7 +68,7 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
           this.loadNotificationsByState(true);
           this.loadNotificationsByState(false);
         },
-        error => console.log(error)
+        error => this.toasterService.toast('Error deleting notification.', ToastType.DANGER)
       );
   }
 
