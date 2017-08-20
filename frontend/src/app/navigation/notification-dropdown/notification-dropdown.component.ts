@@ -65,6 +65,7 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
     this.notificationService.delete(notification.id)
       .subscribe(
         data => {
+          this.toasterService.toast("Notification deleted", ToastType.SUCCESS);
           this.loadNotificationsByState(true);
           this.loadNotificationsByState(false);
         },
