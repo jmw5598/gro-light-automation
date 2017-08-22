@@ -17,7 +17,7 @@ export class TemperatureDataService {
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<TemperatureData>> {
-    let url = this.base + '/' + id + "/temperature/" + path;
+    let url = this.base + '/' + id + "/temperature/" + path + '?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);

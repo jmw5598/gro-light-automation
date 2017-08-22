@@ -17,7 +17,7 @@ export class HumidityDataService {
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<HumidityData>> {
-    let url = this.base + '/' + id + "/humidity/" + path;
+    let url = this.base + '/' + id + "/humidity/" + path + '?page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
@@ -25,7 +25,6 @@ export class HumidityDataService {
 
   protected extractData(res: Response) {
     let body = res.json() || '';
-    console.log(body.content[0]);
     let result = Array<HumidityData>();
     body.content.forEach(e => {
         result.push(new HumidityData(new Date(e.timestamp), e.component, e.humidity));

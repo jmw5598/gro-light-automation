@@ -1,5 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 declare let EventSource:any;
 
@@ -11,7 +12,7 @@ export class SseService implements OnDestroy {
   private temperature = new BehaviorSubject<Object>(null);
   private proximity = new BehaviorSubject<Object>(null);
   private moisture = new BehaviorSubject<Object>(null);
-  private notification = new BehaviorSubject<Object>(null);
+  private notification = new Subject<Object>();
 
   public relayState = this.relay.asObservable();
   public humidityState = this.humidity.asObservable();
@@ -48,6 +49,7 @@ export class SseService implements OnDestroy {
           break;
         case 'notification':
           this.notification.next(json.payload);
+          console.log("notification case");
           break;
         default:
           break;
