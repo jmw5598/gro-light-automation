@@ -41,10 +41,10 @@ public class MessagingConfig {
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
                 new MqttPahoMessageDrivenChannelAdapter("testingMqtt", mqttClientFactory(), 
-                        "TEMPERATURE", "HUMIDITY", "NOTIFICATION.Alert", "PROXIMITY.State", "RELAY.State");
+                        "TEMPERATURE", "HUMIDITY", "NOTIFICATION.Alert", "PROXIMITY.State", "RELAY.State", "MOISTURE.State");
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
-        adapter.setQos(1);
+        adapter.setQos(2);
         adapter.setOutputChannel(mqttRouterChannel());
         return adapter;
     }
