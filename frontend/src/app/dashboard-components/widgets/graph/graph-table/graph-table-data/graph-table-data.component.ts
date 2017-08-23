@@ -21,7 +21,7 @@ export class GraphTableDataComponent implements OnInit {
   private metricTimeSpanEnum = MetricTimeSpan;
 
   @Output()
-  onUpdateData: EventEmitter<Object> = new EventEmitter<Object>();
+  onUpdateData: EventEmitter<null> = new EventEmitter<null>();
 
   @Input()
   configuration: DataSourceConfiguration;
@@ -45,7 +45,7 @@ export class GraphTableDataComponent implements OnInit {
         .subscribe(
           data => {
             this.components = data;
-            this.selectedComponent = this.components[1];
+            this.configuration.component = this.components[1];
             this.updateData()
           },
           error => console.log("error getting graph-table-data components")
@@ -61,17 +61,11 @@ export class GraphTableDataComponent implements OnInit {
   }
 
   changeSelectedComponent(component: RPiComponent) {
-    this.selectedComponent = component;
+    this.configuration.component = component;
   }
 
   updateData() {
-    let details = {
-      component: this.selectedComponent,
-      metricDataType: this.configuration.dataType,
-      metricTime: this.configuration.timeSpan,
-      metricCalc: this.configuration.calculation
-    };
-    this.onUpdateData.emit(details);
+    this.onUpdateData.emit(null);
   }
 
 }

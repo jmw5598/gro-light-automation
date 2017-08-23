@@ -79,8 +79,8 @@
                            (configuration.graph.visible && configuration.table.visible) }">
           <gro-graph
               *ngIf="configuration.graph.visible"
-              [data]="graphData"
-              [labels]="graphLabels"
+              [data]="configuration.graph.data"
+              [labels]="configuration.graph.labels"
               [graphType]="configuration.graph.type">
           </gro-graph>
         </div>

@@ -7,6 +7,7 @@ import { Page } from '@app/shared/model/paging/page.model';
 import { GraphTableConfiguration } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/graph-table.configuration';
 import { GraphType } from '@app/shared/model/dashboard/configuration/widget/graph/graph/graph-type.enum';
 import { OrientationType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/orientation-type.enum';
+import { MetricDataType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/metric-data-type.enum';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 
@@ -23,25 +24,11 @@ export class GraphTableComponent implements OnInit {
   @Output()
   onPageChange = new EventEmitter<any>();
 
-  //new single input with GraphTableConfiguration
   @Input()
   configuration: GraphTableConfiguration;
 
-  graphData: Array<any>;
-  graphLabels: Array<any>;
-  headings: string[];
   title: string = '';
   titleLabel: string;
-
-  // INPUTS FOR DATA
-  @Input()
-  metricDataType: string = 'temperature';
-
-  @Input()
-  metricTime: string = 'daily'
-
-  @Input()
-  metricCalc: string = 'average';
 
   page: Page<any>;
   isLoading: boolean = true;
@@ -56,45 +43,14 @@ export class GraphTableComponent implements OnInit {
   ngOnInit() { }
 
   pageChange(page: number) {
-    // need to fix paging still
-    this.onPageChange.emit(page);
+    this.page.number = page;
+    this.processDataRequest();
   }
 
-  onUpdateData(event:any) {
-    console.log("updating data...");
-    console.log(event);
+  onUpdateData(event: null) {
     this.isLoading = true;
-    let url: string = event.metricTime + '/' + event.metricCalc;
-    if(event.metricDataType.toLowerCase() === 'temperature') {
-      this.temperatureDataService
-        .findCustomByComponent(event.component.id, url, 0)
-          .subscribe(
-            data => {
-              console.log("success update data temperature");
-              this.handleTemperatureDataUpdate(event, data);
-              this.isLoading = false;
-            },
-            error => {
-              console.log('error getting temp data'); //replace with toast message?
-              this.isLoading = false;
-            }
-          );
-      } else if(event.metricDataType.toLowerCase() === 'humidity') {
-        console.log("event change ");
-        console.log(event);
-        this.humidityDataService
-          .findCustomByComponent(event.component.id, url, 0)
-            .subscribe(
-              data => {
-                this.handleHumidityDataUpdate(event, data);
-                this.isLoading = false;
-              },
-              error => {
-                console.log('error getting temp data'); //replace with toast message?
-                this.isLoading = false;
-              }
-            );
-      }
+    if(this.page) this.page.number = 0;
+    this.processDataRequest();
   }
 
   onChangeOrientation(orientation: OrientationType) {
@@ -113,28 +69,76 @@ export class GraphTableComponent implements OnInit {
     this.configuration.table.visible = visible;
   }
 
-  private handleTemperatureDataUpdate(event: any, data:any) {
-    this.page = data;
-    this.graphData = [];
-    this.graphLabels = [];
-    this.page.content.forEach(e => {
-      this.graphData.push(e.temperature); // built data for graph
-      this.graphLabels.push(e.timestamp.getDate().toString());      // built labels for graph
-    });
-    this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc;
-    this.titleLabel = event.component.alias;
+  private processDataRequest() {
+    if(this.configuration.datasource.dataType === MetricDataType.TEMPERATURE)
+      this.updateTemperatureData();
+    else if(this.configuration.datasource.dataType === MetricDataType.HUMIDITY)
+      this.updateHumidityData();
   }
 
-  private handleHumidityDataUpdate(event: any, data:any) {
+  private updateTemperatureData() {
+    let url: string = this.configuration.datasource.timeSpan + '/' + this.configuration.datasource.calculation;
+    this.temperatureDataService
+      .findCustomByComponent(this.configuration.datasource.component.id, url, this.page ? this.page.number : 0)
+        .subscribe(
+          data => {
+            this.handleTemperatureDataUpdate(data);
+            this.isLoading = false;
+          },
+          error => {
+            console.log('error getting temp data'); //replace with toast message?
+            this.isLoading = false;
+          }
+        );
+  }
+
+  private updateHumidityData() {
+    let url: string = this.configuration.datasource.timeSpan + '/' + this.configuration.datasource.calculation;
+    this.humidityDataService
+      .findCustomByComponent(this.configuration.datasource.component.id, url, this.page ? this.page.number : 0)
+        .subscribe(
+          data => {
+            this.handleHumidityDataUpdate(data);
+            this.isLoading = false;
+          },
+          error => {
+            console.log('error getting temp data'); //replace with toast message?
+            this.isLoading = false;
+          }
+        );
+  }
+
+  private handleTemperatureDataUpdate(data:any) {
     this.page = data;
-    this.graphData = [];
-    this.graphLabels = [];
+    // graphData & graphLabels will be directed at configuration.graph.labels etc
+    this.configuration.graph.data = [];
+    this.configuration.graph.labels = [];
     this.page.content.forEach(e => {
-      this.graphData.push(e.humidity); // built data for graph
-      this.graphLabels.push(e.timestamp.getDate().toString());      // built labels for graph
+      this.configuration.graph.data.push(e.temperature); // built data for graph
+      this.configuration.graph.labels.push(e.timestamp.getDate().toString());      // built labels for graph
     });
-    this.title = event.metricDataType + '_' + event.metricTime + '_' + event.metricCalc;
-    this.titleLabel = event.component.alias;
+    this.updateTitle();
+    this.updateTitleLabel();
+  }
+
+  private handleHumidityDataUpdate(data:any) {
+    this.page = data;
+    this.configuration.graph.data = [];
+    this.configuration.graph.labels = [];
+    this.page.content.forEach(e => {
+      this.configuration.graph.data.push(e.humidity); // built data for graph
+      this.configuration.graph.labels.push(e.timestamp.getDate().toString());      // built labels for graph
+    });
+    this.updateTitle();
+    this.updateTitleLabel();
+  }
+
+  private updateTitle() {
+    this.title = this.configuration.datasource.dataType + '_' + this.configuration.datasource.timeSpan + '_' + this.configuration.datasource.calculation;
+  }
+
+  private updateTitleLabel() {
+    this.titleLabel = this.configuration.datasource.component.alias;
   }
 
 }
