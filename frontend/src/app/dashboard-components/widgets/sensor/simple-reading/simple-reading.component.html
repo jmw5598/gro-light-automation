@@ -13,12 +13,13 @@
     <!-- Sensor Badge (Reading) -->
     <div class="pull-right sensor-badge">
       <span class="badge">
-        <h2>
+        <h3>
           {{ configuration.component.current }}
           <span *ngIf="configuration.type === sensorReadingType.TEMPERATURE"> *C</span>
-          <span *ngIf="configuration.type === sensorReadingType.HUMIDITY"> %</span>
+          <span *ngIf="configuration.type === sensorReadingType.HUMIDITY ||
+                       configuration.type === sensorReadingTYpe.MOISTURE"> %</span>
           <span *ngIf="configuration.type === sensorReadingType.PROXIMITY"> cm</span>
-        </h2>
+        </h3>
       </span>
     </div>
 

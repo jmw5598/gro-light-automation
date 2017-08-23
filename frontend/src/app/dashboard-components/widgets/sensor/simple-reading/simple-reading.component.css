@@ -4,14 +4,14 @@
   clear: both;
 }
 
-.sensor-badge > span > h2 {
+.sensor-badge > span > h3 {
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-.sensor-badge > span > h2 > span {
+.sensor-badge > span > h3 > span {
   font-size: 12px;
   vertical-align: top;
 }
