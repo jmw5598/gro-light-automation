@@ -56,6 +56,7 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
         data => {
           this.loadNotificationsByState(true);
           this.loadNotificationsByState(false);
+          this.toasterService.toast(notification.isRead ? 'Notification marked as read' : 'Notification marked as unread', ToastType.INFO);
         },
         error => this.toasterService.toast('Error updating notification.', ToastType.WARNING)
       )
