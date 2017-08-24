@@ -2,12 +2,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { TemperatureDataService } from '@app/core/service/temperature-data/temperature-data.service';
 import { HumidityDataService } from '@app/core/service/humidity-data/humidity-data.service';
-import { Page } from '@app/shared/model/paging/page.model';
+import { ToasterService } from '@app/core/component/toaster/toaster.service';
 
+import { Page } from '@app/shared/model/paging/page.model';
 import { GraphTableConfiguration } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/graph-table.configuration';
 import { GraphType } from '@app/shared/model/dashboard/configuration/widget/graph/graph/graph-type.enum';
 import { OrientationType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/orientation-type.enum';
 import { MetricDataType } from '@app/shared/model/dashboard/configuration/widget/graph/graph-table/data-source/metric-data-type.enum';
+import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 
@@ -35,7 +37,8 @@ export class GraphTableComponent implements OnInit {
 
   constructor(
     private temperatureDataService: TemperatureDataService,
-    private humidityDataService: HumidityDataService
+    private humidityDataService: HumidityDataService,
+    private toasterService: ToasterService
   ) {
     this.configuration = new GraphTableConfiguration();
   }
@@ -102,7 +105,7 @@ export class GraphTableComponent implements OnInit {
             this.isLoading = false;
           },
           error => {
-            console.log('error getting temp data'); //replace with toast message?
+            this.toasterService.toast('Error retrieving temperature data', ToastType.DANGER);
             this.isLoading = false;
           }
         );
