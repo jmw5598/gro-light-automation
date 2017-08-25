@@ -26,7 +26,7 @@ public class NotificationEmitterService {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
-    @ServiceActivator(inputChannel="notificationChannel")
+    @ServiceActivator(inputChannel="notificationNotifyChannel")
     public void process(Message<Notification> message) {
         Notification notification = message.getPayload();
         RPiComponent component = rPiComponentRepository.findOne(notification.getComponent().getId());

@@ -16,7 +16,7 @@ public class NotificationTransformer {
     private Jackson2JsonObjectMapper jackson2JsonObjectMapper;
     
     @Transformer(inputChannel="notificationTransformerChannel",
-                 outputChannel="notificationChannel")
+                 outputChannel="notificationPersistenceChannel")
     public Message<Notification> transform(Message<String> message) throws Exception {
         String payload = message.getPayload();
         Notification data = jackson2JsonObjectMapper.fromJson(payload, Notification.class);

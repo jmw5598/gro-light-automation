@@ -17,8 +17,9 @@ public class NotificationSmsService {
     @Autowired
     private RPiComponentRepository rPiComponentRepository;
     
-    @ServiceActivator(inputChannel="notificationChannel")
+    @ServiceActivator(inputChannel="notificationNotifyChannel")
     public void process(Message<Notification> message) {
+        System.out.println("NOTIFICATION : Sensing SMS");
         // construct more meaningful message with Notification class is complete
         //textMessageService.sendSms(message.getPayload().getMessage());
         

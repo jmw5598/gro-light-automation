@@ -87,17 +87,26 @@ public class MessagingConfig {
         return new DirectChannel();
     }
     
-    /* NOTIFICATION : CHANNEL BETWEEN TRANSFORMER AND SMS SERVICE */
-    @Bean
-    public MessageChannel notificationChannel() {
-        return new PublishSubscribeChannel();
-    }
-    
-    /* NOTIFICATION : CHANNEL BETWEEN ROUTER AND SMS TRANSFORMER */
+    /* NOTIFICATION : CHANNEL BETWEEN ROUTER AND NOTIFICATION TRANSFORMER */
     @Bean
     public MessageChannel notificationTransformerChannel() {
         return new DirectChannel();
     }
+    
+    /* NOTIFICATION : CHANNEL BETWEEN TRANSFORMER AND PERSISTENCE SERVICE */
+    @Bean
+    public MessageChannel notificationPersistenceChannel() {
+        return new DirectChannel();
+    }
+    
+    /* NOTIFICATION : CHANNEL BETWEEN TRANSFORMER AND PERSISTENCE SERVICE */
+    @Bean
+    public MessageChannel notificationNotifyChannel() {
+        return new PublishSubscribeChannel();
+    }
+    
+    
+    
     
     /* PROXIMITY : CHANNEL BETWEEN TRANSFORMER AND STATE EMIITER SERVICE */
     @Bean
