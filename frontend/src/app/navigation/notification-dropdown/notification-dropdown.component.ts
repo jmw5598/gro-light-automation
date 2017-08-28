@@ -22,7 +22,6 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
   private notificationViewSelected: NotificationView = NotificationView.UNREAD;
 
   constructor(
-    private sseService: SseService,
     private notificationService: NotificationService,
     private toasterService: ToasterService
   ) { }
