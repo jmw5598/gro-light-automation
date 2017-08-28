@@ -15,11 +15,11 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 })
 export class NotificationDropdownComponent implements OnInit, OnDestroy {
 
-  private subscription;
   private read: Page<Notification>;
   private unread: Page<Notification>;
+  private readSubscription;
+  private unreadSubscription;
   private notificationView = NotificationView;
-
   private notificationViewSelected: NotificationView = NotificationView.UNREAD;
 
   constructor(
@@ -29,62 +29,25 @@ export class NotificationDropdownComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription = this.sseService
-      .notificationAlert
-        .subscribe(
-          notification => this.handleNotificationEvent(notification)
-        );
-    this.loadNotificationsByState(true);  // load read notificaitons
-    this.loadNotificationsByState(false); // load unread notifications
-  }
-
-  loadNotificationsByState(state: boolean) {
-    this.notificationService.findAllByState(state)
+    this.readSubscription = this.notificationService.read
       .subscribe(
-        data => state ? this.read = data : this.unread = data,
-        error => this.toasterService.toast('Error loading ' + state ? 'read' : 'unread' + ' notification.', ToastType.DANGER)
-      )
+        data => this.read = data,
+        error => this.toasterService.toast("Error subscribing to read notifications", ToastType.WARNING)
+      );
+    this.unreadSubscription = this.notificationService.unread
+      .subscribe(
+        data => this.unread = data,
+        error => this.toasterService.toast("Error subscribing to unread notifications", ToastType.WARNING)
+      );
   }
 
   changeView(view: NotificationView) {
     this.notificationViewSelected = view;
   }
 
-  onUpdateState(notification: Notification) {
-    this.notificationService.updateNotificationState(notification.id, notification.isRead)
-      .subscribe(
-        data => {
-          this.loadNotificationsByState(true);
-          this.loadNotificationsByState(false);
-          this.toasterService.toast(notification.isRead ? 'Notification marked as read' : 'Notification marked as unread', ToastType.INFO);
-        },
-        error => this.toasterService.toast('Error updating notification.', ToastType.WARNING)
-      )
-  }
-
-  onDeleteNotification(notification: Notification) {
-    this.notificationService.delete(notification.id)
-      .subscribe(
-        data => {
-          this.toasterService.toast("Notification deleted", ToastType.SUCCESS);
-          this.loadNotificationsByState(true);
-          this.loadNotificationsByState(false);
-        },
-        error => this.toasterService.toast('Error deleting notification.', ToastType.DANGER)
-      );
-  }
-
-  private handleNotificationEvent(object) {
-    console.log("inside handle notification" + object);
-    let notification: Notification =
-        new Notification(object.id, new Date(object.timestamp), object.message, object.component, object.isRead);
-    this.unread.content.unshift(notification);
-    this.unread.totalElements++;
-    this.toasterService.toast("New notification", ToastType.INFO);
-  }
-
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.readSubscription.unsubscribe();
+    this.unreadSubscription.unsubscribe();
   }
 
 }

@@ -64,16 +64,12 @@
           <div class="row" [ngSwitch]="notificationViewSelected">
             <div class="col-xs-12" *ngSwitchCase="notificationView.UNREAD">
               <gro-notification-list
-                  [notifications]="unread.content"
-                  (onUpdateState)="onUpdateState($event)"
-                  (onDeleteNotification)="onDeleteNotification($event)">
+                  [notifications]="unread.content">
               </gro-notification-list>
             </div>
             <div class="col-xs-12" *ngSwitchCase="notificationView.READ">
               <gro-notification-list
-                  [notifications]="read.content"
-                  (onUpdateState)="onUpdateState($event)"
-                  (onDeleteNotification)="onDeleteNotification($event)">
+                  [notifications]="read.content">
               </gro-notification-list>
             </div>
           </div>

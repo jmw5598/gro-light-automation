@@ -4,9 +4,7 @@
     <!-- BEGIN : Notifications Loop -->
     <div  *ngFor="let notification of notifications">
       <gro-notification
-          [notification]="notification"
-          (onUpdateState)="updateState($event)"
-          (onDeleteNotification)="delete($event)">
+          [notification]="notification">
       </gro-notification>
     </div>
     <!-- END : Notifications Loop -->

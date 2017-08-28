@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Notification } from '@app/shared/model/notification/notification.model';
+import { NotificationService } from '@app/core/service/notification/notification.service';
 
 @Component({
   selector: 'gro-notification',
@@ -12,15 +13,11 @@ export class NotificationComponent implements OnInit {
   @Input()
   notification: Notification;
 
-  @Output()
-  onUpdateState: EventEmitter<Notification> = new EventEmitter<Notification>();
-
-  @Output()
-  onDeleteNotification: EventEmitter<Notification> = new EventEmitter<Notification>();
-
   private detailsShown: boolean;
 
-  constructor() {
+  constructor(
+    private notificationService: NotificationService
+  ) {
     this.detailsShown = false;
   }
 
@@ -32,12 +29,19 @@ export class NotificationComponent implements OnInit {
   }
 
   updateState(notification: Notification) {
-    notification.isRead = !notification.isRead;
-    this.onUpdateState.emit(notification);
+    this.notificationService.updateNotificationState(notification.id, !notification.isRead)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
   }
 
   delete(notification: Notification) {
-    this.onDeleteNotification.emit(notification);
+    this.notificationService.deleteNotification(notification)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
   }
 
 }
