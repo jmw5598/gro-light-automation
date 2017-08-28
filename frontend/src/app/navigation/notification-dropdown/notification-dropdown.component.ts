@@ -4,7 +4,6 @@ import { Notification } from '@app/shared/model/notification/notification.model'
 import { NotificationView } from '@app/shared/model/notification/notification-view.enum';
 import { NotificationService } from '@app/core/service/notification/notification.service';
 import { Page } from '@app/shared/model/paging/page.model';
-import { SseService } from '@app/core/service/sse/sse.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 
