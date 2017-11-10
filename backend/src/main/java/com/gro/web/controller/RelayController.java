@@ -1,5 +1,8 @@
 package com.gro.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,6 +59,45 @@ public class RelayController {
         RelayState relayState = null;
         RelayDTO relay = new RelayDTO(component, relayState);
         relayService.poll(relay);
+    }
+    
+    //TODO Created endpoint to retrieve all scheulded job by component id
+    @RequestMapping(value="/{componentId}/relay/schedule", method=RequestMethod.GET)
+    public List<String> getAllScheduledJobsByComponentId(@PathVariable Integer componentId) {
+        return new ArrayList<String>();
+    }
+    
+    //TODO Create endpoint to created a schuduled job for component by component id.
+    @RequestMapping(value="/{componentId}/relay/schedule", method=RequestMethod.POST)
+    public String createScheduledJob(@PathVariable Integer componentId) {
+        return "";
+    }
+    
+    //TODO Create endpoint to retrieve scheduled job details by job component id and job id.
+    @RequestMapping(value="/{componentId}/relay/schedule/{jobId}", method=RequestMethod.GET)
+    public String getScheduledJobByJobId(@PathVariable Integer componentId, @PathVariable Integer jobId) {
+        return "";
+    }
+    
+    //TODO Create endpoint to update scheduled job by id
+    @RequestMapping(value="/{componentId}/relay/schedule/{jobId}", method=RequestMethod.PUT)
+    public String updateScheduledJobByJobId(@PathVariable Integer componentId, @PathVariable Integer jobId) {
+        return "";
+    }
+    
+    //TODO Create endpoint to delete scheduled job by id
+    @RequestMapping(value="/{componentId/relay/schedule/{jobId}", method=RequestMethod.DELETE)
+    public String deleteScheduledJobByJobId(@PathVariable Integer componentId, @PathVariable Integer jobId) {
+        return "";
+    }
+    
+    //TODO Create endpoint to toggle enabled scheduled job by id (Start/Stop)
+    @RequestMapping(value="/{componentId}/relay/schedule/{jobId}/state", method=RequestMethod.PUT)
+    public String toggleEnabledScheduledJobByJobId(
+            @PathVariable Integer componentId, 
+            @PathVariable Integer jobId, 
+            @RequestParam(name="enabled", required=true) Boolean enabled) {
+        return "";
     }
     
     private RPiComponent validateRPiComponent(Integer id) {
