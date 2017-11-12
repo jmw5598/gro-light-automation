@@ -31,9 +31,6 @@ public class RelayJob implements Job {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        System.out.println("\n\nSending MQTT message to toggle relay");
-        System.out.println(context.getJobDetail().getJobDataMap().get("schedule"));
-        
     }
 
 }
