@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 import { ToasterComponent } from './component/toaster/toaster.component';
 import { ToastMessageComponent } from './component/toaster/toast-message/toast-message.component';
@@ -15,7 +15,9 @@ import { SseService } from './service/sse/sse.service';
 import { ToasterService } from './component/toaster/toaster.service';
 
 @NgModule({
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   exports: [
     ToasterComponent
   ],
@@ -30,7 +32,8 @@ import { ToasterService } from './component/toaster/toaster.service';
     RelayService,
     RPiComponentService,
     TemperatureDataService,
-    SseService
+    SseService,
+    ToasterService
   ]
 })
 export class CoreModule { }
