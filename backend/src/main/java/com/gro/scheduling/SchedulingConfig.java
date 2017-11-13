@@ -4,27 +4,26 @@ import java.io.IOException;
 
 import javax.annotation.PostConstruct;
 
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
 import org.quartz.Scheduler;
-import org.quartz.SimpleScheduleBuilder;
 import org.quartz.SchedulerException;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.quartz.SpringBeanJobFactory;
+
+import com.gro.repository.RelayScheduleJobRepository;
 
 @Configuration
 public class SchedulingConfig {
     
-    // Setup Quartz scheduler
-    // Pull in scheduled jobs from db and start the ones needed.??
+    @Autowired
+    private ApplicationContext applicationContext;
+    
     Logger logger = LoggerFactory.getLogger(getClass());
   
     
@@ -34,42 +33,25 @@ public class SchedulingConfig {
     }
     
     @Bean
-    public Scheduler scheduler(Trigger trigger, JobDetail job) throws SchedulerException, IOException {
-        
+    public SpringBeanJobFactory springBeanJobFactory() {
+        AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
+        jobFactory.setApplicationContext(applicationContext);
+        return jobFactory;
+    }
+    
+    @Bean
+    public Scheduler scheduler() throws SchedulerException, IOException {
         StdSchedulerFactory factory = new StdSchedulerFactory();
         factory.initialize(new ClassPathResource("quartz.properties").getInputStream());
         Scheduler scheduler = factory.getScheduler();
-        scheduler.scheduleJob(job, trigger);
+        scheduler.setJobFactory(springBeanJobFactory());
         scheduler.start();
         return scheduler;
-        
     }
     
-    // temporary jobdetail
     @Bean
-    public JobDetail jobDetail() {
-        return JobBuilder.newJob()
-            .ofType(RelayJob.class)
-            .storeDurably()
-            .withIdentity(JobKey.jobKey("Qrtz_Job_Detail"))
-            .withDescription("Invoke Sample Job service...")
-            .build();
-    }
-    
-    // temporary trigger
-    @Bean
-    public Trigger trigger(JobDetail job) {
-        int frequencyInSec = 10;
-        logger.info("Configuring trigger to fire ever {} seconds", frequencyInSec);
-        return TriggerBuilder.newTrigger()
-            .forJob(job)
-            .withIdentity(TriggerKey.triggerKey("Qrtz_Trigger"))
-            .withDescription("Sample trigger")
-            .withSchedule(
-                SimpleScheduleBuilder.simpleSchedule()
-                    .withIntervalInSeconds(frequencyInSec)
-                    .repeatForever()
-            ).build();
+    public RelayJobFactory relayJobFactory() {
+        return new RelayJobFactory();
     }
 
 }
