@@ -13,14 +13,14 @@
       <td>{{ component.id }}</td>
       <td>{{ component.alias }}</td>
       <td>{{ component.pin }}</td>
-      <td>{{ component.type }}</td>
+      <td>{{ component.type | keyToTitle:'snake' }}</td>
       <td class="text-right">
-        <button role="button" 
+        <button role="button"
             class="btn btn-xs btn-default"
             (click)="edit(component.id)">
           <i class="fa fa-edit"></i>
         </button>
-        <button role="button" 
+        <button role="button"
             class="btn btn-xs btn-warning"
             (click)="delete(component.id)">
           <i class="fa fa-trash"></i>

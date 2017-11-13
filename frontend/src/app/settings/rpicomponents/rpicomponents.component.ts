@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
