@@ -3,6 +3,7 @@ package com.gro.scheduling;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.quartz.CronScheduleBuilder;
 import org.quartz.DailyTimeIntervalScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
@@ -34,17 +35,8 @@ public class RelayJobFactory implements ScheduleJobFactory<RelayScheduleJob> {
             .forJob(jobDetail)
             .withIdentity(String.valueOf(schedule.getId()), schedule.getComponent().getType().toString())
             .withSchedule(
-                DailyTimeIntervalScheduleBuilder
-                    .dailyTimeIntervalSchedule()
-                    .onDaysOfTheWeek(DailyTimeIntervalScheduleBuilder.ALL_DAYS_OF_THE_WEEK)
-                    .startingDailyAt(
-                        new TimeOfDay(
-                            schedule.getTime().getHours(),
-                            schedule.getTime().getMinutes(),
-                            schedule.getTime().getSeconds()
-                        )
-                    )
-                ).build();
+                CronScheduleBuilder.dailyAtHourAndMinute(schedule.getTime().getHours(), schedule.getTime().getMinutes())
+             ).build();
     }
     
 }
