@@ -1,6 +1,5 @@
 package com.gro.model.relay;
 
-import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.gro.model.rpicomponent.RPiComponent;
@@ -33,7 +34,8 @@ public class RelayScheduleJob {
     private Boolean enabled;
     
     @NotNull
-    private Time time;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date time;
     
     public RelayScheduleJob() {}
 
@@ -69,11 +71,11 @@ public class RelayScheduleJob {
         this.enabled = enabled;
     }
     
-    public Time getTime() {
+    public Date getTime() {
         return this.time;
     }
     
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
     
