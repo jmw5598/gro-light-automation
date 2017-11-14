@@ -1,3 +1,53 @@
-<p>
-  relay-schedule-list works!
-</p>
+<!-- BEGIN: Relay Schedules Table -->
+<table *ngIf="schedules && schedules.length > 0" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Component Alias</th>
+      <th>Schedule Type</th>
+      <th>Time</th>
+      <th>State</th>
+      <th>Enabled</th>
+      <th><!-- CELL FOR EDIT DELETE BUTTONS --></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let schedule of schedules">
+      <td>{{ schedule.component.alias }}</td>
+      <td>{{ scheduleType | keyToTitle:'snake'}} </td>
+      <td>{{ schedule.time | date:'shortTime' }}</td>
+      <td>{{ schedule.state }}</td>
+      <td>
+        <ui-switch
+            size="small"
+            color="#5cb85c"
+            switchColor="#f3f3f3"
+            [checked]="schedule.enabled"
+            [disabled]="false"
+            (click)="toggleEnabled(schedule, !schedule.enabled)">
+        </ui-switch>
+      </td>
+      <td class="text-right">
+        <button role="button"
+            class="btn btn-xs btn-default"
+            (click)="edit(schedule.id)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button role="button"
+            class="btn btn-xs btn-warning"
+            (click)="delete(schedule.id)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- END: Relay Schedules Table -->
+
+<!-- BEGIN : Empty Schedules Panel -->
+<div *ngIf="!schedules || schedules.length <= 0">
+  <blockquote>
+      <i class="fa fa-info-circle fa-icon-margin"></i>
+      There are curently no relay jobs scheduled.
+  </blockquote>
+</div>
+<!-- END : Empty Schedules Panel -->
