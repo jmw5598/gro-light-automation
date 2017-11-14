@@ -1,13 +1,38 @@
+<!-- BEGIN : Loading Spinner -->
 <div class="row" *ngIf="isLoading">
   <gro-page-loader></gro-page-loader>
 </div>
-<div class="panel panel-default" *ngIf="!isLoading">
-  <div class="panel-body">
-    <legend>
-      <h2><i class="fa fa-gears"></i>Settings : Schedule</h2>
-    </legend>
-    <div class="well">
-      <p>This is the schedule settings page.</p>
+<!-- END : Loading Spinner -->
+
+<!-- BEGIN : Settings Schedule Page -->
+<div class="row" *ngIf="!isLoading">
+
+  <!-- BEGIN : Schedule List Panel -->
+  <div class="col-sm-12 col-md-6 col-lg-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">Currently Saved Schedules</div>
+      <div class="panel-body">
+        <gro-relay-schedule-list
+            [schedules]="schedules"
+            (editSchedule)="editSchedule($event)"
+            (deleteSchedule)="deleteSchedule($event)"
+            (toggleSchedule)="toggleSchedule($event)">
+        </gro-relay-schedule-list>
+      </div>
     </div>
   </div>
+  <!-- END : Schedule List Panel -->
+
+  <!-- BEGIN : Schedule Add Form -->
+  <div class="col-sm-12 col-md-6 col-lg-5">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <gro-relay-schedule-form>
+        </gro-relay-schedule-form>
+      </div>
+    </div>
+  </div>
+  <!-- END : Schedule Add From -->
+
 </div>
+<!-- END : Settings Schedule Page -->
