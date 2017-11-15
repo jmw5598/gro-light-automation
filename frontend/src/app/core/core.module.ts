@@ -11,6 +11,7 @@ import { RelayService } from './service/relay/relay.service';
 import { RPiComponentService } from './service/rpicomponent/rpicomponent.service';
 import { TemperatureDataService } from './service/temperature-data/temperature-data.service';
 
+import { RelayScheduleService } from './service/relay/relay-schedule.service';
 import { SseService } from './service/sse/sse.service';
 import { ToasterService } from './component/toaster/toaster.service';
 
@@ -33,7 +34,8 @@ import { ToasterService } from './component/toaster/toaster.service';
     RPiComponentService,
     TemperatureDataService,
     SseService,
-    ToasterService
+    ToasterService,
+    RelayScheduleService
   ]
 })
 export class CoreModule { }
