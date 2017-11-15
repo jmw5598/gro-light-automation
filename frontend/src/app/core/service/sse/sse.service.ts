@@ -7,7 +7,7 @@ declare let EventSource:any;
 @Injectable()
 export class SseService implements OnDestroy {
 
-  private relay = new BehaviorSubject<Object>(null);
+  private relay = new Subject<Object>();
   private humidity = new BehaviorSubject<Object>(null);
   private temperature = new BehaviorSubject<Object>(null);
   private proximity = new BehaviorSubject<Object>(null);
@@ -38,18 +38,16 @@ export class SseService implements OnDestroy {
           this.humidity.next(json.payload)
           break;
         case 'relay':
-          this.relay.next(json.payload)
+          this.relay.next(json.payload);
           break;
         case 'proximity':
           this.proximity.next(json.payload);
-          console.log(json.payload);
           break;
         case 'moisture':
           this.moisture.next(json.payload);
           break;
         case 'notification':
           this.notification.next(json.payload);
-          console.log("notification case");
           break;
         default:
           break;

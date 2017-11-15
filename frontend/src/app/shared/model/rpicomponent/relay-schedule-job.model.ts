@@ -7,6 +7,6 @@ export class RelayScheduleJob {
       public component: RPiComponent,
       public state: RelayState,
       public enabled: boolean,
-      public time: Date
+      public time: number
   ) {}
 }
