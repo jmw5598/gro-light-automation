@@ -18,7 +18,7 @@ import { ScrollableDirective } from './directive/scrollable/scrollable.directive
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     AlertComponent,
@@ -34,7 +34,7 @@ import { ScrollableDirective } from './directive/scrollable/scrollable.directive
   	RouterModule,
     SimpleLoaderComponent,
     UnauthorizedComponent,
-    ScrollableDirective
+    ScrollableDirective,
   ],
   declarations: [
     AlertComponent,
@@ -46,7 +46,7 @@ import { ScrollableDirective } from './directive/scrollable/scrollable.directive
     RPiComponentFormComponent,
     SimpleLoaderComponent,
     UnauthorizedComponent,
-    ScrollableDirective
+    ScrollableDirective,
   ]
 })
 export class SharedModule { }
