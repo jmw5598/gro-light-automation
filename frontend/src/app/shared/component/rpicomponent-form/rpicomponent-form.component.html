@@ -1,16 +1,16 @@
 <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
-  
+
   <!-- BEGIN : ERROR OUTPUT -->
   <gro-alert *ngIf="errorShown"
              [message]="errorMessage"></gro-alert>
   <!-- END : ERROR OUTPUT -->
-  
+
   <!-- INPUT ALIAS -->
   <div class="form-group"
        [ngClass]="{'has-warning':!form.controls['alias'].valid && form.controls['alias'].touched  }">
-    <label class="sr-only" 
+    <label class="sr-only"
            for="alias">Alias</label>
-        
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
       <div class="input-group-addon input-icon-color">
         <i class="fa fa-user"></i>
@@ -23,41 +23,41 @@
     </div>
   </div>
   <!-- END : INPUT ALIAS -->
-    
-  
+
+
   <!-- INPUT PIN -->
   <div class="form-group"
        [ngClass]="{'has-warning':!form.controls['pin'].valid && form.controls['pin'].touched }">
-    <label class="sr-only" 
+    <label class="sr-only"
            for="pin">Pin</label>
-        
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
       <div class="input-group-addon input-icon-color">
         <i class="fa fa-lock"></i>
       </div>
-      <input class="form-control" 
-             id="pin" 
-             placeholder="Pin Number" 
+      <input class="form-control"
+             id="pin"
+             placeholder="Pin Number"
              type="number"
              formControlName="pin" />
     </div>
   </div>
   <!-- END : INPUT PIN -->
-  
+
 
   <!-- INPUT COMPONENT TYPE -->
   <div class="form-group"
        [ngClass]="{'has-warning':!form.controls['type'].valid && form.controls['type'].touched }" >
-    <label class="sr-only" 
+    <label class="sr-only"
            for="type">Type</label>
-        
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
       <div class="input-group-addon input-icon-color">
         <i class="fa fa-lock"></i>
       </div>
-      <select class="form-control" 
-             id="type" 
-             placeholder="Component Type" 
+      <select class="form-control"
+             id="type"
+             placeholder="Component Type"
              type="text"
              formControlName="type">
         <option value="" disabled selected>Component Type</option>
@@ -77,10 +77,10 @@
   </div>
   <!-- END : INPUT COMPONENT TYPE -->
 
-  
+
   <!-- FORM BUTTONS -->
   <div class="form-group">
-    <button type="submit" 
+    <button type="submit"
             class="col-xs-6 btn btn-default-darker"
             [disabled]="!form.valid">
       {{ formSettings.submitLabel }}
@@ -91,5 +91,5 @@
     </button>
   </div>
   <!--  END : FORM BUTTONS -->
-  
+
 </form>

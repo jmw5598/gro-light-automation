@@ -37,4 +37,8 @@ export class RPiComponentFormComponent implements OnInit {
   submit(component: RPiComponent){
     this.onFormSubmit.emit(component);
   }
+
+  reset() {
+    this.form.reset();
+  }
 }
