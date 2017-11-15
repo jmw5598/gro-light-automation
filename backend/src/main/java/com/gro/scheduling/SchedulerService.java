@@ -1,8 +1,7 @@
 package com.gro.scheduling;
 
-public interface SchedulerService {
-    public void startAll();
-    public void startById();
-    public void stopById();
-    public void removeById();
+public interface SchedulerService<I> {
+    public void addJob(I i);
+    public void removeJob(I i);
+    public void updateJob(I i);
 }
