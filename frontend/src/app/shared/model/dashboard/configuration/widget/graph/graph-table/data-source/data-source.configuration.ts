@@ -13,7 +13,7 @@ export class DataSourceConfiguration {
   constructor() {
     this.calculation = MetricCalculation.AVERAGE;
     this.dataType = MetricDataType.TEMPERATURE;
-    this.timeSpan = MetricTimeSpan.DAILY;
+    this.timeSpan = MetricTimeSpan.HOURLY;
   }
 
 }
