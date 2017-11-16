@@ -38,7 +38,7 @@
             <div class="input-group-addon input-icon-color input-sm">
               <i class="fa fa-toggle-on"></i>
             </div>
-            <select id="state" class="form-control input-sm" id="state" placeholder="Select relay state" formControlName="state">
+            <select id="state" type="text " class="form-control input-sm" id="state" formControlName="state">
               <option value="" disabled selected hidden>Select relay state</option>
               <option value="{{ relayState.ON }}">{{ relayState.ON }}</option>
               <option value="{{ relayState.OFF }}">{{ relayState.OFF }}</option>
@@ -92,12 +92,13 @@
           [disabled]="!form.valid">
         {{ submitLabel }}
       </button>
-      <div
+      <button
+          type="reset"
           class="btn btn-default btn-sm"
           role="button"
           (click)="reset()">
         Clear
-      </div>
+      </button>
     </div>
   </div>
   <!-- END FORM BUTTOMS : Submit, Clear -->
