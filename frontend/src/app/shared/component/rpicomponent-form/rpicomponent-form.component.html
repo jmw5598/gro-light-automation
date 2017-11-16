@@ -12,10 +12,10 @@
            for="alias">Alias</label>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-      <div class="input-group-addon input-icon-color">
+      <div class="input-group-addon input-icon-color input-sm">
         <i class="fa fa-user"></i>
       </div>
-      <input class="form-control"
+      <input class="form-control input-sm"
              type="text"
              id="alias"
              placeholder="Component Alias"
@@ -32,10 +32,10 @@
            for="pin">Pin</label>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-      <div class="input-group-addon input-icon-color">
+      <div class="input-group-addon input-icon-color input-sm">
         <i class="fa fa-lock"></i>
       </div>
-      <input class="form-control"
+      <input class="form-control input-sm"
              id="pin"
              placeholder="Pin Number"
              type="number"
@@ -52,10 +52,10 @@
            for="type">Type</label>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-      <div class="input-group-addon input-icon-color">
+      <div class="input-group-addon input-icon-color input-sm">
         <i class="fa fa-lock"></i>
       </div>
-      <select class="form-control"
+      <select class="form-control  input-sm"
              id="type"
              placeholder="Component Type"
              type="text"
@@ -81,12 +81,12 @@
   <!-- FORM BUTTONS -->
   <div class="form-group">
     <button type="submit"
-            class="col-xs-6 btn btn-default-darker"
+            class="col-xs-6 btn btn-default-darker btn-sm"
             [disabled]="!form.valid">
       {{ formSettings.submitLabel }}
     </button>
     <button *ngIf="formSettings.isClearable" type="reset"
-            class="col-xs-6 btn btn-default">
+            class="col-xs-6 btn btn-default btn-sm">
       Clear
     </button>
   </div>
