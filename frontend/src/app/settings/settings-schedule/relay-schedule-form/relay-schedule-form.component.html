@@ -1,5 +1,5 @@
 <!-- BEGIN : Relay Schedule Form -->
-<form (submit)="submit(form.value)" [formGroup]="form" novalidate>
+<form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
   <legend>
     <h6>Add Schedule</h6>
   </legend>
@@ -24,8 +24,8 @@
       </div>
     </div>
     <!-- END FORM INPUT : Component Selection -->
-  </fieldset>
-  <fieldset>
+  <!-- </fieldset>
+  <fieldset> -->
     <!-- BEGIN FORM INPUT : Relay State, Time, Enabled -->
     <div class="form-group">
       <div class="row">
@@ -70,7 +70,7 @@
                   size="small"
                   color="#5cb85c"
                   switchColor="#f3f3f3"
-                  checked
+                  [checked]="true"
                   formControlName="enabled">
               </ui-switch>
             </div>

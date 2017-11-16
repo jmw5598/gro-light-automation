@@ -63,7 +63,7 @@ export class RelayScheduleFormComponent implements OnInit {
 
   reset() {
     this.form.reset();
-    this.form.controls['enabled'].value = true; //set enabled toggle to true (default);
+    this.form.controls['enabled'].setValue(true); //set enabled toggle to true (default);
   }
 
   private parseTime(time: string): number {
@@ -71,7 +71,7 @@ export class RelayScheduleFormComponent implements OnInit {
     const ampm = time.substring(time.length - 2, time.length).toLowerCase();
     const hour = Number.parseInt(time.substring(0, time.indexOf(':')));
     const minute = Number.parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(':') + 3));
-    date.setHours((ampm === "pm" && hour < 12 ? hour + 12 :  hour), minute, 0); // incorrect for 12 AM, 12 PM
+    date.setHours((ampm === "pm" ? hour + 12 :  hour), minute, 0); // incorrect for 12 AM, 12 PM
 
     return date.getTime();
   }
