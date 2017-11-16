@@ -27,7 +27,8 @@
   <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="panel panel-default">
       <div class="panel-body">
-        <gro-relay-schedule-form>
+        <gro-relay-schedule-form
+          (onFormSubmit)="saveSchedule($event)">
         </gro-relay-schedule-form>
       </div>
     </div>
