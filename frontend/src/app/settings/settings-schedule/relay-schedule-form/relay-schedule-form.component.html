@@ -1,3 +1,106 @@
-<p>
-  relay-schedule-form works!
-</p>
+<!-- BEGIN : Relay Schedule Form -->
+<form (submit)="submit(form.value)" [formGroup]="form" novalidate>
+  <legend>
+    <h6>Add Schedule</h6>
+  </legend>
+  <fieldset>
+
+    <!-- BEGIN FORM INPUT : Component Selection -->
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="" for="pin">Component</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['component'].valid && form.controls['component'].touched  }">
+            <div class="input-group-addon input-icon-color  input-sm">
+              <i class="fa fa-puzzle-piece"></i>
+            </div>
+            <select class="form-control input-sm" id="component" formControlName="component">
+              <option value="" disabled selected hidden>Select relay</option>
+              <option *ngFor="let relay of components" [ngValue]="relay">{{ relay.alias }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END FORM INPUT : Component Selection -->
+  </fieldset>
+  <fieldset>
+    <!-- BEGIN FORM INPUT : Relay State, Time, Enabled -->
+    <div class="form-group">
+      <div class="row">
+
+        <!-- Relay State Selection -->
+        <div class="col-sm-6 col-md-6">
+          <label class="" for="pin">Relay State</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['state'].valid && form.controls['state'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-toggle-on"></i>
+            </div>
+            <select id="state" class="form-control input-sm" id="state" placeholder="Select relay state" formControlName="state">
+              <option value="" disabled selected hidden>Select relay state</option>
+              <option value="{{ relayState.ON }}">{{ relayState.ON }}</option>
+              <option value="{{ relayState.OFF }}">{{ relayState.OFF }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Trigger Time -->
+        <div class="col-sm-6 col-md-4">
+          <label class="" for="pin">Trigger Time</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['time'].valid && form.controls['time'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-clock-o"></i>
+            </div>
+            <input class="form-control input-sm" id="time" type="text" placeholder="01:30 PM"formControlName="time"/>
+          </div>
+        </div>
+
+        <!-- Schedule Enabled Switch -->
+        <div class="col-sm-12 col-md-2">
+          <div class="">
+            <label class="control-label">Enabled: </label>
+            <div class="input-group input-sm"
+                [ngClass]="{'has-warning':!form.controls['enabled'].valid && form.controls['enabled'].touched  }">
+              <ui-switch
+                  id="enabled"
+                  class="pull-right"
+                  size="small"
+                  color="#5cb85c"
+                  switchColor="#f3f3f3"
+                  checked
+                  formControlName="enabled">
+              </ui-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END FORM INPUT : Relay State, Time, Enabled -->
+  </fieldset>
+
+  <!-- BEGIN FORM BUTTOMS : Submit, Clear -->
+  <legend></legend>
+  <div class="form-group pull-right">
+    <div class="button-group">
+      <button
+          class="btn btn-success btn-sm"
+          role="button"
+          type="submit"
+          [disabled]="!form.valid">
+        {{ submitLabel }}
+      </button>
+      <div
+          class="btn btn-default btn-sm"
+          role="button"
+          (click)="reset()">
+        Clear
+      </div>
+    </div>
+  </div>
+  <!-- END FORM BUTTOMS : Submit, Clear -->
+
+</form>
+<!-- END : Relay Schedule Form -->
