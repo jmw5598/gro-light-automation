@@ -63,30 +63,30 @@
         <option value="" disabled selected>Component Type</option>
         <!-- SEE IF YOU CAN DO THIS WITH *ngFor (with enum) -->
         <option value="{{ RPiComponentType[ RPiComponentType.TEMPERATURE ] }}">
-          {{ RPiComponentType[RPiComponentType.TEMPERATURE] }}</option>
+          {{ RPiComponentType[RPiComponentType.TEMPERATURE] | keyToTitle:'snake' }}</option>
         <option value="{{ RPiComponentType[ RPiComponentType.HUMIDITY ] }}">
-          {{ RPiComponentType[RPiComponentType.HUMIDITY] }}</option>
+          {{ RPiComponentType[RPiComponentType.HUMIDITY] | keyToTitle:'snake' }}</option>
         <option value="{{ RPiComponentType[ RPiComponentType.TEMPERATURE_HUMIDITY ] }}">
-          {{ RPiComponentType[RPiComponentType.TEMPERATURE_HUMIDITY] }}</option>
+          {{ RPiComponentType[RPiComponentType.TEMPERATURE_HUMIDITY] | keyToTitle:'snake' }}</option>
         <option value="{{ RPiComponentType[ RPiComponentType.PROXIMITY ] }}">
-          {{ RPiComponentType[RPiComponentType.PROXIMITY] }}</option>
+          {{ RPiComponentType[RPiComponentType.PROXIMITY] | keyToTitle:'snake' }}</option>
         <option value="{{ RPiComponentType[ RPiComponentType.RELAY ] }}">
-          {{ RPiComponentType[RPiComponentType.RELAY] }}</option>
+          {{ RPiComponentType[RPiComponentType.RELAY] | keyToTitle:'snake' }}</option>
       </select>
     </div>
   </div>
   <!-- END : INPUT COMPONENT TYPE -->
 
-
+  <legend></legend>
   <!-- FORM BUTTONS -->
-  <div class="form-group">
+  <div class="form-group pull-right">
     <button type="submit"
-            class="col-xs-6 btn btn-default-darker btn-sm"
+            class="btn btn-success btn-sm"
             [disabled]="!form.valid">
       {{ formSettings.submitLabel }}
     </button>
     <button *ngIf="formSettings.isClearable" type="reset"
-            class="col-xs-6 btn btn-default btn-sm">
+            class="btn btn-default btn-sm">
       Clear
     </button>
   </div>

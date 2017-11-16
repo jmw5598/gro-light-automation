@@ -3,6 +3,8 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 
+import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
+
 @Component({
   selector: 'gro-rpicomponent-form',
   templateUrl: './rpicomponent-form.component.html',
