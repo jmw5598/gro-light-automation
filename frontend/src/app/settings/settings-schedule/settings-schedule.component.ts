@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+import { RelayScheduleFormComponent } from '@app/settings/settings-schedule/relay-schedule-form/relay-schedule-form.component';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 import { PageLoading } from '@app/shared/component/page-loader/page-loading';
@@ -14,8 +17,12 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 })
 export class SettingsScheduleComponent extends PageLoading implements OnInit {
 
+  @ViewChild(RelayScheduleFormComponent) child: RelayScheduleFormComponent;
+  public form;
+
   schedules: Array<RelayScheduleJob>;
   scheduleType: string = "FIXED";
+
   constructor(
     private relayScheduleService: RelayScheduleService,
     private toasterService: ToasterService
@@ -33,7 +40,16 @@ export class SettingsScheduleComponent extends PageLoading implements OnInit {
   }
 
   saveSchedule(schedule: RelayScheduleJob) {
-    this.toasterService.toast("Saving schedule " + schedule.id, ToastType.INFO);
+    this.resetForm();
+    this.relayScheduleService.save(schedule)
+      .subscribe(
+        data => {
+          this.schedules.push(data)
+          this.toasterService.toast("Schedule successfully saved", ToastType.SUCCESS);
+        },
+        error => this.toasterService.toast("Error saving schedule ", ToastType.WARNING)
+      );
+
   }
 
   updateSchedule(schedule: RelayScheduleJob) {
@@ -63,7 +79,11 @@ export class SettingsScheduleComponent extends PageLoading implements OnInit {
   private removeSchedule(schedule: RelayScheduleJob) {
     const temp: RelayScheduleJob = this.schedules.find(x => x.id === schedule.id);
     const index: number = this.schedules.indexOf(temp);
-    this.schedules.splice(index);
+    this.schedules.splice(index,1);
+  }
+
+  resetForm() {
+    this.child.reset();
   }
 
 }
