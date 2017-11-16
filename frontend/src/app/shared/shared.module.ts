@@ -13,6 +13,7 @@ import { CelsiusToFahrenheitPipe } from './pipe/celsius-to-fahrenheit/celsius-to
 import { SimpleLoaderComponent } from './component/simple-loader/simple-loader.component';
 import { PageLoaderComponent } from './component/page-loader/page-loader.component';
 import { ScrollableDirective } from './directive/scrollable/scrollable.directive';
+import { ModalConfirmComponent } from './component/modal-confirm/modal-confirm.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { ScrollableDirective } from './directive/scrollable/scrollable.directive
     SimpleLoaderComponent,
     UnauthorizedComponent,
     ScrollableDirective,
+    ModalConfirmComponent
   ],
   declarations: [
     AlertComponent,
@@ -47,6 +49,7 @@ import { ScrollableDirective } from './directive/scrollable/scrollable.directive
     SimpleLoaderComponent,
     UnauthorizedComponent,
     ScrollableDirective,
+    ModalConfirmComponent,
   ]
 })
 export class SharedModule { }
