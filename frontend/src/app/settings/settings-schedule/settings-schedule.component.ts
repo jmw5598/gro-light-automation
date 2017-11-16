@@ -63,7 +63,10 @@ export class SettingsScheduleComponent extends PageLoading implements OnInit {
   deleteSchedule(id: number) {
     this.relayScheduleService.delete(id)
       .subscribe(
-        data => this.removeSchedule(data),
+        data => {
+          this.removeSchedule(data);
+          this.toasterService.toast("Schedule successfully deleted", ToastType.SUCCESS);
+        },
         error => this.toasterService.toast("Error deleting relay schedule")
       );
   }
