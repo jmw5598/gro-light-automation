@@ -18,7 +18,6 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 export class SettingsScheduleComponent extends PageLoading implements OnInit {
 
   @ViewChild(RelayScheduleFormComponent) child: RelayScheduleFormComponent;
-  public form;
 
   schedules: Array<RelayScheduleJob>;
   scheduleType: string = "FIXED";
@@ -40,16 +39,15 @@ export class SettingsScheduleComponent extends PageLoading implements OnInit {
   }
 
   saveSchedule(schedule: RelayScheduleJob) {
-    this.resetForm();
     this.relayScheduleService.save(schedule)
       .subscribe(
         data => {
           this.schedules.push(data)
           this.toasterService.toast("Schedule successfully saved", ToastType.SUCCESS);
+          this.resetForm();
         },
         error => this.toasterService.toast("Error saving schedule ", ToastType.WARNING)
       );
-
   }
 
   updateSchedule(schedule: RelayScheduleJob) {
