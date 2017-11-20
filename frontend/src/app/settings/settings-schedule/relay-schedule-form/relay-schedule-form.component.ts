@@ -68,10 +68,14 @@ export class RelayScheduleFormComponent implements OnInit {
 
   private parseTime(time: string): number {
     let date: Date = new Date();
-    const ampm = time.substring(time.length - 2, time.length).toLowerCase();
-    const hour = Number.parseInt(time.substring(0, time.indexOf(':')));
-    const minute = Number.parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(':') + 3));
-    date.setHours((ampm === "pm" ? hour + 12 :  hour), minute, 0); // incorrect for 12 AM, 12 PM
+    const parts = time.split(/\s|[:]/); // time formated 01:00 PM (splits at : and space into parts);
+
+    if(parts[0] < '12' && parts[2].toLowerCase() === 'pm')
+      date.setHours(Number.parseInt(parts[0]) + 12, Number.parseInt(parts[1]), 0);
+    else if(parts[0] === '12' && parts[2].toLowerCase() === 'am')
+      date.setHours(Number.parseInt(parts[0]) + 12, Number.parseInt(parts[1]), 0);
+    else
+      date.setHours(Number.parseInt(parts[0]), Number.parseInt(parts[1]), 0);
 
     return date.getTime();
   }
