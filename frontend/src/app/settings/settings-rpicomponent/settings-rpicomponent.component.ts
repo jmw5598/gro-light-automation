@@ -35,7 +35,7 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
     this.rPiComponentService
       .findAll()
         .subscribe(
-          data => { this.components = data; setTimeout(() => this.ready(), 1000); },
+          data => { this.components = data; this.ready(); },
           error => console.log('Error: ' + error)  // DISPLAY ERROR IN TABLE BODY
         );
   }
