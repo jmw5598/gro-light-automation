@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import com.gro.model.rpicomponent.RPiComponent;
 
 @MappedSuperclass
-public abstract AbstractScheduleJob {
+public abstract class AbstractScheduleJob {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
