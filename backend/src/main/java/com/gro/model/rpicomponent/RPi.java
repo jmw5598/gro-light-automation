@@ -70,7 +70,7 @@ public class RPi {
         this.physicalPin = physicalPin;
     }
 
-    public Boolean getUsable() {
+    public Boolean isUsable() {
         return usable;
     }
 
