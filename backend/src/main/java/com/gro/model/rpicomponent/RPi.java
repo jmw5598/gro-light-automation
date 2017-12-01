@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,11 +17,17 @@ public class RPi {
     
     @Column(unique = true)
     @NotNull
-    private Integer pin;
+    private Integer physicalPin;
     
     @NotNull
     private String description;
     
+    @NotNull
+    private Boolean usable = false;
+    
+    @OneToOne
+    private RPiPin pinDetails;
+
     public RPi() {}
 
     public Integer getId() {
@@ -32,11 +39,11 @@ public class RPi {
     }
 
     public Integer getPin() {
-        return pin;
+        return physicalPin;
     }
 
-    public void setPin(Integer pin) {
-        this.pin = pin;
+    public void setPin(Integer physicalPin) {
+        this.physicalPin = physicalPin;
     }
 
     public String getDescription() {
@@ -45,6 +52,30 @@ public class RPi {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public RPiPin getPinDetails() {
+        return pinDetails;
+    }
+
+    public void setPinDetails(RPiPin pinDetails) {
+        this.pinDetails = pinDetails;
+    }
+
+    public Integer getPhysicalPin() {
+        return physicalPin;
+    }
+
+    public void setPhysicalPin(Integer physicalPin) {
+        this.physicalPin = physicalPin;
+    }
+
+    public Boolean getUsable() {
+        return usable;
+    }
+
+    public void setUsable(Boolean usable) {
+        this.usable = usable;
     }
     
 }
