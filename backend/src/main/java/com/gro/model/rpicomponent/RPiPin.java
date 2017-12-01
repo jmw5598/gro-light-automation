@@ -22,7 +22,6 @@ public class RPiPin {
     @NotNull
     private RPiPinType type;
     
-    @Column(unique = true)
     @OneToOne
     private RPi pin;
     
