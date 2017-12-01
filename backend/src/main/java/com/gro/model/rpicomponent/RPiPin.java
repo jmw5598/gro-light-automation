@@ -23,9 +23,11 @@ public class RPiPin {
     private RPiPinType type;
     
     @OneToOne
+    @NotNull
     private RPi pin;
     
     @ManyToOne
+    @NotNull
     private RPiComponent component;
     
     public RPiPin() {}
