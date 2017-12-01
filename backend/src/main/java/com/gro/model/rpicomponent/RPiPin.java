@@ -2,34 +2,32 @@ package com.gro.model.rpicomponent;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class RPiPin {
-    
+        
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
-    @Enumerated(EnumType.STRING)
+    @Column(unique = true)
     @NotNull
-    private RPiPinType type;
+    private Integer physicalPin;
+    
+    @NotNull
+    private String description;
+    
+    @NotNull
+    private Boolean usable = false;
     
     @OneToOne
-    @NotNull
-    private RPi pin;
-    
-    @ManyToOne
-    @NotNull
-    private RPiComponent component;
-    
+    private RPiPinDetails pinDetails;
+
     public RPiPin() {}
 
     public Integer getId() {
@@ -40,28 +38,44 @@ public class RPiPin {
         this.id = id;
     }
 
-    public RPiPinType getType() {
-        return type;
+    public Integer getPin() {
+        return physicalPin;
     }
 
-    public void setType(RPiPinType type) {
-        this.type = type;
+    public void setPin(Integer physicalPin) {
+        this.physicalPin = physicalPin;
     }
 
-    public RPi getPin() {
-        return pin;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPin(RPi pin) {
-        this.pin = pin;
+    public void setDescription(String description) {
+        this.description = description;
     }
     
-    public RPiComponent getComponent() {
-        return component;
+    public RPiPinDetails getPinDetails() {
+        return pinDetails;
     }
-    
-    public void setComponent(RPiComponent component) {
-        this.component = component;
+
+    public void setPinDetails(RPiPinDetails pinDetails) {
+        this.pinDetails = pinDetails;
+    }
+
+    public Integer getPhysicalPin() {
+        return physicalPin;
+    }
+
+    public void setPhysicalPin(Integer physicalPin) {
+        this.physicalPin = physicalPin;
+    }
+
+    public Boolean isUsable() {
+        return usable;
+    }
+
+    public void setUsable(Boolean usable) {
+        this.usable = usable;
     }
     
 }
