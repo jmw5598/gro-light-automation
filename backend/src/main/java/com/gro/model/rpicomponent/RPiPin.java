@@ -1,6 +1,7 @@
 package com.gro.model.rpicomponent;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,26 +9,30 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-public class RPiPin {
-        
+public class RPiPin implements Serializable {
+
+    private static final long serialVersionUID = -2178663258584172348L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(unique = true)
-    @NotNull
-    private Integer physicalPin;
     
     @NotNull
     private String description;
     
     @NotNull
-    private Boolean usable = false;
+    private Integer physicalPin;
+    
+    @NotNull
+    private Boolean usable;
     
     @OneToOne
-    private RPiPinDetails pinDetails;
-
+    @JsonIgnoreProperties(value = {"rPiPin"})
+    private RPiPinDetails rpiPinDetails;
+    
     public RPiPin() {}
 
     public Integer getId() {
@@ -38,28 +43,12 @@ public class RPiPin {
         this.id = id;
     }
 
-    public Integer getPin() {
-        return physicalPin;
-    }
-
-    public void setPin(Integer physicalPin) {
-        this.physicalPin = physicalPin;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-    
-    public RPiPinDetails getPinDetails() {
-        return pinDetails;
-    }
-
-    public void setPinDetails(RPiPinDetails pinDetails) {
-        this.pinDetails = pinDetails;
     }
 
     public Integer getPhysicalPin() {
@@ -70,12 +59,20 @@ public class RPiPin {
         this.physicalPin = physicalPin;
     }
 
-    public Boolean isUsable() {
+    public Boolean getUsable() {
         return usable;
     }
 
     public void setUsable(Boolean usable) {
         this.usable = usable;
+    }
+
+    public RPiPinDetails getrPiPinDetails() {
+        return rpiPinDetails;
+    }
+
+    public void setrPiPinDetails(RPiPinDetails rpiPinDetails) {
+        this.rpiPinDetails = rpiPinDetails;
     }
     
 }

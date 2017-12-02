@@ -1,6 +1,7 @@
 package com.gro.model.rpicomponent;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,9 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-public class RPiPinDetails {
-    
+public class RPiPinDetails implements Serializable {
+   
+    private static final long serialVersionUID = -1338202416204102894L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
@@ -24,10 +29,12 @@ public class RPiPinDetails {
     
     @OneToOne
     @NotNull
+    @JsonIgnoreProperties(value = {"rPiPinDetails"})
     private RPiPin pin;
     
     @ManyToOne
     @NotNull
+    @JsonIgnoreProperties(value = {"pins"})
     private RPiComponent component;
     
     public RPiPinDetails() {}

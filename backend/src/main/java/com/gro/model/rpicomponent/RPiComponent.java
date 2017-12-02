@@ -1,16 +1,19 @@
 package com.gro.model.rpicomponent;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class RPiComponent implements Serializable {
@@ -28,9 +31,9 @@ public class RPiComponent implements Serializable {
     @NotNull
     private RPiComponentType type;
     
-    @Column(unique = true)
-    @NotNull
-    private Integer pin;
+    @OneToMany(mappedBy="component")
+    @JsonIgnoreProperties(value={"component"})
+    private List<RPiPinDetails> pins;
     
     public RPiComponent() {}
 
@@ -58,17 +61,17 @@ public class RPiComponent implements Serializable {
         this.type = type;
     }
 
-    public Integer getPin() {
-        return pin;
+    public List<RPiPinDetails> getPins() {
+        return pins;
     }
 
-    public void setPin(Integer pin) {
-        this.pin = pin;
+    public void setPins(List<RPiPinDetails> pins) {
+        this.pins = pins;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, alias, type, pin);
+        return Objects.hash(id, alias, type);
     }
 
     @Override
@@ -83,8 +86,7 @@ public class RPiComponent implements Serializable {
         
         return Objects.equals(this.id, comp.id) &&
                Objects.equals(this.alias, comp.alias) &&
-               Objects.equals(this.type, comp.type) &&
-               Objects.equals(this.pin, comp.pin);
+               Objects.equals(this.type, comp.type);
         
     }
     
