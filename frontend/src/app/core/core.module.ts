@@ -9,6 +9,7 @@ import { HumidityDataService } from './service/humidity-data/humidity-data.servi
 import { NotificationService } from './service/notification/notification.service';
 import { RelayService } from './service/relay/relay.service';
 import { RPiComponentService } from './service/rpicomponent/rpicomponent.service';
+import { RPiPinService } from './service/rpipin/rpi-pin.service';
 import { TemperatureDataService } from './service/temperature-data/temperature-data.service';
 
 import { RelayScheduleService } from './service/relay/relay-schedule.service';
@@ -32,6 +33,7 @@ import { ToasterService } from './component/toaster/toaster.service';
     NotificationService,
     RelayService,
     RPiComponentService,
+    RPiPinService,
     TemperatureDataService,
     SseService,
     ToasterService,
