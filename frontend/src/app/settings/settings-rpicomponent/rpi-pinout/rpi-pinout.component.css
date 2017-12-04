@@ -45,6 +45,11 @@
   border-radius: 100%;
 }
 
+.pinout-pin-state {
+  font-size: 8px;
+  margin: 0 8px;
+}
+
 .alert-pinout-pin > .pinout-pin-number,
 .alert-pinout-pin > .pinout-pin-icon {
   background: #424e5b;
