@@ -1,3 +1,54 @@
-<p>
-  rpi-pinout works!
-</p>
+<div id="pinout-panel" class="panel panel-default">
+  <div class="panel-heading">
+    GPIO Pinout
+  </div>
+  <div class="panel-body">
+
+    <div *ngIf="pins">
+    <div *ngFor="let pin of pins; let i = index">
+      <div class="pinout-cell">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-pinout-pin"
+                [ngClass]="{ 'alert-default' : pin.usable,
+                             'alert-warning' : selected && pin.rPiPinDetails && selected.id === pin.rPiPinDetails.component.id }">
+              <span class="pinout-pin-number"
+                    [ngClass]="{ 'pull-right' : i % 2 !== 0,
+                                 'pull-left' : i % 2 === 0 }">{{ pin.physicalPin }}</span>
+              <span class="pinout-pin-icon"
+                    [ngClass]="{ 'pull-left' : i % 2 !== 0,
+                                 'pull-right' : i % 2 === 0 }">
+                <i class="fa fa-lg fa-dot-circle-o pinout-pin-icon"></i>
+              </span>
+              <span class="pinout-pin-details"
+                  [ngClass]="{ 'pull-right' : i % 2 === 0,
+                               'pull-left' : i % 2 !== 0 }">{{ pin.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!pins">
+    <div class="alert alert-default">
+      <h6>No pins to display</h6>
+    </div>
+  </div>
+    <!-- <div>
+      <div class="pinout-cell">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-default alert-pinout-pin">
+              <span class="pinout-pin-number pull-right">2</span>
+              <span class="pinout-pin-icon pull-left">
+                <i class="fa fa-lg fa-dot-circle-o pinout-pin-icon"></i>
+              </span>
+              <span class="pinout-pin-details pull-left">5V PWR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     -->
+  </div>
+</div>

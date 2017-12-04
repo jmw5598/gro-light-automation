@@ -1,0 +1,57 @@
+.pinout-cell {
+  width: 50%;
+  float:left;
+  border-top: 4px solid #546575 !important;
+  cursor: pointer;
+}
+
+.pinout-cell:nth-child(odd) {
+  border-right: 4px solid #546575 !important;
+}
+
+.alert-default {
+  background: #485563;
+}
+
+.alert-pinout-pin {
+  padding: 0px !important;
+  margin: 0px !important;
+  line-height: 36px;
+  border: 0;
+}
+
+.alert-pinout-pin > span {
+  font-size: 11px !important;
+}
+
+.alert-pinout-pin > .pinout-pin-number,
+.alert-pinout-pin > .pinout-pin-details,
+.alert-pinout-pin > .pinout-pin-icon {
+  line-height: 36px;
+  padding: 0px 20px;
+  float:left;
+}
+
+.alert-pinout-pin > .pinout-pin-icon {
+  float: right;
+}
+
+.alert-pinout-pin > .pinout-pin-number {
+  line-height: 20px;
+  width: 20px;
+  text-align: center;
+  margin: 8px;
+  padding: 0;
+  border-radius: 100%;
+}
+
+.alert-pinout-pin > .pinout-pin-number,
+.alert-pinout-pin > .pinout-pin-icon {
+  background: #424e5b;
+}
+
+.alert-pinout-pin:after {
+  content: '';
+  display: block;
+  clear: both;
+}
