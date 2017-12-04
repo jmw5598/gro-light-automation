@@ -1,18 +1,18 @@
-<table class="table table-striped">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Id</th>
       <th>Alias</th>
-      <th>Pin</th>
       <th>Type</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let component of components">
+    <tr *ngFor="let component of components"
+        (mouseenter)="hover(component)"
+        (mouseleave)="hover(undefined)">
       <td>{{ component.id }}</td>
       <td>{{ component.alias }}</td>
-      <td>{{ component.pin }}</td>
       <td>{{ component.type | keyToTitle:'snake' }}</td>
       <td class="text-right">
         <button role="button"

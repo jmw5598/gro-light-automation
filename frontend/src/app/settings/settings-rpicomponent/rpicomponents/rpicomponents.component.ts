@@ -18,6 +18,9 @@ export class RPiComponentsComponent implements OnInit {
   @Output()
   onComponentDelete: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  onHover: EventEmitter<RPiComponent> = new EventEmitter<RPiComponent>();
+
   RPiComponentType = RPiComponentType  //needed to use enum in template
 
   constructor(private router: Router) { }
@@ -32,5 +35,8 @@ export class RPiComponentsComponent implements OnInit {
     this.router.navigateByUrl('/settings/(settings:component/' + id + '/edit)');
   }
 
+  hover(component: RPiComponent) {
+    this.onHover.emit(component);
+  }
 
 }
