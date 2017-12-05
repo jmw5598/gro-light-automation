@@ -7,9 +7,10 @@ import { SETTINGS_ROUTES } from '@app/settings/settings.routing';
 import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
 
-import { RPiComponentAddComponent } from './rpicomponent-add/rpicomponent-add.component';
-import { RPiComponentEditComponent } from './rpicomponent-edit/rpicomponent-edit.component';
+import { RPiComponentAddComponent } from './settings-rpicomponent/rpicomponent-add/rpicomponent-add.component';
+import { RPiComponentEditComponent } from './settings-rpicomponent/rpicomponent-edit/rpicomponent-edit.component';
 import { RPiComponentsComponent } from './settings-rpicomponent/rpicomponents/rpicomponents.component';
+import { RPiComponentFormComponent } from './settings-rpicomponent/rpicomponent-form/rpicomponent-form.component';
 import { SettingsComponent } from './settings.component';
 import { SettingsNavigationComponent } from './settings-navigation/settings-navigation.component';
 import { SettingsRPiComponentComponent } from './settings-rpicomponent/settings-rpicomponent.component';
@@ -30,6 +31,7 @@ import { RPiPinoutComponent } from './settings-rpicomponent/rpi-pinout/rpi-pinou
   declarations: [
     RPiComponentAddComponent,
     RPiComponentEditComponent,
+    RPiComponentFormComponent,
     RPiComponentsComponent,
     SettingsComponent,
     SettingsNavigationComponent,
