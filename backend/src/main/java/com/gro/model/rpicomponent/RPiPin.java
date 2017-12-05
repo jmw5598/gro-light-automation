@@ -3,9 +3,12 @@ package com.gro.model.rpicomponent;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -29,9 +32,12 @@ public class RPiPin implements Serializable {
     @NotNull
     private Boolean usable;
     
-    @OneToOne
-    @JsonIgnoreProperties(value = {"rPiPin"})
-    private RPiPinDetails rpiPinDetails;
+    @Enumerated(EnumType.STRING)
+    private RPiPinDirection direction;
+    
+    @ManyToOne
+    @JsonIgnoreProperties(value={"pins"})
+    private RPiComponent component;
     
     public RPiPin() {}
 
@@ -67,12 +73,20 @@ public class RPiPin implements Serializable {
         this.usable = usable;
     }
 
-    public RPiPinDetails getrPiPinDetails() {
-        return rpiPinDetails;
+    public RPiPinDirection getDirection() {
+        return direction;
     }
-
-    public void setrPiPinDetails(RPiPinDetails rpiPinDetails) {
-        this.rpiPinDetails = rpiPinDetails;
+    
+    public void setDirection(RPiPinDirection direction) {
+        this.direction = direction;
+    }
+    
+    public RPiComponent getComponent() {
+        return component;
+    }
+    
+    public void setComponent(RPiComponent component) {
+        this.component = component;
     }
     
 }

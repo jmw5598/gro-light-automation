@@ -33,7 +33,7 @@ public class RPiComponent implements Serializable {
     
     @OneToMany(mappedBy="component")
     @JsonIgnoreProperties(value={"component"})
-    private List<RPiPinDetails> pins;
+    private List<RPiPin> pins;
     
     public RPiComponent() {}
 
@@ -61,11 +61,11 @@ public class RPiComponent implements Serializable {
         this.type = type;
     }
 
-    public List<RPiPinDetails> getPins() {
+    public List<RPiPin> getPins() {
         return pins;
     }
 
-    public void setPins(List<RPiPinDetails> pins) {
+    public void setPins(List<RPiPin> pins) {
         this.pins = pins;
     }
 
