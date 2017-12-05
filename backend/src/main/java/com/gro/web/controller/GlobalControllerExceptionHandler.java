@@ -9,17 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import com.gro.model.ApiError;
+import com.gro.model.NotFoundException;
 import com.gro.model.notification.NotificationNotFoundException;
 import com.gro.model.relay.InvalidRelayStateException;
 import com.gro.model.rpicomponent.InvalidRPiComponentTypeException;
 import com.gro.model.rpicomponent.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.RPiPinNotFoundException;
 
 @ControllerAdvice
 @RestController
 public class GlobalControllerExceptionHandler {
     
-    @ExceptionHandler(RPiComponentNotFoundException.class)
-    public ResponseEntity<Object> handleRPiComponentNotFound(RPiComponentNotFoundException e, WebRequest request) {
+    @ExceptionHandler({
+        NotificationNotFoundException.class,
+        RPiComponentNotFoundException.class,
+        RPiPinNotFoundException.class
+    })
+    public ResponseEntity<Object> handleRPiComponentNotFound(NotFoundException e, WebRequest request) {
         String error = e.getMessage();
         ApiError apiError = 
                 new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), error);
@@ -41,14 +47,6 @@ public class GlobalControllerExceptionHandler {
         String error = e.getMessage();
         ApiError apiError = 
                 new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
-    }
-    
-    @ExceptionHandler(NotificationNotFoundException.class)
-    public ResponseEntity<Object> handleNotificationNotFoundException(NotificationNotFoundException e, WebRequest request) {
-        String error = e.getMessage();
-        ApiError apiError =
-                new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), error);
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
     
