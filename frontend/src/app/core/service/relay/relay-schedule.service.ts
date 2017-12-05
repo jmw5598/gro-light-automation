@@ -11,7 +11,7 @@ import { RelayScheduleJob } from '@app/shared/model/rpicomponent/relay-schedule-
 export class RelayScheduleService extends CrudService<RelayScheduleJob, number> {
 
   constructor(http: Http) {
-    super("http://192.168.1.7:8080/api/component/relay/schedule", http);
+    super("http://localhost:8080/api/component/relay/schedule", http);
   }
 
   public toggle(id: number, enabled: boolean): Observable<RelayScheduleJob> {

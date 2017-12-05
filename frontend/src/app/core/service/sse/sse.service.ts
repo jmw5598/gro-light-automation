@@ -25,7 +25,7 @@ export class SseService implements OnDestroy {
 
   constructor() {
 
-    this.events = new EventSource('http://192.168.1.7:8080/api/event')
+    this.events = new EventSource('http://localhost:8080/api/event')
 
     this.events.addEventListener('message', message => {
       let json = JSON.parse(message.data);

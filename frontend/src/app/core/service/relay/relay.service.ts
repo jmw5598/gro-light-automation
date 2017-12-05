@@ -9,7 +9,7 @@ import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
 @Injectable()
 export class RelayService {
 
-  base: string = 'http://192.168.1.7:8080/api/component/';
+  base: string = 'http://localhost:8080/api/component/';
 
   constructor(private http: Http) { }
 

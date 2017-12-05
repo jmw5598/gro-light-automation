@@ -13,7 +13,7 @@ export class TemperatureDataService {
   private base: string;
 
   constructor(private http: Http) {
-    this.base = 'http://192.168.1.7:8080/api/component';
+    this.base = 'http://localhost:8080/api/component';
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<TemperatureData>> {

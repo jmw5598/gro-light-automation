@@ -13,7 +13,7 @@ import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponen
 export class RPiComponentService extends CrudService<RPiComponent, number> {
 
   constructor(http: Http) {
-    super('http://192.168.1.7:8080/api/component', http);
+    super('http://localhost:8080/api/component', http);
   }
 
 

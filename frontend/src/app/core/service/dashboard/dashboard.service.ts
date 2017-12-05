@@ -8,7 +8,7 @@ import { Dashboard } from '@app/shared/model/dashboard/dashboard.model';
 export class DashboardService extends CrudService<Dashboard, number> {
 
   constructor(http: Http ) {
-    super('http://192.168.1.7:8080/api/component', http);
+    super('http://localhost:8080/api/component', http);
   }
 
 }

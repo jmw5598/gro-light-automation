@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RpiPinService } from './rpi-pin.service';
+import { RPiPinService } from './rpi-pin.service';
 
-describe('RpiPinService', () => {
+describe('RPiPinService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RpiPinService]
+      providers: [RPiPinService]
     });
   });
 
-  it('should ...', inject([RpiPinService], (service: RpiPinService) => {
+  it('should ...', inject([RPiPinService], (service: RPiPinService) => {
     expect(service).toBeTruthy();
   }));
 });

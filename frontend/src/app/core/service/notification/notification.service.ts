@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
+import { AuthenticationService } from '@app/authentication/authentication.service';
 import { CrudService } from '@app/core/service/crud.service';
 import { SseService } from '@app/core/service/sse/sse.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
@@ -18,29 +19,43 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 @Injectable()
 export class NotificationService extends CrudService<Notification, number> implements OnDestroy {
 
-  public read = new BehaviorSubject<Page<Notification>>(null);
-  public unread = new BehaviorSubject<Page<Notification>>(null);
-  private notifications;
+  private read = new Array<Notification>();
+  private unread = new Array<Notification>();
+  public readSubscription = new BehaviorSubject<Array<Notification>>(this.read);
+  public unreadSubscription = new BehaviorSubject<Array<Notification>>(this.unread);
+
+  private readPage: Page<Notification>;
+  private unreadPage: Page<Notification>;
+  public currentReadPage = new BehaviorSubject<Page<Notification>>(this.readPage);
+  public currentUnreadPage = new BehaviorSubject<Page<Notification>>(this.unreadPage);
+
+  private notificationEvents;
+
   constructor(
     public http: Http,
     private sseService: SseService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private authenticationService: AuthenticationService
   ) {
-    super('http://192.168.1.7:8080/api/notification', http);
-    this.retrieveNotifications(true);
-    this.retrieveNotifications(false);
-    this.notifications = this.sseService.notificationAlert
+    super('http://localhost:8080/api/notification', http);
+    if(this.authenticationService.isLoggedIn()){
+      this.retrieveNotifications(0, true);
+      this.retrieveNotifications(0, false);
+    }
+    this.notificationEvents = this.sseService.notificationAlert
       .subscribe(
         data => {
-          this.retrieveNotifications(false); //maybe change this to add in new notifications to page content?
+          this.unread.unshift(<Notification> data);
+          this.unreadPage.totalElements += 1;
           this.toasterService.toast("You received a new notification", ToastType.INFO);
         },
         error => this.toasterService.toast("Error receiving new notification", ToastType.WARNING)
       );
   }
 
-  findAllByState(read: boolean): Observable<Page<Notification>> {
-    const url: string = this.base + '/state?read=' + read;
+  findPageByState(page:number, read: boolean): Observable<Page<Notification>> {
+    console.log("inside findPageByState with page = " + page);
+    const url: string = this.base + '/state?read=' + read + '&page=' + page;
     return this.http.get(url, this.options())
       .map(this.extractPageData)
       .catch(this.handleError);
@@ -52,21 +67,47 @@ export class NotificationService extends CrudService<Notification, number> imple
       .map(res => res.json())
       .catch(this.handleError)
       .finally(() => {
-        this.retrieveNotifications(true);
-        this.retrieveNotifications(false);
+        this.retrieveNotifications(0, true);
+        this.retrieveNotifications(0, false);
       });
+  }
+
+  loadNextPage(): void {
+    if(!this.unreadPage.last) {
+      this.retrieveNotifications(this.unreadPage.number + 1, false);
+    }
   }
 
   deleteNotification(notification: Notification): Observable<Notification> {
     return this.delete(notification.id)
-      .finally(() => notification.isRead ? this.retrieveNotifications(true) : this.retrieveNotifications(false));
+      .finally(() => {
+        const index = notification.isRead ? this.read.indexOf(notification) : this.unread.indexOf(notification);
+        if(notification.isRead) {
+          this.read.splice(index, 1);
+          this.readPage.totalElements -= 1;
+        } else {
+          this.unread.splice(index,1);
+          this.unreadPage.totalElements -= 1;
+        }
+        this.toasterService.toast("Successfully deleted notifications", ToastType.SUCCESS);
+      });
 
   }
 
-  private retrieveNotifications(read: boolean) {
-    this.findAllByState(read)
+  private retrieveNotifications(page:number, read: boolean) {
+    this.findPageByState(page, read)
       .subscribe(
-        data => read ? this.read.next(data) : this.unread.next(data),
+        data => {
+          if(read) {
+            this.readPage = data;
+            this.currentReadPage.next(this.readPage);
+            data.content.forEach((e) => this.read.push(e));
+          } else {
+            this.unreadPage = data;
+            this.currentUnreadPage.next(this.unreadPage);
+            data.content.forEach((e) => this.unread.push(e));
+          }
+        },
         error => this.toasterService.toast('Error loading ' + read ? 'read' : 'unread' + ' notification.', ToastType.DANGER)
       );
   }
@@ -82,7 +123,7 @@ export class NotificationService extends CrudService<Notification, number> imple
   }
 
   ngOnDestroy() {
-    this.notifications.unsubscribe();
+    this.notificationEvents.unsubscribe();
   }
 
 }
