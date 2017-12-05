@@ -9,7 +9,7 @@ import { SharedModule } from '@app/shared/shared.module';
 
 import { RPiComponentAddComponent } from './rpicomponent-add/rpicomponent-add.component';
 import { RPiComponentEditComponent } from './rpicomponent-edit/rpicomponent-edit.component';
-import { RPiComponentsComponent } from './rpicomponents/rpicomponents.component';
+import { RPiComponentsComponent } from './settings-rpicomponent/rpicomponents/rpicomponents.component';
 import { SettingsComponent } from './settings.component';
 import { SettingsNavigationComponent } from './settings-navigation/settings-navigation.component';
 import { SettingsRPiComponentComponent } from './settings-rpicomponent/settings-rpicomponent.component';
@@ -17,6 +17,7 @@ import { SettingsScheduleComponent } from './settings-schedule/settings-schedule
 import { SettingsUserComponent } from './settings-user/settings-user.component';
 import { RelayScheduleFormComponent } from './settings-schedule/relay-schedule-form/relay-schedule-form.component';
 import { RelayScheduleListComponent } from './settings-schedule/relay-schedule-list/relay-schedule-list.component';
+import { RPiPinoutComponent } from './settings-rpicomponent/rpi-pinout/rpi-pinout.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { RelayScheduleListComponent } from './settings-schedule/relay-schedule-l
     SettingsScheduleComponent,
     SettingsUserComponent,
     RelayScheduleFormComponent,
-    RelayScheduleListComponent
+    RelayScheduleListComponent,
+    RPiPinoutComponent
   ]
 })
 export class SettingsModule {}
