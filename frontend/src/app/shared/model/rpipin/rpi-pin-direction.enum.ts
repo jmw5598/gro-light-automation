@@ -1,3 +1,3 @@
 export enum RPiPinDirection {
-  INPUT, OUTPUT
+  INPUT, OUTPUT 
 }
