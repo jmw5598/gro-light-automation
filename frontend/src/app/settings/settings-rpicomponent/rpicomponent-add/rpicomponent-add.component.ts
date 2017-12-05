@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
-import { RPiComponentFormComponent } from '@app/shared/component/rpicomponent-form/rpicomponent-form.component';
+import { RPiComponentFormComponent } from '../rpicomponent-form/rpicomponent-form.component';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 

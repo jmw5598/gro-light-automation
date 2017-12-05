@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RpiPinoutComponent } from './rpi-pinout.component';
+import { RPiPinoutComponent } from './rpi-pinout.component';
 
-describe('RpiPinoutComponent', () => {
-  let component: RpiPinoutComponent;
-  let fixture: ComponentFixture<RpiPinoutComponent>;
+describe('RPiPinoutComponent', () => {
+  let component: RPiPinoutComponent;
+  let fixture: ComponentFixture<RPiPinoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RpiPinoutComponent ]
+      declarations: [ RPiPinoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RpiPinoutComponent);
+    fixture = TestBed.createComponent(RPiPinoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

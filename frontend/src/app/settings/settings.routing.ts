@@ -4,8 +4,8 @@ import { SettingsComponent } from '@app/settings/settings.component';
 import { SettingsRPiComponentComponent } from '@app/settings/settings-rpicomponent/settings-rpicomponent.component';
 import { SettingsScheduleComponent } from '@app/settings/settings-schedule/settings-schedule.component';
 import { SettingsUserComponent } from '@app/settings/settings-user/settings-user.component';
-import { RPiComponentAddComponent } from '@app/settings/rpicomponent-add/rpicomponent-add.component';
-import { RPiComponentEditComponent } from '@app/settings/rpicomponent-edit/rpicomponent-edit.component';
+import { RPiComponentAddComponent } from '@app/settings/settings-rpicomponent/rpicomponent-add/rpicomponent-add.component';
+import { RPiComponentEditComponent } from '@app/settings/settings-rpicomponent/rpicomponent-edit/rpicomponent-edit.component';
 
 export const SETTINGS_ROUTES = [
   {
