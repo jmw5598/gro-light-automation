@@ -1,5 +1,5 @@
 package com.gro.model.rpicomponent;
 
-public enum RPiPinType {
+public enum RPiPinDirection {
     INPUT, OUTPUT
 }
