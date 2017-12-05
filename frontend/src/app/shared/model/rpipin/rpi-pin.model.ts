@@ -1,6 +1,12 @@
+import { RPiPinDirection } from './rpi-pin-direction.model';
+import { RPiComponent } from '../rpicomponent/rpicomponent.model';
+
 export class RPiPin {
   constructor(
     public id: number,
-    public physicalPin: number;
+    public physicalPin: number,
+    public usable: boolean,
+    public direction: RPiPinDirection,
+    public component?: RPiComponent
   ) {}
 }
