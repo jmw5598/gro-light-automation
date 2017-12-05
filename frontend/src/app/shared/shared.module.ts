@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { AlertComponent } from './component/alert/alert.component';
 import { PanelListGroupComponent } from './component/panel-list-group/panel-list-group.component';
-import { RPiComponentFormComponent } from './component/rpicomponent-form/rpicomponent-form.component';
 import { UnauthorizedComponent } from './component/unauthorized/unauthorized.component';
 import { KeyToTitlePipe } from './pipe/key-to-title/key-to-title.pipe';
 import { KeyExtractPipe } from './pipe/key-extract/key-extract.pipe';
@@ -31,7 +30,6 @@ import { ModalConfirmComponent } from './component/modal-confirm/modal-confirm.c
     PageLoaderComponent,
     PanelListGroupComponent,
   	ReactiveFormsModule,
-    RPiComponentFormComponent,
   	RouterModule,
     SimpleLoaderComponent,
     UnauthorizedComponent,
@@ -45,7 +43,6 @@ import { ModalConfirmComponent } from './component/modal-confirm/modal-confirm.c
     KeyExtractPipe,
     PageLoaderComponent,
     PanelListGroupComponent,
-    RPiComponentFormComponent,
     SimpleLoaderComponent,
     UnauthorizedComponent,
     ScrollableDirective,
