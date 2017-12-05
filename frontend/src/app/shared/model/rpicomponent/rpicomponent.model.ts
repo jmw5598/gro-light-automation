@@ -1,4 +1,5 @@
 import { RPiComponentType } from './rpicomponent-type.enum';
+import { RPiPin } from '../rpipin/rpi-pin.model';
 
 export class RPiComponent {
 
@@ -6,8 +7,8 @@ export class RPiComponent {
   constructor (
     public id: number,
     public alias: string,
-    public pin: number,
     public type: RPiComponentType,
+    public pins?: Array<RPiPin>
   ) {
     this.current = 0;
   }
