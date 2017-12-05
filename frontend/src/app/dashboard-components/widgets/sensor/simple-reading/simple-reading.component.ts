@@ -22,7 +22,7 @@ export class SimpleReadingComponent implements OnInit, OnDestroy {
 
   constructor(private sseService: SseService) {
     this.configuration = new SimpleReadingConfiguration(new RPiComponent(
-      1,"Inside DHT22", 22, RPiComponentType.TEMPERATURE_HUMIDITY,
+      1,"Inside DHT22", RPiComponentType.TEMPERATURE_HUMIDITY,
     ));
   }
 

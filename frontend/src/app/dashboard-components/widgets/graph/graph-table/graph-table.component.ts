@@ -89,7 +89,7 @@ export class GraphTableComponent implements OnInit {
             this.isLoading = false;
           },
           error => {
-            console.log('error getting temp data'); //replace with toast message?
+            this.toasterService.toast('Error retrieving humidity data', ToastType.DANGER);
             this.isLoading = false;
           }
         );

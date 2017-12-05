@@ -56,7 +56,7 @@ export class RelaysComponent implements OnInit, OnDestroy {
   }
 
   private handleRelayEvent(relay: any) {
-    console.log('new relay state');
+    console.log('handling new relay event inside list of relays');
     console.log(relay);
     let obj = this.relays.find(e => e.component.id === relay.component.id);
     obj.state = relay.state;

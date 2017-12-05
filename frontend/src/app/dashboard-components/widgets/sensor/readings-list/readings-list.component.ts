@@ -59,9 +59,9 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
         data => {
           data.forEach(e => {
             this.temperature.push(
-              new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.TEMPERATURE_HUMIDITY));
+              new RPiComponent(e.id, e.alias, RPiComponentType.TEMPERATURE_HUMIDITY));
             this.humidity.push(
-              new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.TEMPERATURE_HUMIDITY));
+              new RPiComponent(e.id, e.alias, RPiComponentType.TEMPERATURE_HUMIDITY));
             this.subscribeToTemperatureEvents();
             this.subscribeToHumidityEvents();
           });
@@ -75,7 +75,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           data.forEach(e => this.proximity.push(
-            new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.PROXIMITY)
+            new RPiComponent(e.id, e.alias, RPiComponentType.PROXIMITY)
           ));
           this.subscribeToProximityEvents();
         },
@@ -88,7 +88,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           data.forEach(e => this.moisture.push(
-            new RPiComponent(e.id, e.alias, e.pin, RPiComponentType.MOISTURE)
+            new RPiComponent(e.id, e.alias, RPiComponentType.MOISTURE)
           ));
           this.subscribeToMoistureEvents();
         },
@@ -140,8 +140,6 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
   }
 
   private handleMoistureEvent(data: any) {
-    console.log("new moisture data");
-    console.log(data);
     let obj: any = this.moisture.find(e => e.id === data.component.id);
     obj.current = data.moisture;
   }
