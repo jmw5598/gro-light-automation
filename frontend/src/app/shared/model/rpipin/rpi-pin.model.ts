@@ -1,4 +1,4 @@
-import { RPiPinDirection } from './rpi-pin-direction.model';
+import { RPiPinDirection } from './rpi-pin-direction.enum';
 import { RPiComponent } from '../rpicomponent/rpicomponent.model';
 
 export class RPiPin {
