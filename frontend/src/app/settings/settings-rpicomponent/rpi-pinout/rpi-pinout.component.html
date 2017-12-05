@@ -19,7 +19,7 @@
               <!-- BEGIN : Individual pin container -->
               <div class="alert alert-pinout-pin"
                   [ngClass]="{ 'alert-default' : pin.usable,
-                               'alert-success' : selected && pin.rPiPinDetails && selected.id === pin.rPiPinDetails.component.id }">
+                               'alert-success' : selected && pin.component && selected.id === pin.component.id }">
 
                 <!-- Pin number -->
                 <span class="pinout-pin-number"
@@ -41,12 +41,12 @@
                                  'pull-left' : i % 2 !== 0 }">
                   {{ pin.description }}
                   <span
-                      *ngIf="selected && pin.rPiPinDetails && selected.id === pin.rPiPinDetails.component.id"
+                      *ngIf="selected && pin.component && selected.id === pin.component.id"
                       class="pinout-pin-state badge badge-dark center">
-                    {{pin.rPiPinDetails.type}}
+                    {{pin.direction}}
                   </span>
                 </span>
-                
+
               </div>
               <!-- END : Individual pin container -->
 

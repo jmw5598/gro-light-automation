@@ -43,7 +43,6 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
 
   onTableRowHover(component: RPiComponent) {
     this.selected = component;
-    console.log(this.selected);
   }
 
   private loadComponents() {
