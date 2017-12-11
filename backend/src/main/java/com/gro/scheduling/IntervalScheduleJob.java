@@ -1,9 +1,11 @@
-package com.gro.model;
+package com.gro.scheduling;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+
+import com.gro.model.AbstractScheduleJob;
 
 @MappedSuperclass
 public class IntervalScheduleJob extends AbstractScheduleJob {

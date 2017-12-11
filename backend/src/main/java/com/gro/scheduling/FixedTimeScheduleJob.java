@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.scheduling;
 
 import java.util.Date;
 
@@ -6,6 +6,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import com.gro.model.AbstractScheduleJob;
 
 @MappedSuperclass
 public class FixedTimeScheduleJob extends AbstractScheduleJob {
