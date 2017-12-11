@@ -1,4 +1,4 @@
-package com.gro.scheduling;
+package com.gro.scheduling.model;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

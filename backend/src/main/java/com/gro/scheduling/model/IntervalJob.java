@@ -1,4 +1,4 @@
-package com.gro.scheduling;
+package com.gro.scheduling.model;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gro.scheduling.adapter.ScheduleJobExecutionAdapter;
 
-public class FixedTimeJob implements Job {
+public class IntervalJob implements Job{
     
     @Autowired
     private ScheduleJobExecutionAdapter adapter;
-
+    
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         adapter.execute(context);

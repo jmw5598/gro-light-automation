@@ -1,4 +1,4 @@
-package com.gro.scheduling;
+package com.gro.scheduling.model;
 
 public enum FrequencyMetric {
     SECONDS, MINUTES, HOURS
