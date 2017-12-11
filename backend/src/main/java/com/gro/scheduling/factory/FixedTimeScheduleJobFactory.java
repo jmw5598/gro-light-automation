@@ -11,8 +11,8 @@ import org.quartz.JobKey;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 
-import com.gro.scheduling.FixedTimeJob;
-import com.gro.scheduling.FixedTimeScheduleJob;
+import com.gro.scheduling.model.FixedTimeJob;
+import com.gro.scheduling.model.FixedTimeScheduleJob;
 
 public class FixedTimeScheduleJobFactory<T extends FixedTimeScheduleJob, D> implements ScheduleJobFactory <T, D>{
 

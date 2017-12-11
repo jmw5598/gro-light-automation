@@ -11,9 +11,9 @@ import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 
-import com.gro.scheduling.FrequencyMetric;
-import com.gro.scheduling.IntervalJob;
-import com.gro.scheduling.IntervalScheduleJob;
+import com.gro.scheduling.model.FrequencyMetric;
+import com.gro.scheduling.model.IntervalJob;
+import com.gro.scheduling.model.IntervalScheduleJob;
 
 public class IntervalScheduleJobFactory<T extends IntervalScheduleJob, D> implements ScheduleJobFactory<T, D> {
 
