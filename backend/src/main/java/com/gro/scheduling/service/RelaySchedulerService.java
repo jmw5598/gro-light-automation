@@ -1,4 +1,4 @@
-package com.gro.scheduling;
+package com.gro.scheduling.service;
 
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gro.model.relay.RelayScheduleJob;
+import com.gro.scheduling.RelayJobFactory;
 
 @Service
 public class RelaySchedulerService implements SchedulerService<RelayScheduleJob> {
