@@ -1,5 +1,6 @@
 package com.gro.scheduling.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import com.gro.model.rpicomponent.RPiComponent;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
 @Table(name="schedule_job")
 public abstract class AbstractScheduleJob {
     
@@ -30,6 +31,9 @@ public abstract class AbstractScheduleJob {
     
     @NotNull
     private Boolean enabled;
+    
+    @Column(name="type", insertable = false, updatable = false)
+    private String type;
     
     public Integer getId() {
         return id;
@@ -53,6 +57,14 @@ public abstract class AbstractScheduleJob {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
 }
