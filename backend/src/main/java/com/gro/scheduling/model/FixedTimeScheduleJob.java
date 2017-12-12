@@ -2,14 +2,14 @@ package com.gro.scheduling.model;
 
 import java.util.Date;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.AbstractScheduleJob;
-
-@MappedSuperclass
+@Entity
+@DiscriminatorValue("FIXED")
 public class FixedTimeScheduleJob extends AbstractScheduleJob {
     
     @NotNull

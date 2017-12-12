@@ -1,13 +1,13 @@
 package com.gro.scheduling.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.AbstractScheduleJob;
-
-@MappedSuperclass
+@Entity
+@DiscriminatorValue("INTERVAL")
 public class IntervalScheduleJob extends AbstractScheduleJob {
     
     @NotNull
