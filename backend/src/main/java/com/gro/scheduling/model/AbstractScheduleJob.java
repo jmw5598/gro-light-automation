@@ -1,4 +1,4 @@
-package com.gro.model;
+package com.gro.scheduling.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
