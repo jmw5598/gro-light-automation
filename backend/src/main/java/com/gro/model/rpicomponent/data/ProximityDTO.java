@@ -1,8 +1,8 @@
-package com.gro.model.data.proximity;
+package com.gro.model.rpicomponent.data;
 
 import java.util.Date;
 
-import com.gro.model.data.AbstractDataDTO;
+import com.gro.model.rpicomponent.AbstractDataDTO;
 
 public class ProximityDTO extends AbstractDataDTO {
     

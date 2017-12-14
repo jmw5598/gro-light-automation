@@ -1,4 +1,4 @@
-package com.gro.model.data;
+package com.gro.model.rpicomponent.data;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -6,7 +6,6 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 import com.gro.model.AbstractInputPreferences;
-import com.gro.model.data.temperature.TemperatureUnit;
 
 @Entity
 public class TemperatureHumidityPreferences extends AbstractInputPreferences {

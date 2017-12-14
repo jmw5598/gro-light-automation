@@ -1,9 +1,9 @@
-package com.gro.model.moisture;
+package com.gro.model.rpicomponent.data;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.data.AbstractRPiComponentData;
+import com.gro.model.rpicomponent.AbstractRPiComponentData;
 
 @Entity
 public class MoistureData extends AbstractRPiComponentData {

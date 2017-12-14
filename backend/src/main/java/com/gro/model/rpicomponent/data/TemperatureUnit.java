@@ -1,4 +1,4 @@
-package com.gro.model.data.temperature;
+package com.gro.model.rpicomponent.data;
 
 public enum TemperatureUnit {
     CELSIUS,

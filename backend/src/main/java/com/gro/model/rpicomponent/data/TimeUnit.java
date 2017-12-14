@@ -1,4 +1,4 @@
-package com.gro.model.data;
+package com.gro.model.rpicomponent.data;
 
 public enum TimeUnit {
     MILLISECONDS,

@@ -1,4 +1,4 @@
-package com.gro.model.data.humidity;
+package com.gro.model.rpicomponent.data;
 
 import javax.persistence.Entity;
 
