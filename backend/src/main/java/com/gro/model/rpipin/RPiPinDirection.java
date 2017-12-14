@@ -1,4 +1,4 @@
-package com.gro.model.rpicomponent;
+package com.gro.model.rpipin;
 
 public enum RPiPinDirection {
     INPUT, OUTPUT
