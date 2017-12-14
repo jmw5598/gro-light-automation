@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.rpicomponent.RPiPin;
-import com.gro.model.rpicomponent.RPiPinNotFoundException;
+import com.gro.model.rpicomponent.exception.RPiPinNotFoundException;
+import com.gro.model.rpipin.RPiPin;
 import com.gro.repository.RPiPinRepository;
 
 @RestController

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.data.temperature.TemperatureData;
-import com.gro.model.rpicomponent.RPiComponent;
-import com.gro.model.rpicomponent.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.TemperatureData;
+import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
 import com.gro.repository.RPiComponentRepository;
 import com.gro.repository.TemperatureDataRepository;
 
@@ -38,7 +38,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findAllByComponent(component, pageable);
     }
     
@@ -48,7 +48,7 @@ public class TemperatureDataController {
     public void postTemperatureData(@PathVariable("id") Integer id,
                                     @RequestBody TemperatureData data) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         data.setComponent(component);
         temperatureDataRepository.save(data);
     }
@@ -59,7 +59,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findMonthlyAverageByComponent(component, pageable);
     }
     
@@ -69,7 +69,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyAverageByComponent(component, pageable);
     }
     
@@ -79,7 +79,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyHighByComponent(component, pageable);
     }
     
@@ -89,7 +89,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findDailyLowByComponent(component, pageable);
     }
     
@@ -99,7 +99,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyAverageByComponent(component, pageable);
     }
     
@@ -109,7 +109,7 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyHighByComponent(component, pageable);
     }
 
@@ -119,13 +119,13 @@ public class TemperatureDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = validateComponent(id);
+        AbstractRPiComponent component = validateComponent(id);
         return temperatureDataRepository.findHourlyLowByComponent(component, pageable);
         
     }
     
-    private RPiComponent validateComponent(Integer id) {
-        RPiComponent component = rPiComponentRepository.findOne(id);
+    private AbstractRPiComponent validateComponent(Integer id) {
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         else

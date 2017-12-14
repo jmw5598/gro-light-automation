@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.data.humidity.HumidityData;
-import com.gro.model.rpicomponent.RPiComponent;
-import com.gro.model.rpicomponent.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.HumidityData;
+import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
 import com.gro.repository.HumidityDataRepository;
 import com.gro.repository.RPiComponentRepository;
 
@@ -38,7 +38,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findAllByComponent(component, pageable);
@@ -58,7 +58,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findMonthlyAverageByComponent(component, pageable);
@@ -71,7 +71,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findDailyAverageByComponent(component, pageable);
@@ -84,7 +84,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findDailyHighByComponent(component, pageable);
@@ -97,7 +97,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findDailyLowByComponent(component, pageable);
@@ -110,7 +110,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findHourlyAverageByComponent(component, pageable);
@@ -123,7 +123,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null) 
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findHourlyHighByComponent(component, pageable);
@@ -136,7 +136,7 @@ public class HumidityDataController {
             @PathVariable("id") Integer id,
             @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
         
-        RPiComponent component = rPiComponentRepository.findOne(id);
+        AbstractRPiComponent component = rPiComponentRepository.findOne(id);
         if(component == null)
             throw new RPiComponentNotFoundException(componentNotFoundException);
         return humidityDataRepository.findHourlyLowByComponent(component, pageable);

@@ -12,9 +12,10 @@ import com.gro.model.ApiError;
 import com.gro.model.NotFoundException;
 import com.gro.model.notification.NotificationNotFoundException;
 import com.gro.model.relay.InvalidRelayStateException;
-import com.gro.model.rpicomponent.InvalidRPiComponentTypeException;
-import com.gro.model.rpicomponent.RPiComponentNotFoundException;
-import com.gro.model.rpicomponent.RPiPinNotFoundException;
+import com.gro.model.rpicomponent.exception.EntityNotFoundException;
+import com.gro.model.rpicomponent.exception.InvalidRPiComponentTypeException;
+import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
+import com.gro.model.rpicomponent.exception.RPiPinNotFoundException;
 
 @ControllerAdvice
 @RestController
@@ -23,7 +24,8 @@ public class GlobalControllerExceptionHandler {
     @ExceptionHandler({
         NotificationNotFoundException.class,
         RPiComponentNotFoundException.class,
-        RPiPinNotFoundException.class
+        RPiPinNotFoundException.class,
+        EntityNotFoundException.class
     })
     public ResponseEntity<Object> handleRPiComponentNotFound(NotFoundException e, WebRequest request) {
         String error = e.getMessage();
