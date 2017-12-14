@@ -1,4 +1,4 @@
-package com.gro.model.rpicomponent;
+package com.gro.model.rpicomponent.exception;
 
 public class InvalidRPiComponentTypeException extends RuntimeException {
 

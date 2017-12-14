@@ -1,4 +1,4 @@
-package com.gro.model.rpicomponent;
+package com.gro.model.rpicomponent.exception;
 
 import com.gro.model.NotFoundException;
 
