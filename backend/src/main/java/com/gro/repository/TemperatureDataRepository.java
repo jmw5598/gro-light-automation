@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.gro.model.data.temperature.TemperatureData;
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.TemperatureData;
 
 public interface TemperatureDataRepository extends JpaRepository<TemperatureData, Integer> {
 
-    Page<TemperatureData> findAllByComponent(RPiComponent component, Pageable pageable);
+    Page<TemperatureData> findAllByComponent(AbstractRPiComponent component, Pageable pageable);
     
     @Query(
         value = "SELECT td.id, CONVERT(DATE_FORMAT(td.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', td.component_id, ROUND(AVG(td.temperature), 2) as `temperature` " +
@@ -29,7 +29,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findMonthlyAverageByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -47,7 +47,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findDailyAverageByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -65,7 +65,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findDailyHighByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -83,7 +83,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findDailyLowByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -101,7 +101,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
        nativeQuery = true
     )
     Page<TemperatureData> findHourlyAverageByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -119,7 +119,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findHourlyHighByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -137,7 +137,7 @@ public interface TemperatureDataRepository extends JpaRepository<TemperatureData
         nativeQuery = true
     )
     Page<TemperatureData> findHourlyLowByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Override

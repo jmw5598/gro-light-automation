@@ -7,13 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.gro.model.data.humidity.HumidityData;
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.HumidityData;
 
 
 public interface HumidityDataRepository extends JpaRepository<HumidityData, Integer> {
 
-    Page<HumidityData> findAllByComponent(RPiComponent component, Pageable pageable);
+    Page<HumidityData> findAllByComponent(AbstractRPiComponent component, Pageable pageable);
 
     @Query(
         value = "SELECT hd.id, CONVERT(DATE_FORMAT(hd.timestamp,'%Y-%m-00-00:00:00'),DATETIME) as 'timestamp', hd.component_id, ROUND(AVG(hd.humidity), 2) as `humidity` " +
@@ -30,7 +30,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findMonthlyAverageByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -48,7 +48,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findDailyAverageByComponent(
-            @Param("component") RPiComponent component, Pageable pageable);
+            @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @Query(
@@ -66,7 +66,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findDailyHighByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+           @Param("component") AbstractRPiComponent component, Pageable pageable);
      
     
     @Query(
@@ -84,7 +84,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findDailyLowByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+           @Param("component") AbstractRPiComponent component, Pageable pageable);
      
      
     @Query(
@@ -102,7 +102,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findHourlyAverageByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+           @Param("component") AbstractRPiComponent component, Pageable pageable);
      
     
     @Query(
@@ -120,7 +120,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findHourlyHighByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+           @Param("component") AbstractRPiComponent component, Pageable pageable);
      
     
     @Query(
@@ -138,7 +138,7 @@ public interface HumidityDataRepository extends JpaRepository<HumidityData, Inte
         nativeQuery = true
     )
     Page<HumidityData> findHourlyLowByComponent(
-           @Param("component") RPiComponent component, Pageable pageable);
+           @Param("component") AbstractRPiComponent component, Pageable pageable);
     
     
     @PreAuthorize("hasRole('ROLE_ADMIN')")
