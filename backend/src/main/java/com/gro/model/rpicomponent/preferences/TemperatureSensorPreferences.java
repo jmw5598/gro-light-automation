@@ -1,14 +1,14 @@
-package com.gro.model.rpicomponent.data;
+package com.gro.model.rpicomponent.preferences;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.AbstractInputPreferences;
+import com.gro.model.rpicomponent.AbstractRPiComponentPreferences;
 
 @Entity
-public class TemperaturePreferences extends AbstractInputPreferences {
+public class TemperatureSensorPreferences extends AbstractRPiComponentPreferences {
     
     @Enumerated(EnumType.STRING)
     @NotNull
