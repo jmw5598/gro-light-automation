@@ -20,39 +20,17 @@ import com.gro.repository.NotificationRepository;
 
 @RestController
 @RequestMapping("/api/notification")
-public class NotificationController {
+public class NotificationController extends AbstractRestController<Notification, Integer> {
     
     @Value("${exception.notification-not-found}")
     private String notificationNotFound;
     
-    @Autowired
     private NotificationRepository notificationRepository;
     
-    @RequestMapping(method=RequestMethod.GET)
-    public Page<Notification> getAllNotifications(
-            @PageableDefault(sort={"timestamp"}, direction=Sort.Direction.DESC, page=0, size=10) Pageable pageable) {
-        return notificationRepository.findAll(pageable);
-    }
-    
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(method=RequestMethod.POST)
-    public Notification postNotification(@RequestBody Notification notification) {
-        return this.notificationRepository.save(notification);
-    }
-    
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public Notification getNotificationById(@PathVariable("id") Integer id) {
-        Notification notification = this.notificationRepository.findOne(id);
-        validateNotification(notification);
-        return notification;
-    }
-    
-    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    public Notification deleteNotificationById(@PathVariable("id") Integer id) {
-        Notification notification = this.notificationRepository.findOne(id);
-        validateNotification(notification);
-        this.notificationRepository.delete(notification);
-        return notification;
+    @Autowired
+    public NotificationController(NotificationRepository repository) {
+        super(repository);
+        this.notificationRepository = repository;
     }
     
     @RequestMapping(value="/state", method=RequestMethod.GET)
@@ -72,7 +50,6 @@ public class NotificationController {
         return this.notificationRepository.save(notification);
         
     }
-    
     
     private void validateNotification(Notification notification) {
         if(notification == null)
