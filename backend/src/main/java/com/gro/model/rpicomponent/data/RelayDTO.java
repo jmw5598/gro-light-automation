@@ -1,24 +1,24 @@
-package com.gro.model.relay;
+package com.gro.model.rpicomponent.data;
 
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
 
 public class RelayDTO {
 
-    private RPiComponent component;
+    private AbstractRPiComponent component;
     private RelayState state;
     
     public RelayDTO() {}
     
-    public RelayDTO(RPiComponent component, RelayState state) {
+    public RelayDTO(AbstractRPiComponent component, RelayState state) {
         this.component = component;
         this.state = state;
     }
     
-    public RPiComponent getComponent() {
+    public AbstractRPiComponent getComponent() {
         return component;
     }
     
-    public void setComponent(RPiComponent component) {
+    public void setComponent(AbstractRPiComponent component) {
         this.component = component;
     }
     

@@ -1,4 +1,4 @@
-package com.gro.model.relay;
+package com.gro.model.rpicomponent.exception;
 
 public class InvalidRelayStateException extends RuntimeException {
     
