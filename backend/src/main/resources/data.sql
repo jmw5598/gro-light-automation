@@ -1,6 +1,5 @@
 ----------------------------------------------------------------------
--- TABLE & FUNCTION ARE DROP/CREATED WHEN
--- PROPERTY jpa.hibernate.ddl-auto = create
+-- TABLE & FUNCTION ARE DROP/CREATED
 -- THIS SHOULD BE IN schema.sql BUT data.sql WILL NOT RUN IF
 -- THE schema.sql IS ON THE CLASS PATH
 ----------------------------------------------------------------------
@@ -27,7 +26,7 @@ BEGIN
 END ^;
 
 ----------------------------------------------------------------------
--- TRIGGERS ARE ONLY DROP/CREATED WHEN 
+-- TRIGGERS ARE DROP/CREATED 
 ----------------------------------------------------------------------
 -- TEMPERATURE SENSOR TRIGGER
 DROP TRIGGER IF EXISTS temperature_sensor_id_trigger ^;
