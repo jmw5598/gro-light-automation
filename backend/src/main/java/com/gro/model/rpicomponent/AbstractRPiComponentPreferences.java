@@ -1,39 +1,45 @@
-package com.gro.model;
+package com.gro.model.rpicomponent;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
-
-import com.gro.model.rpicomponent.RPiComponent;
 
 @MappedSuperclass
-public abstract class AbstractPreferences {
+public abstract class AbstractRPiComponentPreferences {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    private Double minValue;
+    private Double maxValue;
+    private Boolean notificationEnabled = false;
+    private Boolean hasBeenNotified = false;
     
-    @ManyToOne
-    @NotNull
-    private RPiComponent component;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Double getMinValue() {
+        return minValue;
     }
     
-    public RPiComponent getComponent() {
-        return component;
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
     }
     
-    public void setComponent(RPiComponent component) {
-        this.component = component;
+    public Double getMaxValue() {
+        return maxValue;
+    }
+    
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+    
+    public Boolean notificationEnabled() {
+        return notificationEnabled;
+    }
+    
+    public void setNotificationEnabled(Boolean notificationEnabled) {
+        this.notificationEnabled = notificationEnabled;
+    }
+    
+    public Boolean getHasBeenNotified() {
+        return hasBeenNotified;
+    }
+    
+    public void hasBeenNotified(Boolean hasBeenNotified) {
+        this.hasBeenNotified = hasBeenNotified;
     }
     
 }
