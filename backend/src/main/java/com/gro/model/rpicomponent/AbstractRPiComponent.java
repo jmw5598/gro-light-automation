@@ -17,21 +17,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gro.model.rpipin.RPiPin;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
-@Table(name="rpi_component")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractRPiComponent implements Serializable {
     
     private static final long serialVersionUID = -9072676419360409759L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
     @NotNull
@@ -40,10 +38,6 @@ public abstract class AbstractRPiComponent implements Serializable {
     @OneToMany(mappedBy="component")
     @JsonIgnoreProperties(value={"component"})
     private List<RPiPin> pins;
-    
-    // for returning discriminator column
-    @Column(name="type", insertable = false, updatable = false)
-    private String type;
     
     public AbstractRPiComponent() {}
 
@@ -69,14 +63,6 @@ public abstract class AbstractRPiComponent implements Serializable {
 
     public void setPins(List<RPiPin> pins) {
         this.pins = pins;
-    }
-    
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     @Override
