@@ -9,7 +9,7 @@ import com.gro.model.rpicomponent.AbstractRPiComponentPreferences;
 
 @Entity
 public class TemperatureSensorPreferences extends AbstractRPiComponentPreferences {
-    
+
     @Enumerated(EnumType.STRING)
     @NotNull
     private TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;

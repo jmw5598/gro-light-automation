@@ -6,5 +6,5 @@ import com.gro.model.rpicomponent.AbstractRPiComponentPreferences;
 
 @Entity
 public class RelayPreferences extends AbstractRPiComponentPreferences {
-
+    
 }

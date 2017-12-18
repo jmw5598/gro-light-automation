@@ -1,15 +1,30 @@
 package com.gro.model.rpicomponent;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class AbstractRPiComponentPreferences {
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
     
     private Double minValue;
     private Double maxValue;
     private Boolean notificationEnabled = false;
     private Boolean hasBeenNotified = false;
     
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Double getMinValue() {
         return minValue;
     }
