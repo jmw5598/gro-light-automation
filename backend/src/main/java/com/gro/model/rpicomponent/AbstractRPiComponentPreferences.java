@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class AbstractRPiComponentPreferences {
@@ -12,10 +13,17 @@ public abstract class AbstractRPiComponentPreferences {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
+    @NotNull
     private Double minValue;
+    
+    @NotNull
     private Double maxValue;
+    
+    @NotNull
     private Boolean notificationEnabled = false;
-    private Boolean hasBeenNotified = false;
+    
+    @NotNull
+    private Boolean notified = false;
     
     public Integer getId() {
         return id;
@@ -41,7 +49,7 @@ public abstract class AbstractRPiComponentPreferences {
         this.maxValue = maxValue;
     }
     
-    public Boolean notificationEnabled() {
+    public Boolean isNotificationEnabled() {
         return notificationEnabled;
     }
     
@@ -49,12 +57,12 @@ public abstract class AbstractRPiComponentPreferences {
         this.notificationEnabled = notificationEnabled;
     }
     
-    public Boolean getHasBeenNotified() {
-        return hasBeenNotified;
+    public Boolean isNotified() {
+        return notified;
     }
     
-    public void hasBeenNotified(Boolean hasBeenNotified) {
-        this.hasBeenNotified = hasBeenNotified;
+    public void setNotified(Boolean notified) {
+        this.notified = notified;
     }
     
 }
