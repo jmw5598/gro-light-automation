@@ -4,21 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gro.model.rpipin.RPiPin;
@@ -30,6 +24,8 @@ public abstract class AbstractRPiComponent implements Serializable {
     private static final long serialVersionUID = -9072676419360409759L;
 
     @Id
+    @GenericGenerator(name="RPiComponentId", strategy="com.gro.model.rpicomponent.RPiComponentIdGenerator" )
+    @GeneratedValue(generator="RPiComponentId" )
     private Integer id;
     
     @NotNull
