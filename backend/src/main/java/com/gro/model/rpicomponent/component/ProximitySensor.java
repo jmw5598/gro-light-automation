@@ -1,5 +1,6 @@
 package com.gro.model.rpicomponent.component;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,7 +11,7 @@ import com.gro.model.rpicomponent.preferences.ProximitySensorPreferences;
 public class ProximitySensor extends AbstractRPiComponent {
     private static final long serialVersionUID = -4988765402801140717L;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private ProximitySensorPreferences preferences;
     
     public ProximitySensor() {}

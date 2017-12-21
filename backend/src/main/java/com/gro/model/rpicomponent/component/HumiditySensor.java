@@ -1,5 +1,6 @@
 package com.gro.model.rpicomponent.component;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,7 +11,7 @@ import com.gro.model.rpicomponent.preferences.HumiditySensorPreferences;
 public class HumiditySensor extends AbstractRPiComponent {
     private static final long serialVersionUID = -1697372017855638391L;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private HumiditySensorPreferences preferences;
     
     public HumiditySensor() {}

@@ -1,5 +1,6 @@
 package com.gro.model.rpicomponent.component;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,7 +11,7 @@ import com.gro.model.rpicomponent.preferences.RelayPreferences;
 public class Relay extends AbstractRPiComponent {
     private static final long serialVersionUID = 7384389994862545570L;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private RelayPreferences preferences;
     
     public Relay() {}

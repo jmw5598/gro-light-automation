@@ -1,5 +1,6 @@
 package com.gro.model.rpicomponent.component;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,7 +11,7 @@ import com.gro.model.rpicomponent.preferences.MoistureSensorPreferences;
 public class MoistureSensor extends AbstractRPiComponent {
     private static final long serialVersionUID = -8458254453273797900L;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private MoistureSensorPreferences preferences;
     
     public MoistureSensor() {}
