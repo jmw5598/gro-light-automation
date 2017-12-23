@@ -1,4 +1,4 @@
-package com.gro.repository;
+package com.gro.repository.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

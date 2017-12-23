@@ -1,4 +1,4 @@
-package com.gro.repository;
+package com.gro.repository.schedule;
 
 import java.util.List;
 

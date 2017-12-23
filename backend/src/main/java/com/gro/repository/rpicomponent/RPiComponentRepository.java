@@ -1,4 +1,4 @@
-package com.gro.repository;
+package com.gro.repository.rpicomponent;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.gro.model.rpicomponent.RPiComponentType;
 
 public interface RPiComponentRepository extends CrudRepository<AbstractRPiComponent, Integer> {
     
-    List<AbstractRPiComponent> findAllByType(RPiComponentType type);
+    //List<AbstractRPiComponent> findAllByType(RPiComponentType type);
     
     @Override
     //@Cacheable(value="componentCache")

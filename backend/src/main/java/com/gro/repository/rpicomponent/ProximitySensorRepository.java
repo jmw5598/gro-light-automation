@@ -1,4 +1,4 @@
-package com.gro.repository;
+package com.gro.repository.rpicomponent;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
