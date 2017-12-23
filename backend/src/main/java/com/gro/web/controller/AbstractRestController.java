@@ -5,20 +5,20 @@ import java.io.Serializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gro.model.rpicomponent.exception.EntityNotFoundException;
+import com.gro.repository.BaseRepository;
 
 public abstract class AbstractRestController<T, ID extends Serializable> {
     
     private Logger logger = LoggerFactory.getLogger(AbstractRestController.class);
-    private CrudRepository<T, ID> repository;
+    private BaseRepository<T, ID> repository;
     
-    public AbstractRestController(CrudRepository<T, ID> repository) {
+    public AbstractRestController(BaseRepository<T, ID> repository) {
         this.repository = repository;
     }
     
