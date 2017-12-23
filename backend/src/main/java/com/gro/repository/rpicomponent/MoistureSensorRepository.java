@@ -1,11 +1,11 @@
 package com.gro.repository.rpicomponent;
 
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.gro.model.rpicomponent.component.MoistureSensor;
+import com.gro.repository.RestrictedWriteRepository;
 
 @Repository
-public interface MoistureSensorRepository extends CrudRepository<MoistureSensor, Integer> {
-    // TODO: Secure delete methods with with ADMIN role
+public interface MoistureSensorRepository extends RestrictedWriteRepository<MoistureSensor, Integer> {
+    
 }
