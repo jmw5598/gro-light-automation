@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.gro.model.notification.Notification;
 
-public interface NotificationRepository extends JpaRepository<Notification, Integer> {
+public interface NotificationRepository extends BaseRepository<Notification, Integer> {
     
     @Query("SELECT n FROM Notification n WHERE isRead = :read")
     public Page<Notification> findAllByIsRead(@Param("read") Boolean read, Pageable pageable);
