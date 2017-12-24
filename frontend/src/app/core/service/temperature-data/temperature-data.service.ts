@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 
 import { TemperatureData } from '../../../shared/model/temperature-data/temperature-data.model';
 import { Page } from '../../../shared/model/paging/page.model';
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 
 @Injectable()
 export class TemperatureDataService {
@@ -13,7 +14,7 @@ export class TemperatureDataService {
   private base: string;
 
   constructor(private http: Http) {
-    this.base = 'http://localhost:8080/api/component';
+    this.base = BASE_API_URL + 'component';
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<TemperatureData>> {

@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { AuthenticationService } from '@app/authentication/authentication.service';
 import { CrudService } from '@app/core/service/crud.service';
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 import { SseService } from '@app/core/service/sse/sse.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
@@ -38,7 +39,7 @@ export class NotificationService extends CrudService<Notification, number> imple
     private toasterService: ToasterService,
     private authenticationService: AuthenticationService
   ) {
-    super('http://localhost:8080/api/notification', http, REQUEST_OPTIONS_DEFAULT );
+    super(BASE_API_URL + 'notification', http, REQUEST_OPTIONS_DEFAULT );
     if(this.authenticationService.isLoggedIn()){
       this.retrieveNotifications(0, true);
       this.retrieveNotifications(0, false);

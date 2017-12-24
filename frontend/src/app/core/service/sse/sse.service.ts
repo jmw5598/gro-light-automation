@@ -2,6 +2,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
+
 declare let EventSource:any;
 
 @Injectable()
@@ -25,7 +27,7 @@ export class SseService implements OnDestroy {
 
   constructor() {
 
-    this.events = new EventSource('http://localhost:8080/api/event')
+    this.events = new EventSource(BASE_API_URL + 'event')
 
     this.events.addEventListener('message', message => {
       let json = JSON.parse(message.data);

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { HumidityData } from '../../../shared/model/humidity-data/humidity-data.model';
 import { Page } from '../../../shared/model/paging/page.model';
 
@@ -15,7 +16,7 @@ export class HumidityDataService {
   private options: RequestOptions;
 
   constructor(private http: Http) {
-    this.base = 'http://localhost:8080/api/component';
+    this.base = BASE_API_URL + 'component';
     this.options = REQUEST_OPTIONS_DEFAULT;
   }
 

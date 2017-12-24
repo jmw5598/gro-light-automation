@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 
 import { CrudService } from '../crud.service';
 import { REQUEST_OPTIONS_DEFAULT } from '../request-options.default';
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
 import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
 import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
@@ -14,7 +15,7 @@ import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponen
 export class RPiComponentService extends CrudService<RPiComponent, number> {
 
   constructor(http: Http) {
-    super('http://localhost:8080/api/component', http, REQUEST_OPTIONS_DEFAULT);
+    super(BASE_API_URL + 'component', http, REQUEST_OPTIONS_DEFAULT);
   }
 
 

@@ -6,13 +6,14 @@ import 'rxjs/add/operator/catch';
 
 import { CrudService } from '@app/core/service/crud.service';
 import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
+import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { RelayScheduleJob } from '@app/shared/model/rpicomponent/relay-schedule-job.model';
 
 @Injectable()
 export class RelayScheduleService extends CrudService<RelayScheduleJob, number> {
 
   constructor(http: Http) {
-    super("http://localhost:8080/api/component/relay/schedule", http, REQUEST_OPTIONS_DEFAULT);
+    super(BASE_API_URL + "component/relay/schedule", http, REQUEST_OPTIONS_DEFAULT);
   }
 
   public toggle(id: number, enabled: boolean): Observable<RelayScheduleJob> {
