@@ -8,7 +8,7 @@ import { RPiPin } from '@app/shared/model/rpipin/rpi-pin.model';
 export class RPiPinService extends CrudService<RPiPin, number> {
 
   constructor(http: Http) {
-    super('http://localhost:8080/api/rpipin', http);
+    super('http://localhost:8080/api/rpipin', http, REQUEST_OPTIONS_DEFAULT);
   }
 
 }
