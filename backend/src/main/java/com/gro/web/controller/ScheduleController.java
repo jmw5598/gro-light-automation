@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.repository.FixedTimeScheduleRepository;
-import com.gro.repository.IntervalScheduleRepository;
-import com.gro.repository.ScheduleRepository;
+import com.gro.repository.schedule.FixedTimeScheduleRepository;
+import com.gro.repository.schedule.IntervalScheduleRepository;
+import com.gro.repository.schedule.ScheduleRepository;
 import com.gro.scheduling.model.AbstractScheduleJob;
 import com.gro.scheduling.model.FixedTimeScheduleJob;
 import com.gro.scheduling.model.IntervalScheduleJob;
