@@ -2,9 +2,9 @@ package com.gro.model.rpicomponent.preferences;
 
 import javax.persistence.Entity;
 
-import com.gro.model.rpicomponent.AbstractRPiComponentPreferences;
+import com.gro.model.rpicomponent.AbstractSensorPreferences;
 
 @Entity
-public class HumiditySensorPreferences extends AbstractRPiComponentPreferences {
+public class HumiditySensorPreferences extends AbstractSensorPreferences {
 
 }

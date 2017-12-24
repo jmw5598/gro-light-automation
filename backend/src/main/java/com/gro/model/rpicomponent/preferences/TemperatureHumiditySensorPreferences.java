@@ -5,10 +5,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.rpicomponent.AbstractRPiComponentPreferences;
+import com.gro.model.rpicomponent.AbstractSensorPreferences;
 
 @Entity
-public class TemperatureHumiditySensorPreferences extends AbstractRPiComponentPreferences {
+public class TemperatureHumiditySensorPreferences extends AbstractSensorPreferences {
 
     @Enumerated(EnumType.STRING)
     @NotNull
