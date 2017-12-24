@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gro.model.relay.InvalidRelayStateException;
-import com.gro.model.relay.RelayDTO;
-import com.gro.model.relay.RelayState;
 import com.gro.model.rpicomponent.component.Relay;
+import com.gro.model.rpicomponent.data.RelayDTO;
+import com.gro.model.rpicomponent.data.RelayState;
+import com.gro.model.rpicomponent.exception.InvalidRelayStateException;
 import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
-import com.gro.repository.RelayRepository;
+import com.gro.repository.rpicomponent.RelayRepository;
 import com.gro.web.service.RelayService;
 
 @RestController
-@RequestMapping("/api/component")
+@RequestMapping("/api/component/relay")
 public class RelayController extends AbstractRestController<Relay, Integer> {
     
     @Autowired
@@ -38,7 +38,7 @@ public class RelayController extends AbstractRestController<Relay, Integer> {
     }
     
     
-    @RequestMapping(value="/relay/{id}/toggle", method=RequestMethod.PUT)
+    @RequestMapping(value="/{id}/toggle", method=RequestMethod.PUT)
     public void toggleRelay(
             @PathVariable Integer id,
             @RequestParam(name="state", required=true) String state) throws Exception {
@@ -50,7 +50,7 @@ public class RelayController extends AbstractRestController<Relay, Integer> {
         
     }
     
-    @RequestMapping(value="/relay/{id}/poll", method=RequestMethod.GET)
+    @RequestMapping(value="/{id}/poll", method=RequestMethod.GET)
     public void pollRelay(@PathVariable("id") Integer id) throws Exception {
         Relay component = validateRelay(id);
         RelayState relayState = null;

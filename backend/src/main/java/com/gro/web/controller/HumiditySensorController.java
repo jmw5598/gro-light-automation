@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.rpicomponent.component.HumiditySensor;
-import com.gro.repository.HumiditySensorRepository;
+import com.gro.repository.rpicomponent.HumiditySensorRepository;
 
 @RestController
 @RequestMapping("/api/component/humidity")

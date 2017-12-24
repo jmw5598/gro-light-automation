@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.model.rpicomponent.data.HumidityData;
 import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
-import com.gro.repository.HumidityDataRepository;
-import com.gro.repository.RPiComponentRepository;
+import com.gro.repository.data.HumidityDataRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 @RequestMapping(value="/api/component")
 @RestController

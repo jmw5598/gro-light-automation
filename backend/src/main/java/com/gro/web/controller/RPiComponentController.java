@@ -1,4 +1,4 @@
-package com.gro.web.controller;
+    package com.gro.web.controller;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.exception.InvalidRPiComponentTypeException;
 import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
-import com.gro.repository.RPiComponentRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 
 @RestController
@@ -71,7 +71,7 @@ public class RPiComponentController {
     @RequestMapping(value="/byType", method=RequestMethod.GET)
     public List<AbstractRPiComponent> getComponentsByType(@RequestParam(value="type", required=true) String type) {
         RPiComponentType componentType = validateComponentType(type);
-        return rPiComponentRepository.findAllByType(componentType);
+        return null; //rPiComponentRepository.findAllByType(componentType);
     }
     
     

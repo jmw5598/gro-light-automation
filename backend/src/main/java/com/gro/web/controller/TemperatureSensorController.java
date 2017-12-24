@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.rpicomponent.component.TemperatureSensor;
-import com.gro.repository.TemperatureSensorRepository;
+import com.gro.repository.rpicomponent.TemperatureSensorRepository;
 
 @RestController
 @RequestMapping("/api/component/temperature")

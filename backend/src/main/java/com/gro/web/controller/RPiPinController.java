@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.rpicomponent.exception.RPiPinNotFoundException;
 import com.gro.model.rpipin.RPiPin;
-import com.gro.repository.RPiPinRepository;
+import com.gro.repository.rpicomponent.RPiPinRepository;
 
 @RestController
 @RequestMapping("/api/rpipin")

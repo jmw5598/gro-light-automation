@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gro.model.rpicomponent.component.ProximitySensor;
-import com.gro.repository.ProximitySensorRepository;
+import com.gro.repository.rpicomponent.ProximitySensorRepository;
 
 @RestController
 @RequestMapping("/api/component/proximity")

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.model.rpicomponent.data.TemperatureData;
 import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
-import com.gro.repository.RPiComponentRepository;
-import com.gro.repository.TemperatureDataRepository;
+import com.gro.repository.data.TemperatureDataRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 @RestController
 @RequestMapping(value="/api/component")
@@ -49,7 +49,7 @@ public class TemperatureDataController {
                                     @RequestBody TemperatureData data) {
         
         AbstractRPiComponent component = validateComponent(id);
-        data.setComponent(component);
+        //data.setComponent(component);
         temperatureDataRepository.save(data);
     }
     
