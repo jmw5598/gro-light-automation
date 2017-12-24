@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { AuthenticationService } from '@app/authentication/authentication.service';
 import { CrudService } from '@app/core/service/crud.service';
+import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 import { SseService } from '@app/core/service/sse/sse.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 
@@ -37,7 +38,7 @@ export class NotificationService extends CrudService<Notification, number> imple
     private toasterService: ToasterService,
     private authenticationService: AuthenticationService
   ) {
-    super('http://localhost:8080/api/notification', http);
+    super('http://localhost:8080/api/notification', http, REQUEST_OPTIONS_DEFAULT );
     if(this.authenticationService.isLoggedIn()){
       this.retrieveNotifications(0, true);
       this.retrieveNotifications(0, false);
@@ -56,14 +57,14 @@ export class NotificationService extends CrudService<Notification, number> imple
   findPageByState(page:number, read: boolean): Observable<Page<Notification>> {
     console.log("inside findPageByState with page = " + page);
     const url: string = this.base + '/state?read=' + read + '&page=' + page;
-    return this.http.get(url, this.options())
+    return this.http.get(url, this.options)
       .map(this.extractPageData)
       .catch(this.handleError);
   }
 
   updateNotificationState(id: number, read: boolean): Observable<Notification> {
     const url: string = this.base + '/' + id + '/state?read=' + read;
-    return this.http.patch(url, null, this.options())
+    return this.http.patch(url, null, this.options)
       .map(res => res.json())
       .catch(this.handleError)
       .finally(() => {

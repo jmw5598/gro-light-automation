@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { REQUEST_OPTIONS_DEFAULT } from '../request-options.default';
 import { CrudService } from '../crud.service';
 import { RPiPin } from '@app/shared/model/rpipin/rpi-pin.model';
 

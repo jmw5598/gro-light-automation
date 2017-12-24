@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 import { HumidityData } from '../../../shared/model/humidity-data/humidity-data.model';
 import { Page } from '../../../shared/model/paging/page.model';
 
@@ -11,14 +12,16 @@ import { Page } from '../../../shared/model/paging/page.model';
 export class HumidityDataService {
 
   private base: string;
+  private options: RequestOptions;
 
   constructor(private http: Http) {
     this.base = 'http://localhost:8080/api/component';
+    this.options = REQUEST_OPTIONS_DEFAULT;
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<HumidityData>> {
     let url = this.base + '/' + id + "/humidity/" + path + '?page=' + page;
-    return this.http.get(url, this.options())
+    return this.http.get(url, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -42,13 +45,6 @@ export class HumidityDataService {
     }
 
     return Observable.throw(msg);
-  }
-
-  // need to decouple this.
-  private options() {
-    let headers = new Headers({ 'Authorization': '' + localStorage.getItem('token') });
-    let options = new RequestOptions({ headers: headers });
-    return options;
   }
 
 }

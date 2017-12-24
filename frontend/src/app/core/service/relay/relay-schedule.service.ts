@@ -5,17 +5,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { CrudService } from '@app/core/service/crud.service';
+import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 import { RelayScheduleJob } from '@app/shared/model/rpicomponent/relay-schedule-job.model';
 
 @Injectable()
 export class RelayScheduleService extends CrudService<RelayScheduleJob, number> {
 
   constructor(http: Http) {
-    super("http://localhost:8080/api/component/relay/schedule", http);
+    super("http://localhost:8080/api/component/relay/schedule", http, REQUEST_OPTIONS_DEFAULT);
   }
 
   public toggle(id: number, enabled: boolean): Observable<RelayScheduleJob> {
-    return this.http.put(this.base + '/' + id + '/toggle?enabled=' + enabled, {}, this.options())
+    return this.http.put(this.base + '/' + id + '/toggle?enabled=' + enabled, {}, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
