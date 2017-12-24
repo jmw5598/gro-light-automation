@@ -7,9 +7,9 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import com.gro.model.notification.Notification;
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.repository.NotificationRepository;
-import com.gro.repository.RPiComponentRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 @MessageEndpoint
 public class NotificationPersistenceService {
@@ -24,7 +24,7 @@ public class NotificationPersistenceService {
                       outputChannel="notificationNotifyChannel")
     public Message<Notification> process(Message<Notification> message) {
         Notification notification = message.getPayload();
-        RPiComponent component = rPiComponentRepository.findOne(notification.getComponent().getId());
+        AbstractRPiComponent component = rPiComponentRepository.findOne(notification.getComponent().getId());
         notification.setComponent(component);
         Notification result = this.notificationRepository.save(notification);
         return MessageBuilder.createMessage(result, message.getHeaders());

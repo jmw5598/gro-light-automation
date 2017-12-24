@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.data.proximity.ProximityDTO;
+import com.gro.model.rpicomponent.data.ProximityDTO;
 
 @MessageEndpoint
 public class ProximityMessageTransformer {

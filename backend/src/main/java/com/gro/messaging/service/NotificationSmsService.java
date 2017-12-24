@@ -6,7 +6,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
 import com.gro.model.notification.Notification;
-import com.gro.repository.RPiComponentRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 @MessageEndpoint
 public class NotificationSmsService {

@@ -9,7 +9,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.relay.RelayDTO;
+import com.gro.model.rpicomponent.data.RelayDTO;
 import com.gro.web.service.ObjectSseEmitterService;
 
 @MessageEndpoint

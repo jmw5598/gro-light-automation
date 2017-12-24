@@ -5,11 +5,11 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.data.temperature.TemperatureDTO;
-import com.gro.model.data.temperature.TemperatureData;
-import com.gro.model.rpicomponent.RPiComponent;
-import com.gro.repository.RPiComponentRepository;
-import com.gro.repository.TemperatureDataRepository;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.TemperatureDTO;
+import com.gro.model.rpicomponent.data.TemperatureData;
+import com.gro.repository.data.TemperatureDataRepository;
+import com.gro.repository.rpicomponent.RPiComponentRepository;
 
 @MessageEndpoint
 public class TemperaturePersistenceService {
@@ -24,7 +24,7 @@ public class TemperaturePersistenceService {
     public void process(Message<TemperatureDTO> message) {
         
         TemperatureDTO payload = message.getPayload();
-        RPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
+        AbstractRPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
         if(component != null) {
             TemperatureData data = new TemperatureData();
             data.setTemperature(payload.getTemperature());

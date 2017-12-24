@@ -9,7 +9,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 
-import com.gro.model.data.humidity.HumidityDTO;
+import com.gro.model.rpicomponent.data.HumidityDTO;
 import com.gro.web.service.ObjectSseEmitterService;
 
 @MessageEndpoint

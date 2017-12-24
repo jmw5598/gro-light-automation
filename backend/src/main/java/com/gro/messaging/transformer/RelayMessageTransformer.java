@@ -7,7 +7,7 @@ import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.gro.model.relay.RelayDTO;
+import com.gro.model.rpicomponent.data.RelayDTO;
 
 @MessageEndpoint
 public class RelayMessageTransformer {
