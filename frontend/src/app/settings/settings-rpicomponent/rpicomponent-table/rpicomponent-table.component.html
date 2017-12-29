@@ -11,19 +11,48 @@
     </tr>
   </thead>
 
+  <!-- HUMIDITY COMPONENTS -->
+  <tbody
+      *ngIf="switch(filterBy.HUMIDITY)"
+      gro-rpicomponent-list
+      [components]="humidity"
+      [type]="'Humidity'"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- MOISTURE COMPONENTS -->
+  <tbody
+      *ngIf="switch(filterBy.MOISTURE)"
+      gro-rpicomponent-list
+      [components]="moisture"
+      [type]="'MOisture'"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- PROXIMITY COMPONENTS -->
+  <tbody
+      *ngIf="switch(filterBy.PROXIMITY)"
+      gro-rpicomponent-list
+      [components]="proximity"
+      [type]="'Proximity'"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- RELAY COMPONENTS -->
   <tbody
       *ngIf="switch(filterBy.RELAY)"
       gro-rpicomponent-list
-      [components]="components"
+      [components]="relay"
       [type]="'Relay'"
       (onHover)="hover($event)">
   </tbody>
 
+  <!-- TEMPERATURE COMPONENTS -->
   <tbody
-      *ngIf="switch(filterBy.HUMIDITY)"
+      *ngIf="switch(filterBy.TEMPERATURE)"
       gro-rpicomponent-list
-      [components]="components"
-      [type]="'Humidity'"
+      [components]="temperature"
+      [type]="'Temperature'"
       (onHover)="hover($event)">
   </tbody>
 

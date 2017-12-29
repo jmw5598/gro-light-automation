@@ -14,7 +14,22 @@ import { FilterBy } from './rpicomponent-filter/filter-by.enum';
 export class RPiComponentTableComponent implements OnInit {
 
   @Input()
-  components: RPiComponent[];
+  humidity: Array<RPiComponent>;
+
+  @Input()
+  moisture: Array<RPiComponent>;
+
+  @Input()
+  proximity: Array<RPiComponent>;
+
+  @Input()
+  relay: Array<RPiComponent>;
+
+  @Input()
+  temperature: Array<RPiComponent>;
+
+  @Input()
+  temperature_humidity: Array<RPiComponent>;
 
   @Output()
   onComponentDelete: EventEmitter<number> = new EventEmitter<number>();
@@ -28,16 +43,12 @@ export class RPiComponentTableComponent implements OnInit {
 
   RPiComponentType = RPiComponentType  //needed to use enum in template
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  ngOnInit() { console.log("indside components"); console.log(this.components)}
+  ngOnInit() {}
 
   delete(id: number) {
     this.onComponentDelete.emit(id);
-  }
-
-  edit(id: number) {
-    this.router.navigateByUrl('/settings/(settings:component/' + id + '/edit)');
   }
 
   hover(component: RPiComponent) {

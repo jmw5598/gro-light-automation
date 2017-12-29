@@ -4,9 +4,11 @@
   <td>{{ component.alias }}</td>
   <td>{{ type }}</td>
   <td>
-    <div *ngFor="let pin of component.pins">
-      <span class="label label-success">{{pin.description}} <span class="label label-default">{{pin.direction}}</span></span>
-    </div>
+    <span *ngFor="let pin of component.pins">
+      <span class="label label-success label-direction">
+        {{pin.description}} <span class="label label-default">{{pin.direction}}</span>
+      </span>
+    </span>
   </td>
   <td class="text-right">
     <button role="button"
