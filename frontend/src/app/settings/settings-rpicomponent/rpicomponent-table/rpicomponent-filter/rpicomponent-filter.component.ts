@@ -7,7 +7,7 @@ import { FilterBy } from './filter-by.enum';
   templateUrl: './rpicomponent-filter.component.html',
   styleUrls: ['./rpicomponent-filter.component.css']
 })
-export class RPicomponentFilterComponent implements OnInit {
+export class RPiComponentFilterComponent implements OnInit {
 
   @Output()
   onChangeFilter: EventEmitter<FilterBy> = new EventEmitter<FilterBy>();
