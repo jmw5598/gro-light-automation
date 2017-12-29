@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { PageLoading } from '@app/shared/component/page-loader/page-loading';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
@@ -19,20 +20,36 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
   pins: Array<RPiPin>;
   selected: RPiComponent;
 
+  //temp
+  humidity: Array<any>;
+  moisture: Array<any>;
+  proximity: Array<any>;
+  relay: Array<any>;
+  temperature: Array<any>;
+
+
+
   constructor(
     private rPiComponentService: RPiComponentService,
     private rPiPinService: RPiPinService,
-    private toasterService: ToasterService
+    private toasterService:  ToasterService,
+    private route: ActivatedRoute
   ) {
     super(true);
   }
 
   ngOnInit() {
-    this.loadComponents();
+    // this.loadComponents();
+    this.humidity = this.route.snapshot.data['humidity'];
+    this.moisture = this.route.snapshot.data['moisture'];
+    this.proximity = this.route.snapshot.data['proximity'];
+    this.relay = this.route.snapshot.data['relay'];
+    this.temperature = this.route.snapshot.data['temperature'];
+    this.loadPins();
+    this.ready();
   }
 
   onComponentDelete(id: number) {
-    console.log("deleting component: " + id);
     this.rPiComponentService
       .delete(id)
         .subscribe(
@@ -58,7 +75,7 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
     this.rPiPinService
       .findAll()
         .subscribe(
-          data => { this.pins = data; this.ready(); console.log(this.pins); },
+          data => this.pins = data,
           error => this.toasterService.toast("Error retrieving pins", ToastType.WARNING)
         )
   }
