@@ -10,6 +10,8 @@ import { RPiComponentListComponent } from './rpicomponent-table/rpicomponent-lis
 import { RPiComponentTableComponent } from './rpicomponent-table/rpicomponent-table.component';
 import { RPiPinoutComponent } from './rpi-pinout/rpi-pinout.component';
 
+import { SettingsRPiComponentService } from './settings-rpicomponent.service';
+
 @NgModule({
   imports : [
     SharedModule
@@ -26,6 +28,9 @@ import { RPiPinoutComponent } from './rpi-pinout/rpi-pinout.component';
     RPiComponentTableComponent,
     RPiPinoutComponent,
     SettingsRPiComponentComponent
+  ],
+  providers: [
+    SettingsRPiComponentService
   ]
 })
 export class SettingsRPiComponentModule {}

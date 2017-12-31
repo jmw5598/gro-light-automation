@@ -4,25 +4,13 @@
 <div class="row" *ngIf="!isLoading">
   <div class="col-sm-12 col-md-6 col-lg-7">
     <div class="panel panel-default">
-
       <div class="panel-body">
-        <gro-rpicomponent-table
-            [humidity]="humidity"
-            [moisture]="moisture"
-            [proximity]="proximity"
-            [relay]="relay"
-            [temperature]="temperature"
-            [temperature_humidity]="temperature_humidity"
-            (onComponentDelete)="onComponentDelete($event)"
-            (onHover)="onTableRowHover($event)">
-        </gro-rpicomponent-table>
+        <gro-rpicomponent-table></gro-rpicomponent-table>
       </div>
-
     </div>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-5">
     <gro-rpi-pinout
-        [selected]="selected"
         [pins]="pins">
     </gro-rpi-pinout>
   </div>

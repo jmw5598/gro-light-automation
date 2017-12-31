@@ -16,17 +16,7 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 })
 export class SettingsRPiComponentComponent extends PageLoading implements OnInit {
 
-  components: Array<RPiComponent>;
   pins: Array<RPiPin>;
-  selected: RPiComponent;
-
-  //temp
-  humidity: Array<any>;
-  moisture: Array<any>;
-  proximity: Array<any>;
-  relay: Array<any>;
-  temperature: Array<any>;
-
 
 
   constructor(
@@ -39,37 +29,10 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
   }
 
   ngOnInit() {
-    // this.loadComponents();
-    this.humidity = this.route.snapshot.data['humidity'];
-    this.moisture = this.route.snapshot.data['moisture'];
-    this.proximity = this.route.snapshot.data['proximity'];
-    this.relay = this.route.snapshot.data['relay'];
-    this.temperature = this.route.snapshot.data['temperature'];
     this.loadPins();
     this.ready();
   }
 
-  onComponentDelete(id: number) {
-    this.rPiComponentService
-      .delete(id)
-        .subscribe(
-          data => this.loadComponents(),
-          error => console.log(error)
-        );
-  }
-
-  onTableRowHover(component: RPiComponent) {
-    this.selected = component;
-  }
-
-  private loadComponents() {
-    this.rPiComponentService
-      .findAll()
-        .subscribe(
-          data => { this.components = data; this.loadPins(); },
-          error => this.toasterService.toast("Error retrieving components", ToastType.WARNING)
-        );
-  }
 
   private loadPins() {
     this.rPiPinService
