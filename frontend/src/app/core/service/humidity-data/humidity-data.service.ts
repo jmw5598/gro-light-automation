@@ -13,7 +13,7 @@ import { Page } from '../../../shared/model/paging/page.model';
 export class HumidityDataService {
 
   private base: string;
-  private options: RequestOptions;
+  private options: Function;
 
   constructor(private http: Http) {
     this.base = BASE_API_URL + 'component';
@@ -22,7 +22,7 @@ export class HumidityDataService {
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<HumidityData>> {
     let url = this.base + '/' + id + "/humidity/" + path + '?page=' + page;
-    return this.http.get(url, this.options)
+    return this.http.get(url, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }

@@ -7,14 +7,17 @@ import 'rxjs/add/operator/catch';
 import { TemperatureData } from '../../../shared/model/temperature-data/temperature-data.model';
 import { Page } from '../../../shared/model/paging/page.model';
 import { BASE_API_URL } from '@app/core/service/base-api-url.default';
+import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 
 @Injectable()
 export class TemperatureDataService {
 
   private base: string;
+  private options: Function;
 
   constructor(private http: Http) {
     this.base = BASE_API_URL + 'component';
+    this.options = REQUEST_OPTIONS_DEFAULT;
   }
 
   findCustomByComponent(id: number, path: string, page: number): Observable<Page<TemperatureData>> {
@@ -92,13 +95,6 @@ export class TemperatureDataService {
     }
 
     return Observable.throw(msg);
-  }
-
-  // need to decouple this.
-  private options() {
-    let headers = new Headers({ 'Authorization': '' + localStorage.getItem('token') });
-    let options = new RequestOptions({ headers: headers });
-    return options;
   }
 
 }
