@@ -1,29 +1,40 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 
-import { FilterBy } from './filter-by.enum';
+import { SettingsRPiComponentService } from '../../settings-rpicomponent.service';
+import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
 @Component({
   selector: 'gro-rpicomponent-filter',
   templateUrl: './rpicomponent-filter.component.html',
   styleUrls: ['./rpicomponent-filter.component.css']
 })
-export class RPiComponentFilterComponent implements OnInit {
+export class RPiComponentFilterComponent implements OnInit, OnDestroy {
 
-  @Output()
-  onChangeFilter: EventEmitter<FilterBy> = new EventEmitter<FilterBy>();
+  rPiComponentType = RPiComponentType;
+  selected: RPiComponentType = RPiComponentType.ALL;
 
-  filterBy = FilterBy;
-  selected: FilterBy = FilterBy.ALL;
+  filterSubscription
 
-  constructor() { }
+  constructor(
+    private settingsRPiComponentService: SettingsRPiComponentService
+  ) { }
 
   ngOnInit() {
-    this.onChangeFilter.emit(FilterBy.ALL);
+    this.settingsRPiComponentService.componentFilter
+      .subscribe(
+        data => this.selected = data,
+        error => console.log("error subscribing to filter in filter menu")
+      )
+    this.settingsRPiComponentService.setComponentFilter(RPiComponentType.ALL);
   }
 
-  changeFilter(filter: FilterBy) {
-    this.selected = filter;
-    this.onChangeFilter.emit(this.selected);
+  changeFilter(filter: RPiComponentType) {
+    this.settingsRPiComponentService.setComponentFilter(filter);
+  }
+
+  ngOnDestroy() {
+    if(this.filterSubscription)
+      this.filterSubscription.unsubscribe();
   }
 
 }

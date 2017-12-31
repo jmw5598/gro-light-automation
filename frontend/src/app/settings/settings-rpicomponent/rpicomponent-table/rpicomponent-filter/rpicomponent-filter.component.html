@@ -3,8 +3,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.ALL }"
-      (click)="changeFilter(filterBy.ALL)">
+      [ngClass]="{ active : selected === rPiComponentType.ALL }"
+      (click)="changeFilter(rPiComponentType.ALL)">
     <i class="fa fa-object-group fa-icon-margin"></i>
       All
     <span class="label label-info"></span>
@@ -14,8 +14,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.TEMPERATURE }"
-      (click)="changeFilter(filterBy.TEMPERATURE)">
+      [ngClass]="{ active : selected === rPiComponentType.TEMPERATURE }"
+      (click)="changeFilter(rPiComponentType.TEMPERATURE)">
     <i class="fa fa-sun-o fa-icon-margin"></i>
       Temperature
     <span class="label label-info"></span>
@@ -25,8 +25,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.HUMIDITY }"
-      (click)="changeFilter(filterBy.HUMIDITY)">
+      [ngClass]="{ active : selected === rPiComponentType.HUMIDITY }"
+      (click)="changeFilter(rPiComponentType.HUMIDITY)">
     <i class="fa fa-tint fa-icon-margin"></i>
     Humidity
     <span class="label label-info"></span>
@@ -36,8 +36,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.RELAY }"
-      (click)="changeFilter(filterBy.RELAY)">
+      [ngClass]="{ active : selected === rPiComponentType.RELAY }"
+      (click)="changeFilter(rPiComponentType.RELAY)">
     <i class="fa fa-toggle-on fa-icon-margin"></i>
     Relay
     <span class="label label-info"></span>
@@ -47,8 +47,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.MOISTURE }"
-      (click)="changeFilter(filterBy.MOISTURE)">
+      [ngClass]="{ active : selected === rPiComponentType.MOISTURE }"
+      (click)="changeFilter(rPiComponentType.MOISTURE)">
     <i class="fa fa-tint fa-icon-margin"></i>
     Moisture
     <span class="label label-info"></span>
@@ -58,8 +58,8 @@
   <button
       role="button"
       class="btn btn-default btn-sm"
-      [ngClass]="{ active : selected === filterBy.PROXIMITY }"
-      (click)="changeFilter(filterBy.PROXIMITY)">
+      [ngClass]="{ active : selected === rPiComponentType.PROXIMITY }"
+      (click)="changeFilter(rPiComponentType.PROXIMITY)">
     <i class="fa fa-envelope fa-icon-margin"></i>
     Proximity
     <span class="label label-info"></span>
