@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
+
+import { SettingsRPiComponentService } from '../../settings-rpicomponent.service';
 
 @Component({
   selector: '[gro-rpicomponent-list]',
@@ -11,7 +14,7 @@ import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model'
 export class RPiComponentListComponent implements OnInit {
 
   @Input()
-  type: string;
+  type: RPiComponentType;
 
   @Input()
   components: Array<any>;
@@ -19,14 +22,15 @@ export class RPiComponentListComponent implements OnInit {
   @Output()
   onHover: EventEmitter<RPiComponent> = new EventEmitter<RPiComponent>();
 
-  constructor(private router: Router) {
-    this.type = 'RPiComponent';
-  }
+  constructor(
+    private router: Router,
+    private settingsRPiComponentService: SettingsRPiComponentService
+  ) { }
 
   ngOnInit() {}
 
   hover(component: RPiComponent) {
-    this.onHover.emit(component);
+    this.settingsRPiComponentService.setSelectedComponent(component);
   }
 
   edit(id: number) {
