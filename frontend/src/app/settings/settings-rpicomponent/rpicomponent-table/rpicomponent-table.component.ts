@@ -1,66 +1,109 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { KeyToTitlePipe } from '@app/shared/pipe/key-to-title/key-to-title.pipe';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
-import { FilterBy } from './rpicomponent-filter/filter-by.enum';
+
+import { SettingsRPiComponentService } from '../settings-rpicomponent.service';
+import { ToasterService } from '@app/core/component/toaster/toaster.service';
+import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 
 @Component({
   selector: 'gro-rpicomponent-table',
   templateUrl: './rpicomponent-table.component.html',
   styleUrls: ['./rpicomponent-table.component.css']
 })
-export class RPiComponentTableComponent implements OnInit {
+export class RPiComponentTableComponent implements OnInit, OnDestroy {
 
-  @Input()
+  // Enum declaration for template
+  rPiComponentType = RPiComponentType
+
+  // Subscription data
   humidity: Array<RPiComponent>;
-
-  @Input()
   moisture: Array<RPiComponent>;
-
-  @Input()
   proximity: Array<RPiComponent>;
-
-  @Input()
   relay: Array<RPiComponent>;
-
-  @Input()
   temperature: Array<RPiComponent>;
-
-  @Input()
   temperature_humidity: Array<RPiComponent>;
 
-  @Output()
-  onComponentDelete: EventEmitter<number> = new EventEmitter<number>();
+  filter: RPiComponentType;
 
-  @Output()
-  onHover: EventEmitter<RPiComponent> = new EventEmitter<RPiComponent>();
+  // Subscriptions
+  humiditySubscription;
+  moistureSubscription;
+  proximitySubscription;
+  relaySubscription;
+  temperatureSubscription;
+  temperature_humiditySubscription;
 
-  filter: FilterBy = FilterBy.ALL;
+  filterSubscription;
 
-  filterBy = FilterBy;
+  constructor(
+    private settingsRPiComponentService: SettingsRPiComponentService,
+    private toasterService: ToasterService
+  ) {}
 
-  RPiComponentType = RPiComponentType  //needed to use enum in template
+  ngOnInit() {
 
-  constructor() { }
+    this.humiditySubscription = this.settingsRPiComponentService.humiditySensors
+      .subscribe(
+        data => this.humidity = data,
+        error => this.toasterService.toast("Error subscribing to humidity components", ToastType.WARNING)
+      );
 
-  ngOnInit() {}
+    this.moistureSubscription = this.settingsRPiComponentService.moistureSensors
+      .subscribe(
+        data => this.moisture = data,
+        error => this.toasterService.toast("Error subscribing to moisture components", ToastType.WARNING)
+      );
 
-  delete(id: number) {
-    this.onComponentDelete.emit(id);
+    this.proximitySubscription = this.settingsRPiComponentService.proximitySensors
+      .subscribe(
+        data => this.proximity = data,
+        error => this.toasterService.toast("Error subscribing to proximity components", ToastType.WARNING)
+      );
+
+    this.relaySubscription = this.settingsRPiComponentService.relays
+      .subscribe(
+        data => this.relay = data,
+        error => this.toasterService.toast("Error subscribing to relay components", ToastType.WARNING)
+      );
+
+    this.temperatureSubscription = this.settingsRPiComponentService.temperatureSensors
+      .subscribe(
+        data => this.humidity = data,
+        error => this.toasterService.toast("Error subscribing to temperature components", ToastType.WARNING)
+      );
+
+    this.filterSubscription = this.settingsRPiComponentService.componentFilter
+      .subscribe(
+        data => this.filter = data,
+        error => this.toasterService.toast("Error subscribing to component filter", ToastType.WARNING)
+      );
   }
+
+  // switch(filter: RPiComponentType) {
+  //   this.settingsRPiComponentService.setComponentFilter(filter);
+  // }
 
   hover(component: RPiComponent) {
-    this.onHover.emit(component);
+    console.log(component);
   }
 
-  switch(value: FilterBy) {
-    return (this.filter === value || this.filter === FilterBy.ALL);
-  }
-
-  changeFilter(filter: FilterBy) {
-    this.filter = filter;
+  ngOnDestroy() {
+    if(this.humiditySubscription)
+      this.humiditySubscription.unsubscribe();
+    if(this.moistureSubscription)
+      this.moistureSubscription.unsubscribe();
+    if(this.proximitySubscription)
+      this.proximitySubscription.unsubscribe();
+    if(this.relaySubscription)
+      this.relaySubscription.unsubscribe();
+    if(this.temperatureSubscription)
+      this.temperatureSubscription.unsubscribe();
+    if(this.filterSubscription)
+      this.filterSubscription.unsubscribe();
   }
 
 }
