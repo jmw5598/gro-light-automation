@@ -1,4 +1,4 @@
-import { RelayDTO } from '@app/shared/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '@app/shared/model/rpicomponent/relay/relaydto.model';
 import { SimpleRelayColor } from './simple-relay-color.enum';
 import { ControlWidgetConfiguration } from '../control-widget.configuration';
 import { ControlWidgetType } from '../control-widget-type.enum';
