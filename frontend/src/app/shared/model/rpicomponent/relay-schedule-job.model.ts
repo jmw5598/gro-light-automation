@@ -1,5 +1,5 @@
 import { RPiComponent } from './rpicomponent.model';
-import { RelayState } from './relay-state.enum';
+import { RelayState } from './relay/relay-state.enum';
 
 export class RelayScheduleJob {
   constructor(

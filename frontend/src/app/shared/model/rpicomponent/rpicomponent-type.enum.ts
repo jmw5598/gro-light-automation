@@ -1,4 +1,5 @@
 export enum RPiComponentType {
+	ALL = <any>"All",
 	TEMPERATURE = <any>"Temperature",
   TEMPERATURE_HUMIDITY = <any>"Temperature Humidity",
 	HUMIDITY = <any>"Humidity",

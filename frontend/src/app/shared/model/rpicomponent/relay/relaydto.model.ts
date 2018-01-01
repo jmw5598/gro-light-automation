@@ -1,4 +1,4 @@
-import { RPiComponent } from './rpicomponent.model';
+import { RPiComponent } from '../rpicomponent.model';
 import { RelayState } from './relay-state.enum';
 
 export class RelayDTO {
