@@ -58,10 +58,8 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           data.forEach(e => {
-            this.temperature.push(
-              new RPiComponent(e.id, e.alias, RPiComponentType.TEMPERATURE_HUMIDITY));
-            this.humidity.push(
-              new RPiComponent(e.id, e.alias, RPiComponentType.TEMPERATURE_HUMIDITY));
+            this.temperature.push(e);
+            this.humidity.push(e);
             this.subscribeToTemperatureEvents();
             this.subscribeToHumidityEvents();
           });
@@ -74,9 +72,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
     this.rPiComponentService.findAllByType(RPiComponentType.PROXIMITY)
       .subscribe(
         data => {
-          data.forEach(e => this.proximity.push(
-            new RPiComponent(e.id, e.alias, RPiComponentType.PROXIMITY)
-          ));
+          data.forEach(e => this.proximity.push(e));
           this.subscribeToProximityEvents();
         },
         error => this.toasterService.toast('Unable to retreive proximity components', ToastType.DANGER)
@@ -87,9 +83,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
     this.rPiComponentService.findAllByType(RPiComponentType.MOISTURE)
       .subscribe(
         data => {
-          data.forEach(e => this.moisture.push(
-            new RPiComponent(e.id, e.alias, RPiComponentType.MOISTURE)
-          ));
+          data.forEach(e => this.moisture.push(e));
           this.subscribeToMoistureEvents();
         },
         error => this.toasterService.toast('Unable to retrieve moisture components', ToastType.DANGER)

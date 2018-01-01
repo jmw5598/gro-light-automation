@@ -21,9 +21,7 @@ export class SimpleReadingComponent implements OnInit, OnDestroy {
   private subscription;
 
   constructor(private sseService: SseService) {
-    this.configuration = new SimpleReadingConfiguration(new RPiComponent(
-      1,"Inside DHT22", RPiComponentType.TEMPERATURE_HUMIDITY,
-    ));
+    this.configuration = new SimpleReadingConfiguration(null);
   }
 
   ngOnInit() {
