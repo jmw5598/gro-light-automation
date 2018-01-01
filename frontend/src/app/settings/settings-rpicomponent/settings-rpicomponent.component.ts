@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PageLoading } from '@app/shared/component/page-loader/page-loading';
-import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
 import { RPiPin } from '@app/shared/model/rpipin/rpi-pin.model';
 import { RPiPinService } from '@app/core/service/rpipin/rpi-pin.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
+
+import { SettingsRPiComponentService } from '@app/settings/settings-rpicomponent/settings-rpicomponent.service';
+
 
 @Component({
   selector: 'gro-settings-rpicomponent',
@@ -20,10 +21,9 @@ export class SettingsRPiComponentComponent extends PageLoading implements OnInit
 
 
   constructor(
-    private rPiComponentService: RPiComponentService,
     private rPiPinService: RPiPinService,
     private toasterService:  ToasterService,
-    private route: ActivatedRoute
+    private settingsRPiComponentService: SettingsRPiComponentService
   ) {
     super(true);
   }
