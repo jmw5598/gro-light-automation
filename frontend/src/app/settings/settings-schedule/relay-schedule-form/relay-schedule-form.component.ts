@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { RelayScheduleJob } from '@app/shared/model/rpicomponent/relay-schedule-job.model';
-import { RelayState } from '@app/shared/model/rpicomponent/relay-state.enum';
+import { RelayState } from '@app/shared/model/rpicomponent/relay/relay-state.enum';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
 import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
