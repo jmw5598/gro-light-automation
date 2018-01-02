@@ -11,7 +11,7 @@ export class AuthenticationService {
   private base: string;
 
   constructor(private http: AuthHttp) {
-    base = BASE_AUTH_URL;
+    this.base = BASE_AUTH_URL;
   }
 
   doLogin(credentials) {
