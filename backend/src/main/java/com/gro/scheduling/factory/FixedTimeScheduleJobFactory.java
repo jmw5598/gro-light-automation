@@ -33,7 +33,7 @@ public class FixedTimeScheduleJobFactory<T extends FixedTimeScheduleJob, D> impl
     public Trigger getTrigger(JobDetail jobDetail, T t) {
         return TriggerBuilder.newTrigger()
             .forJob(jobDetail)
-            .withIdentity(String.valueOf(t.getId()), t.getComponent().getType().toString())
+            .withIdentity(String.valueOf(t.getId()), t.getComponent().getClass().toString())
             .withSchedule(
                 CronScheduleBuilder.dailyAtHourAndMinute(t.getTime().getHours(), t.getTime().getMinutes())
             ).build();

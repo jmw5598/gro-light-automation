@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.gro.model.relay.RelayDTO;
 import com.gro.model.relay.RelayScheduleJob;
-import com.gro.model.relay.RelayState;
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.data.RelayDTO;
+import com.gro.model.rpicomponent.data.RelayState;
 import com.gro.web.service.RelayService;
 
 @Component

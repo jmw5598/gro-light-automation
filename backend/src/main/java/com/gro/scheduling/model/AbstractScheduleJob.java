@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -27,7 +27,7 @@ public abstract class AbstractScheduleJob {
     
     @OneToOne
     @NotNull
-    private RPiComponent component;
+    private AbstractRPiComponent component;
     
     @NotNull
     private Boolean enabled;
@@ -43,11 +43,11 @@ public abstract class AbstractScheduleJob {
         this.id = id;
     }
 
-    public RPiComponent getComponent() {
+    public AbstractRPiComponent getComponent() {
         return component;
     }
 
-    public void setComponent(RPiComponent component) {
+    public void setComponent(AbstractRPiComponent component) {
         this.component = component;
     }
     

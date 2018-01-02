@@ -33,7 +33,7 @@ public class RelayJobFactory implements ScheduleJobFactory<RelayScheduleJob> {
     public Trigger getTrigger(JobDetail jobDetail, RelayScheduleJob schedule) {
         return TriggerBuilder.newTrigger()
             .forJob(jobDetail)
-            .withIdentity(String.valueOf(schedule.getId()), schedule.getComponent().getType().toString())
+            .withIdentity(String.valueOf(schedule.getId()), schedule.getComponent().getClass().toString())
             .withSchedule(
                 CronScheduleBuilder.dailyAtHourAndMinute(schedule.getTime().getHours(), schedule.getTime().getMinutes())
              ).build();

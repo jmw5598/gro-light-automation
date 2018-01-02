@@ -33,7 +33,7 @@ public class IntervalScheduleJobFactory<T extends IntervalScheduleJob, D> implem
         Integer seconds = calculateSeconds(t);
         return TriggerBuilder.newTrigger()
             .forJob(jobDetail)
-            .withIdentity(String.valueOf(t.getId()), t.getComponent().getType().toString())
+            .withIdentity(String.valueOf(t.getId()), t.getComponent().getClass().toString())
             .withSchedule(
                 SimpleScheduleBuilder.repeatSecondlyForever(seconds)
             ).build();

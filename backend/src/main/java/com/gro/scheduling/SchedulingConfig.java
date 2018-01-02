@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
-import com.gro.repository.RelayScheduleJobRepository;
+import com.gro.scheduling.AutowiringSpringBeanJobFactory;
 
 @Configuration
 public class SchedulingConfig {
