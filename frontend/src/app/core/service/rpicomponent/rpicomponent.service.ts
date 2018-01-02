@@ -8,7 +8,7 @@ import { CrudService } from '../crud.service';
 import { REQUEST_OPTIONS_DEFAULT } from '../request-options.default';
 import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { RPiComponent } from '../../../shared/model/rpicomponent/rpicomponent.model';
-import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '../../../shared/model/rpicomponent/relay/relaydto.model';
 import { RPiComponentType } from '../../../shared/model/rpicomponent/rpicomponent-type.enum';
 
 @Injectable()

@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import { CrudService } from '@app/core/service/crud.service';
 import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 import { BASE_API_URL } from '@app/core/service/base-api-url.default';
-import { RelayDTO } from '../../../shared/model/rpicomponent/relaydto.model';
+import { RelayDTO } from '../../../shared/model/rpicomponent/relay/relaydto.model';
 import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model'; //change to relay after refactoring models
 
 @Injectable()
