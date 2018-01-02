@@ -25,13 +25,13 @@ public class HumidityPersistenceService {
         
         HumidityDTO payload = message.getPayload();
         AbstractRPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
-        if(component != null) {
-            HumidityData data = new HumidityData();
-            data.setHumidity(payload.getHumidity());
-            data.setTimestamp(payload.getTimestamp());
-            data.setComponent(component);
-            humidityDataRepository.save(data);
-        }
+//        if(component != null) {
+//            HumidityData data = new HumidityData();
+//            data.setHumidity(payload.getHumidity());
+//            data.setTimestamp(payload.getTimestamp());
+//            data.setComponent(component);
+//            humidityDataRepository.save(data);
+//        }
     }
     
 }

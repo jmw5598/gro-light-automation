@@ -25,13 +25,13 @@ public class TemperaturePersistenceService {
         
         TemperatureDTO payload = message.getPayload();
         AbstractRPiComponent component = rPiComponentRepository.findOne(payload.getComponentId());
-        if(component != null) {
-            TemperatureData data = new TemperatureData();
-            data.setTemperature(payload.getTemperature());
-            data.setTimestamp(payload.getTimestamp());
-            data.setComponent(component);
-            temperatureDataRepository.save(data);
-        }
+//        if(component != null) {
+//            TemperatureData data = new TemperatureData();
+//            data.setTemperature(payload.getTemperature());
+//            data.setTimestamp(payload.getTimestamp());
+//            data.setComponent(component);
+//            temperatureDataRepository.save(data);
+//        }
     }
     
 }
