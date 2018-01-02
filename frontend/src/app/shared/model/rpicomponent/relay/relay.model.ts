@@ -13,7 +13,8 @@ export class Relay extends RPiComponent {
     public preferences: RelayPreferences
   ) {
     super(id, alias, pins);
-    this.state = RelayState.DISABLED
+    if(!state)
+      this.state = RelayState.DISABLED
   }
 
 }
