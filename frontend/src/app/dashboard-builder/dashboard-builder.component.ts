@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageLoading } from '@app/shared/component/page-loader/page-loading';
 
 import { LayoutPresets } from '@app/shared/model/dashboard/configuration/layout/layout-presets';
+import { Layout } from '@app/shared/model/dashboard/configuration/layout/layout.model';
 import { PanelType } from '@app/shared/model/dashboard/configuration/panel/panel-type.enum';
 
 @Component({
@@ -13,7 +14,7 @@ import { PanelType } from '@app/shared/model/dashboard/configuration/panel/panel
 export class DashboardBuilderComponent extends PageLoading implements OnInit {
 
   private panelType = PanelType;
-  private layout: Object;
+  private layout: Layout;
 
   constructor() {
     super(true);
@@ -28,7 +29,7 @@ export class DashboardBuilderComponent extends PageLoading implements OnInit {
     console.log("builder: adding component : " + component);
   }
 
-  onChangeLayoutPreset(layout: Object) {
+  onChangeLayoutPreset(layout: Layout) {
     this.layout = layout;
   }
 

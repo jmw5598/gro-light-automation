@@ -10,6 +10,8 @@ import { DashboardBuilderToolbarComponent } from './dashboard-builder-toolbar/da
 import { PanelComponent } from './components/panel/panel.component';
 import { PanelMenuDirective } from './directive/panel-menu.directive';
 
+import { DashboardBuilderService } from './service/dashboard-builder.service';
+
 @NgModule({
   imports: [
     DashboardComponentsModule,
@@ -25,6 +27,9 @@ import { PanelMenuDirective } from './directive/panel-menu.directive';
   exports: [
     DashboardBuilderComponent,
     PanelMenuDirective
+  ],
+  providers: [
+    DashboardBuilderService
   ]
 })
 export class DashboardBuilderModule {}

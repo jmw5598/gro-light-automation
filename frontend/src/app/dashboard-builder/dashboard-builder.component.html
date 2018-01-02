@@ -8,28 +8,27 @@
 
   <!-- BEGIN : Layout -->
   <div *ngIf="layout && !isLoading" class="row">
-    <span *ngFor="let panel of layout">
+    <span *ngFor="let panel of layout.panels">
       <span *ngIf="panel.type === panelType.FIXED_SIDE_LEFT">
         <gro-fixed-side-panel
-            *groPanelMenu="panel.configuration"
             [configuration]="panel.configuration">
         </gro-fixed-side-panel>
       </span>
       <span *ngIf="panel.type === panelType.CENTER">
         <gro-panel
-            *groPanelMenu
             [configuration]="panel.configuration">
         </gro-panel>
       </span>
       <span *ngIf="panel.type === panelType.FIXED_SIDE_RIGHT">
         <gro-fixed-side-panel
-            *groPanelMenu
             [configuration]="panel.configuration">
         </gro-fixed-side-panel>
       </span>
     </span>
   </div>
 </div>
+
+
 <!-- END : Layout -->
 
 <!-- TODO: Make resuable alert message that is centered in page -->
