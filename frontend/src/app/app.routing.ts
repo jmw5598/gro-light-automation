@@ -13,8 +13,6 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingsRPiComponentComponent } from './settings/settings-rpicomponent/settings-rpicomponent.component';
 import { SettingsScheduleComponent } from './settings/settings-schedule/settings-schedule.component';
 import { SettingsUserComponent } from './settings/settings-user/settings-user.component';
-import { RPiComponentAddComponent } from './settings/rpicomponent-add/rpicomponent-add.component';
-import { RPiComponentEditComponent } from './settings/rpicomponent-edit/rpicomponent-edit.component';
 import { UnauthorizedComponent } from './shared/component/unauthorized/unauthorized.component';
 
 const appRoutes: Routes = [
