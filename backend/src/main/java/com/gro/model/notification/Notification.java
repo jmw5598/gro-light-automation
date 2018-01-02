@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import com.gro.model.rpicomponent.RPiComponent;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
 
 @Entity
 public class Notification {
@@ -29,7 +29,7 @@ public class Notification {
     
     @ManyToOne
     @NotNull
-    private RPiComponent component;
+    private AbstractRPiComponent component;
     
     @NotNull
     private Boolean isRead = false;
@@ -61,11 +61,11 @@ public class Notification {
         this.message = message;
     }
 
-    public RPiComponent getComponent() {
+    public AbstractRPiComponent getComponent() {
         return component;
     }
 
-    public void setComponent(RPiComponent component) {
+    public void setComponent(AbstractRPiComponent component) {
         this.component = component;
     }
 
