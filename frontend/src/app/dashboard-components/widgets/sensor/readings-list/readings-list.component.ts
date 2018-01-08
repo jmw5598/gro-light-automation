@@ -1,12 +1,21 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { RPiComponentService } from '@app/core/service/rpicomponent/rpicomponent.service';
-import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
-import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
+// import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
+// import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
 
+import { HumiditySensor } from '@app/shared/model/rpicomponent/humidity-sensor/humidity-sensor.model';
+import { HumiditySensorService } from '@app/core/service/humidity-sensor/humidity-sensor.service';
+import { MoistureSensor } from '@app/shared/model/rpicomponent/moisture-sensor/moisture-sensor.model';
+import { MoistureSensorService } from '@app/core/service/moisture-sensor/moisture-sensor.service';
+import { ProximitySensor } from '@app/shared/model/rpicomponent/proximity-sensor/proximity-sensor.model';
+import { ProximitySensorService } from '@app/core/service/proximity-sensor/proximity-sensor.service';
 import { SseService } from '@app/core/service/sse/sse.service';
+import { TemperatureSensor } from '@app/shared/model/rpicomponent/temperature-sensor/temperature-sensor.model';
+import { TemperatureSensorService } from '@app/core/service/temperature-sensor/temperature-sensor.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
+
+
 
 @Component({
   selector: 'gro-readings-list',
@@ -15,10 +24,10 @@ import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 })
 export class ReadingsListComponent implements OnInit, OnDestroy {
 
-  temperature: Array<RPiComponent>;
-  humidity: Array<RPiComponent>;
-  proximity: Array<RPiComponent>;
-  moisture: Array<RPiComponent>;
+  humidity: Array<HumiditySensor>;
+  moisture: Array<MoistureSensor>;
+  proximity: Array<ProximitySensor>;
+  temperature: Array<TemperatureSensor>;
 
   @Input()
   heading: string = 'Current Readings';
@@ -30,20 +39,23 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
   private temperatureUnit: string = "celsius";
 
   constructor(
-    private rPiComponentService: RPiComponentService,
+    private humiditySensorService: HumiditySensorService,
+    private moistureSensorService: MoistureSensorService,
+    private proximitySensorService: ProximitySensorService,
+    private temperatureSensorService: TemperatureSensorService,
     private sseService : SseService,
     private toasterService: ToasterService
   ) {
-    this.temperature = new Array<RPiComponent>();
-    this.humidity = new Array<RPiComponent>();
-    this.proximity = new Array<RPiComponent>();
-    this.moisture = new Array<RPiComponent>();
+    this.humidity = new Array<HumiditySensor>();
+    this.moisture = new Array<MoistureSensor>();
+    this.proximity = new Array<ProximitySensor>();
+    this.temperature = new Array<TemperatureSensor>();
   }
 
   ngOnInit() {
-    this.retrieveTemperatureHumitiyComponents();
-    this.retrieveProximityComponents();
-    this.retrieveMoistureComponents();
+    this.retrieveTemperatureSensors();
+    this.retrieveProximitySensors();
+    this.retrieveMoistureSensors();
   }
 
   toggleTemperatureUnit() {
@@ -53,40 +65,47 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
       this.temperatureUnit = 'celsius';
   }
 
-  private retrieveTemperatureHumitiyComponents() {
-    this.rPiComponentService.findAllByType(RPiComponentType.TEMPERATURE_HUMIDITY)
+  private retrieveHumiditySensors() {
+    this.humiditySensorService.findAll()
       .subscribe(
         data => {
-          data.forEach(e => {
-            this.temperature.push(e);
-            this.humidity.push(e);
-            this.subscribeToTemperatureEvents();
-            this.subscribeToHumidityEvents();
-          });
+          this.humidity = data;
+          this.subscribeToHumidityEvents();
         },
-        error => this.toasterService.toast('Unable to retrieve temperature & humidity components', ToastType.DANGER)
+        error => this.toasterService.toast('Unable to retrieve humidity sensors', ToastType.DANGER)
       );
   }
 
-  private retrieveProximityComponents() {
-    this.rPiComponentService.findAllByType(RPiComponentType.PROXIMITY)
+  private retrieveMoistureSensors() {
+    this.moistureSensorService.findAll()
       .subscribe(
         data => {
-          data.forEach(e => this.proximity.push(e));
-          this.subscribeToProximityEvents();
-        },
-        error => this.toasterService.toast('Unable to retreive proximity components', ToastType.DANGER)
-      );
-  }
-
-  private retrieveMoistureComponents() {
-    this.rPiComponentService.findAllByType(RPiComponentType.MOISTURE)
-      .subscribe(
-        data => {
-          data.forEach(e => this.moisture.push(e));
+          this.moisture = data;
           this.subscribeToMoistureEvents();
         },
-        error => this.toasterService.toast('Unable to retrieve moisture components', ToastType.DANGER)
+        error => this.toasterService.toast('Unable to retrieve moisture sensors', ToastType.DANGER)
+      );
+  }
+
+  private retrieveProximitySensors() {
+    this.proximitySensorService.findAll()
+      .subscribe(
+        data => {
+          this.proximity = data;
+          this.subscribeToProximityEvents();
+        },
+        error => this.toasterService.toast('Unable to retreive proximity sensors', ToastType.DANGER)
+      );
+  }
+
+  private retrieveTemperatureSensors() {
+    this.temperatureSensorService.findAll()
+      .subscribe(
+        data => {
+            this.temperature = data;
+            this.subscribeToTemperatureEvents();
+        },
+        error => this.toasterService.toast('Unable to retrieve temperature sensors', ToastType.DANGER)
       );
   }
 
