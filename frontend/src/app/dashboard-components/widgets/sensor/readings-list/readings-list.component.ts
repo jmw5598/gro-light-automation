@@ -49,6 +49,7 @@ export class ReadingsListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.retrieveTemperatureSensors();
+    this.retrieveHumiditySensors();
     this.retrieveProximitySensors();
     this.retrieveMoistureSensors();
   }
