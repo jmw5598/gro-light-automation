@@ -72,7 +72,7 @@ export class RPiComponentTableComponent implements OnInit, OnDestroy {
 
     this.temperatureSubscription = this.settingsRPiComponentService.temperatureSensors
       .subscribe(
-        data => this.humidity = data,
+        data => this.temperature = data,
         error => this.toasterService.toast("Error subscribing to temperature components", ToastType.WARNING)
       );
 
