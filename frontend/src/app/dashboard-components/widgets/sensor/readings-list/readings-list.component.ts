@@ -1,8 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-// import { RPiComponent } from '@app/shared/model/rpicomponent/rpicomponent.model';
-// import { RPiComponentType } from '@app/shared/model/rpicomponent/rpicomponent-type.enum';
-
 import { HumiditySensor } from '@app/shared/model/rpicomponent/humidity-sensor/humidity-sensor.model';
 import { HumiditySensorService } from '@app/core/service/humidity-sensor/humidity-sensor.service';
 import { MoistureSensor } from '@app/shared/model/rpicomponent/moisture-sensor/moisture-sensor.model';
@@ -14,8 +11,6 @@ import { TemperatureSensor } from '@app/shared/model/rpicomponent/temperature-se
 import { TemperatureSensorService } from '@app/core/service/temperature-sensor/temperature-sensor.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
-
-
 
 @Component({
   selector: 'gro-readings-list',
