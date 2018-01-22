@@ -3,11 +3,16 @@ package com.gro.model.rpi;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.model.rpipin.RPiPin;
 
 @Entity
@@ -20,8 +25,22 @@ public class RPi {
     @NotNull
     private String description;
     
-    // private List<RPiPin> pins;
-    // private String ip;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private RPiType type = RPiType.RPI_3_MODEL_B;
+    
+    @NotNull
+    private String ip;
+    
+    @NotNull
+    private Integer port;
+    
+    @OneToMany
+    private List<RPiPin> pins;
+    
+    @OneToMany
+    @JsonIgnoreProperties(value={"rpi"})
+    private List<AbstractRPiComponent> components;
     
     public RPi() {}
 
@@ -39,6 +58,46 @@ public class RPi {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public RPiType getType() {
+        return type;
+    }
+
+    public void setType(RPiType type) {
+        this.type = type;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public List<RPiPin> getPins() {
+        return pins;
+    }
+
+    public void setPins(List<RPiPin> pins) {
+        this.pins = pins;
+    }
+
+    public List<AbstractRPiComponent> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<AbstractRPiComponent> components) {
+        this.components = components;
     }
 
 }
