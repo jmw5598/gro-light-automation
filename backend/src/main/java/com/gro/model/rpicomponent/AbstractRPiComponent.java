@@ -9,12 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gro.model.rpi.RPi;
 import com.gro.model.rpipin.RPiPin;
 
 @Entity
@@ -32,8 +34,12 @@ public abstract class AbstractRPiComponent implements Serializable {
     private String alias;
     
     @OneToMany(mappedBy="component")
-    @JsonIgnoreProperties(value={"component"})
+    @JsonIgnoreProperties(value={"component", "rpi"})
     private List<RPiPin> pins;
+    
+    @ManyToOne
+    @JsonIgnoreProperties(value={"components"})
+    private RPi rpi;
     
     public AbstractRPiComponent() {}
 
@@ -61,6 +67,14 @@ public abstract class AbstractRPiComponent implements Serializable {
         this.pins = pins;
     }
 
+    public RPi getRpi() {
+        return rpi;
+    }
+
+    public void setRpi(RPi rpi) {
+        this.rpi = rpi;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, alias);
@@ -80,7 +94,5 @@ public abstract class AbstractRPiComponent implements Serializable {
                Objects.equals(this.alias, alias);
         
     }
-    
-    
     
 }
