@@ -38,7 +38,8 @@ public abstract class AbstractRPiComponent implements Serializable {
     private List<RPiPin> pins;
     
     @ManyToOne
-    @JsonIgnoreProperties(value={"components"})
+    @NotNull
+    @JsonIgnoreProperties(value={"pins","components"})
     private RPi rpi;
     
     public AbstractRPiComponent() {}

@@ -42,7 +42,7 @@ public class RPiPin implements Serializable {
     private AbstractRPiComponent component;
     
     @ManyToOne
-    @JsonIgnoreProperties(value={"pins"})
+    @JsonIgnoreProperties(value={"pins", "components"})
     private RPi rpi;
     
     public RPiPin() {}

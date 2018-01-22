@@ -35,11 +35,12 @@ public class RPi {
     @NotNull
     private Integer port;
     
-    @OneToMany
+    @OneToMany(mappedBy="rpi")
+    @JsonIgnoreProperties(value={"rPi", "rpi"})
     private List<RPiPin> pins;
     
-    @OneToMany
-    @JsonIgnoreProperties(value={"rpi"})
+    @OneToMany(mappedBy="rpi")
+    @JsonIgnoreProperties(value={"rPi", "rpi"})
     private List<AbstractRPiComponent> components;
     
     public RPi() {}
