@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gro.model.rpi.RPi;
 import com.gro.model.rpicomponent.AbstractRPiComponent;
 
 @Entity
@@ -39,6 +40,10 @@ public class RPiPin implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties(value={"pins"})
     private AbstractRPiComponent component;
+    
+    @ManyToOne
+    @JsonIgnoreProperties(value={"pins"})
+    private RPi rpi;
     
     public RPiPin() {}
 
@@ -88,6 +93,14 @@ public class RPiPin implements Serializable {
     
     public void setComponent(AbstractRPiComponent component) {
         this.component = component;
+    }
+
+    public RPi getRpi() {
+        return rpi;
+    }
+
+    public void setRpi(RPi rpi) {
+        this.rpi = rpi;
     }
     
 }
