@@ -8,7 +8,7 @@ import { BASE_API_URL } from '@app/core/service/base-api-url.default';
 import { REQUEST_OPTIONS_DEFAULT } from '@app/core/service/request-options.default';
 
 @Injectable()
-export class RpiService extends CrudService<RPi, number> {
+export class RPiService extends CrudService<RPi, number> {
 
   constructor(http: Http) {
     super(BASE_API_URL + "rpi", http,  REQUEST_OPTIONS_DEFAULT);
