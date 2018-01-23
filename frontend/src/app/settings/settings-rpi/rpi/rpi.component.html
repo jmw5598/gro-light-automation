@@ -1,3 +1,48 @@
-<p>
-  rpi works!
-</p>
+<div *ngIf="rpi" class="panel panel-default">
+  <div class="panel-heading">
+    {{ rpi.description }}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <img class="img-responsive" [src]="rpi.imageUrl" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-group rpi-details-list-group">
+          <li class="list-group-item">
+            <i class="fa fa-sm fa-map-marker fa-icon-margin"></i> IP:
+            <span class="label label-success pull-right">{{ rpi.ip }}</span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa fa-sm fa-plug fa-icon-margin"></i> Port:
+            <span class="label label-success pull-right">{{ rpi.port }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-right">
+        <legend></legend>
+        <span class="btn btn-sm btn-default">
+            <i class="fa fa-sm fa-eye"></i>
+        </span>
+        <span class="btn btn-sm btn-default">
+            <i class="fa fa-sm fa-pencil-square-o"></i>
+        </span>
+        <span class="btn btn-sm btn-default">
+            <i class="fa fa-sm fa-trash-o"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!rpi" class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      There is not raspberry pi details to display
+    </p>
+  </div>
+</div>
