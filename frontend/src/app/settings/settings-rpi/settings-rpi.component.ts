@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RPiService } from '@app/core/service/rpi/rpi.service';
+
+import { RPi } from '@app/shared/model/rpi/rpi.model';
+
 @Component({
-  selector: 'app-settings-rpi',
+  selector: 'gro-settings-rpi',
   templateUrl: './settings-rpi.component.html',
   styleUrls: ['./settings-rpi.component.css']
 })
-export class SettingsRpiComponent implements OnInit {
+export class SettingsRPiComponent implements OnInit {
 
-  constructor() { }
+  rpis: Array<RPi>;
+
+  constructor(
+    private rpiService: RPiService
+  ) {}
 
   ngOnInit() {
+    this.rpiService.findAll()
+      .subscribe(
+        data => this.rpis = data,
+        error => console.log("error getting raspberry pies")
+      );
   }
 
 }

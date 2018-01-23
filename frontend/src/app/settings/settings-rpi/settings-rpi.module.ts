@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RpiComponent } from './rpi/rpi.component';
-import { RpiListComponent } from './rpi-list/rpi-list.component';
-import { SettingsRpiComponent } from './settings-rpi.component';
+import { RPiComponent } from './rpi/rpi.component';
+import { RPiListComponent } from './rpi-list/rpi-list.component';
+import { SettingsRPiComponent } from './settings-rpi.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
+  exports: [
+    SettingsRPiComponent
+  ],
   declarations: [
-    RpiComponent,
-    RpiListComponent,
-    SettingsRpiComponent
+    RPiComponent,
+    RPiListComponent,
+    SettingsRPiComponent
   ]
 })
-export class SettingsRpiModule { }
+export class SettingsRPiModule { }

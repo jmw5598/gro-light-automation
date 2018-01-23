@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsRpiComponent } from './settings-rpi.component';
+import { SettingsRPiComponent } from './settings-rpi.component';
 
 describe('SettingsRpiComponent', () => {
-  let component: SettingsRpiComponent;
-  let fixture: ComponentFixture<SettingsRpiComponent>;
+  let component: SettingsRPiComponent;
+  let fixture: ComponentFixture<SettingsRPiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsRpiComponent ]
+      declarations: [ SettingsRPiComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsRpiComponent);
+    fixture = TestBed.createComponent(SettingsRPiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
