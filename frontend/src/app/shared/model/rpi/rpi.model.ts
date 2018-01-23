@@ -4,7 +4,8 @@ export class RPi {
     public id: number,
     public description: string,
     public ip: string,
-    public port: number
+    public port: number,
+    public imageUrl: string
   ) {}
 
 }
