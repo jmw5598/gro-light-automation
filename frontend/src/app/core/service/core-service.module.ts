@@ -8,6 +8,7 @@ import { NotificationService } from './notification/notification.service';
 import { ProximitySensorService } from './proximity-sensor/proximity-sensor.service';
 import { RelayService } from './relay/relay.service';
 import { RelayScheduleService } from './relay/relay-schedule.service';
+import { RPiService } from './rpi/rpi.service';
 import { RPiComponentService } from './rpicomponent/rpicomponent.service';
 import { RPiPinService } from './rpipin/rpi-pin.service';
 import { SseService } from './sse/sse.service';
@@ -25,6 +26,7 @@ import { TemperatureSensorService } from './temperature-sensor/temperature-senso
     ProximitySensorService,
     RelayService,
     RelayScheduleService,
+    RPiService,
     RPiComponentService,
     RPiPinService,
     SseService,
