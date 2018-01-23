@@ -1,3 +1,7 @@
-<p>
-  rpi-list works!
-</p>
+<div *ngIf="rpis" class="row">
+  <div *ngFor="let rpi of rpis">
+    <div class="col-sm-12 col-md-4 col-lg-3">
+      <gro-rpi [rpi]="rpi"></gro-rpi>
+    </div>
+  </div>
+</div>

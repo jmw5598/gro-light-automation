@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { RPi } from '@app/shared/model/rpi/rpi.model';
 
 @Component({
-  selector: 'app-rpi-list',
+  selector: 'gro-rpi-list',
   templateUrl: './rpi-list.component.html',
   styleUrls: ['./rpi-list.component.css']
 })
-export class RpiListComponent implements OnInit {
+export class RPiListComponent implements OnInit {
+
+  @Input()
+  rpis: Array<RPi>;
 
   constructor() { }
 
