@@ -8,6 +8,10 @@ import { SettingsRpiComponent } from './settings-rpi.component';
   imports: [
     CommonModule
   ],
-  declarations: [RpiComponent, RpiListComponent, SettingsRpiComponent]
+  declarations: [
+    RpiComponent,
+    RpiListComponent,
+    SettingsRpiComponent
+  ]
 })
 export class SettingsRpiModule { }
