@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RpiFormComponent } from './rpi-form.component';
+import { RPiFormComponent } from './rpi-form.component';
 
-describe('RpiFormComponent', () => {
-  let component: RpiFormComponent;
-  let fixture: ComponentFixture<RpiFormComponent>;
+describe('RPiFormComponent', () => {
+  let component: RPiFormComponent;
+  let fixture: ComponentFixture<RPiFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RpiFormComponent ]
+      declarations: [ RPiFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RpiFormComponent);
+    fixture = TestBed.createComponent(RPiFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
