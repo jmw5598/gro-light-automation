@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './rpi-form.component.html',
   styleUrls: ['./rpi-form.component.css']
 })
-export class RpiFormComponent implements OnInit {
+export class RPiFormComponent implements OnInit {
 
   constructor() { }
 
