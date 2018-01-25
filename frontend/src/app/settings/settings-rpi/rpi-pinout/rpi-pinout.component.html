@@ -1,0 +1,69 @@
+<div id="pinout-panel" class="panel panel-default">
+
+  <!-- BEGIN : Gpio Pinout Heading -->
+  <div class="panel-heading">
+    GPIO Pinout
+  </div>
+  <!-- END : Gpio Pinout Heading -->
+
+  <!-- BEGIN : Gpio Pinout Body -->
+  <div class="panel-body">
+    <div *ngIf="pins">
+
+      <!-- BEGIN : Filling pinout pins -->
+      <div *ngFor="let pin of pins; let i = index">
+        <div class="pinout-cell">
+          <div class="row">
+            <div class="col-xs-12">
+
+              <!-- BEGIN : Individual pin container -->
+              <div class="alert alert-pinout-pin"
+                  [ngClass]="{ 'alert-default' : pin.usable,
+                               'alert-success' : selected && pin.component && selected.id === pin.component.id }">
+
+                <!-- Pin number -->
+                <span class="pinout-pin-number"
+                      [ngClass]="{ 'pull-right' : i % 2 !== 0,
+                                   'pull-left' : i % 2 === 0 }">
+                  {{ pin.physicalPin }}
+                </span>
+
+                <!-- Pin icon -->
+                <span class="pinout-pin-icon"
+                      [ngClass]="{ 'pull-left' : i % 2 !== 0,
+                                   'pull-right' : i % 2 === 0 }">
+                  <i class="fa fa-lg fa-dot-circle-o pinout-pin-icon"></i>
+                </span>
+
+                <!-- Pin details -->
+                <span class="pinout-pin-details"
+                    [ngClass]="{ 'pull-right' : i % 2 === 0,
+                                 'pull-left' : i % 2 !== 0 }">
+                  {{ pin.description }}
+                  <span
+                      *ngIf="selected && pin.component && selected.id === pin.component.id"
+                      class="pinout-pin-state badge badge-dark center">
+                    {{pin.direction}}
+                  </span>
+                </span>
+
+              </div>
+              <!-- END : Individual pin container -->
+
+            </div>
+          </div>
+        </div>
+        <!-- END : Filling pinout pins -->
+
+      </div>
+    </div>
+
+    <!-- BEGIN : No pins to fill message -->
+    <div *ngIf="!pins">
+      <div class="alert alert-default">
+        <h6>No pins to display</h6>
+      </div>
+    </div>
+    <!-- END : No pins to fill message -->
+  </div>
+</div>
