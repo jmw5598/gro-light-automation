@@ -1,16 +1,41 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <legend><h4>Settings</h4></legend>
-  <ul class="panel-nav-list">
-    <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings/rpi']">RPi Nodes</a>
-    </li>
-    <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings/schedule']">Scheduling</a>
-    </li>
-    <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/settings/user']">User Accounts</a>
-    </li>
-  </ul>
+
+    <!-- BEGIN : RPI NODES NAV SECTION -->
+    <div class="nav-section">
+      <span class="nav-section-title">Nodes</span>
+      <ul class="panel-nav-list">
+        <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/settings/rpi']">
+            <i class="fa fa-sm fa-eye fa-icon-margin"></i>View current nodes
+          </a>
+        </li>
+        <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/settings/rpi/add']">
+            <i class="fa fa-sm fa-plus fa-icon-margin"></i>Add new node
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- END : RPI NODES NAV SECTION -->
+
+    <!-- BEGIN : USER ACCOUNTS NAV SECTION -->
+    <div class="nav-section">
+      <span class="nav-section-title">Accounts</span>
+      <ul class="panel-nav-list">
+        <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa fa-sm fa-pencil fa-icon-margin"></i>Edit account
+        </li>
+        <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa fa-sm fa-eye fa-icon-margin"></i>View all accounts
+        </li>
+        <li class="panel-nav-list-item" [routerLinkActive]="['list-item-active']" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa fa-sm fa-plus fa-icon-margin"></i>Create new account
+        </li>
+      </ul>
+    </div>
+    <!-- END : USER ACCOUNTS NAV SECTION -->
+
   </div>
 </div>

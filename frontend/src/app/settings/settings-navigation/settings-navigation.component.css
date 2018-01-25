@@ -1,18 +1,29 @@
+.nav-section {
+  margin-left: 0px;
+  margin-bottom: 16px;
+}
+
+.nav-section > .nav-section-title {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ccc;
+  font-weight: bold;
+}
+
 ul.panel-nav-list {
   list-style: none;
-  background: #546575;
-  margin: 0;
-  padding: 4px 0px;
+  margin: 4px 0px 0px 0px;
+  padding: 0px;
 }
 
 ul.panel-nav-list > li.panel-nav-list-item > a {
-	
-	
-	color: #ebebeb;
+  text-decoration: none;
+	color: #fff;
 }
 
-ul.panel-nav-list > li.panel-nav-list-item{
-  padding: 4px 16px !important;
+ul.panel-nav-list > li.panel-nav-list-item {
+  padding: 4px 8px !important;
 }
 
 li.list-item-active {
