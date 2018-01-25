@@ -1,0 +1,25 @@
+<tr *ngFor="let component of components"
+    (mouseenter)="hover(component)"
+    (mouseleave)="hover(undefined)">
+  <td>{{ component.alias }}</td>
+  <td>{{ type }}</td>
+  <td>
+    <span *ngFor="let pin of component.pins">
+      <span class="label label-success label-direction">
+        {{pin.description}} <span class="label label-default">{{pin.direction}}</span>
+      </span>
+    </span>
+  </td>
+  <td class="text-right">
+    <button role="button"
+        class="btn btn-xs btn-default"
+        (click)="edit(component.id)">
+      <i class="fa fa-edit"></i>
+    </button>
+    <button role="button"
+        class="btn btn-xs btn-warning"
+        (click)="delete(component.id)">
+      <i class="fa fa-trash"></i>
+    </button>
+  </td>
+</tr>

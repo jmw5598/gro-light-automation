@@ -1,0 +1,58 @@
+<gro-rpicomponent-filter></gro-rpicomponent-filter>
+<hr />
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Alias</th>
+      <th>Type</th>
+      <th>Pins</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <!-- HUMIDITY COMPONENTS -->
+  <tbody
+      *ngIf="filter === rPiComponentType.ALL || filter === rPiComponentType.HUMIDITY"
+      gro-rpicomponent-list
+      [components]="humidity"
+      [type]="rPiComponentType.HUMIDITY"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- MOISTURE COMPONENTS -->
+  <tbody
+      *ngIf="filter === rPiComponentType.ALL || filter === rPiComponentType.MOISTURE"
+      gro-rpicomponent-list
+      [components]="moisture"
+      [type]="rPiComponentType.MOISTURE"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- PROXIMITY COMPONENTS -->
+  <tbody
+      *ngIf="filter === rPiComponentType.ALL || filter === rPiComponentType.PROXIMITY"
+      gro-rpicomponent-list
+      [components]="proximity"
+      [type]="rPiComponentType.PROXIMITY"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- RELAY COMPONENTS -->
+  <tbody
+      *ngIf="filter === rPiComponentType.ALL || filter === rPiComponentType.RELAY"
+      gro-rpicomponent-list
+      [components]="relay"
+      [type]="rPiComponentType.RELAY"
+      (onHover)="hover($event)">
+  </tbody>
+
+  <!-- TEMPERATURE COMPONENTS -->
+  <tbody
+      *ngIf="filter === rPiComponentType.ALL || filter === rPiComponentType.TEMPERATURE"
+      gro-rpicomponent-list
+      [components]="temperature"
+      [type]="rPiComponentType.TEMPERATURE"
+      (onHover)="hover($event)">
+  </tbody>
+
+</table>
