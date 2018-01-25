@@ -1,6 +1,11 @@
 <div *ngIf="rpi" class="panel panel-default">
   <div class="panel-heading">
     {{ rpi.description }}
+    <span class="pull-right">
+      <span class="label label-success">
+        <i class="fa fa-arrow-up"></i> {{ systemState.UP }}
+      </span>
+    </span>
   </div>
   <div class="panel-body">
     <div class="row">
