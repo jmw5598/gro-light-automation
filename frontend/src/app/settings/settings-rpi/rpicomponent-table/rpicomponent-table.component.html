@@ -46,9 +46,7 @@
 <!-- END : COMPONENTS TABLE -->
 
 <!-- BEGIN : NO COMPONENTS ALERT -->
-<div *ngIf="!components || components.length == 0" class="alert alert-info">
-  <div class="">
-      <i class="fa fa-info-circle fa-icon-margin"></i> There are currently no components on this node
-  </div>
+<div *ngIf="!components || components.length == 0" class="alert alert-info alert-component-custom">
+  <i class="fa fa-info-circle fa-icon-margin"></i> There are currently no components on this node
 </div>
 <!-- END : NO COMPONENTS ALERT -->
