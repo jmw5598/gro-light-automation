@@ -2,7 +2,7 @@
     (mouseenter)="hover(component)"
     (mouseleave)="hover(undefined)">
   <td>{{ component.alias }}</td>
-  <td>{{ type }}</td>
+  <td>{{ component.type }}</td>
   <td>
     <span *ngFor="let pin of component.pins">
       <span class="label label-success label-direction">
