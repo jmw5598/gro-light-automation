@@ -9,6 +9,8 @@ import { SettingsRPiComponentService } from '../settings-rpicomponent.service';
 import { ToasterService } from '@app/core/component/toaster/toaster.service';
 import { ToastType } from '@app/core/component/toaster/toast-type.enum';
 
+import { RPiComponentFilterPipe } from './rpicomponent-filter/rpicomponent-filter.pipe';
+
 @Component({
   selector: 'gro-rpicomponent-table',
   templateUrl: './rpicomponent-table.component.html',
@@ -18,7 +20,7 @@ export class RPiComponentTableComponent implements OnInit, OnDestroy {
 
   @Input()
   components: Array<RPiComponent>;
-  
+
   filter: RPiComponentType;
 
   filterSubscription;
@@ -37,7 +39,7 @@ export class RPiComponentTableComponent implements OnInit, OnDestroy {
   }
 
   hover(component: RPiComponent) {
-    console.log(component);
+    this.settingsRPiComponentService.setSelectedComponent(component);
   }
 
   ngOnDestroy() {
