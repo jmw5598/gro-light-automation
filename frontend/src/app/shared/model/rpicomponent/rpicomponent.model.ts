@@ -8,7 +8,8 @@ export abstract class RPiComponent {
   constructor (
     public id: number,
     public alias: string,
-    public pins: Array<RPiPin>
+    public pins: Array<RPiPin>,
+    public type: RPiComponentType
   ) { }
 
 }
