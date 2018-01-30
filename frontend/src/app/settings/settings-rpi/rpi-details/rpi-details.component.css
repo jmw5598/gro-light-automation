@@ -8,3 +8,7 @@
   font-size: 13px;
   margin-bottom: 2px;
 }
+
+.default-rpi {
+  opacity: 0.2 !important;
+}
