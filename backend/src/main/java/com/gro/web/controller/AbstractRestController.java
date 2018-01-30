@@ -1,6 +1,8 @@
 package com.gro.web.controller;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,12 +61,14 @@ public abstract class AbstractRestController<T, ID extends Serializable> {
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    public T deleteById(@PathVariable ID id) {
+    public Map<String, Object> deleteById(@PathVariable ID id) {
         T entity = this.repository.findOne(id);
         if(entity != null)
             this.repository.delete(id);
         else
             throw new EntityNotFoundException("Entity with id " + id + " was not found");
-        return entity;
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        return result;
     }
 }
