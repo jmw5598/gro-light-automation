@@ -1,3 +1,77 @@
-<p>
-  rpi-details works!
-</p>
+<div *ngIf="rpi" class="row">
+
+  <!-- BEGIN : RPI DETAILS LEFT COLUMN -->
+  <div class="col-sm-12 col-md-6 col-lg-8">
+    <div class="row">
+
+      <!-- BEGIN : RPI DETAILS PANEL -->
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{ rpi.description }}
+            <span class="pull-right">
+              <span class="label label-success">
+                <i class="fa fa-arrow-up"></i> {{ systemState.UP }}
+              </span>
+            </span>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+
+              <!-- RPI IMAGE -->
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <img class="img-responsive" [src]="rpi.imageUrl" />
+              </div>
+
+              <!-- RPI DETAILS LIST -->
+              <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+                <ul class="list-group rpi-details-list-group">
+                  <li class="list-group-item">
+                    <i class="fa fa-sm fa-map-marker fa-icon-margin"></i> IP:
+                    <span class="badge pull-right">{{ rpi.ip }}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-sm fa-plug fa-icon-margin"></i> Port:
+                    <span class="badge pull-right">{{ rpi.port }}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-sm fa-clock-o fa-icon-margin"></i> Uptime:
+                    <span class="badge pull-right">5hrs 23m</span>
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-sm fa-recycle fa-icon-margin"></i> Last restart:
+                    <span class="badge pull-right">5hrs 23ms</span>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END : RPI DETAILS PANEL -->
+
+      <!-- BEGIN : RPI COMPONENTS PANEL -->
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <gro-rpicomponent-table
+                [components]="rpi.components">
+            </gro-rpicomponent-table>
+          </div>
+        </div>
+      </div>
+      <!-- BEGIN : RPI COMPONENTS PANEL -->
+
+    </div>
+  </div>
+  <!-- END : RPI DETAILS LEFT COLUMN -->
+
+  <!-- BEGIN : RPI DETAILS RIGHT COLUMN (RPI PINOUT) -->
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <gro-rpi-pinout
+        [pins]="rpi.pins">
+    </gro-rpi-pinout>
+  </div>
+  <!-- BEGIN : RPI DETAILS LEFT COLUMN -->
+</div>

@@ -1,0 +1,10 @@
+.rpi-details-list-group {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.rpi-details-list-group > li {
+  padding: 8px;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
