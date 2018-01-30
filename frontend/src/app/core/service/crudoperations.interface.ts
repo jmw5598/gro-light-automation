@@ -7,5 +7,5 @@ export interface CrudOperations<T, ID> {
 	update(t: T): Observable<T>;
 	findOne(id: ID): Observable<T>;
 	findAll(): Observable<T[]>;
-	delete(id: ID): Observable<T>;
+	delete(id: ID): Observable<any>;
 }
