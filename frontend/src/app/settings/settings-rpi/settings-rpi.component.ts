@@ -18,6 +18,18 @@ export class SettingsRPiComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadAllRPi();
+  }
+
+  delete(id: number) {
+    this.rpiService.delete(id)
+      .subscribe(
+        data => this.loadAllRPi(),
+        error => console.log("error deleting rpi")
+      );
+  }
+
+  private loadAllRPi() {
     this.rpiService.findAll()
       .subscribe(
         data => this.rpis = data,

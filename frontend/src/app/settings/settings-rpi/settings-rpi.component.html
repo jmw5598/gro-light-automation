@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
-    <gro-rpi-list [rpis]="rpis"></gro-rpi-list>
+    <gro-rpi-list
+        [rpis]="rpis"
+        (onDelete)="delete($event)"></gro-rpi-list>
   </div>
 </div>
