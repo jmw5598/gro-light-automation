@@ -9,8 +9,11 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-xs-12">
+      <div *ngIf="rpi.imageUrl" class="col-xs-12">
         <img class="img-responsive" [src]="rpi.imageUrl" />
+      </div>
+      <div *ngIf="!rpi.imageUrl" class="col-xs-12">
+        <i class="fa fa-3x fa-desktop"></i>
       </div>
     </div>
     <div class="row">
@@ -36,7 +39,7 @@
         <span class="btn btn-sm btn-default">
             <i class="fa fa-sm fa-pencil-square-o"></i>
         </span>
-        <span class="btn btn-sm btn-default">
+        <span class="btn btn-sm btn-default" (click)="delete(rpi.id)">
             <i class="fa fa-sm fa-trash-o"></i>
         </span>
       </div>

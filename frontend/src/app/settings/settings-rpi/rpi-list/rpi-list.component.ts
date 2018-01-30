@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { RPi } from '@app/shared/model/rpi/rpi.model';
 
@@ -12,9 +12,16 @@ export class RPiListComponent implements OnInit {
   @Input()
   rpis: Array<RPi>;
 
+  @Output()
+  onDelete: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  delete(id: number) {
+    this.onDelete.emit(id);
   }
 
 }

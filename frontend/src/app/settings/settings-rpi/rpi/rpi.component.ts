@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { RPi } from '@app/shared/model/rpi/rpi.model';
+import { RPiService } from '@app/core/service/rpi/rpi.service';
 import { SystemState } from '@app/shared/model/rpi/system-state.enum';
+
 @Component({
   selector: 'gro-rpi',
   templateUrl: './rpi.component.html',
@@ -13,10 +15,14 @@ export class RPiComponent implements OnInit {
   @Input()
   rpi: RPi;
 
+  @Output()
+  onDelete: EventEmitter<number> = new EventEmitter<number>();
+
   systemState = SystemState
 
   constructor(
-    private router: Router
+    private router: Router,
+    private rpiService: RPiService
   ) { }
 
   ngOnInit() {
@@ -25,6 +31,10 @@ export class RPiComponent implements OnInit {
 
   view(id: number) {
     this.router.navigate(['/settings/rpi/', id]);
+  }
+
+  delete(id: number) {
+    this.onDelete.emit(id);
   }
 
 }
