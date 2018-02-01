@@ -18,7 +18,7 @@ import com.gro.repository.BaseRepository;
 public abstract class AbstractRestController<T, ID extends Serializable> {
     
     private Logger logger = LoggerFactory.getLogger(AbstractRestController.class);
-    private BaseRepository<T, ID> repository;
+    protected BaseRepository<T, ID> repository;
     
     public AbstractRestController(BaseRepository<T, ID> repository) {
         this.repository = repository;
