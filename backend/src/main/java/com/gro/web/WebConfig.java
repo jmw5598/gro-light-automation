@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.gro.resources.ObjectMapperFactory;
@@ -23,5 +24,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowedOrigins("*");
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/images/**").addResourceLocations("file:///home/upload-dir/");        
+    }
+    
+    
     
 }
