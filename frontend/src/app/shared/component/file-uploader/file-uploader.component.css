@@ -1,0 +1,26 @@
+.file-drop-zone {
+  border: dotted 2px lightgray;
+}
+
+.well-dark {
+  background: #4e5d6c;
+}
+
+.nv-file-over {
+  border: dotted 2px #5cb85c;
+} /* Default class applied to drop zones on over */
+
+input[type="file"] {
+    display: none;
+}
+
+.text-italic {
+  font-style: italic;
+  font-size: 13px;
+}
+
+.label-queue-progress {
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+}

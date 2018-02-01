@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- BEGIN : Image select/drop panel -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <!-- ENABLED DROP ZONE WHEN UPLOADER QUEUE IS = 0 -->
+        <div *ngIf="uploader?.queue?.length < maxFilesInQueue" ng2FileDrop
+            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+            (fileOver)="fileOverBase($event)"
+            [uploader]="uploader"
+            class="well well-dark file-drop-zone">
+          <div>
+            <div class="text-center"><i class="fa fa-download fa-3x"></i></div>
+            <h6 class="text-center">Drop files here</h6>
+          </div>
+        </div>
+        <!-- DISABLED DROP ZONE WHEN MORE THAN ONE FILE -->
+        <div *ngIf="uploader?.queue?.length >= maxFilesInQueue" class="well well-dark file-drop-zone">
+          <div>
+            <div class="text-center"><i class="fa fa-download fa-3x"></i></div>
+            <h6 class="text-center">Remove file to enable drop zone</h6>
+          </div>
+        </div>
+        <!-- FILE SELECTION INPUT -->
+        <label for="file-upload"
+          class="btn btn-sm btn-success"
+          [ngClass]="{ 'disabled' : uploader?.queue?.length >= maxFilesInQueue }">
+          Select File
+          <input [disabled]="uploader?.queue?.length >= maxFilesInQueue" id="file-upload" type="file" ng2FileSelect [uploader]="uploader" />
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- END : Image select/drop panel -->
+
+  <!-- BEGIN : Image selected details -->
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Selected file <span class="label label-info pull-right">{{ uploader?.queue?.length }}</span>
+      </div>
+      <div class="panel-body">
+
+        <!-- BEGIN : Div Empty Queue (when queue == 0) -->
+        <div *ngIf="uploader?.queue?.length == 0" class="well well-dark">
+          <i class="fa fa-icon-margin fa-sm fa-info-circle"></i>
+          <span class="text-italic">No filed selected</span>
+        </div>
+        <!-- END : Div Empty Queue (when queue == 0) -->
+
+        <!-- BEGIN : Table Queue (when queue > 0) -->
+        <table *ngIf="uploader?.queue?.length > 0" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of uploader.queue">
+              <td><strong>{{ item?.file?.name }}</strong></td>
+              <td  nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+              <td nowrap>
+                <button type="button" class="btn btn-default btn-xs"
+                    (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                  <i class="fa fa-upload"></i>
+                </button>
+                <button type="button" class="btn btn-default btn-xs"
+                    (click)="item.cancel()" [disabled]="!item.isUploading">
+                  <i class="fa fa-ban"></i>
+                </button>
+                <button type="button" class="btn btn-default btn-xs"
+                    (click)="item.remove()">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END : Table Queue (when queue > 0) -->
+
+        <!-- BEGIN : Progress bar and buttons -->
+        <div>
+          <div>
+            <span class="label-queue-progress">Queue progress:</span>
+            <div class="progress" style="">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-success btn-sm"
+              (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+            <span class="fa fa-icon-margin fa-upload"></span> Upload
+          </button>
+          <button type="button" class="btn btn-default btn-sm"
+              (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+            <span class="fa fa-icon-margin fa-ban"></span> Cancel
+          </button>
+          <button type="button" class="btn btn-default btn-sm"
+              (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+            <span class="fa fa-icon-margin fa-trash"></span> Remove
+          </button>
+        </div>
+        <!-- BEGIN : Progress bar and buttons -->
+
+      </div><!-- END : Panel Body -->
+    </div><!-- END: Panel -->
+  </div>
+  <!-- END : Image selected details -->
+</div>
