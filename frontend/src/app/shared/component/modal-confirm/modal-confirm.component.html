@@ -1,3 +1,26 @@
-<p>
-  modal-confirm works!
-</p>
+<!-- BEGIN : Modal backdrop -->
+<div
+    class="modal-backdrop"
+    [ngClass]="{'fade in show': modalConfirm.isShown, 'fade out hide': !modalConfirm.isShown }">
+</div>
+<!-- END : Modal backdrop -->
+
+<!-- BEGIN : Modal dialog -->
+<div id="myModal" class="modal" [ngClass]="{'fade in show': modalConfirm.isShown, 'fade out hide': !modalConfirm.isShown }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="confirm(false)">&times;</button>
+                <h6 class="modal-title">{{ modalConfirm.title }}</h6>
+            </div>
+            <div class="modal-body">
+                <p>{{ modalConfirm.message }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-success" (click)="confirm(true)">Yes</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" (click)="confirm(false)">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END : Modal dialog -->
