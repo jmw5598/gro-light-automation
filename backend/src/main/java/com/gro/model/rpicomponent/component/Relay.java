@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.preferences.RelayPreferences;
 
 @Entity
@@ -14,7 +15,9 @@ public class Relay extends AbstractRPiComponent {
     @OneToOne(cascade=CascadeType.ALL)
     private RelayPreferences preferences;
     
-    public Relay() {}
+    public Relay() {
+        this.type = RPiComponentType.RELAY;
+    }
 
     public RelayPreferences getPreferences() {
         return preferences;

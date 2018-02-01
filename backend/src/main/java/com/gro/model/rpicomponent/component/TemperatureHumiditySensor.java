@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.preferences.TemperatureHumiditySensorPreferences;
 
 @Entity
@@ -14,7 +15,9 @@ public class TemperatureHumiditySensor extends AbstractRPiComponent {
     @OneToOne(cascade=CascadeType.ALL)
     private TemperatureHumiditySensorPreferences preferences;
     
-    public TemperatureHumiditySensor() {}
+    public TemperatureHumiditySensor() {
+        this.type = RPiComponentType.TEMPERATURE_HUMIDITY;
+    }
 
     public TemperatureHumiditySensorPreferences getPreferences() {
         return preferences;

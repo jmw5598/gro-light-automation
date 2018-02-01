@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.preferences.MoistureSensorPreferences;
 
 @Entity
@@ -14,7 +15,9 @@ public class MoistureSensor extends AbstractRPiComponent {
     @OneToOne(cascade=CascadeType.ALL)
     private MoistureSensorPreferences preferences;
     
-    public MoistureSensor() {}
+    public MoistureSensor() {
+        this.type = RPiComponentType.MOISTURE;
+    }
 
     public MoistureSensorPreferences getPreferences() {
         return preferences;

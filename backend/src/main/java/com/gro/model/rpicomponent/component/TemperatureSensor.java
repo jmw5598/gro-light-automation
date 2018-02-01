@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.preferences.TemperatureSensorPreferences;
 
 @Entity
@@ -14,7 +15,9 @@ public class TemperatureSensor extends AbstractRPiComponent {
     @OneToOne(cascade=CascadeType.ALL)
     private TemperatureSensorPreferences preferences;
     
-    public TemperatureSensor() {}
+    public TemperatureSensor() {
+        this.type = RPiComponentType.TEMPERATURE;
+    }
 
     public TemperatureSensorPreferences getPreferences() {
         return preferences;

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import com.gro.model.rpicomponent.AbstractRPiComponent;
+import com.gro.model.rpicomponent.RPiComponentType;
 import com.gro.model.rpicomponent.preferences.ProximitySensorPreferences;
 
 @Entity
@@ -14,7 +15,9 @@ public class ProximitySensor extends AbstractRPiComponent {
     @OneToOne(cascade=CascadeType.ALL)
     private ProximitySensorPreferences preferences;
     
-    public ProximitySensor() {}
+    public ProximitySensor() {
+        this.type = RPiComponentType.PROXIMITY;
+    }
 
     public ProximitySensorPreferences getPreferences() {
         return preferences;
