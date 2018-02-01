@@ -10,7 +10,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="rpi.imageUrl" />
+        <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="baseImageUrl + rpi.imageUrl" />
         <img *ngIf="!rpi.imageUrl" class="img-responsive default-rpi" src="./assets/images/default-rpi.png" />
       </div>
     </div>

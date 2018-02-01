@@ -5,6 +5,8 @@ import { RPi } from '@app/shared/model/rpi/rpi.model';
 import { RPiService } from '@app/core/service/rpi/rpi.service';
 import { SystemState } from '@app/shared/model/rpi/system-state.enum';
 
+import { BASE_IMAGE_URL } from '@app/core/service/base-api-url.default';
+
 @Component({
   selector: 'gro-rpi-details',
   templateUrl: './rpi-details.component.html',
@@ -17,6 +19,7 @@ export class RPiDetailsComponent implements OnInit, OnDestroy {
   private hasImageUploadShown:boolean = false;
 
   systemState = SystemState;
+  baseImageUrl = BASE_IMAGE_URL;
   rpi: RPi;
 
   constructor(

@@ -5,6 +5,8 @@ import { RPi } from '@app/shared/model/rpi/rpi.model';
 import { RPiService } from '@app/core/service/rpi/rpi.service';
 import { SystemState } from '@app/shared/model/rpi/system-state.enum';
 
+import { BASE_IMAGE_URL } from '@app/core/service/base-api-url.default';
+
 @Component({
   selector: 'gro-rpi',
   templateUrl: './rpi.component.html',
@@ -19,6 +21,7 @@ export class RPiComponent implements OnInit {
   onDelete: EventEmitter<number> = new EventEmitter<number>();
 
   systemState = SystemState
+  baseImageUrl = BASE_IMAGE_URL;
 
   constructor(
     private router: Router,

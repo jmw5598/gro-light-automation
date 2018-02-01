@@ -24,7 +24,7 @@
                   (mouseenter)="showImageUploadButton(true)"
                   (mouseleave)="showImageUploadButton(false)">
                 <div class="image-upload">
-                  <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="rpi.imageUrl" />
+                  <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="baseImageUrl + rpi.imageUrl" />
                   <img *ngIf="!rpi.imageUrl" class="img-responsive default-rpi" src="./assets/images/default-rpi.png" />
                   <span
                       *ngIf="hasImageUploadShown"
