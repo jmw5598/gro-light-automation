@@ -12,3 +12,12 @@
 .default-rpi {
   opacity: 0.2 !important;
 }
+
+.image-upload-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 24px;
+  margin-top: 8px;
+  border-radius: 4px;
+}

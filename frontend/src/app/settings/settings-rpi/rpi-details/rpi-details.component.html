@@ -19,9 +19,20 @@
             <div class="row">
 
               <!-- RPI IMAGE -->
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="rpi.imageUrl" />
-                <img *ngIf="!rpi.imageUrl" class="img-responsive default-rpi" src="./assets/images/default-rpi.png" />
+              <div
+                  class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
+                  (mouseenter)="showImageUploadButton(true)"
+                  (mouseleave)="showImageUploadButton(false)">
+                <div class="image-upload">
+                  <img *ngIf="rpi.imageUrl" class="img-responsive" [src]="rpi.imageUrl" />
+                  <img *ngIf="!rpi.imageUrl" class="img-responsive default-rpi" src="./assets/images/default-rpi.png" />
+                  <span
+                      *ngIf="hasImageUploadShown"
+                      class="btn btn-default btn-xs image-upload-btn"
+                      [routerLink]="['/settings/rpi/' + id + '/image']">
+                    <i class="fa fa-cog fa-sm"></i>
+                  </span>
+                </div>
               </div>
 
 

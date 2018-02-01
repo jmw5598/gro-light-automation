@@ -14,6 +14,7 @@ export class RPiDetailsComponent implements OnInit, OnDestroy {
 
   private id: number;
   private subscription: any;
+  private hasImageUploadShown:boolean = false;
 
   systemState = SystemState;
   rpi: RPi;
@@ -31,6 +32,10 @@ export class RPiDetailsComponent implements OnInit, OnDestroy {
         this.retrieveRPiDetails(this.id);
       }
     );
+  }
+
+  showImageUploadButton(isShown: boolean) {
+    this.hasImageUploadShown = isShown;
   }
 
   private retrieveRPiDetails(id: number) {
