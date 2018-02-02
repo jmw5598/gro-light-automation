@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { RPiAddComponent } from './rpi-add/rpi-add.component';
+import { RPiComponentAddComponent } from './rpicomponent-add/rpicomponent-add.component';
 import { RPiDetailsComponent} from './rpi-details/rpi-details.component';
 import { RPiUploadImageComponent } from './rpi-upload-image/rpi-upload-image.component';
 import { SettingsComponent } from '@app/settings/settings.component';
@@ -53,7 +54,17 @@ export const SETTINGS_RPI_ROUTES = [
             outlet: 'settings'
           }
         ]
-
+      },
+      {
+        path: 'rpi/:id/component/add',
+        component: SettingsComponent,
+        childrend: [
+          {
+            path: '',
+            component: RPiComponentAddComponent,
+            outlet: 'settings'
+          }
+        ]
       }
     ]
   }
