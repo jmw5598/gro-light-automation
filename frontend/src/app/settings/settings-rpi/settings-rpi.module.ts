@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { RPiAddComponent } from './rpi-add/rpi-add.component';
 import { RPiComponent } from './rpi/rpi.component';
@@ -14,11 +15,12 @@ import { SettingsRPiComponent } from './settings-rpi.component';
 import { SettingsRPiComponentService } from './settings-rpicomponent.service';
 import { SETTINGS_RPI_ROUTES } from './settings-rpi.routing';
 import { RPiComponentFilterPipe } from './rpicomponent-table/rpicomponent-filter/rpicomponent-filter.pipe';
-
+import { RPiUploadImageComponent } from './rpi-upload-image/rpi-upload-image.component';
 
 @NgModule({
   imports: [
     SharedModule,
+    FileUploadModule,
     RouterModule.forChild(SETTINGS_RPI_ROUTES)
   ],
   exports: [
@@ -34,7 +36,8 @@ import { RPiComponentFilterPipe } from './rpicomponent-table/rpicomponent-filter
     RPiListComponent,
     RPiPinoutComponent,
     SettingsRPiComponent,
-    RPiComponentFilterPipe
+    RPiComponentFilterPipe,
+    RPiUploadImageComponent
   ],
   providers: [
     SettingsRPiComponentService
