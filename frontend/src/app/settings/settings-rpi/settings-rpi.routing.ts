@@ -58,7 +58,7 @@ export const SETTINGS_RPI_ROUTES = [
       {
         path: 'rpi/:id/component/add',
         component: SettingsComponent,
-        childrend: [
+        children: [
           {
             path: '',
             component: RPiComponentAddComponent,
