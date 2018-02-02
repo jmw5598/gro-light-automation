@@ -16,6 +16,8 @@ import com.gro.model.rpicomponent.exception.InvalidRPiComponentTypeException;
 import com.gro.model.rpicomponent.exception.InvalidRelayStateException;
 import com.gro.model.rpicomponent.exception.RPiComponentNotFoundException;
 import com.gro.model.rpicomponent.exception.RPiPinNotFoundException;
+import com.gro.web.service.storage.StorageException;
+import com.gro.web.service.storage.StorageFileNotFoundException;
 
 @ControllerAdvice
 @RestController
@@ -49,6 +51,17 @@ public class GlobalControllerExceptionHandler {
         String error = e.getMessage();
         ApiError apiError = 
                 new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+    }
+    
+    @ExceptionHandler({
+        StorageException.class,
+        StorageFileNotFoundException.class
+    })
+    public ResponseEntity<Object> handleStorageException(StorageException e, WebRequest request) {
+        String error = e.getMessage();
+        ApiError apiError = 
+                new ApiError(HttpStatus.CONFLICT, e.getLocalizedMessage(), error);
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
     
