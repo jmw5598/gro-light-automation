@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UiSwitchModule } from 'angular2-ui-switch';
 
+import { SettingsRPiModule } from './settings-rpi/settings-rpi.module';
 import { SettingsRPiComponentModule } from './settings-rpicomponent/settings-rpicomponent.module';
 
 import { SETTINGS_ROUTES } from '@app/settings/settings.routing';
@@ -21,6 +22,7 @@ import { RelayScheduleListComponent } from './settings-schedule/relay-schedule-l
   imports: [
     SharedModule,
     UiSwitchModule,
+    SettingsRPiModule,
     SettingsRPiComponentModule,
     RouterModule.forChild(SETTINGS_ROUTES)
   ],
