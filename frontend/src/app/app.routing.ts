@@ -8,7 +8,6 @@ import { RoleGuard } from './authentication/guard/role.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardBuilderComponent } from './dashboard-builder/dashboard-builder.component';
 import { LoginComponent } from './login/login.component';
-import { ScheduleComponent } from './schedule/schedule.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsRPiComponentComponent } from './settings/settings-rpicomponent/settings-rpicomponent.component';
 import { SettingsScheduleComponent } from './settings/settings-schedule/settings-schedule.component';
@@ -26,12 +25,6 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard],
     loadChildren: '@app/dashboard/dashboard.module#DashboardModule'
 
-  },
-  {
-    path: 'schedule',
-    canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_ADMIN'] },
-    loadChildren: '@app/schedule/schedule.module#ScheduleModule'
   },
   {
     path: 'settings',
