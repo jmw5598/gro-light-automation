@@ -16,6 +16,7 @@ import { SettingsRPiComponentService } from './settings-rpicomponent.service';
 import { SETTINGS_RPI_ROUTES } from './settings-rpi.routing';
 import { RPiComponentFilterPipe } from './rpicomponent-table/rpicomponent-filter/rpicomponent-filter.pipe';
 import { RPiUploadImageComponent } from './rpi-upload-image/rpi-upload-image.component';
+import { RpicomponentFormComponent } from './rpicomponent-form/rpicomponent-form.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { RPiUploadImageComponent } from './rpi-upload-image/rpi-upload-image.com
     RPiPinoutComponent,
     SettingsRPiComponent,
     RPiComponentFilterPipe,
-    RPiUploadImageComponent
+    RPiUploadImageComponent,
+    RpicomponentFormComponent
   ],
   providers: [
     SettingsRPiComponentService
