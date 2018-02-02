@@ -31,6 +31,7 @@ import { FileUploaderComponent } from './component/file-uploader/file-uploader.c
     FormsModule,
     KeyToTitlePipe,
     KeyExtractPipe,
+    ModalConfirmComponent,
     PageLoaderComponent,
     PanelListGroupComponent,
   	ReactiveFormsModule,
@@ -46,12 +47,12 @@ import { FileUploaderComponent } from './component/file-uploader/file-uploader.c
     FileUploaderComponent,
     KeyToTitlePipe,
     KeyExtractPipe,
+    ModalConfirmComponent,
     PageLoaderComponent,
     PanelListGroupComponent,
     SimpleLoaderComponent,
     UnauthorizedComponent,
-    ScrollableDirective,
-    ModalConfirmComponent
+    ScrollableDirective
   ]
 })
 export class SharedModule { }
