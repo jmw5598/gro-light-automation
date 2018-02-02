@@ -1,3 +1,105 @@
-<p>
-  rpi-form works!
-</p>
+<form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
+
+  <!-- BEGIN : Form Title -->
+  <legend>
+    <h6>Add new node</h6>
+  </legend>
+  <!-- END : Form Title -->
+
+  <!-- BEGIN : Form Fieldset -->
+  <fieldset>
+
+    <!-- BEGIN : Form Group (IP & PORT) -->
+    <div class="form-group">
+      <div class="row">
+        <!-- IP FIELD -->
+        <div class="col-xs-6">
+          <label for="ip">IP</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['ip'].valid && form.controls['ip'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <input class="form-control input-sm" id="ip" type="text" placeholder="IP Address" formControlName="ip" />
+          </div>
+        </div>
+        <!-- PORT FIELD -->
+        <div class="col-xs-6">
+          <label for="port">Port</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['port'].valid && form.controls['port'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-plug"></i>
+            </div>
+            <input class="form-control input-sm" id="port" type="text" placeholder="6600" formControlName="port" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END : Form Group (IP & PORT) -->
+
+    <!-- BEGIN : Form Group (DESCRIPTION) -->
+    <div class="form-group">
+      <div class="row">
+        <!-- DESCRIPTION FIELD -->
+        <div class="col-xs-12">
+          <label for="description">Description</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['description'].valid && form.controls['description'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-comment"></i>
+            </div>
+            <input class="form-control input-sm" id="description" type="text" placeholder="Description" formControlName="description" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END : Form Group (DESCRIPTION) -->
+
+    <!-- BEGIN : Form Group (TYPE) -->
+    <div class="form-group">
+      <div class="row">
+        <!-- TYPE FIELD -->
+        <div class="col-xs-12">
+          <label for="description">Type</label>
+          <div class="input-group"
+              [ngClass]="{'has-warning':!form.controls['type'].valid && form.controls['type'].touched  }">
+            <div class="input-group-addon input-icon-color input-sm">
+              <i class="fa fa-laptop"></i>
+            </div>
+            <select id="type" type="text " class="form-control input-sm" id="type" formControlName="type">
+              <option value="" disabled selected hidden>Select node type</option>
+              <option value="RPI_3_MODEL_B">Raspberry Pi 3 Model B</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END : Form Group (DESCRIPTION) -->
+  </fieldset>
+  <!-- END : Form Fieldset -->
+
+  <!-- BEGIN FORM BUTTOMS : Submit, Clear -->
+  <legend></legend>
+  <div class="form-group pull-right">
+    <div class="button-group">
+      <!-- SUBMIT BUTTON -->
+      <button
+          class="btn btn-success btn-sm"
+          role="button"
+          type="submit"
+          [disabled]="!form.valid">
+        Add
+      </button>
+      <!-- RESET BUTTON -->
+      <button
+          type="reset"
+          class="btn btn-default btn-sm"
+          role="button"
+          (click)="reset()">
+        Clear
+      </button>
+    </div>
+  </div>
+  <!-- END FORM BUTTOMS : Submit, Clear -->
+</form>
