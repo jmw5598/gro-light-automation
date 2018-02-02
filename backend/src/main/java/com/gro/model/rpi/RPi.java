@@ -35,6 +35,8 @@ public class RPi {
     @NotNull
     private Integer port;
     
+    private String imageUrl;
+    
     @OneToMany(mappedBy="rpi")
     @JsonIgnoreProperties(value={"rPi", "rpi"})
     private List<RPiPin> pins;
@@ -83,6 +85,14 @@ public class RPi {
 
     public void setPort(Integer port) {
         this.port = port;
+    }
+    
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<RPiPin> getPins() {
