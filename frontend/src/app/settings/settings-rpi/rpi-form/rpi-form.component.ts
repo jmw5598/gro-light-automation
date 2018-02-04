@@ -24,6 +24,8 @@ export class RPiFormComponent implements OnInit {
         Validators.required,
         Validators.pattern("^([1-9]{1})([0-9]{0,3})$")
       ]],
+      mqttUsername: ['', Validators.required],
+      mqttPassword: ['', Validators.required],
       description: ['', Validators.required],
       type: ['', Validators.required]
     })
