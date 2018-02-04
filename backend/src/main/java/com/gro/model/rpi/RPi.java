@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gro.model.rpicomponent.AbstractRPiComponent;
 import com.gro.model.rpipin.RPiPin;
@@ -34,6 +35,12 @@ public class RPi {
     
     @NotNull
     private Integer port;
+    
+    @JsonIgnore
+    private String mqttUsername;
+    
+    @JsonIgnore
+    private String mqttPassword;
     
     private String imageUrl;
     
@@ -85,6 +92,22 @@ public class RPi {
 
     public void setPort(Integer port) {
         this.port = port;
+    }
+    
+    public String getMqttUsername() {
+        return mqttUsername;
+    }
+    
+    public void setMqttUsername(String mqttUsername) {
+        this.mqttUsername = mqttUsername;
+    }
+    
+    public String getMqttPassword() {
+        return mqttPassword;
+    }
+    
+    public void setMqttPassword(String mqqtPassword) {
+        this.mqttPassword = mqttPassword;
     }
     
     public String getImageUrl() {
