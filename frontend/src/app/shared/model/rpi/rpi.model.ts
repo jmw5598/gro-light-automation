@@ -5,6 +5,8 @@ export class RPi {
     public description: string,
     public ip: string,
     public port: number,
+    public mqttUsername: string,
+    public mqttPassword: string,
     public imageUrl: string
   ) {}
 
