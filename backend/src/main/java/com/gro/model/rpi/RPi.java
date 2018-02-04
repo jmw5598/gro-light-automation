@@ -36,9 +36,11 @@ public class RPi {
     @NotNull
     private Integer port;
     
+    @NotNull
     @JsonIgnore
     private String mqttUsername;
     
+    @NotNull
     @JsonIgnore
     private String mqttPassword;
     
