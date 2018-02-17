@@ -26,8 +26,8 @@ export class CrudService<T, ID> implements CrudOperations<T, ID> {
       .catch(this.handleError);
   }
 
-  update(t: T) {
-    return this.http.put(this.base, this.options())
+  update(id: ID, t: T) {
+    return this.http.put(this.base + "/" + id, t, this.options())
       .map(this.extractData)
       .catch(this.handleError);
   }
