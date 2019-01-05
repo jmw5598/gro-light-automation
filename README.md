@@ -1,5 +1,17 @@
 # gro-light-automation
 
+---
+
+## Update
+
+*01/05/2019*
+
+This repository is no longer being worked on.  I'm currently doing a complete redesign of this project.  The new project repository is located [here](https://github.com/jmw5598/grow-system)
+
+
+---
+
+
 Current raspberry pi project to control/automate an indoor grow light and fan for hydroponics/indoor plant growing.
 
 This is not a complete project.  I continually update as I'm working on it.
